@@ -292,7 +292,7 @@
                         </li>
 
                         <li>
-                            <a href="javascript: void(0);">
+                            <a href="AddLocataire">
                                 <i data-feather="box"></i>
                                 <span> Ajouter un Locataire </span>
                                 <span class="menu-arrow"></span>
@@ -441,7 +441,7 @@
                         <li>
                             <a href="javascript: void(0);">
                                 <i data-feather="package"></i>
-                                <span> Components </span>
+                                <span> Ajouter un Locateur </span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <ul class="nav-second-level" aria-expanded="false">
@@ -467,6 +467,7 @@
                             </ul>
                         </li>
 
+                     
                 </div>
                 <!-- End Sidebar -->
 
