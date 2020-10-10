@@ -19,6 +19,7 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
+    
 
 </head>
 
@@ -33,7 +34,7 @@
                 <a href="index-2.html" class="navbar-brand mr-0 mr-md-2 logo">
                     <span class="logo-lg">
                         <img src="{{ asset('assets/images/logo.png') }}" alt="" height="24" />
-                        <span class="d-inline h5 ml-1 text-logo">Shreyu</span>
+                        <span class="d-inline h5 ml-1 text-logo">Syndik</span>
                     </span>
                     <span class="logo-sm">
                         <img src="{{ asset('assets/images/logo.png') }}" alt="" height="24">
@@ -544,6 +545,7 @@
 
     <!-- App js -->
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
+    @yield('script')
 
 
 </body>
