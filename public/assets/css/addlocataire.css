@@ -1,0 +1,39 @@
+li {
+    text-decoration: none;
+    border: none;
+    padding: 5px 10px;
+    color: #6c757d;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.ms-selection {
+    background: #fff;
+    color: #555555;
+}
+
+.ms-selectable {
+    background: #fff;
+    color: #555555;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+.about_me {
+    min-height: 124px !important;
+}
+.btn-purple {
+    background-color: #5850eb !important;
+    color: #fff;
+}
+.submit-button {
+    text-align: right;
+}
+.btn-more-padding {
+    padding: 0.5rem 1.5rem;
+}

@@ -1,4 +1,10 @@
 @extends('Layouts/appLayout')
+
+@section('style')
+<link href="{{ asset('assets/css/addlocataire.css') }}" rel="stylesheet" type="text/css" />
+@endsection
+
+
 @section('content')
 
 <div class="content-page">
@@ -59,22 +65,25 @@ parcequ on va affecter au locataire l' appartement directement --}}
                 <p class="mb-1 font-weight-bold text-muted">cliquez pour lui affecter un local</p>
               
 
-                <div   style="background: red">
+                <div class="ms-selectable" >
+                  <div class="form-group">
                     <ul id="liste1">
                     <li class="items" id="" >item1</li>
                     <li   class="items" id="">item2</li>
                
                 </ul>
                 </div>
+                </div>
                
 
             </div> <!-- end col -->
 
             <div class="col-md-6">
+                <div class="form-group">
                 <p class="mb-1 font-weight-bold text-muted mt-3 mt-md-0">Les locaux affectés</p>
               
 
-                <div  style="background: red" >
+                <div class="ms-selection" >
                     <ul id="liste2"> 
                     <li  class="items" id="">item3</li>
                     <li  class="items" id="">item4</li>
@@ -82,7 +91,7 @@ parcequ on va affecter au locataire l' appartement directement --}}
                      
                 </div>
                 
-           
+           <div></div>
 
             </div> <!-- end col -->
         </div>
