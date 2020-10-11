@@ -20,3 +20,12 @@ Route::get('/', function () {
 Route::get('/AddLocataire', function () {
     return view('AddLocataire');
 });
+
+
+Route::get('/syndic/Immeuble', function () {
+    return view('Addimeuble');
+});
+
+Route::get('/syndic/appartements', function () {
+    return view('AddAppartement');
+});

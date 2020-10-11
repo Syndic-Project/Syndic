@@ -8,7 +8,7 @@
 @section('content')
 
 <div class="content-page">
-
+<form action="" method="POST">
     <div class="container">
       <br />
       <h2>Ajouter un Locataire</h2>
@@ -50,65 +50,84 @@
 
         </div>
 
-        
-    </div>
+        <div class="arrow-container">
 
+        <div class="container " >
 
-
-{{-- /hanya tji liste boxe avec mlitiple selection liste la premiere liste doit etre rempli par les appartement qu on a 
-parcequ on va affecter au locataire l' appartement directement --}}
-
-
-       <div class="container">
-           <div class="row">
-            <div class="col-md-6">
-                <p class="mb-1 font-weight-bold text-muted">cliquez pour lui affecter un local</p>
-              
-
-                <div class="ms-selectable" >
-                  <div class="form-group">
-                    <ul id="liste1">
-                    <li class="items" id="" >item1</li>
-                    <li   class="items" id="">item2</li>
+            <div class="row">
+             <div class="col-md-6 ">
+                 <p class="mb-1 font-weight-bold text-muted">Les locaux affectés</p>
                
-                </ul>
-                </div>
-                </div>
-               
-
-            </div> <!-- end col -->
-
-            <div class="col-md-6">
-                <div class="form-group">
-                <p class="mb-1 font-weight-bold text-muted mt-3 mt-md-0">Les locaux affectés</p>
-              
-
-                <div class="ms-selection" >
-                    <ul id="liste2"> 
-                    <li  class="items" id="">item3</li>
-                    <li  class="items" id="">item4</li>
-                </ul>
-                     
-                </div>
+    
+                 <div class="ms-selectable" >
+                   <div class="form-group">
+                     <ul id="liste1">
+                     <li class="items" id="" >item1</li>
+                     <li   class="items" id="">item2</li>
                 
-           <div></div>
+                 </ul>
+                 </div>
+                 </div>
+                
+    
+             </div> <!-- end col -->
 
+
+
+          
+                    
+              
+
+       
+       
+
+
+            <div class="col-md-6">
+                 <div class="form-group">
+                 <p class="mb-1 font-weight-bold text-muted mt-3 mt-md-0">Les locaux affectés</p>
+               
+    
+                 <div class="ms-selection" >
+                     <ul id="liste2"> 
+                     <li  class="items" id="">item3</li>
+                     <li  class="items" id="">item4</li>
+                 </ul>
+                      
+                </div>
+                 
             </div> <!-- end col -->
+         </div>
+
+       
+          
+          
+
+     </div>
         </div>
+     
     </div>
+  
 
 
-      <div class="submit-button d-none d-md-block	">
+
+
+
+     
+
+
+    
+    </div>
+    <div class="submit-button d-none d-md-block	">
         <button type="button" class="btn btn-purple btn-more-padding">
-          Enregistrer mes modifications
+          Enregistrer
         </button>
       </div>
       <div class="submit-button d-block d-md-none	">
         <button type="button" class="btn btn-block btn-purple">
-          Enregistrer mes modifications
+          Enregistrer
         </button>
       </div>
-    </div>
+    </form>
 </div>
   
 @endsection

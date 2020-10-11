@@ -295,7 +295,7 @@
                         </li>
 
                         <li>
-                            <a href="AddLocataire">
+                            <a href="">
                                 <i data-feather="box"></i>
                                 <span> Ajouter un Locataire </span>
                                 <span class="menu-arrow"></span>
