@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreImmeuble;
 use App\Immeuble;
-use Illuminate\Http\Request;
 use App\Ville;
+use Illuminate\Http\Request;
+
 
 class ImmeubleController extends Controller
 {
@@ -16,10 +17,9 @@ class ImmeubleController extends Controller
      */
     public function index()
     {
-
-        return view('Addimeuble', [
-            'villes' => Ville::all()
-        ]);
+        dd(Ville::all());
+        // return view('Addimeuble')
+        //     ->with("villes", Ville::all());
     }
 
     /**

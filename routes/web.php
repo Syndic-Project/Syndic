@@ -22,16 +22,14 @@ Route::get('/Locataire', function () {
 });
 
 
-Route::get('/syndic/Immeuble', function () {
-    return view('Addimeuble');
-});
+Route::get('/syndic/Immeuble', 'ImmeubleController@index');
 
 Route::get('/syndic/appartements', function () {
     return view('AddAppartement');
 });
 
 //les rousources des methodes generer
-//les routes des methode generer du controlleur create edit delete 
+// les routes des methode generer du controlleur create edit delete 
 Route::resource('/immeubles', 'ImmeubleController');
 Route::resource('/villes', 'VilleController');
 Route::resource('/Appartements', 'AppartementController');
