@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSyndicsTable extends Migration
+class CreateBlocsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateSyndicsTable extends Migration
      */
     public function up()
     {
-        Schema::create('Syndics', function (Blueprint $table) {
+        Schema::create('blocs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('prenom');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('nom_bloc');
+            $table->unsignedBigInteger('id_residence')->unique();
+            $table->foreign('id_residence')->references('id')->on('residences');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateSyndicsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('syndics');
+        Schema::dropIfExists('blocs');
     }
 }

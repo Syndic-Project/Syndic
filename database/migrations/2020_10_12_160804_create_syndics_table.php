@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateImmeublesTable extends Migration
+class CreateSyndicsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateImmeublesTable extends Migration
      */
     public function up()
     {
-        Schema::create('immeubles', function (Blueprint $table) {
+        Schema::create('Syndics', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('Nom_Immeuble');
-            $table->string('ville');
-            $table->float('Montant_Cotisation_Mensuelle');
-            $table->float('Montant_Disponible_En_Caisse');
+            $table->string('nom');
+            $table->string('prenom');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ class CreateImmeublesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('immeubles');
+        Schema::dropIfExists('syndics');
     }
 }

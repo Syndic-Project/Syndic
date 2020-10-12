@@ -24,16 +24,20 @@ ul {
 body {
     font-family: "Roboto", sans-serif;
 }
+
 .about_me {
     min-height: 124px !important;
 }
+
 .btn-purple {
     background-color: #5850eb !important;
     color: #fff;
 }
+
 .submit-button {
     text-align: right;
 }
+
 .btn-more-padding {
     padding: 0.5rem 1.5rem;
 }
@@ -41,4 +45,43 @@ body {
 .arrow-container {
     background: transparent url(../images/multiple-arrow.png) no-repeat 50% 50%;
     width: 100%;
+}
+
+
+.form-control-light {
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+}
+
+input.form-control[type="color"],
+input.form-control[type="range"] {
+    min-height: 39px;
+}
+
+.custom-select.is-invalid:focus,
+.form-control.is-invalid:focus,
+.custom-select:invalid:focus,
+.form-control:invalid:focus,
+.custom-select.is-valid:focus,
+.form-control.is-valid:focus,
+.custom-select:valid:focus,
+.form-control:valid:focus {
+    box-shadow: none !important;
+}
+
+.comment-area-box .form-control {
+    border-color: #e2e7f1;
+    border-radius: 0.3rem 0.3rem 0 0;
+}
+
+.comment-area-box .comment-area-btn {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border: 1px solid #e2e7f1;
+    border-top: none;
+    border-radius: 0 0 0.3rem 0.3rem;
+}
+
+input:focus {
+    outline: none;
 }
