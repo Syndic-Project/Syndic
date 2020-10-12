@@ -9,7 +9,10 @@
 @endsection
 
 @section('content')
+@if (session()->has('status'))
+<h2>{{session()->get('status')}}</h2>
 
+@endif
 <div class="content-page">
   <div class="row mybox padb20 padt20 mrgb20">
     <div class="col-md-12">
@@ -70,6 +73,7 @@
       
         <p>&nbsp;</p>
         <button type="submit" class="btn btn-block btn-purple btn-lg ">ENREGISTRER et Passer aux Appartements <i class="fa fa-arrow-right"></i></button>
+    
       </form>
   
     </div>

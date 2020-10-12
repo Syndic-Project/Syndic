@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,9 +25,17 @@ Route::get('/Locataire', function () {
 
 Route::get('/syndic/Immeuble', 'ImmeubleController@index');
 
+
+Route::get('/syndic/Residence', function () {
+    return view('Residences/residence');
+});
+
 Route::get('/syndic/appartements', function () {
     return view('AddAppartement');
 });
+
+
+
 
 //les rousources des methodes generer
 // les routes des methode generer du controlleur create edit delete 
