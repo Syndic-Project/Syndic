@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
+/*-
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 Route::get('/', function () {
     return view('index');
@@ -25,10 +26,8 @@ Route::get('/Locataire', function () {
 
 Route::get('/syndic/Immeuble', 'ImmeubleController@index');
 
+Route::get('/syndic/Residence', 'ResidenceController@index');
 
-Route::get('/syndic/Residence', function () {
-    return view('Residences/residence');
-});
 
 Route::get('/syndic/appartements', function () {
     return view('AddAppartement');
@@ -38,7 +37,7 @@ Route::get('/syndic/appartements', function () {
 
 
 //les rousources des methodes generer
-// les routes des methode generer du controlleur create edit delete 
+// les routes des methode generer du controlleur create edit delete
 Route::resource('/immeubles', 'ImmeubleController');
 Route::resource('/villes', 'VilleController');
 Route::resource('/Appartements', 'AppartementController');
