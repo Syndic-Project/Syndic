@@ -9,12 +9,10 @@
 @endsection
 
 @section('content')
-    @if (session()->has('status'))
-        <h2>{{session()->get('status')}}</h2>
 
-    @endif
     <div class="content-page">
-        <div class="row mybox padb20 padt20 mrgb20">
+        <form class="needs-validation" novalidate action="{{route('residences.store') }}" method="post" accept-charset="utf-8">
+        <div class="row mybox">
             <div class="col-md-12">
 
                 <form class="needs-validation" novalidate action="{{route('immeubles.store') }}" method="post" accept-charset="utf-8">
@@ -38,19 +36,24 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="code_postal">CODE POSTAL</label>
-                                <input type="text" name="code_postal" id="code_postal" class="form-control input-lg" placeholder="CODE POSTAL" required="" data-parsley-type="number">
-                                <div class="valid-tooltip">
-                                    Looks good!
-                                </div>
-                                <div class="invalid-tooltip">
-                                    Entrer votre code postal.
-                                </div>
-                            </div>
 
+
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="syndic">Syndic</label>
+
+                            <select name="syndic" id="syndic" class="form-control input-lg" >
+
+
+
+                                    <option value="3">sohaib</option>
+
+
+                            </select>
                         </div>
+                        </div>
+
+
                     </div>
 
                     <div class="form-group">
@@ -67,6 +70,7 @@
 
             </div>
         </div>
+    </div>
     </div>
 
 @endsection

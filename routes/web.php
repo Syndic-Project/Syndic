@@ -23,6 +23,9 @@ Route::get('/Locataire', function () {
     return view('AddLocataire');
 });
 
+Route::get('/Blocs', function () {
+    return view('BLOCS/Bloc');
+});
 
 Route::get('/syndic/Immeuble', 'ImmeubleController@index');
 
@@ -39,6 +42,7 @@ Route::get('/syndic/appartements', function () {
 //les rousources des methodes generer
 // les routes des methode generer du controlleur create edit delete
 Route::resource('/immeubles', 'ImmeubleController');
+Route::resource('/residences', 'ResidenceController');
 Route::resource('/villes', 'VilleController');
 Route::resource('/Appartements', 'AppartementController');
 Route::resource('/Syndics', 'SyndicController');

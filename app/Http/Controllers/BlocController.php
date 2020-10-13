@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Residence;
 use Illuminate\Http\Request;
 
 class BlocController extends Controller
@@ -13,7 +14,8 @@ class BlocController extends Controller
      */
     public function index()
     {
-        //
+        return view('Bloc')
+            ->with("residences", Residence::all());
     }
 
     /**

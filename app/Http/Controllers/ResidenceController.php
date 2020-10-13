@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Residence;
+
 use App\Ville;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,21 @@ class ResidenceController extends Controller
      */
     public function index()
     {
+
+
         return view('Residences/residence')
             ->with("villes", Ville::all());
+
+
+//dd("ok");
+//
+//        return view('Residences/residence',[
+//            'syndics'=>Syndic::all(),
+//
+//
+//        ]);
+
+
     }
 
     /**
@@ -37,14 +51,15 @@ class ResidenceController extends Controller
      */
     public function store(Request $request)
     {
+
         $residence = new Residence();
         $residence->nom_residence = $request->input('nom');
         $residence->id_ville = $request->input('ville');
-        $residence->code_postal = $request->input('code_postal');
-        $residence->Adresse = $request->input('adresse');
+        $residence->id_syndic = $request->input('syndic');
+        $residence->adresse = $request->input('adresse');
         $residence->save();
-        $request->session()->flash('status', 'Immeuble Bien Ajouter!!!');
-        return redirect('/immeubles');
+
+        return redirect('/syndic/appartements');
     }
 
     /**
