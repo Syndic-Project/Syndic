@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7127ffd3-2783-4e0a-b602-f3196766c79f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/FirstTry.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FirstTry.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BlocController.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ResidenceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ResidenceController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Bloc.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Immeuble.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Residence.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Syndic.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Ville.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Residences/residence.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Residences/residence.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -184,7 +181,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602526314079</updated>
-      <workItem from="1602526316745" duration="15404000" />
+      <workItem from="1602526316745" duration="23056000" />
     </task>
     <servers />
   </component>
@@ -208,10 +205,10 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="198" height="457" key="HiddenNamespacesPopup/0.0.1280.689@0.0.1280.689" timestamp="1602562845096" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1602559217594">
+    <state x="142" y="0" key="SettingsEditor" timestamp="1602608666101">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="142" y="0" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1602559217594" />
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1602608666101" />
     <state x="85" y="0" width="951" height="676" key="dock-window-1" timestamp="1602601868940">
       <screen x="0" y="0" width="1280" height="689" />
     </state>

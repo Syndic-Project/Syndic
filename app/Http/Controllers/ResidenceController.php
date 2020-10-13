@@ -20,16 +20,20 @@ class ResidenceController extends Controller
     {
 
 
-//        return view('Residences/residence')
-//            ->with("villes", Ville::all());
 
 
-//dd("ok");
+
+
+        $d = Syndic::all()->last();
+
+dd($syndics=Syndic::with('residence')->get());
 
         return view('Residences/residence',[
-          'syndics'=>Syndic::orderBy('nom', 'desc')->first()
 
-      ]);
+            'villes'=>Ville::all(),
+            'syndics'=>$d,
+
+            ]);
 
 
     }
