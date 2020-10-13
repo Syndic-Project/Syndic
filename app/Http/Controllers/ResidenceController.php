@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bloc;
 use App\Models\Residence;
+use App\Models\Syndic;
 
 use App\Models\Ville;
 use Illuminate\Http\Request;
@@ -13,23 +14,22 @@ class ResidenceController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function index()
     {
 
 
-        return view('Residences/residence')
-            ->with("villes", Ville::all());
+//        return view('Residences/residence')
+//            ->with("villes", Ville::all());
 
 
 //dd("ok");
-//
-//        return view('Residences/residence',[
-//            'syndics'=>Syndic::all(),
-//
-//
-//        ]);
+
+        return view('Residences/residence',[
+          'syndics'=>Syndic::orderBy('nom', 'desc')->first()
+
+      ]);
 
 
     }
@@ -66,7 +66,7 @@ class ResidenceController extends Controller
 
         $bloc->save();
 
-        return redirect('/syndic/appartements');
+        return redirect('/Appartements/AddAppartement');
     }
 
     /**

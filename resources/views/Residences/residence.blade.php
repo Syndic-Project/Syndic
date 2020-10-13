@@ -32,9 +32,9 @@
                                     <select name="ville" id="ville" class="form-control input-lg">
                                         <option value="">la ville où se trouve l'immeuble</option>
 
-                                        @foreach ($villes as $ville )
-                                            <option value="{{$ville->id}}">{{$ville->nom_ville}}</option>
-                                        @endforeach
+{{--                                        @foreach ($villes as $ville )--}}
+{{--                                            <option value="{{$ville->id}}">{{$ville->nom_ville}}</option>--}}
+{{--                                        @endforeach--}}
 
                                     </select>
                                 </div>
@@ -47,7 +47,9 @@
 
                                     <select name="syndic" id="syndic" class="form-control input-lg">
 
-
+                                        @foreach ($syndics as $syndic )
+                                            <option value="">{{$syndic->nom}}</option>
+                                        @endforeach
                                         <option value="8">new</option>
 
 
