@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Residence;
+use App\Models\Bloc;
+use App\Models\Residence;
 
-use App\Ville;
+use App\Models\Ville;
 use Illuminate\Http\Request;
 
 class ResidenceController extends Controller
@@ -53,11 +54,17 @@ class ResidenceController extends Controller
     {
 
         $residence = new Residence();
-        $residence->nom_residence = $request->input('nom');
+        $residence-> nom_residence = $request->input('nom');
         $residence->id_ville = $request->input('ville');
         $residence->id_syndic = $request->input('syndic');
         $residence->adresse = $request->input('adresse');
         $residence->save();
+
+        $bloc = new Bloc();
+        $bloc->nom_bloc=$request->input('nom_bloc');
+        $bloc->id_residence=$residence->id;
+
+        $bloc->save();
 
         return redirect('/syndic/appartements');
     }

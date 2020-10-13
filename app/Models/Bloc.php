@@ -1,10 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Residence extends Model
+class Bloc extends Model
 {
+    //
     //
 }

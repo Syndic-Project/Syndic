@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreImmeuble;
-use App\Immeuble;
-use App\Ville;
+use App\Models\Immeuble;
+use App\Models\Ville;
 use Illuminate\Http\Request;
 
 
@@ -43,7 +43,7 @@ class ImmeubleController extends Controller
         //validateur = voir store immeuble
 
 
-        //premiere methode pour ajouter dans la db 
+        //premiere methode pour ajouter dans la db
         $immeuble = new Immeuble();
         $immeuble->Nom_Immeuble = $request->input('nom');
         $immeuble->id_ville = $request->input('ville');

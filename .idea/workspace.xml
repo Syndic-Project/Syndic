@@ -2,13 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7127ffd3-2783-4e0a-b602-f3196766c79f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/BLOCS/Bloc.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Bloc.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Bloc.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BlocController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BlocController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ImmeubleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ImmeubleController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ResidenceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ResidenceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/addlocataire.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/addlocataire.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VilleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/VilleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Immeuble.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Immeuble.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Residence.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Residence.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Syndic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Syndic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Ville.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Ville.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Residences/residence.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Residences/residence.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,6 +159,11 @@
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\pc\Documents\GitHub\FirstTry\app\Models" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
@@ -169,7 +178,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602526314079</updated>
-      <workItem from="1602526316745" duration="9437000" />
+      <workItem from="1602526316745" duration="12761000" />
     </task>
     <servers />
   </component>
@@ -197,5 +206,13 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1602559217594" />
+    <state x="85" y="0" width="951" height="676" key="dock-window-1" timestamp="1602601868940">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="85" y="0" width="951" height="676" key="dock-window-1/0.0.1280.689@0.0.1280.689" timestamp="1602601868940" />
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1602602235278">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1602602235278" />
   </component>
 </project>
