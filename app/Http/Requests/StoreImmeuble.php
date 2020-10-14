@@ -25,8 +25,7 @@ class StoreImmeuble extends FormRequest
     {
         return [
             'nom' => 'required',
-            'code_postal' => 'required',
-            'adresse' => 'required',
+
             'cotisation' => 'required',
             'caisse' => 'required'
         ];

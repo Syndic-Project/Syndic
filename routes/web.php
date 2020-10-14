@@ -31,10 +31,10 @@ Route::get('/syndic/Immeuble', 'ImmeubleController@index');
 
 Route::get('/syndic/Residence', 'ResidenceController@index');
 
+Route::get('/syndic/Appartements','AppartementController@index');
 
-Route::get('/syndic/appartements', function () {
-    return view('Appartements/AddAppartement');
-});
+
+
 
 
 

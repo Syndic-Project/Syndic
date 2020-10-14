@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreImmeuble;
 use App\Models\Immeuble;
-use App\Models\Ville;
+use App\Models\Bloc;
 use Illuminate\Http\Request;
 
 
@@ -19,7 +19,7 @@ class ImmeubleController extends Controller
     {
 
         return view('Immeubles/Addimeuble')
-            ->with("villes", Ville::all());
+            ->with("blocs", Bloc::all());
     }
 
     /**
@@ -45,17 +45,15 @@ class ImmeubleController extends Controller
 
         //premiere methode pour ajouter dans la db
         $immeuble = new Immeuble();
-        $immeuble->Nom_Immeuble = $request->input('nom');
-        $immeuble->id_ville = $request->input('ville');
-        $immeuble->code_postal = $request->input('code_postal');
-        $immeuble->Adresse = $request->input('adresse');
+        $immeuble->id_bloc                      = $request->input('bloc');
+        $immeuble->Nom_Immeuble                 = $request->input('nom');
         $immeuble->Montant_Cotisation_Mensuelle = $request->input('cotisation');
         $immeuble->Montant_Disponible_En_Caisse = $request->input('caisse');
         $immeuble->save();
-        $request->session()->flash('status', 'Immeuble Bien Ajouter!!!');
-        return redirect('/immeubles');
 
-        // dd("ok");
+        return redirect('/syndic/Appartements');
+
+
     }
 
     /**

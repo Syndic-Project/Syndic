@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Immeuble;
 use Illuminate\Http\Request;
 
 class AppartementController extends Controller
@@ -14,7 +15,10 @@ class AppartementController extends Controller
     public function index()
     {
         //
+        return view('Appartements/AddAppartement',[
+            'immeubles'=>Immeuble::all(),
 
+        ]);
 
 
     }
@@ -37,7 +41,15 @@ class AppartementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd("zebi");
+
+        $appartement=new Immeuble();
+        $appartement->Nom_Immeuble=$request->input('immeuble');
+        $appartement->Type_de_bien=$request->input('immeuble');
+        $appartement->Nom_Immeuble=$request->input('immeuble');
+        $appartement->Nom_Immeuble=$request->input('immeuble');
+
+
     }
 
     /**

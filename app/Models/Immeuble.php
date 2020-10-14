@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $created_at
  * @property string $updated_at
  * @property Bloc $bloc
+ * @property Appartement $appartement
  */
 class Immeuble extends Model
 {
@@ -33,6 +34,14 @@ class Immeuble extends Model
      */
     public function bloc()
     {
-        return $this->belongsTo('App\Models\Bloc', 'id_bloc');
+        return $this->belongsTo('App\Bloc', 'id_bloc');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function appartement()
+    {
+        return $this->hasOne('App\Appartement', 'id_Immeuble');
     }
 }

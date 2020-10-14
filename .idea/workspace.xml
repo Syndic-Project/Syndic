@@ -2,20 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7127ffd3-2783-4e0a-b602-f3196766c79f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/assets/js/AddAppartement.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AppartementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AppartementController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ResidenceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ResidenceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Bloc.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Bloc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Immeuble.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Immeuble.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Residence.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Residence.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Syndic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Syndic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Ville.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Ville.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_12_160804_create_syndics_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_12_161141_create_villes_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_12_161237_create_residences_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_12_161452_create_blocs_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_12_161720_create_immeubles_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Residences/residence.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Residences/residence.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ImmeubleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ImmeubleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreImmeuble.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreImmeuble.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Appartement.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Immeuble.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/addlocataire.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/addlocataire.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/addlocataire.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/addlocataire.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Appartements/AddAppartement.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Appartements/AddAppartement.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Immeubles/Addimeuble.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Immeubles/Addimeuble.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -187,7 +186,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602526314079</updated>
-      <workItem from="1602526316745" duration="29603000" />
+      <workItem from="1602526316745" duration="38267000" />
     </task>
     <servers />
   </component>
@@ -199,14 +198,30 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="233" y="4" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.689@0.0.1280.689" timestamp="1602562818178" />
-    <state x="371" y="100" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602564437509">
+    <state x="371" y="100" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602693076033">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="371" y="100" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.689@0.0.1280.689" timestamp="1602564437509" />
+    <state x="371" y="100" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.689@0.0.1280.689" timestamp="1602693076033" />
     <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1602559161586">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="0" y="0" key="CommitChangelistDialog2/0.0.1280.689@0.0.1280.689" timestamp="1602559161586" />
+    <state width="1237" height="166" key="GridCell.Tab.0.bottom" timestamp="1602692222755">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1237" height="166" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1602692222755" />
+    <state width="1237" height="166" key="GridCell.Tab.0.center" timestamp="1602692222755">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1237" height="166" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1602692222755" />
+    <state width="1237" height="166" key="GridCell.Tab.0.left" timestamp="1602692222753">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1237" height="166" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1602692222753" />
+    <state width="1237" height="166" key="GridCell.Tab.0.right" timestamp="1602692222755">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1237" height="166" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1602692222755" />
     <state width="198" height="457" key="HiddenNamespacesPopup" timestamp="1602562845096">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
