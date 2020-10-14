@@ -33,7 +33,7 @@ Route::get('/syndic/Residence', 'ResidenceController@index');
 
 
 Route::get('/syndic/appartements', function () {
-    return view('AddAppartement');
+    return view('Appartements/AddAppartement');
 });
 
 

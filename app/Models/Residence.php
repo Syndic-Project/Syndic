@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,7 +20,7 @@ class Residence extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
-     * 
+     *
      * @var string
      */
     protected $keyType = 'integer';
@@ -35,15 +35,18 @@ class Residence extends Model
      */
     public function syndic()
     {
-        return $this->belongsTo('App\Syndic', 'id_syndic');
+        return $this->belongsTo('App\Models\Syndic', 'id_syndic');
     }
+
+
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function ville()
     {
-        return $this->belongsTo('App\Ville', 'id_ville');
+        return $this->belongsTo('App\Models\Ville', 'id_ville');
     }
 
     /**
@@ -51,6 +54,6 @@ class Residence extends Model
      */
     public function bloc()
     {
-        return $this->hasOne('App\Bloc', 'id_residence');
+        return $this->hasOne('App\Models\Bloc', 'id_residence');
     }
 }

@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Bloc;
 use App\Models\Residence;
-use App\Models\Syndic;
-
 use App\Models\Ville;
+use App\Models\Syndic;
 use Illuminate\Http\Request;
 
 class ResidenceController extends Controller
@@ -24,14 +22,12 @@ class ResidenceController extends Controller
 
 
 
-        $d = Syndic::all()->last();
+       $syndics=Syndic::doesntHave('residence')->get();
 
-dd($syndics=Syndic::with('residence')->get());
 
         return view('Residences/residence',[
-
             'villes'=>Ville::all(),
-            'syndics'=>$d,
+            'syndics'=>$syndics,
 
             ]);
 

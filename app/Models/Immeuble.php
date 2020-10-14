@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,7 +18,7 @@ class Immeuble extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
-     * 
+     *
      * @var string
      */
     protected $keyType = 'integer';
@@ -33,6 +33,6 @@ class Immeuble extends Model
      */
     public function bloc()
     {
-        return $this->belongsTo('App\Bloc', 'id_bloc');
+        return $this->belongsTo('App\Models\Bloc', 'id_bloc');
     }
 }

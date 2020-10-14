@@ -11,12 +11,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $email
  * @property string $email_verified_at
  * @property string $password
+ * @property string $Tel
+ * @property string $CIN
  * @property string $remember_token
  * @property string $created_at
  * @property string $updated_at
- * @property Residence $residence
+ * @property Appartement $appartement
  */
-class Syndic extends Model
+class Locataire extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
@@ -28,13 +30,13 @@ class Syndic extends Model
     /**
      * @var array
      */
-    protected $fillable = ['nom', 'prenom', 'email', 'email_verified_at', 'password', 'remember_token', 'created_at', 'updated_at'];
+    protected $fillable = ['nom', 'prenom', 'email', 'email_verified_at', 'password', 'Tel', 'CIN', 'remember_token', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function residence()
+    public function appartement()
     {
-        return $this->hasOne('App\Models\Residence', 'id_syndic');
+        return $this->hasOne('App\Models\Appartement', 'id_Locataire');
     }
 }

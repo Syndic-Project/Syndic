@@ -11,12 +11,9 @@
 @section('content')
 
     <div class="content-page">
-        <form class="needs-validation" novalidate action="{{route('residences.store') }}" method="post"
-              accept-charset="utf-8">
+        <form class="needs-validation" novalidate action="{{route('residences.store') }}" method="post" accept-charset="utf-8">
             <div class="row mybox">
                 <div class="col-md-12">
-
-                          accept-charset="utf-8">
                         <div class="form-group">
                             @csrf
                             <label for="nom">NOM de Résidence</label>
@@ -46,8 +43,10 @@
 
                                     <select name="syndic" id="syndic" class="form-control input-lg">
 
+                                        @foreach ($syndics as $syndic )
+                                            <option value="{{$syndic->id}}">{{$syndic->nom}}</option>
+                                        @endforeach
 
-                                            <option value="{{$syndics->id}}">{{$syndics->nom}}</option>
 
                                         <option value="8">new</option>
 
@@ -85,7 +84,7 @@
 
 
                 <p>&nbsp;</p>
-                <button type="submit" class="btn btn-block btn-purple btn-lg ">ENREGISTRER et Passer aux Appartements <i
+                <button type="submit" class="btn btn-block btn-purple btn-lg ">ENREGISTRER et Passer aux Immeubles <i
                         class="fa fa-arrow-right"></i></button>
 
             </div>

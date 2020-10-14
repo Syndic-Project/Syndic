@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,7 +15,7 @@ class Ville extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
-     * 
+     *
      * @var string
      */
     protected $keyType = 'integer';
@@ -30,6 +30,6 @@ class Ville extends Model
      */
     public function residence()
     {
-        return $this->hasOne('App\Residence', 'id_ville');
+        return $this->hasOne('App\Models\Residence', 'id_ville');
     }
 }

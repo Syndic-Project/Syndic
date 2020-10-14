@@ -3,6 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="7127ffd3-2783-4e0a-b602-f3196766c79f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AppartementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AppartementController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ResidenceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ResidenceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Bloc.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Bloc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Immeuble.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Immeuble.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Residence.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Residence.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Syndic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Syndic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Ville.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Ville.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_12_160804_create_syndics_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_12_161141_create_villes_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_12_161237_create_residences_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_12_161452_create_blocs_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_12_161720_create_immeubles_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Residences/residence.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Residences/residence.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +187,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602526314079</updated>
-      <workItem from="1602526316745" duration="23988000" />
+      <workItem from="1602526316745" duration="29603000" />
     </task>
     <servers />
   </component>
@@ -205,6 +219,10 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="85" y="0" width="951" height="676" key="dock-window-1/0.0.1280.689@0.0.1280.689" timestamp="1602601868940" />
+    <state x="297" y="153" key="run.anything.popup" timestamp="1602638732084">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="297" y="153" key="run.anything.popup/0.0.1280.689@0.0.1280.689" timestamp="1602638732084" />
     <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1602602235278">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
