@@ -19,9 +19,11 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+
     @yield('style')
 
-    
+
 
 </head>
 
@@ -55,12 +57,14 @@
                 <ul class="navbar-nav flex-row ml-auto d-flex list-unstyled topnav-menu float-right mb-0">
                     <li class="d-none d-sm-block">
                         <div class="app-search">
-                            <form>
+                            <!-- <form>
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Search...">
                                     <span data-feather="search"></span>
                                 </div>
-                            </form>
+                            </form> -->
+                            <i class="fas fa-check-square"></i>
+                            hahya 5dama a sidi !
                         </div>
                     </li>
 
@@ -295,13 +299,13 @@
                         </li>
 
                         <li>
-                        <a href="/Locataire">
+                            <a href="/Locataire">
                                 <i data-feather="box"></i>
                                 <span> Ajouter un Locataire </span>
                                 {{-- <span class="menu-arrow"></span> --}}
                             </a>
                         </li>
-                           
+
 
                         <li>
                             <a href="javascript: void(0);">
@@ -309,7 +313,7 @@
                                 <span> Ajouter une Caisse </span>
                                 <span class="menu-arrow"></span>
                             </a>
-                      
+
                         </li>
 
                         <li>
@@ -319,7 +323,7 @@
                                 <span class="menu-arrow"></span>
                             </a>
                         </li>
-                        
+
 
                         <li class="menu-title">Locataire</li>
 
@@ -352,7 +356,7 @@
                             </ul>
                         </li>
 
-                     
+
                 </div>
                 <!-- End Sidebar -->
 
@@ -367,7 +371,7 @@
         <!-- Start Page Content here -->
         <!-- ============================================================== -->
 
-   @yield('content')
+        @yield('content')
 
         <!-- ============================================================== -->
         <!-- End Page content -->
