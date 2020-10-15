@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appartement;
 use App\Models\Immeuble;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class AppartementController extends Controller
 {
@@ -41,13 +44,23 @@ class AppartementController extends Controller
      */
     public function store(Request $request)
     {
-        dd("zebi");
 
-        $appartement=new Immeuble();
-        $appartement->Nom_Immeuble=$request->input('immeuble');
-        $appartement->Type_de_bien=$request->input('immeuble');
-        $appartement->Nom_Immeuble=$request->input('immeuble');
-        $appartement->Nom_Immeuble=$request->input('immeuble');
+
+
+        $appartement=new Appartement();
+        $var1=$request->input('type');
+        $var2=$request->input('porte');
+
+    $res=$var1.'N°'.$var2;
+        $appartement->nom=$res;
+        $appartement->id_Immeuble=$request->input('immeuble');
+        $appartement->id_Locataire=null;
+        $appartement->Type_du_bien=$request->input('type');
+        $appartement->Num_Porte=$request->input('porte');
+        $appartement->Dernier_Mois_Pays=$request->input('last_cotisation');
+        $appartement->Nbr_Max_chambre=$request->input('nbr');
+        $appartement->save();
+        dd("ok");
 
 
     }

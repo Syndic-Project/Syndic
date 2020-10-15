@@ -34,12 +34,13 @@
             <div class="form-group">
                 <label for="type">Type du bien</label>
             <select name="type" id="type" class="form-control" required="" >
-                <option value="1">Appartement</option>
-<option value="2">Bureau</option>
-<option value="3">Local commercial</option>
+                <option value="Appartement">Appartement</option>
+<option value="Bureau">Bureau</option>
+<option value="Local commercial">Local commercial</option>
 </select>
             </div>
         </div>
+
         <div class="col-md-3">
             <div class="form-group">
                 <label for="porte">N° de porte</label>

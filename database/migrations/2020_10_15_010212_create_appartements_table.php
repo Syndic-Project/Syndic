@@ -16,7 +16,7 @@ class CreateAppartementsTable extends Migration
         Schema::create('appartements', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nom');
-            $table->unsignedBigInteger('id_Immeuble')->unique();
+            $table->unsignedBigInteger('id_Immeuble');
             $table->foreign('id_Immeuble')->references('id')->on('immeubles');
             $table->string('Type_du_bien');
             $table->integer('Nbr_Max_chambre');
