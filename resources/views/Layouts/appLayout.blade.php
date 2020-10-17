@@ -344,7 +344,7 @@
                         </li>
 
                         <li>
-                            <a href="javascript: void(0);">
+                            <a href="/syndic/Facture">
                                 <i data-feather="layout"></i>
                                 <span> Ajouter une Facture </span>
                                 <span class="menu-arrow"></span>
@@ -355,7 +355,7 @@
                         <li class="menu-title">Locataire</li>
 
                         <li>
-                            <a href="javascript: void(0);">
+                            <a href="/syndic/Locateur">
                                 <i data-feather="package"></i>
                                 <span> Ajouter un Locateur </span>
                                 <span class="menu-arrow"></span>
