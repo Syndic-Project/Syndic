@@ -42,6 +42,6 @@ class Immeuble extends Model
      */
     public function appartement()
     {
-        return $this->hasMany('App\Appartement', 'id_Immeuble');
+        return $this->hasMany('App\Models\Appartement', 'id_Immeuble');
     }
 }

@@ -32,7 +32,7 @@ class Bloc extends Model
      */
     public function residence()
     {
-        return $this->belongsTo('App\Residence', 'id_residence');
+        return $this->belongsTo('App\Models\Residence', 'id_residence');
     }
 
     /**
@@ -40,6 +40,6 @@ class Bloc extends Model
      */
     public function immeuble()
     {
-        return $this->hasOne('App\Immeuble', 'id_bloc');
+        return $this->hasOne('App\Models\Immeuble', 'id_bloc');
     }
 }

@@ -1,24 +1,22 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property integer $id
- * @property string $Date_Paiment
- * @property string $Dernier_Mois_Paye
- * @property string $email
- * @property string $Nbr_Mois_Paye
- * @property string $MT_Paye
- * @property integer $id_Locataire
+ * @property string $DateD
+ * @property string $DateF
+ * @property boolean $Accorder
+ * @property integer $id_Locateur
  * @property integer $id_Appartement
  * @property string $created_at
  * @property string $updated_at
  * @property Appartement $appartement
- * @property Locataire $locataire
+ * @property Locateur $locateur
  */
-class Caisse extends Model
+class confirm_logment extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
@@ -30,7 +28,7 @@ class Caisse extends Model
     /**
      * @var array
      */
-    protected $fillable = ['Date_Paiment', 'Dernier_Mois_Paye', 'email', 'Nbr_Mois_Paye', 'MT_Paye', 'id_Locataire', 'id_Appartement', 'created_at', 'updated_at'];
+    protected $fillable = ['DateD', 'DateF', 'Accorder', 'id_Locateur', 'id_Appartement', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -43,8 +41,8 @@ class Caisse extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function locataire()
+    public function locateur()
     {
-        return $this->belongsTo('App\Models\Locataire', 'id_Locataire');
+        return $this->belongsTo('App\Models\Locateur', 'id_Locateur');
     }
 }
