@@ -298,8 +298,35 @@
                             </a>
                         </li>
 
+
                         <li>
-                            <a href="/AddLocataire">
+                            <a href="/syndic/Residence">
+                                <i data-feather="box"></i>
+                                <span> Ajouter une Residence </span>
+                                {{-- <span class="menu-arrow"></span> --}}
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="/syndic/Immeuble">
+                                <i data-feather="box"></i>
+                                <span> Ajouter une Immeuble </span>
+                                {{-- <span class="menu-arrow"></span> --}}
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="/syndic/Appartements">
+                                <i data-feather="box"></i>
+                                <span> Ajouter un Appartement </span>
+                                {{-- <span class="menu-arrow"></span> --}}
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/syndic/Locataire">
                                 <i data-feather="box"></i>
                                 <span> Ajouter un Locataire </span>
                                 {{-- <span class="menu-arrow"></span> --}}
@@ -308,10 +335,10 @@
 
 
                         <li>
-                            <a href="javascript: void(0);">
+                            <a href="/syndic/Caisse">
                                 <i data-feather="layout"></i>
                                 <span> Ajouter une Caisse </span>
-                                <span class="menu-arrow"></span>
+
                             </a>
 
                         </li>
