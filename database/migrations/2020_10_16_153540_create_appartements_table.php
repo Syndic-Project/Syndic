@@ -20,13 +20,8 @@ class CreateAppartementsTable extends Migration
             $table->foreign('id_Immeuble')->references('id')->on('immeubles');
             $table->string('Type_du_bien');
             $table->integer('Nbr_Max_chambre');
-            $table->unsignedBigInteger('id_Locataire')->unique();
-            $table->foreign('id_Locataire')->references('id')->on('locataires');
             $table->integer('Num_Porte');
             $table->date('Dernier_Mois_Pays');
-
-
-
             $table->timestamps();
         });
     }

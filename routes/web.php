@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('/Locataire', function () {
-    return view('AddLocataire');
+    return view('Locataires/AddLocataire');
 });
 
 Route::get('/Blocs', function () {
@@ -32,6 +32,8 @@ Route::get('/syndic/Immeuble', 'ImmeubleController@index');
 Route::get('/syndic/Residence', 'ResidenceController@index');
 
 Route::get('/syndic/Appartements','AppartementController@index');
+Route::get('/syndic/Locataire','LocataireController@index');
+Route::get('/syndic/Caisse','CaisseController@index');
 
 
 
@@ -46,3 +48,5 @@ Route::resource('/residences', 'ResidenceController');
 Route::resource('/villes', 'VilleController');
 Route::resource('/Appartements', 'AppartementController');
 Route::resource('/Syndics', 'SyndicController');
+Route::resource('/Locataire', 'LocataireController');
+Route::resource('/Caisse', 'CaisseController');

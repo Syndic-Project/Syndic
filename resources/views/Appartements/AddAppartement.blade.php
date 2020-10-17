@@ -62,7 +62,7 @@
     </div>
     <div class="row mrgb20">
         <div class="col-md-12">
-            <button type="submit" id="ajouter" name="ajouter" class="btn btn-block btn-purple "><i class="fa fa-plus"></i> AJOUTER L'APPARTEMENT</button>
+            <button type="submit" id="ajouter" name="ajouter" class="btn btn-block btn-purple "><i class="fa fa-plus"></i> AJOUTER </button>
         </div>
     </div>
 

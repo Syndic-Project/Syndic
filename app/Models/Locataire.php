@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $password
  * @property string $Tel
  * @property string $CIN
+ * @property integer $id_Appartement
  * @property string $remember_token
  * @property string $created_at
  * @property string $updated_at
@@ -32,11 +33,5 @@ class Locataire extends Model
      */
     protected $fillable = ['nom', 'prenom', 'email', 'email_verified_at', 'password', 'Tel', 'CIN', 'remember_token', 'created_at', 'updated_at'];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function appartement()
-    {
-        return $this->hasOne('App\Models\Appartement', 'id_Locataire');
-    }
+
 }

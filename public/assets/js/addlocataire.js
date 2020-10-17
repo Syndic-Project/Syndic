@@ -1,4 +1,8 @@
 $(document).ready(function () {
+
+    var today = moment().format('YYYY-MM-DD');
+    document.getElementById("date_paiment").value = today;
+
     $(".items").click(function () {
 
         var curentlist = $(this).parent().attr('id');

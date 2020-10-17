@@ -10,13 +10,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $id_Immeuble
  * @property string $Type_du_bien
  * @property int $Nbr_Max_chambre
- * @property integer $id_Locataire
  * @property int $Num_Porte
  * @property string $Dernier_Mois_Pays
  * @property string $created_at
  * @property string $updated_at
  * @property Immeuble $immeuble
- * @property Locataire $locataire
+ * @property Locataire[] $locataires
  */
 class Appartement extends Model
 {
@@ -30,7 +29,7 @@ class Appartement extends Model
     /**
      * @var array
      */
-    protected $fillable = ['nom', 'id_Immeuble', 'Type_du_bien', 'Nbr_Max_chambre', 'id_Locataire', 'Num_Porte', 'Dernier_Mois_Pays', 'created_at', 'updated_at'];
+    protected $fillable = ['nom', 'id_Immeuble', 'Type_du_bien', 'Nbr_Max_chambre', 'Num_Porte', 'Dernier_Mois_Pays', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -40,11 +39,4 @@ class Appartement extends Model
         return $this->belongsTo('App\Immeuble', 'id_Immeuble');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function locataire()
-    {
-        return $this->belongsTo('App\Locataire', 'id_Locataire');
-    }
 }
