@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7127ffd3-2783-4e0a-b602-f3196766c79f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Models/Facture.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Locateur.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Recu.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Type_facture.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/confirm_logment.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Bloc.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Bloc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Caisse.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Caisse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Immeuble.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Immeuble.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +181,7 @@
       <workItem from="1602526316745" duration="41943000" />
       <workItem from="1602722373686" duration="8203000" />
       <workItem from="1602856292963" duration="247000" />
-      <workItem from="1602856610418" duration="22002000" />
+      <workItem from="1602856610418" duration="22222000" />
     </task>
     <servers />
   </component>

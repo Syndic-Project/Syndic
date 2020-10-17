@@ -34,6 +34,7 @@ Route::get('/syndic/Residence', 'ResidenceController@index');
 Route::get('/syndic/Appartements','AppartementController@index');
 Route::get('/syndic/Locataire','LocataireController@index');
 Route::get('/syndic/Caisse','CaisseController@index');
+Route::get('/syndic/Locateur','LocateurController@index');
 
 
 
@@ -50,3 +51,5 @@ Route::resource('/Appartements', 'AppartementController');
 Route::resource('/Syndics', 'SyndicController');
 Route::resource('/Locataire', 'LocataireController');
 Route::resource('/Caisse', 'CaisseController');
+Route::resource('/Locateur', 'LocateurController');
+Route::resource('/Facture', 'FactureController');
