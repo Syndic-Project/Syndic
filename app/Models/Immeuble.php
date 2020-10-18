@@ -34,7 +34,7 @@ class Immeuble extends Model
      */
     public function bloc()
     {
-        return $this->belongsTo('App\Bloc', 'id_bloc');
+        return $this->belongsTo('App\Models\Bloc', 'id_bloc');
     }
 
     /**
