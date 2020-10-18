@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $id_Appartement
  * @property string $created_at
  * @property string $updated_at
+ * @property float $montant
+ * @property string $mois_concerne
  * @property Appartement $appartement
  * @property Locataire $locataire
  */
@@ -26,7 +28,7 @@ class Caisse extends Model
     /**
      * @var array
      */
-    protected $fillable = ['Date_Paiment', 'id_Locataire', 'id_Appartement', 'created_at', 'updated_at'];
+    protected $fillable = ['Date_Paiment', 'id_Locataire', 'id_Appartement', 'created_at', 'updated_at', 'montant', 'mois_concerne'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

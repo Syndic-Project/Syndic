@@ -63,8 +63,6 @@
                                     <span data-feather="search"></span>
                                 </div>
                             </form> -->
-                            <i class="fas fa-check-square"></i>
-                            hahya 5dama a sidi !
                         </div>
                     </li>
 

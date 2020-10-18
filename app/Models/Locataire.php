@@ -37,6 +37,6 @@ class Locataire extends Model
      */
     public function caisses()
     {
-        return $this->hasMany('App\Models\Caisse', 'id_Locataire');
+        return $this->hasMany('App\Models\Caiss', 'id_Locataire');
     }
 }
