@@ -258,35 +258,42 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h6>Lorem, ipsum dolor.</h6>
-                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-                <hr>
-                <h6>Overflowing text to show scroll behavior</h6>
-                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas
-                    eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue
-                    laoreet rutrum faucibus dolor auctor.</p>
-                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl
-                    consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <p>
+                    Confirmez que Mr/Mme {Nom-Prénom} a payé la somme de cotisation : {prix} Dhs pour le mois de
+                    {mois_concerné} , pour son appartement {identifiant/nom appartement} dont le numéro de la porte est
+                    {num_porte}.
+                </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
                 <button type="button" class="btn btn-success">Confirmer</button>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+        </div>
+    </div>
 </div>
 
 @endsection
 
-@section('script-bottom')
-<!-- Validation init js-->
-<script src="{{ URL::asset('assets/js/pages/form-validation.init.js') }}"></script>
+@section('script')
+<script>
+    $("#cinLocataire").keyup(function () {
+        
+    });
 
-@endsection
-@section('script')
+</script>
+<!-- <script>
+    $('#modalPaiement').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var recipient = button.data('whatever') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text('New message to ' + recipient)
+        modal.find('.modal-body input').val(recipient)
+    })
+</script> -->
+<!-- Validation init js-->
+<!-- <script src="{{ URL::asset('assets/js/pages/form-validation.init.js') }}"></script>
 <script src="{{ URL::asset('assets/js/addlocataire.js') }}"></script>
-@endsection
-@section('script')
-<script src="{{ URL::asset('assets/js/AddAppartement.js') }}"></script>
+<script src="{{ URL::asset('assets/js/AddAppartement.js') }}"></script> -->
 @endsection
