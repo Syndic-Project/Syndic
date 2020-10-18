@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,17 +13,16 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $password
  * @property string $Tel
  * @property string $CIN
- * @property integer $id_Appartement
  * @property string $remember_token
  * @property string $created_at
  * @property string $updated_at
- * @property Appartement $appartement
+ * @property Caiss[] $caisses
  */
 class Locataire extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
-     *
+     * 
      * @var string
      */
     protected $keyType = 'integer';
@@ -33,5 +32,11 @@ class Locataire extends Model
      */
     protected $fillable = ['nom', 'prenom', 'email', 'email_verified_at', 'password', 'Tel', 'CIN', 'remember_token', 'created_at', 'updated_at'];
 
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function caisses()
+    {
+        return $this->hasMany('App\Models\Caisse', 'id_Locataire');
+    }
 }

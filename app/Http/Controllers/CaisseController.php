@@ -17,10 +17,9 @@ class CaisseController extends Controller
      */
     public function index()
     {
-        return view('Caisses/AddCaisse',[
-            'immeubles'=>Immeuble::all(),
-            'appartements'=>Appartement::all(),
-
+        return view('Caisses/AddCaisse', [
+            'immeubles' => Immeuble::all(),
+            'appartements' => Appartement::all(),
         ]);
     }
 
@@ -35,14 +34,12 @@ class CaisseController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        \dd($request->date_paiment);
     }
 
     /**

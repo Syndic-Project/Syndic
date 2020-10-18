@@ -1,16 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property integer $id
  * @property string $Date_Paiment
- * @property string $Dernier_Mois_Paye
- * @property string $email
- * @property string $Nbr_Mois_Paye
- * @property string $MT_Paye
  * @property integer $id_Locataire
  * @property integer $id_Appartement
  * @property string $created_at
@@ -30,7 +26,7 @@ class Caisse extends Model
     /**
      * @var array
      */
-    protected $fillable = ['Date_Paiment', 'Dernier_Mois_Paye', 'email', 'Nbr_Mois_Paye', 'MT_Paye', 'id_Locataire', 'id_Appartement', 'created_at', 'updated_at'];
+    protected $fillable = ['Date_Paiment', 'id_Locataire', 'id_Appartement', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

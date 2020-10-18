@@ -17,12 +17,9 @@ class CreateConfirmLogmentsTable extends Migration
             $table->bigIncrements('id');
             $table->date('DateD');
             $table->date('DateF');
-            $table->boolean('Accorder');
-            $table->unsignedBigInteger('id_Locateur');
-            $table->foreign('id_Locateur')->references('id')->on('locateurs');
-
-            $table->unsignedBigInteger('id_Appartement');
-            $table->foreign('id_Appartement')->references('id')->on('appartements');
+            $table->tinyInteger('Accorder');
+            $table->unsignedBigInteger('id_Locateur')->index('confirm_logments_id_locateur_foreign');
+            $table->unsignedBigInteger('id_Appartement')->index('confirm_logments_id_appartement_foreign');
             $table->timestamps();
         });
     }
