@@ -7,7 +7,11 @@
 
 
 @section('content')
+    <div class="content-page">
 
+
+
+    </div>
 @endsection
 
 

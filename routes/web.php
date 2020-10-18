@@ -27,6 +27,12 @@ Route::get('/Blocs', function () {
     return view('BLOCS/Bloc');
 });
 
+
+Route::get('/syndic/Facture', function () {
+    return view('Factures/AddFacture');
+});
+
+
 Route::get('/syndic/Immeuble', 'ImmeubleController@index');
 
 Route::get('/syndic/Residence', 'ResidenceController@index');
@@ -35,7 +41,7 @@ Route::get('/syndic/Appartements','AppartementController@index');
 Route::get('/syndic/Locataire','LocataireController@index');
 Route::get('/syndic/Caisse','CaisseController@index');
 Route::get('/syndic/Locateur','LocateurController@index');
-Route::get('/syndic/Facture','FactureController@index');
+//Route::get('/syndic/Facture','FactureController@index');
 
 
 
