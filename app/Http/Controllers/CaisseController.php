@@ -40,9 +40,6 @@ class CaisseController extends Controller
      */
     public function store(Request $request)
     {
-        $nom = $request->nom;
-        $prenom = $request->prenom;
-        return  LocataireController::getLocataireByNomPrenom($nom, $prenom);
     }
 
     /**
