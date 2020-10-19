@@ -45,6 +45,7 @@ function locataireFounded(locataire) {
         $("#confirmationEmail").html(
             '<img src="https://img.icons8.com/color/48/000000/id-not-verified.png" style="height: 35px;">'
         );
+    $("#locataireHidden").val(locataire.id);
     $.ajax({
         url: "/getAppartementsDuLocataire",
         type: "POST",
@@ -57,7 +58,7 @@ function locataireFounded(locataire) {
             var appartements = JSON.parse(appartementsData);
             for (let i = 0; i < appartements.length; i++)
                 $("#appartementLocataire").append(`
-                    <option value="${appartements[i].id}">${appartements[i].nom}</option>
+                    <option value="${appartements[i].id}" data-montant="${appartements[i].montant_cotisation_mensuelle}">${appartements[i].nom}</option>
                 `);
         },
     });

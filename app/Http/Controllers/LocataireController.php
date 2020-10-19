@@ -31,12 +31,11 @@ class LocataireController extends Controller
     public static function getAppartementsDuLocataire(Request $request)
     {
         $id_locataire = $request->id_locataire;
-        return json_encode(DB::select("select *
-                                       from appartements a 
+        return json_encode(DB::select("select a.*, i.montant_cotisation_mensuelle
+                                       from appartements a inner join immeubles i on a.id_immeuble = i.id
                                        where a.id in (select id_appartement
                                                         from caisses
-                                                        where id_locataire = $id_locataire)
-                              "));
+                                                        where id_locataire = $id_locataire)"));
     }
 
     /**

@@ -5,12 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Appartement;
 use App\Models\Immeuble;
 use Illuminate\Http\Request;
-use App\Http\Controllers\LocataireController;
-
-use Carbon\Carbon;
+use App\Models\Caisse;
+use Illuminate\Support\Facades\Date;
 
 class CaisseController extends Controller
 {
+    public static function getCaisseByAppartement(Request $request)
+    {
+        $id_appartement = $request->id_appartement;
+        return Caisse::where('id_appartement', $id_appartement)->get()->toJson();
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -40,6 +46,17 @@ class CaisseController extends Controller
      */
     public function store(Request $request)
     {
+        $paiement = Caisse::where('id', $request->caisseHidden)->first();
+        $paiement->Date_Paiment = new Date();
+        $paiement->save();
+
+        // $paiement_prochain = new Caisse();
+        // $paiement_prochain->id_Appartement = $request->appartementHidden;
+        // $paiement_prochain->id_Locataire = $request->locataireHidden;
+        // $paiement_prochain->mois_concerne = $request->moisHidden;
+        // $paiement_prochain->save();
+
+        dd($request);
     }
 
     /**
