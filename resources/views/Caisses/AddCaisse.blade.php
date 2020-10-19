@@ -20,6 +20,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
+                    <!-- <button>test</button> -->
                     <div>
                         <h5 class="font-size-16 mb-1 mt-0">Fiche des paiements.</h5>
                         <p class="sub-header">
@@ -48,12 +49,7 @@
                                     <div class="form-group mb-2">
                                         Confirmation d'email :
                                         <span id="confirmationEmail">
-
-                                            <img src="https://img.icons8.com/color/48/000000/id-not-verified.png"
-                                                style="width: 35px;" />
-                                            -
-                                            <img src="https://img.icons8.com/color/48/000000/id-verified.png"
-                                                style="width: 35px;" />
+                                            <img style="height: 35px;">
                                         </span>
                                     </div>
                                 </div>
@@ -61,9 +57,6 @@
                             <div class="col-3 text-center">
                                 <select class="custom-select" name="appartementLocataire" id="appartementLocataire">
                                     <option value disabled selected>Appartement (s)</option>
-                                    <option value="1">Appartement 1</option>
-                                    <option value="2">Appartement 2</option>
-                                    <option value="3">Appartement 3</option>
                                 </select>
                             </div>
                             <div class="col-12">
@@ -277,8 +270,74 @@
 @section('script')
 <script>
     $("#cinLocataire").keyup(function () {
-        
+        $.ajax({
+            url: "{{ route('getLocataireByCin') }}",
+            type: "POST",
+            data: {
+                cin: $(this).val()
+            },
+            success: function (locataireData) {
+                if (locataireData == 'not_found')
+                    reInitAll(false);
+                else {
+                    var locataire = JSON.parse(locataireData);
+                    $("#nomPrenomLocataire").val(locataire.nom + ' ' + locataire.prenom);
+                    locataireFounded(locataire);
+                }
+            },
+        })
     });
+
+    $("#nomPrenomLocataire").keyup(function () {
+        $.ajax({
+            url: "{{ route('getLocataireByNomPrenom') }}",
+            type: "POST",
+            data: {
+                nom: $(this).val().split(' ')[0],
+                prenom: $(this).val().split(' ')[1],
+            },
+            success: function (locataireData) {
+                if (locataireData == 'not_found')
+                    reInitAll(true);
+                else {
+                    var locataire = JSON.parse(locataireData);
+                    $("#cinLocataire").val(locataire.CIN);
+                    locataireFounded(locataire);
+                }
+            },
+        });
+    });
+
+    function locataireFounded(locataire) {
+        // console.log(locataire);
+        locataire.email_verified_at !== null ?
+            $("#confirmationEmail").html(
+                '<img src="https://img.icons8.com/color/48/000000/id-verified.png" style="height: 35px;">'
+            ) :
+            $("#confirmationEmail").html(
+                '<img src="https://img.icons8.com/color/48/000000/id-not-verified.png" style="height: 35px;">'
+            );
+        $.ajax({
+            url: "{{ route('getAppartementsDuLocataire') }}",
+            type: "POST",
+            data: {
+                id_locataire: locataire.id
+            },
+            success: function (appartementsData) {
+                var appartements = JSON.parse(appartementsData);
+                console.log(appartements[0]);
+                for (let i = 0; i < appartements.length; i++)
+                    $("#appartementLocataire").append(`
+                        <option value="${appartements[i].id}">${appartements[i].nom}</option>
+                    `);
+            },
+        });
+    }
+
+    function reInitAll(initCin) {
+        initCin ? $("#cinLocataire").val('') : $("#nomPrenomLocataire").val('');
+        $("#confirmationEmail").html('<img style="height: 35px;">');
+    }
 
 </script>
 <!-- <script>

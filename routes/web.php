@@ -37,17 +37,19 @@ Route::get('/syndic/Immeuble', 'ImmeubleController@index');
 
 Route::get('/syndic/Residence', 'ResidenceController@index');
 
-Route::get('/syndic/Appartements','AppartementController@index');
-Route::get('/syndic/Locataire','LocataireController@index');
-Route::get('/syndic/Caisse','CaisseController@index');
-Route::get('/syndic/Locateur','LocateurController@index');
+Route::get('/syndic/Appartements', 'AppartementController@index');
+Route::get('/syndic/Locataire', 'LocataireController@index');
+Route::get('/syndic/Caisse', 'CaisseController@index');
+Route::get('/syndic/Locateur', 'LocateurController@index');
 //Route::get('/syndic/Facture','FactureController@index');
 
 
 
 
 
-
+Route::post('/getLocataireByCin', 'LocataireController@getLocataireByCin')->name('getLocataireByCin');
+Route::post('/getLocataireByNomPrenom', 'LocataireController@getLocataireByNomPrenom')->name('getLocataireByNomPrenom');
+Route::post('/getAppartementsDuLocataire', 'LocataireController@getAppartementsDuLocataire')->name('getAppartementsDuLocataire');
 
 //les rousources des methodes generer
 // les routes des methode generer du controlleur create edit delete

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Appartement;
 use App\Models\Immeuble;
 use Illuminate\Http\Request;
+use App\Http\Controllers\LocataireController;
 
 use Carbon\Carbon;
 
@@ -39,7 +40,9 @@ class CaisseController extends Controller
      */
     public function store(Request $request)
     {
-        \dd($request->date_paiment);
+        $nom = $request->nom;
+        $prenom = $request->prenom;
+        return  LocataireController::getLocataireByNomPrenom($nom, $prenom);
     }
 
     /**
