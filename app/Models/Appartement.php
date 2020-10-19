@@ -36,7 +36,6 @@ class Appartement extends Model
      */
     public function immeuble()
     {
-        return $this->belongsTo('App\Immeuble', 'id_Immeuble');
+        return $this->belongsTo('App\Models\Immeuble', 'id_Immeuble');
     }
-
 }

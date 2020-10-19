@@ -6,9 +6,38 @@ use App\Models\Appartement;
 use App\Models\Caisse;
 use App\Models\Locataire;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LocataireController extends Controller
 {
+
+    public static function getLocataireByCin(Request $request)
+    {
+        return Locataire::where('cin', $request->cin)->first() ?
+            Locataire::where('cin', $request->cin)
+            ->first()->toJson(JSON_PRETTY_PRINT) :
+            'not_found';
+    }
+
+    public static function getLocataireByNomPrenom(Request $request)
+    {
+        return Locataire::where('nom', $request->nom)->where('prenom', $request->prenom)->first() ?
+            Locataire::where('nom', $request->nom)
+            ->where('prenom', $request->prenom)
+            ->first()->toJson(JSON_PRETTY_PRINT) :
+            'not_found';
+    }
+
+    public static function getAppartementsDuLocataire(Request $request)
+    {
+        $id_locataire = $request->id_locataire;
+        return json_encode(DB::select("select a.*, i.montant_cotisation_mensuelle
+                                       from appartements a inner join immeubles i on a.id_immeuble = i.id
+                                       where a.id in (select id_appartement
+                                                        from caisses
+                                                        where id_locataire = $id_locataire)"));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +45,6 @@ class LocataireController extends Controller
      */
     public function index()
     {
-
         return view('Locataires/AddLocataire')
             ->with("appartements", Appartement::all());
     }

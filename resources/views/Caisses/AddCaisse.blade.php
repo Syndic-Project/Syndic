@@ -14,8 +14,6 @@
 @section('content')
 
 <div class="content-page">
-    <!-- <form action="{{route('Caisse.store') }}" method="POST"> -->
-    @csrf
     <div class="row mt-4">
         <div class="col-12">
             <div class="card">
@@ -28,13 +26,12 @@
                         </p>
                         <div class="row">
                             <div class="col-3">
-                                <label class="sr-only" for="cinLocataire">F0000</label>
                                 <div class="input-group mb-2">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">CIN</div>
                                     </div>
                                     <input type="text" class="form-control" id="cinLocataire" name="cinLocataire"
-                                        placeholder="F0000">
+                                        value="F121212" placeholder="F0000">
                                 </div>
                             </div>
                             <div class="col-6">
@@ -48,12 +45,7 @@
                                     <div class="form-group mb-2">
                                         Confirmation d'email :
                                         <span id="confirmationEmail">
-
-                                            <img src="https://img.icons8.com/color/48/000000/id-not-verified.png"
-                                                style="width: 35px;" />
-                                            -
-                                            <img src="https://img.icons8.com/color/48/000000/id-verified.png"
-                                                style="width: 35px;" />
+                                            <img style="height: 35px;">
                                         </span>
                                     </div>
                                 </div>
@@ -61,14 +53,11 @@
                             <div class="col-3 text-center">
                                 <select class="custom-select" name="appartementLocataire" id="appartementLocataire">
                                     <option value disabled selected>Appartement (s)</option>
-                                    <option value="1">Appartement 1</option>
-                                    <option value="2">Appartement 2</option>
-                                    <option value="3">Appartement 3</option>
                                 </select>
                             </div>
-                            <div class="col-12">
+                            <div class="col-12 mt-3">
                                 <div class="table-responsive">
-                                    <table class="table table-hover mb-0">
+                                    <table class="table table-hover">
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
@@ -86,154 +75,8 @@
                                                 <th scope="col">Décembre</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">2018</th>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2019</th>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2020</th>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/verified-account.png"
-                                                        style="width: 20px;cursor:pointer;" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/cancel--v1.png"
-                                                        style="width: 20px;cursor:pointer;" data-toggle="modal"
-                                                        data-target="#modalPaiement" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <img src="https://img.icons8.com/color/48/000000/cancel--v1.png"
-                                                        style="width: 20px;cursor:pointer;" data-toggle="modal"
-                                                        data-target="#modalPaiement" />
-                                                </td>
-                                            </tr>
+                                        <tbody id="tbodyPaiements">
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -244,7 +87,6 @@
             </div>
         </div>
     </div>
-    <!-- </form> -->
 </div>
 
 <div id="modalPaiement" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalPaiementLabel"
@@ -252,41 +94,129 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalPaiementLabel">Paiement de : {Mois} {Année} </h5>
+                <h5 class="modal-title" id="modalPaiementLabel">
+                    Paiement du
+                    Mois :
+                    <span id="moisSpan" style="text-decoration: underline;color: mediumseagreen;">{Mois}</span> ,
+                    Année :
+                    <span id="anneeSpan" style="text-decoration: underline;color: mediumseagreen;">{Année}</span>
+                </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <h6>Lorem, ipsum dolor.</h6>
-                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-                <hr>
-                <h6>Overflowing text to show scroll behavior</h6>
-                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas
-                    eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue
-                    laoreet rutrum faucibus dolor auctor.</p>
-                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl
-                    consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <p>
+                    Confirmez que Mr/Mme
+                    <span id="identiteSpan" style="text-decoration: underline;">{Nom-Prénom}</span>
+                    a bel et bien payé la somme de cotisation :
+                    <span id="montantSpan">{prix}</span>
+                    Dhs pour le mois de
+                    <span id="moisConcerneSpan">{mois_concerné}</span>,
+                    pour son appartement
+                    <span id="appartementSpan">{identifiant/nom appartement}</span>
+                    dont le numéro de la porte est
+                    <span id="porteSpan">{num_porte}</span>.
+                </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
-                <button type="button" class="btn btn-success">Confirmer</button>
+                <form action="{{route('Caisse.store')}}" method="post">
+                    @csrf
+                    <input type="hidden" name="montantHidden" id="montantHidden">
+                    <input type="hidden" name="locataireHidden" id="locataireHidden">
+                    <input type="hidden" name="appartementHidden" id="appartementHidden">
+                    <input type="hidden" name="caisseHidden" id="caisseHidden">
+                    <button type="submit" class="btn btn-success">Confirmer</button>
+                </form>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+        </div>
+    </div>
 </div>
 
 @endsection
+@section('script')
+<script>
+    $(document).ready(function () {
+        console.clear();
+    });
 
-@section('script-bottom')
+</script>
+<script src="{{ url('assets/js/utilDate.js') }}"></script>
+<script src="{{ url('assets/js/importLocataireData.js') }}"></script>
+<script>
+    $("#appartementLocataire").change(function () {
+        $("#montantHidden").val($(this).children("option:selected").data('montant'));
+        $("#appartementHidden").val($(this).val());
+        $.ajax({
+            url: '/getCaisseByAppartement',
+            method: 'POST',
+            data: {
+                id_appartement: $(this).val()
+            },
+            success: function (CaisseData) {
+                organisationTableau(JSON.parse(CaisseData));
+            }
+        });
+    });
+
+    function organisationTableau(Caisse) {
+        $("#tbodyPaiements").empty();
+        fillYears(Caisse);
+        fillEmptyMonth(new Date(Caisse[0].mois_concerne).getMonth() + 1);
+        // console.log(Caisse);
+        for (let i = 0; i < Caisse.length; i++) {
+            Caisse[i].Date_Paiment != null ?
+                $(`#annee-${new Date(Caisse[i].mois_concerne).getFullYear()}`)
+                .append(`
+                        <td class="text-center">
+                            <img src="https://img.icons8.com/color/48/000000/verified-account.png" style="width: 20px;cursor:pointer;" />
+                        </td>
+                `) :
+                $(`#annee-${new Date(Caisse[i].mois_concerne).getFullYear()}`)
+                .append(`
+                        <td class="text-center">
+                            <img src="https://img.icons8.com/color/48/000000/cancel--v1.png" style="width: 20px;cursor:pointer;" data-toggle="modal" data-target="#modalPaiement" 
+                              data-mois="${new Date(Caisse[i].mois_concerne).getMonth() + 1}" data-annee="${new Date(Caisse[i].mois_concerne).getFullYear()}" data-caisse="${Caisse[i].id}"/>
+                        </td>
+                        `);
+        }
+    }
+
+    function fillYears(Caisse) {
+        var year;
+        for (let j = 0; j < Caisse.length; j++)
+            if (new Date(Caisse[j].mois_concerne).getFullYear() != year) {
+                year = new Date(Caisse[j].mois_concerne).getFullYear();
+                $("#tbodyPaiements").append(`<tr id='annee-${year}' ><th scope="row">${year}</th></tr>`);
+            }
+    }
+
+    function fillEmptyMonth(currentMonth) {
+        for (let i = 0; i < currentMonth - 1; i++) {
+            $("#tbodyPaiements").children().first()
+                .append('<td>-</td>');
+        }
+    }
+
+</script>
+
+<script>
+    $('#modalPaiement').on('show.bs.modal', function (event) {
+        var sender = $(event.relatedTarget);
+        var modal = $(this);
+        modal.find('#moisSpan').text(getMoisById(sender.data('mois')));
+        modal.find('#moisConcerneSpan').text(getMoisById(sender.data('mois')));
+        modal.find('#appartementSpan').text($("#appartementLocataire option:selected").text());
+        modal.find('#anneeSpan').text(sender.data('annee'));
+        modal.find('#identiteSpan').text($("#nomPrenomLocataire").val());
+        modal.find('#montantSpan').text($("#montantHidden").val());
+        modal.find('#caisseHidden').val(sender.data('caisse'));
+    })
+
+</script>
 <!-- Validation init js-->
-<script src="{{ URL::asset('assets/js/pages/form-validation.init.js') }}"></script>
-
-@endsection
-@section('script')
+<!-- <script src="{{ URL::asset('assets/js/pages/form-validation.init.js') }}"></script>
 <script src="{{ URL::asset('assets/js/addlocataire.js') }}"></script>
-@endsection
-@section('script')
-<script src="{{ URL::asset('assets/js/AddAppartement.js') }}"></script>
+<script src="{{ URL::asset('assets/js/AddAppartement.js') }}"></script> -->
 @endsection

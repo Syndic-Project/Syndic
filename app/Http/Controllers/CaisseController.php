@@ -5,11 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Appartement;
 use App\Models\Immeuble;
 use Illuminate\Http\Request;
-
-use Carbon\Carbon;
+use App\Models\Caisse;
+use DateTime;
+use Illuminate\Support\Facades\Date;
 
 class CaisseController extends Controller
 {
+    public static function getCaisseByAppartement(Request $request)
+    {
+        $id_appartement = $request->id_appartement;
+        return Caisse::where('id_appartement', $id_appartement)->get()->toJson();
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -39,7 +47,18 @@ class CaisseController extends Controller
      */
     public function store(Request $request)
     {
-        \dd($request->date_paiment);
+        $paiement = Caisse::where('id', $request->caisseHidden)->first();
+        $paiement->Date_Paiment = new DateTime();
+        $paiement->save();
+
+        // $paiement_prochain = new Caisse();
+        // $paiement_prochain->id_Appartement = $paiement->id_Appartement;
+        // $paiement_prochain->id_Locataire = $paiement->id_Locataire;
+        // $paiement_prochain->montant = $paiement->id_Locataire;
+        // $paiement_prochain->mois_concerne = explode('-', $paiement->mois_concerne)[1] + 1;
+        // $paiement_prochain->save();
+
+        return \redirect("Caisse");
     }
 
     /**
