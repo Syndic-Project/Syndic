@@ -113,8 +113,10 @@
                     <span id="montantSpan">{prix}</span>
                     Dhs pour le mois de
                     <span id="moisConcerneSpan">{mois_concerné}</span>,
-                    pour son appartement {identifiant/nom appartement} dont le numéro de la porte est
-                    {num_porte}.
+                    pour son appartement
+                    <span id="appartementSpan">{identifiant/nom appartement}</span>
+                    dont le numéro de la porte est
+                    <span id="porteSpan">{num_porte}</span>.
                 </p>
             </div>
             <div class="modal-footer">
@@ -205,6 +207,7 @@
         var modal = $(this);
         modal.find('#moisSpan').text(getMoisById(sender.data('mois')));
         modal.find('#moisConcerneSpan').text(getMoisById(sender.data('mois')));
+        modal.find('#appartementSpan').text($("#appartementLocataire option:selected").text());
         modal.find('#anneeSpan').text(sender.data('annee'));
         modal.find('#identiteSpan').text($("#nomPrenomLocataire").val());
         modal.find('#montantSpan').text($("#montantHidden").val());

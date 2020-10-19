@@ -6,6 +6,7 @@ use App\Models\Appartement;
 use App\Models\Immeuble;
 use Illuminate\Http\Request;
 use App\Models\Caisse;
+use DateTime;
 use Illuminate\Support\Facades\Date;
 
 class CaisseController extends Controller
@@ -47,16 +48,17 @@ class CaisseController extends Controller
     public function store(Request $request)
     {
         $paiement = Caisse::where('id', $request->caisseHidden)->first();
-        $paiement->Date_Paiment = new Date();
+        $paiement->Date_Paiment = new DateTime();
         $paiement->save();
 
         // $paiement_prochain = new Caisse();
-        // $paiement_prochain->id_Appartement = $request->appartementHidden;
-        // $paiement_prochain->id_Locataire = $request->locataireHidden;
-        // $paiement_prochain->mois_concerne = $request->moisHidden;
+        // $paiement_prochain->id_Appartement = $paiement->id_Appartement;
+        // $paiement_prochain->id_Locataire = $paiement->id_Locataire;
+        // $paiement_prochain->montant = $paiement->id_Locataire;
+        // $paiement_prochain->mois_concerne = explode('-', $paiement->mois_concerne)[1] + 1;
         // $paiement_prochain->save();
 
-        dd($request);
+        return \redirect("Caisse");
     }
 
     /**

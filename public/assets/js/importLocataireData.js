@@ -56,6 +56,8 @@ function locataireFounded(locataire) {
             $("#appartementLocataire").empty();
             $("#appartementLocataire").append('<option value disabled selected>Appartement (s)</option>');
             var appartements = JSON.parse(appartementsData);
+            console.log(appartements[1]);
+            // .Num_Porte
             for (let i = 0; i < appartements.length; i++)
                 $("#appartementLocataire").append(`
                     <option value="${appartements[i].id}" data-montant="${appartements[i].montant_cotisation_mensuelle}">${appartements[i].nom}</option>
