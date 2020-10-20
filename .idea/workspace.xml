@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7127ffd3-2783-4e0a-b602-f3196766c79f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/Client/AddLocateur.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/qrCode.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/FirstTry.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FirstTry.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FactureController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FactureController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Factures/AddFacture.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Factures/AddFacture.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -141,6 +147,10 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
       <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
       <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/vendor/simplesoftwareio/simple-qrcode" />
+      <path value="$PROJECT_DIR$/vendor/kitloong/laravel-migrations-generator" />
+      <path value="$PROJECT_DIR$/vendor/bacon/bacon-qr-code" />
+      <path value="$PROJECT_DIR$/vendor/dasprid/enum" />
     </include_path>
   </component>
   <component name="ProjectId" id="1imww5O6GaSrGYDv3GPVcrltQKN" />
@@ -186,7 +196,7 @@
       <workItem from="1602856610418" duration="23523000" />
       <workItem from="1602972181082" duration="905000" />
       <workItem from="1603031861750" duration="8073000" />
-      <workItem from="1603123013597" duration="599000" />
+      <workItem from="1603123013597" duration="7348000" />
     </task>
     <servers />
   </component>

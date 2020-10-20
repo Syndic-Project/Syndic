@@ -27,6 +27,10 @@ Route::get('/Blocs', function () {
     return view('BLOCS/Bloc');
 });
 
+Route::get('/syndic/Locateur', function () {
+    return view('Client/AddLocateur');
+});
+
 
 
 
@@ -37,7 +41,7 @@ Route::get('/syndic/Residence', 'ResidenceController@index');
 Route::get('/syndic/Appartements', 'AppartementController@index');
 Route::get('/syndic/Locataire', 'LocataireController@index');
 Route::get('/syndic/Caisse', 'CaisseController@index');
-Route::get('/syndic/Locateur', 'LocateurController@index');
+//Route::get('/syndic/Locateur', 'LocateurController@index');
 //Route::get('/syndic/Facture','FactureController@index');
 
 
@@ -60,3 +64,16 @@ Route::resource('/Locataire', 'LocataireController');
 Route::resource('/Caisse', 'CaisseController');
 Route::resource('/Locateur', 'LocateurController');
 Route::resource('/Facture', 'FactureController');
+
+
+
+
+Route::get('qr-code-g', function () {
+
+    \QrCode::size(500)
+        ->format('png')
+        ->generate('ItSolutionStuff.com', public_path('images/qrcode.png'));
+
+    return view('qrCode');
+
+});
