@@ -6,6 +6,7 @@ use App\Models\Appartement;
 use App\Models\Immeuble;
 use Illuminate\Http\Request;
 use App\Models\Caisse;
+use Carbon\Carbon;
 use DateTime;
 use Illuminate\Support\Facades\Date;
 
@@ -51,12 +52,14 @@ class CaisseController extends Controller
         $paiement->Date_Paiment = new DateTime();
         $paiement->save();
 
-        // $paiement_prochain = new Caisse();
-        // $paiement_prochain->id_Appartement = $paiement->id_Appartement;
-        // $paiement_prochain->id_Locataire = $paiement->id_Locataire;
-        // $paiement_prochain->montant = $paiement->id_Locataire;
-        // $paiement_prochain->mois_concerne = explode('-', $paiement->mois_concerne)[1] + 1;
-        // $paiement_prochain->save();
+        $paiement_prochain = new Caisse();
+        $paiement_prochain->id_Appartement = $paiement->id_Appartement;
+        $paiement_prochain->id_Locataire = $paiement->id_Locataire;
+        $paiement_prochain->montant = $paiement->appartement->immeuble->Montant_Cotisation_Mensuelle;
+        $paiement_prochain->mois_concerne =  explode('-', $paiement->mois_concerne)[1] == 12 ?
+            ((int) explode('-', $paiement->mois_concerne)[0] + 1) . '-1' :
+            explode('-', $paiement->mois_concerne)[0] . '-' . ((int)explode('-', $paiement->mois_concerne)[1] + 1);
+        $paiement_prochain->save();
 
         return \redirect("Caisse");
     }
