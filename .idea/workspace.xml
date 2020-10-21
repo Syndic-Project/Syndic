@@ -2,15 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7127ffd3-2783-4e0a-b602-f3196766c79f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/Client/AddLocateur.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/qrCode.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/datatable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Residences/getresidence.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/FirstTry.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FirstTry.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LocateurController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LocateurController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ResidenceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ResidenceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/confirm_logment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/confirm_logment.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Client/AddLocateur.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Client/AddLocateur.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/qrCode.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/qrCode.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -151,6 +155,8 @@
       <path value="$PROJECT_DIR$/vendor/kitloong/laravel-migrations-generator" />
       <path value="$PROJECT_DIR$/vendor/bacon/bacon-qr-code" />
       <path value="$PROJECT_DIR$/vendor/dasprid/enum" />
+      <path value="$PROJECT_DIR$/vendor/milon/barcode" />
+      <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1imww5O6GaSrGYDv3GPVcrltQKN" />
@@ -197,6 +203,7 @@
       <workItem from="1602972181082" duration="905000" />
       <workItem from="1603031861750" duration="8073000" />
       <workItem from="1603123013597" duration="7348000" />
+      <workItem from="1603246607480" duration="9016000" />
     </task>
     <servers />
   </component>
@@ -211,10 +218,10 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="233" y="4" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.689@0.0.1280.689" timestamp="1602874327392" />
-    <state x="371" y="100" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603032240007">
+    <state x="371" y="100" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603251574324">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="371" y="100" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.689@0.0.1280.689" timestamp="1603032240007" />
+    <state x="371" y="100" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.689@0.0.1280.689" timestamp="1603251574324" />
     <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1602872978297">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
@@ -247,10 +254,10 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="233" y="78" key="Vcs.Push.Dialog.v2/0.0.1280.689@0.0.1280.689" timestamp="1602953112666" />
-    <state x="85" y="0" width="951" height="676" key="dock-window-1" timestamp="1602601868940">
+    <state x="459" y="204" width="785" height="676" key="dock-window-1" timestamp="1603297862797">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="85" y="0" width="951" height="676" key="dock-window-1/0.0.1280.689@0.0.1280.689" timestamp="1602601868940" />
+    <state x="459" y="204" width="785" height="676" key="dock-window-1/0.0.1280.689@0.0.1280.689" timestamp="1603297862797" />
     <state x="297" y="153" key="run.anything.popup" timestamp="1602638732084">
       <screen x="0" y="0" width="1280" height="689" />
     </state>

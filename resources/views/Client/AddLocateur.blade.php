@@ -106,6 +106,15 @@
                 </div>
             </div>
         </form>
+
+        <div class="visible-print text-center">
+
+
+            {!! $data !!}
+
+
+
+        </div>
     </div>
 
 
