@@ -123,9 +123,9 @@
                 <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
                 <form action="{{route('Caisse.store')}}" method="post">
                     @csrf
-                    <input type="hidden" name="montantHidden" id="montantHidden">
+                    <!-- <input type="hidden" name="montantHidden" id="montantHidden">
                     <input type="hidden" name="locataireHidden" id="locataireHidden">
-                    <input type="hidden" name="appartementHidden" id="appartementHidden">
+                    <input type="hidden" name="appartementHidden" id="appartementHidden"> -->
                     <input type="hidden" name="caisseHidden" id="caisseHidden">
                     <button type="submit" class="btn btn-success">Confirmer</button>
                 </form>
@@ -146,7 +146,7 @@
 <script src="{{ url('assets/js/importLocataireData.js') }}"></script>
 <script>
     $("#appartementLocataire").change(function () {
-        $("#montantHidden").val($(this).children("option:selected").data('montant'));
+        // $("#montantHidden").val($(this).children("option:selected").data('montant'));
         $("#appartementHidden").val($(this).val());
         $.ajax({
             url: '/getCaisseByAppartement',
@@ -182,7 +182,7 @@
                         `);
         }
     }
-
+    // <span class="badge badge-soft-info">Mois actuel</span> todo : à tester pour mois actuel
     function fillYears(Caisse) {
         var year;
         for (let j = 0; j < Caisse.length; j++)
@@ -210,7 +210,7 @@
         modal.find('#appartementSpan').text($("#appartementLocataire option:selected").text());
         modal.find('#anneeSpan').text(sender.data('annee'));
         modal.find('#identiteSpan').text($("#nomPrenomLocataire").val());
-        modal.find('#montantSpan').text($("#montantHidden").val());
+        // modal.find('#montantSpan').text($("#montantHidden").val());
         modal.find('#caisseHidden').val(sender.data('caisse'));
     })
 

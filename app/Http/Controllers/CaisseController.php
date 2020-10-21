@@ -61,7 +61,7 @@ class CaisseController extends Controller
             explode('-', $paiement->mois_concerne)[0] . '-' . ((int)explode('-', $paiement->mois_concerne)[1] + 1);
         $paiement_prochain->save();
 
-        return \redirect("Caisse");
+        return redirect("Caisse");
     }
 
     /**
