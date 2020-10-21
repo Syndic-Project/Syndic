@@ -19,19 +19,7 @@ class ResidenceController extends Controller
     public function index(Request $request)
     {
 
-        if ($request->ajax())
-        {
-            $data = Residence::latest()->get();
-            return Datatables::of($data)
-                ->addIndexColumn()
-                ->addColumn('action', function ($row) {
-                    $btn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
-                    return $btn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
-        return view('Residences/getresidence');
+
 
 
 
@@ -43,6 +31,21 @@ class ResidenceController extends Controller
             'syndics' => $syndics,
 
         ]);
+
+//
+//        if ($request->ajax())
+//        {
+//            $data = Residence::latest()->get();
+//            return Datatables::of($data)
+//                ->addIndexColumn()
+//                ->addColumn('action', function ($row) {
+//                    $btn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+//                    return $btn;
+//                })
+//                ->rawColumns(['action'])
+//                ->make(true);
+//        }
+//        return view('Residences/getresidence');
 
 
 

@@ -30,6 +30,6 @@ class Ville extends Model
      */
     public function residence()
     {
-        return $this->hasOne('App\Models\Residence', 'id_ville');
+        return $this->hasMany('App\Models\Residence', 'id_ville');
     }
 }

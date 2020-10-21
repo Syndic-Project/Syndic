@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="content-page">
-        <form action="{{route('Facture.store') }}" method="POST">
+        <form action="{{route('Facture.store') }}"  method="POST">
             @csrf
             <div class="row mt-4">
                 <div class="col-12">
