@@ -16,8 +16,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "2.4",
         "milon/barcode": "^7.0",
-        "simplesoftwareio/simple-qrcode": "^4.1",
-        "yajra/laravel-datatables-oracle": "^9.11"
+        "simplesoftwareio/simple-qrcode": "^4.1"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

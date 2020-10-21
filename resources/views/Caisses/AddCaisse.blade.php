@@ -181,7 +181,7 @@
                         </td>
                         `);
         }
-    } 
+    }
     // <span class="badge badge-soft-info">Mois actuel</span> todo : à tester pour mois actuel
     function fillYears(Caisse) {
         var year;
