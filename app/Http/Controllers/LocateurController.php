@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\confirm_logment;
 use Illuminate\Http\Request;
+use SimpleSoftwareIO\QrCode\Generator;
 
 class LocateurController extends Controller
 {
@@ -13,7 +15,13 @@ class LocateurController extends Controller
      */
     public function index()
     {
-        //
+        $QrCode= new Generator();
+       $data= $QrCode->size(250)->generate(confirm_logment::all());
+
+//        compact($QrCode);
+//        dd( compact($QrCode));
+        return view('Client/AddLocateur',compact('data'));
+
     }
 
     /**
@@ -23,7 +31,9 @@ class LocateurController extends Controller
      */
     public function create()
     {
-        //
+
+
+
     }
 
     /**
