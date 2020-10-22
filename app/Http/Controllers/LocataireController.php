@@ -46,7 +46,8 @@ class LocataireController extends Controller
     public function index()
     {
         return view('Locataires/AddLocataire')
-            ->with("appartements", Appartement::all());
+            ->with("appartements", Appartement::all())
+            ->with("locataires");
     }
 
     /**

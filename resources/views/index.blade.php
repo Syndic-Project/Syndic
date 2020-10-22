@@ -595,3 +595,7 @@
 
 </div>
 @endsection
+
+@section('script')
+    <script src="{{ url('assets/js/pages/dashboard.init.js') }}"></script>
+@endsection

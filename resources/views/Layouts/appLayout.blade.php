@@ -468,19 +468,24 @@
     <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
 
-    <!-- Vendor js -->
-    <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
+    <script src="{{ url('assets/libs/moment/moment.min.js') }}"></script>
+    <script src="{{ url('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ url('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
+    <script src="{{ url('assets/js/vendor.min.js') }}"></script>
+    <script src="{{ url('assets/libs/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url('assets/libs/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ url('assets/libs/datatables/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ url('assets/libs/datatables/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ url('assets/libs/datatables/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ url('assets/libs/datatables/buttons.bootstrap4.min.j') }}s"></script>
+    <script src="{{ url('assets/libs/datatables/buttons.html5.min.js') }}"></script>
+    <script src="{{ url('assets/libs/datatables/buttons.flash.min.js') }}"></script>
+    <script src="{{ url('assets/libs/datatables/buttons.print.min.js') }}"></script>
+    <script src="{{ url('assets/libs/datatables/dataTables.keyTable.min.js') }}"></script>
+    <script src="{{ url('assets/libs/datatables/dataTables.select.min.js') }}"></script>
+    <script src="{{ url('assets/js/pages/datatables.init.js') }}"></script>
+    <script src="{{ url('assets/js/app.min.js') }}"></script>
 
-    <!-- optional plugins -->
-    <script src="{{ asset('assets/libs/moment/moment.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
-
-    <!-- page js -->
-    <script src="{{ asset('assets/js/pages/dashboard.init.js') }}"></script>
-
-    <!-- App js -->
-    <script src="{{ asset('assets/js/app.min.js') }}"></script>
     <script>
         $.ajaxSetup({
             headers: {
