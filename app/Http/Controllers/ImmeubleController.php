@@ -13,34 +13,6 @@ class ImmeubleController extends Controller
 {
 
 
-     public static function getAppartementBloc(Request $request)
-     {
-         return Locataire::where('cin', $request->cin)->first() ?
-             Locataire::where('cin', $request->cin)
-             ->first()->toJson(JSON_PRETTY_PRINT) :
-             'not_found';
-     }
-
-
-    public static function getLocataireByNomPrenom(Request $request)
-    {
-        return Locataire::where('nom', $request->nom)->where('prenom', $request->prenom)->first() ?
-            Locataire::where('nom', $request->nom)
-                ->where('prenom', $request->prenom)
-                ->first()->toJson(JSON_PRETTY_PRINT) :
-            'not_found';
-    }
-
-    public static function getAppartementsDuLocataire(Request $request)
-    {
-        $id_locataire = $request->id_locataire;
-        return json_encode(DB::select("select a.*, i.montant_cotisation_mensuelle
-                                       from appartements a inner join immeubles i on a.id_immeuble = i.id
-                                       where a.id in (select id_appartement
-                                                        from caisses
-                                                        where id_locataire = $id_locataire)"));
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -52,13 +24,15 @@ class ImmeubleController extends Controller
 
         DB::connection()->enableQueryLog();
 
+
+
         $bloc_immeuble = DB::table('immeubles')
-            ->join('blocs', 'blocs.id', '=', 'immeubles.id_bloc')->get();
+            ->join('blocs', 'immeubles.id_bloc', '=', 'blocs.id')->get(['immeubles.*','blocs.nom_bloc']);
 
         return view('Immeubles/Addimeuble')
-            ->with('bloc_immeuble',$bloc_immeuble)
-          ->with("blocs", Bloc::all());
-//            ->with("immeubles", Immeuble::all());
+            ->with('bloc_immeuble', $bloc_immeuble)
+            ->with("blocs", Bloc::all())
+            ->with("immeubles", Immeuble::all());
 
 
     }
@@ -115,7 +89,14 @@ class ImmeubleController extends Controller
      */
     public function edit($id)
     {
-        //
+
+     $immeuble = Immeuble::findOrFail($id);
+     $bloc=Bloc::all();
+
+        return view('immeubles.edit', [
+            'immeuble' => $immeuble,
+            "blocs"=>$bloc
+        ]);
     }
 
     /**
@@ -127,7 +108,13 @@ class ImmeubleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $immeuble = Immeuble::findOrFail($id);
+        $immeuble->id_bloc = $request->input('bloc');
+        $immeuble->Nom_Immeuble = $request->input('nom');
+        $immeuble->Montant_Cotisation_Mensuelle = $request->input('cotisation');
+        $immeuble->Montant_Disponible_En_Caisse = $request->input('caisse');
+        $immeuble->save();
+        return redirect('/syndic/Immeuble');
     }
 
     /**
