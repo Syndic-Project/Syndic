@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 17 oct. 2020 à 23:59
+-- Généré le : jeu. 22 oct. 2020 à 15:49
 -- Version du serveur :  10.4.13-MariaDB
 -- Version de PHP : 7.4.8
 
@@ -44,8 +44,7 @@ CREATE TABLE `appartements` (
 --
 
 INSERT INTO `appartements` (`id`, `nom`, `id_Immeuble`, `Type_du_bien`, `Nbr_Max_chambre`, `Num_Porte`, `Dernier_Mois_Pays`, `created_at`, `updated_at`) VALUES
-(3, 'el mediouni 1', 1, 'Appartement', 3, 9, '2020-10-22', NULL, NULL),
-(4, 'poo', 1, 'Bureau', 12, 19, '2020-10-14', NULL, NULL);
+(1, 'BureauN°1', 1, 'Bureau', 6, 1, '2020-10-22', '2020-10-21 17:34:22', '2020-10-21 17:34:22');
 
 -- --------------------------------------------------------
 
@@ -66,7 +65,13 @@ CREATE TABLE `blocs` (
 --
 
 INSERT INTO `blocs` (`id`, `nom_bloc`, `id_residence`, `created_at`, `updated_at`) VALUES
-(1, 'AP19', 17, '2020-10-13 14:39:09', '2020-10-13 14:39:09');
+(1, 'bloc-1', 1, NULL, NULL),
+(2, 'Willy Lubowitz', 7, NULL, NULL),
+(3, 'Randal Bosco', 12, NULL, NULL),
+(4, 'Daniela Schuster', 2, NULL, NULL),
+(5, 'Jamison Olson', 5, NULL, NULL),
+(7, 'Mr. Dee Schroeder', 11, NULL, NULL),
+(17, 'Eric Erdman', 10, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -77,25 +82,25 @@ INSERT INTO `blocs` (`id`, `nom_bloc`, `id_residence`, `created_at`, `updated_at
 CREATE TABLE `caisses` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `Date_Paiment` date DEFAULT NULL,
-  `Dernier_Mois_Paye` date DEFAULT NULL,
-  `email` date DEFAULT NULL,
-  `Nbr_Mois_Paye` date DEFAULT NULL,
-  `MT_Paye` date DEFAULT NULL,
   `id_Locataire` bigint(20) UNSIGNED DEFAULT NULL,
   `id_Appartement` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `montant` double(8,2) NOT NULL,
+  `mois_concerne` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `caisses`
 --
 
-INSERT INTO `caisses` (`id`, `Date_Paiment`, `Dernier_Mois_Paye`, `email`, `Nbr_Mois_Paye`, `MT_Paye`, `id_Locataire`, `id_Appartement`, `created_at`, `updated_at`) VALUES
-(1, NULL, NULL, NULL, NULL, NULL, 1, 1, '2020-10-16 17:33:46', '2020-10-16 17:33:46'),
-(2, NULL, NULL, NULL, NULL, NULL, 1, 2, '2020-10-16 17:33:46', '2020-10-16 17:33:46'),
-(4, NULL, NULL, NULL, NULL, NULL, 4, 4, '2020-10-16 22:20:15', '2020-10-16 22:20:15'),
-(5, NULL, NULL, NULL, NULL, NULL, 5, 3, '2020-10-16 22:20:25', '2020-10-16 22:20:25');
+INSERT INTO `caisses` (`id`, `Date_Paiment`, `id_Locataire`, `id_Appartement`, `created_at`, `updated_at`, `montant`, `mois_concerne`) VALUES
+(1, '2020-10-21', 1, 1, NULL, '2020-10-21 17:39:45', 0.00, '2020-10'),
+(2, '2020-10-21', 1, 1, '2020-10-21 17:39:45', '2020-10-21 17:40:09', 300.00, '2020-11'),
+(3, '2020-10-21', 1, 1, '2020-10-21 17:40:09', '2020-10-21 17:40:28', 300.00, '2020-12'),
+(4, '2020-10-21', 1, 1, '2020-10-21 17:40:28', '2020-10-21 17:41:34', 300.00, '2021-1'),
+(5, '2020-10-21', 1, 1, '2020-10-21 17:41:34', '2020-10-21 17:41:58', 530.00, '2021-2'),
+(6, NULL, 1, 1, '2020-10-21 17:41:58', '2020-10-21 17:41:58', 530.00, '2021-3');
 
 -- --------------------------------------------------------
 
@@ -107,7 +112,7 @@ CREATE TABLE `confirm_logments` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `DateD` date NOT NULL,
   `DateF` date NOT NULL,
-  `Accorder` tinyint(1) NOT NULL,
+  `Accorder` tinyint(4) NOT NULL,
   `id_Locateur` bigint(20) UNSIGNED NOT NULL,
   `id_Appartement` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -168,7 +173,8 @@ CREATE TABLE `immeubles` (
 --
 
 INSERT INTO `immeubles` (`id`, `Nom_Immeuble`, `id_bloc`, `Montant_Cotisation_Mensuelle`, `Montant_Disponible_En_Caisse`, `created_at`, `updated_at`) VALUES
-(1, 'EL MEDIOUNI', 1, 200.00, 0.00, '2020-10-14 15:08:08', '2020-10-14 15:08:08');
+(1, 'immeuble-sohaib', 1, 530.00, 0.00, '2020-10-21 17:33:33', '2020-10-21 17:33:33'),
+(2, 'immeuble-Hicham', 1, 200.00, 0.00, '2020-10-21 21:46:35', '2020-10-21 21:46:35');
 
 -- --------------------------------------------------------
 
@@ -195,9 +201,7 @@ CREATE TABLE `locataires` (
 --
 
 INSERT INTO `locataires` (`id`, `nom`, `prenom`, `email`, `email_verified_at`, `password`, `Tel`, `CIN`, `remember_token`, `created_at`, `updated_at`) VALUES
-(3, 'ss', 'pp', 'sohaib.elmediouni23@gmail.com', NULL, 'sohaib elmediouni', '0616091794', 'F592729', NULL, '2020-10-16 22:19:12', '2020-10-16 22:19:12'),
-(4, 'ss', 'pp', 'sohaib.elmediouni23@gmail.com', NULL, 'sohaibez1234', '0616091794', 'F592729', NULL, '2020-10-16 22:20:15', '2020-10-16 22:20:15'),
-(5, 'ss', 'pp', 'sohaib.elmediouni23@gmail.com', NULL, 'ppp', '0616091794', 'F592729', NULL, '2020-10-16 22:20:25', '2020-10-16 22:20:25');
+(1, 'sohaib', 'el mediouni', 'sohaib.elmediouni23@gmail.com', NULL, '1234', '0616091794', 'F592729', NULL, '2020-10-21 17:35:34', '2020-10-21 17:35:34');
 
 -- --------------------------------------------------------
 
@@ -234,24 +238,30 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2019_08_19_000000_create_failed_jobs_table', 1),
-(2, '2020_10_12_160804_create_syndics_table', 1),
-(3, '2020_10_12_161141_create_villes_table', 2),
-(4, '2020_10_12_161237_create_residences_table', 2),
-(5, '2020_10_12_161452_create_blocs_table', 3),
-(6, '2020_10_12_161720_create_immeubles_table', 4),
-(7, '2020_10_14_145732_create_locataires_table', 5),
-(8, '2020_10_14_150601_create_appartements_table', 6),
-(9, '2020_10_15_010212_create_appartements_table', 7),
-(10, '2020_10_16_153540_create_appartements_table', 8),
-(11, '2020_10_16_153659_create_locataires_table', 8),
-(12, '2020_10_16_180222_create_caisses_table', 9),
-(13, '2020_10_16_183759_update_locataire_to_locataires_table', 10),
-(14, '2020_10_17_170734_create_recus_table', 11),
-(15, '2020_10_17_171042_create_type_factures_table', 11),
-(16, '2020_10_17_171110_create_locateurs_table', 11),
-(17, '2020_10_17_171152_create_confirm_logments_table', 11),
-(18, '2020_10_17_171211_create_factures_table', 11);
+(1, '2020_10_18_003207_create_appartements_table', 1),
+(2, '2020_10_18_003207_create_blocs_table', 1),
+(3, '2020_10_18_003207_create_caisses_table', 1),
+(4, '2020_10_18_003207_create_confirm_logments_table', 1),
+(5, '2020_10_18_003207_create_factures_table', 1),
+(6, '2020_10_18_003207_create_failed_jobs_table', 1),
+(7, '2020_10_18_003207_create_immeubles_table', 1),
+(8, '2020_10_18_003207_create_locataires_table', 1),
+(9, '2020_10_18_003207_create_locateurs_table', 1),
+(10, '2020_10_18_003207_create_recus_table', 1),
+(11, '2020_10_18_003207_create_residences_table', 1),
+(12, '2020_10_18_003207_create_syndics_table', 1),
+(13, '2020_10_18_003207_create_type_factures_table', 1),
+(14, '2020_10_18_003207_create_villes_table', 1),
+(15, '2020_10_18_003209_add_foreign_keys_to_appartements_table', 1),
+(16, '2020_10_18_003209_add_foreign_keys_to_blocs_table', 1),
+(17, '2020_10_18_003209_add_foreign_keys_to_caisses_table', 1),
+(18, '2020_10_18_003209_add_foreign_keys_to_confirm_logments_table', 1),
+(19, '2020_10_18_003209_add_foreign_keys_to_factures_table', 1),
+(20, '2020_10_18_003209_add_foreign_keys_to_immeubles_table', 1),
+(21, '2020_10_18_003209_add_foreign_keys_to_residences_table', 1),
+(22, '2020_10_18_003855_update_columns_caisses', 1),
+(23, '2020_10_18_005033_add_columns_caisse', 1),
+(24, '2020_10_21_181639_just_test_table', 1);
 
 -- --------------------------------------------------------
 
@@ -287,11 +297,14 @@ CREATE TABLE `residences` (
 --
 
 INSERT INTO `residences` (`id`, `nom_residence`, `id_ville`, `adresse`, `id_syndic`, `created_at`, `updated_at`) VALUES
-(1, 'DOHA', 2, 'SIDIYAHYA', 1, NULL, NULL),
-(10, 'sohaib el mediouni', 17, 'hd', 3, '2020-10-13 03:41:56', '2020-10-13 03:41:56'),
-(14, 'mouhidine', 20, 'HAY EL MOUSTAKBAL RUE BOUCHIHA\r\nHASSAN N°13 SIDI YAHYA OUJDA', 6, '2020-10-13 14:16:22', '2020-10-13 14:16:22'),
-(16, 'pooo', 21, 'pppp', 7, '2020-10-13 14:36:32', '2020-10-13 14:36:32'),
-(17, 'poo', 19, 'hdhjbhbj', 8, '2020-10-13 14:39:09', '2020-10-13 14:39:09');
+(1, 'Residence-Hicham', 1, 'Adress 1, Quartier test', 1, NULL, NULL),
+(2, 'Luz Beier', 10, '5845 Becker Ville\nKuvalisborough, KS 22105-1568', 20, NULL, NULL),
+(5, 'Katelynn Heaney', 18, '96029 Mattie Curve Suite 426\nStoneport, SC 45219', 21, NULL, NULL),
+(7, 'Miss Carole Deckow', 11, '42815 Buster Landing Apt. 069\nGloverton, CT 84300', 13, NULL, NULL),
+(9, 'Trey McCullough', 17, '189 Christa Forges Suite 167\nNew Lexus, WA 66527-0716', 17, NULL, NULL),
+(10, 'Caitlyn Mitchell', 2, '430 Blanca Corners\nVonhaven, AL 65093', 6, NULL, NULL),
+(11, 'Prof. Aurelia Jacobs', 16, '365 Ward Valleys\nBayerstad, OR 82221', 16, NULL, NULL),
+(12, 'Briana Bauch', 8, '635 Howe Mountain Suite 933\nVonRuedenberg, OK 27651', 8, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -316,13 +329,37 @@ CREATE TABLE `syndics` (
 --
 
 INSERT INTO `syndics` (`id`, `nom`, `prenom`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'sohaib', 'elmediouni', 'test@gmail.com', NULL, 'AZERTY1234', NULL, NULL, NULL),
-(3, 'hicham', 'safih', 'ss@test.com', NULL, '1234', NULL, NULL, NULL),
-(6, 'amine', 'haou', 'ss@bpo.com', NULL, 'test', NULL, NULL, NULL),
-(7, 'pp', 'jn', 'n', NULL, 'i', NULL, NULL, NULL),
-(8, 'j', 'O', 'HUIU', NULL, 'JN', NULL, NULL, NULL),
-(9, 'bj', 'j', 'j', NULL, 'jh', NULL, NULL, NULL),
-(10, 'jnerjf', 'njej', 'jkfrf', NULL, 'jde', NULL, NULL, NULL);
+(1, 'nom-syndic', 'prenom-syndic', 'syndic@gmail.com', NULL, 'test1234', NULL, NULL, NULL),
+(2, 'Jadon Hoppe', 'Dickens', 'tito.runolfsdottir@gmail.com', NULL, '0=6Q|@/)H6)a^]', NULL, NULL, NULL),
+(3, 'Ms. Jennifer DuBuque III', 'Brown', 'erdman.london@gmail.com', NULL, 'zl?9d<rT:}bB8_#gNo-i', NULL, NULL, NULL),
+(4, 'Rita Greenholt', 'Fadel', 'zhammes@hotmail.com', NULL, '+/z|l7HRR9%*', NULL, NULL, NULL),
+(5, 'Myah Langosh', 'Frami', 'toy.lucy@hotmail.com', NULL, 'z``IjSfL\"', NULL, NULL, NULL),
+(6, 'Prof. Abe Satterfield', 'Bins', 'tremayne.stehr@trantow.com', NULL, 'B`\"8\\Bz', NULL, NULL, NULL),
+(7, 'Ryley Wilkinson', 'Spinka', 'kristin82@hotmail.com', NULL, '\"kOkSt', NULL, NULL, NULL),
+(8, 'Skyla Harris I', 'Lynch', 'everette78@upton.com', NULL, 't\"b\\Ti_=trAT\"chA(6c!', NULL, NULL, NULL),
+(9, 'Rosemarie Bruen DDS', 'Skiles', 'purdy.scottie@hotmail.com', NULL, 'it%QUnB.', NULL, NULL, NULL),
+(10, 'Annetta Wintheiser', 'Nader', 'tremayne01@hotmail.com', NULL, '~TG-(VPj\'', NULL, NULL, NULL),
+(11, 'Pierce Bruen', 'Grant', 'kilback.jonatan@runolfsdottir.net', NULL, '=M>pYrALr`e[X]DLnZI', NULL, NULL, NULL),
+(12, 'Frank Weimann V', 'Aufderhar', 'mabelle40@emmerich.biz', NULL, '~J[p?q%,/G,zQ!{>y7', NULL, NULL, NULL),
+(13, 'Virgie Hegmann', 'Beier', 'jacklyn.kuvalis@gmail.com', NULL, 'Al|-=u6(o', NULL, NULL, NULL),
+(14, 'Reynold Reinger', 'Davis', 'dallas26@windler.com', NULL, '!./j}RF', NULL, NULL, NULL),
+(15, 'Clare Emard', 'Kunze', 'gregory.boehm@hotmail.com', NULL, 'JK2^CJG-gdBG9rJ', NULL, NULL, NULL),
+(16, 'Alfonso Okuneva DDS', 'Bergnaum', 'sim04@yahoo.com', NULL, '>44*w%x}', NULL, NULL, NULL),
+(17, 'Dr. Craig Altenwerth MD', 'Smith', 'rfarrell@orn.com', NULL, 'zS4^3dD03`!3nOC', NULL, NULL, NULL),
+(18, 'Marietta Leuschke', 'Herzog', 'mafalda63@gmail.com', NULL, '%Z1zv}#PH;:ym+=N!', NULL, NULL, NULL),
+(19, 'Dr. Buck Johnson III', 'Stoltenberg', 'rmurray@fritsch.com', NULL, '{%opbzo1]U,v#-,', NULL, NULL, NULL),
+(20, 'Prof. Norbert Gottlieb III', 'Lakin', 'okon.rosemarie@hilpert.com', NULL, '\"HnC)W>UK.<Wh', NULL, NULL, NULL),
+(21, 'Khalil Lynch', 'Schamberger', 'krajcik.leon@abbott.info', NULL, ']_6&!DBE', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `testt`
+--
+
+CREATE TABLE `testt` (
+  `string` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -355,30 +392,27 @@ CREATE TABLE `villes` (
 --
 
 INSERT INTO `villes` (`id`, `nom_ville`, `created_at`, `updated_at`) VALUES
-(1, 'Oudja', NULL, NULL),
-(2, 'Agadir', NULL, NULL),
-(3, 'Al Hocïema', NULL, NULL),
-(4, 'Béni Mellal', NULL, NULL),
-(5, 'Casablanca', NULL, NULL),
-(6, 'El Jadida', NULL, NULL),
-(7, 'Errachidia', NULL, NULL),
-(8, 'Fès', NULL, NULL),
-(9, 'Kénitra', NULL, NULL),
-(10, 'Khénifra', NULL, NULL),
-(11, 'Khouribga', NULL, NULL),
-(12, 'Larache', NULL, NULL),
-(13, 'Marrakech', NULL, NULL),
-(14, 'Meknès', NULL, NULL),
-(15, 'Nador', NULL, NULL),
-(16, 'Ouarzazate', NULL, NULL),
-(17, 'Oujda', NULL, NULL),
-(18, 'Rabat', NULL, NULL),
-(19, 'Safi', NULL, NULL),
-(20, 'Salé', NULL, NULL),
-(21, 'Settat', NULL, NULL),
-(22, 'Tanger', NULL, NULL),
-(23, 'Taza', NULL, NULL),
-(24, 'Tétouan', NULL, NULL);
+(1, 'Rabat', NULL, NULL),
+(2, 'Keeblerchester', NULL, NULL),
+(3, 'East Britney', NULL, NULL),
+(4, 'Port Reynamouth', NULL, NULL),
+(5, 'Port Fredrick', NULL, NULL),
+(6, 'Lueilwitzton', NULL, NULL),
+(7, 'Lake Isac', NULL, NULL),
+(8, 'Koeppville', NULL, NULL),
+(9, 'East Jacintoview', NULL, NULL),
+(10, 'Collinsborough', NULL, NULL),
+(11, 'Millermouth', NULL, NULL),
+(12, 'South Evangelineton', NULL, NULL),
+(13, 'Caliland', NULL, NULL),
+(14, 'Felipaside', NULL, NULL),
+(15, 'North Darien', NULL, NULL),
+(16, 'Emmerichfort', NULL, NULL),
+(17, 'Willchester', NULL, NULL),
+(18, 'Kemmerberg', NULL, NULL),
+(19, 'Bufordside', NULL, NULL),
+(20, 'Camrynfurt', NULL, NULL),
+(21, 'Lake Margarette', NULL, NULL);
 
 --
 -- Index pour les tables déchargées
@@ -403,7 +437,6 @@ ALTER TABLE `blocs`
 --
 ALTER TABLE `caisses`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `caisses_email_unique` (`email`),
   ADD KEY `caisses_id_locataire_foreign` (`id_Locataire`),
   ADD KEY `caisses_id_appartement_foreign` (`id_Appartement`);
 
@@ -433,7 +466,8 @@ ALTER TABLE `failed_jobs`
 -- Index pour la table `immeubles`
 --
 ALTER TABLE `immeubles`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `immeubles_id_bloc_foreign` (`id_bloc`);
 
 --
 -- Index pour la table `locataires`
@@ -495,19 +529,19 @@ ALTER TABLE `villes`
 -- AUTO_INCREMENT pour la table `appartements`
 --
 ALTER TABLE `appartements`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `blocs`
 --
 ALTER TABLE `blocs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT pour la table `caisses`
 --
 ALTER TABLE `caisses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `confirm_logments`
@@ -537,7 +571,7 @@ ALTER TABLE `immeubles`
 -- AUTO_INCREMENT pour la table `locataires`
 --
 ALTER TABLE `locataires`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `locateurs`
@@ -549,7 +583,7 @@ ALTER TABLE `locateurs`
 -- AUTO_INCREMENT pour la table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT pour la table `recus`
@@ -561,13 +595,13 @@ ALTER TABLE `recus`
 -- AUTO_INCREMENT pour la table `residences`
 --
 ALTER TABLE `residences`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT pour la table `syndics`
 --
 ALTER TABLE `syndics`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT pour la table `type_factures`
@@ -579,7 +613,7 @@ ALTER TABLE `type_factures`
 -- AUTO_INCREMENT pour la table `villes`
 --
 ALTER TABLE `villes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Contraintes pour les tables déchargées
