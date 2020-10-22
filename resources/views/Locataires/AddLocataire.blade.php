@@ -96,22 +96,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($locataires as $locataire) --}}
-                                @for ($i = 0; $i < 100; $i++) 
+                            @foreach ($locataires as $locataire)
+                                {{-- @for ($i = 0; $i < 100; $i++)  --}}
                                   <tr>
-                                    <td class="text-center">Hicham & Sohaib [F121212]</td>
-                                    <td class="text-center">Sohaib.e.mdn@gmail.com</td>
+                                  <td class="text-center"> {{$locataire->nom}} {{$locataire->prenom}}</td>
+                                    <td class="text-center">{{$locataire->email}}</td>
                                     <td class="text-center">
                                         <img src="https://img.icons8.com/color/48/000000/verified-account.png"
                                             style="width: 20px;cursor:pointer;" data-toggle="tooltip" data-placement="top"
                                             title="Validé le 22/10/2020" />
                                     </td>
-                                    <td class="text-center">0 666 2017 40</td>
+                                    <td class="text-center">{{$locataire->Tel}}</td>
                                     <td class="text-center">15</td>
                                     <td class="text-center">Bloc-5</td>
                                   </tr>
-                                @endfor
-                            {{-- @endforeach --}}
+                                {{-- @endfor --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
