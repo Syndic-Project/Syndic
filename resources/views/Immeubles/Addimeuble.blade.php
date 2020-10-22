@@ -54,10 +54,19 @@
                                                     <td class="text-center">{{ $imm->Montant_Cotisation_Mensuelle }}
                                                     </td>
 
-                                                    <td><a href="{{route('immeubles.edit',['immeuble'=>$imm->id])}}"
-                                                           class="edit btn btn-success btn-sm">Edit</a> <a
-                                                            href="{{route('immeubles.edit',['immeuble'=>$imm->id])}}"
-                                                            class="delete btn btn-danger btn-sm">Delete</a></td>
+                                                    <td>
+
+                                                        <form class="needs-validation" novalidate method="POST"
+                                                              action="{{ route('immeubles.destroy',['immeuble'=>$imm->id])}}">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                        <a href="{{route('immeubles.edit',['immeuble'=>$imm->id])}}"
+                                                           class="edit btn btn-success btn-sm">Edit</a>
+
+                                                            <button class="delete btn btn-danger btn-sm" type="submit">Delete</button>
+
+                                                        </form>
+                                                    </td>
                                                 </tr>
 
                                                 {{--

@@ -125,6 +125,8 @@ class ImmeubleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Immeuble::destroy($id);
+
+        return redirect('/syndic/Immeuble');
     }
 }
