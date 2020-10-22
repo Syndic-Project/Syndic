@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
 
         $faker = Faker::create();
 
-//        $gender = $faker->randomElement(['male', 'female']);
+        //        $gender = $faker->randomElement(['male', 'female']);
 
 
         $ville = Ville::all()->pluck('id')->toArray();
@@ -29,19 +29,19 @@ class DatabaseSeeder extends Seeder
         $residence = \App\Models\Residence::all()->pluck('id')->toArray();
         foreach (range(1, 20) as $index) {
             DB::table('blocs')->insert([
-                'nom_bloc'=>$faker->name,
-                'id_residence' =>$faker->randomElement($residence),
-//                'id_ville' => $faker->randomElement($ville),
-//                'adresse' => $faker->address,
-//                'id_syndic' => $faker->randomElement($syndic),
+                'nom_bloc' => $faker->name,
+                'id_residence' => $faker->randomElement($residence),
+                'id_ville' => $faker->randomElement($ville),
+                'adresse' => $faker->address,
+                'id_syndic' => $faker->randomElement($syndic),
 
 
 
-//                'name' => $faker->name($gender),
-//                'email' => $faker->email,
-//                'username' => $faker->username,
-//                'phone' => $faker->phoneNumber,
-//                'dob' => $faker->date($format = 'Y-m-d', $max = 'now')
+                //                'name' => $faker->name($gender),
+                //                'email' => $faker->email,
+                //                'username' => $faker->username,
+                //                'phone' => $faker->phoneNumber,
+                //                'dob' => $faker->date($format = 'Y-m-d', $max = 'now')
             ]);
         }
     }

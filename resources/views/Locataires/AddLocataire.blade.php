@@ -87,23 +87,29 @@
                     <table id="locataires-datatable" class="table dt-responsive nowrap">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
+                                <th class="text-center">Nom Complet</th>
+                                <th class="text-center">email</th>
+                                <th class="text-center">Validité de l'email</th>
+                                <th class="text-center">Tel</th>
+                                <th class="text-center">Paiements Effectués</th>
+                                <th class="text-center">Bloc</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                          {{-- @foreach ($locataires as $locataire) --}}
+                          @for ($i = 0; $i < 100; $i++)
+                          <tr>
+                              <td class="text-center">Hicham & Sohaib [F121212]</td>
+                              <td class="text-center">Sohaib.e.mdn@gmail.com</td>
+                              <td class="text-center">
+                                <img src="https://img.icons8.com/color/48/000000/verified-account.png" 
+                                     style="width: 20px;cursor:pointer;" />
+                              </td>
+                              <td class="text-center">0 666 2017 40</td>
+                              <td class="text-center">15</td>
+                              <td class="text-center">Bloc-5</td>
+                          </tr>
+                          @endfor
                         </tbody>
                     </table>
                 </div>
