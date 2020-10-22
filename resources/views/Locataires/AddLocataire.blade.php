@@ -83,33 +83,35 @@
                             </div>
                         </div>
                     </form> -->
-
-                    <table id="locataires-datatable" class="table dt-responsive nowrap">
+                    <h5 class="font-size-16 mb-1 mt-0">Fiche des paiements.</h5>
+                    <table id="locataires-datatable" class="table nowrap">
                         <thead>
                             <tr>
                                 <th class="text-center">Nom Complet</th>
-                                <th class="text-center">email</th>
+                                <th class="text-center">E-mail</th>
                                 <th class="text-center">Validité de l'email</th>
-                                <th class="text-center">Tel</th>
+                                <th class="text-center">Numéro de Tel</th>
                                 <th class="text-center">Paiements Effectués</th>
                                 <th class="text-center">Bloc</th>
                             </tr>
                         </thead>
                         <tbody>
-                          {{-- @foreach ($locataires as $locataire) --}}
-                          @for ($i = 0; $i < 100; $i++)
-                          <tr>
-                              <td class="text-center">Hicham & Sohaib [F121212]</td>
-                              <td class="text-center">Sohaib.e.mdn@gmail.com</td>
-                              <td class="text-center">
-                                <img src="https://img.icons8.com/color/48/000000/verified-account.png" 
-                                     style="width: 20px;cursor:pointer;" />
-                              </td>
-                              <td class="text-center">0 666 2017 40</td>
-                              <td class="text-center">15</td>
-                              <td class="text-center">Bloc-5</td>
-                          </tr>
-                          @endfor
+                            {{-- @foreach ($locataires as $locataire) --}}
+                                @for ($i = 0; $i < 100; $i++) 
+                                  <tr>
+                                    <td class="text-center">Hicham & Sohaib [F121212]</td>
+                                    <td class="text-center">Sohaib.e.mdn@gmail.com</td>
+                                    <td class="text-center">
+                                        <img src="https://img.icons8.com/color/48/000000/verified-account.png"
+                                            style="width: 20px;cursor:pointer;" data-toggle="tooltip" data-placement="top"
+                                            title="Validé le 22/10/2020" />
+                                    </td>
+                                    <td class="text-center">0 666 2017 40</td>
+                                    <td class="text-center">15</td>
+                                    <td class="text-center">Bloc-5</td>
+                                  </tr>
+                                @endfor
+                            {{-- @endforeach --}}
                         </tbody>
                     </table>
                 </div>
@@ -125,11 +127,27 @@
 <script src="{{ url('assets/libs/parsleyjs/parsley.min.js') }}"></script>
 <script>
     $("#locataires-datatable").DataTable({
-        language: {
+        lengthMenu: [
+            [10, 25, 50, -1],
+            ['10 lignes', '25 lignes', '50 lignes', 'afficher tous']
+        ],
+        "language": {
+            buttons: {
+                pageLength: {
+                    _: "Afficher %d éléments",
+                    '-1': "Tout afficher"
+                }
+            },
             paginate: {
                 previous: "<i class='uil uil-angle-left'>",
                 next: "<i class='uil uil-angle-right'>"
-            }
+            },
+            "lengthMenu": "Afficher _MENU_ par Pages",
+            "zeroRecords": "Aucune données disponibles ...",
+            "info": "Total : _TOTAL_ Locataires",
+            "infoEmpty": "Pas de données disponibles ...",
+            "infoFiltered": "(filtré depuis _MAX_ lignes)",
+            "sSearch": "Rechercher"
         },
         drawCallback: function () {
             $(".dataTables_paginate > .pagination").addClass("pagination-rounded")

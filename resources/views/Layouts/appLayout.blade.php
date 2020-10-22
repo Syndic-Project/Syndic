@@ -474,7 +474,7 @@
     <script src="{{ url('assets/libs/datatables/dataTables.responsive.min.js') }}"></script>
     <script src="{{ url('assets/libs/datatables/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ url('assets/libs/datatables/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ url('assets/libs/datatables/buttons.bootstrap4.min.j') }}"></script>
+    <script src="{{ url('assets/libs/datatables/buttons.bootstrap4.min.js') }}"></script>
     <script src="{{ url('assets/libs/datatables/buttons.html5.min.js') }}"></script>
     <script src="{{ url('assets/libs/datatables/buttons.flash.min.js') }}"></script>
     <script src="{{ url('assets/libs/datatables/buttons.print.min.js') }}"></script>
