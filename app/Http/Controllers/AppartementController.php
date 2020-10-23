@@ -16,18 +16,26 @@ class AppartementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public static function credit($id)
+    {
+        $derniermoispaye = DB::table('appartements')->where('id', '=', $id)->get(['Dernier_Mois_Pays']);
+        $derniermoispaye =  ((int)explode('-', $derniermoispaye)[1]);
+        $now = Carbon::now()->month;
+        return $res=$derniermoispaye-$now;
+
+    }
     public function index()
     {
 
-        $derniermoispaye = DB::table('caisses')->where('id', '=', '6')->get(['mois_concerne']);
-        $derniermoispaye =  ((int)explode('-', $derniermoispaye)[1]);
-        $now = Carbon::now()->month;
-        dd($derniermoispaye-$now);
 
-        return view('Appartements/AddAppartement', [
-            'immeubles' => Immeuble::all(),
+        return view('Appartements/AddAppartement')
+           ->with('immeubles', Immeuble::all())
+            ->with('appartements',Appartement::all());
 
-        ]);
+
+
+
 
 
     }
@@ -65,7 +73,9 @@ class AppartementController extends Controller
         $appartement->Nbr_Max_chambre = $request->input('nbr');
         $appartement->save();
 
-        dd("ok");
+
+
+
 
 
     }
