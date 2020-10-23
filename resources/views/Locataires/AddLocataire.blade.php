@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <hr>
-                    <table id="locataires-datatable" class="table nowrap">
+                    <table id="locataires-datatable" class="table table-striped table-hover nowrap">
                         <thead>
                             <tr>
                                 <th class="text-center">Actions</th>
