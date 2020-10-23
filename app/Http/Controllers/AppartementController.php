@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Appartement;
 use App\Models\Immeuble;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 
 class AppartementController extends Controller
@@ -17,9 +18,14 @@ class AppartementController extends Controller
      */
     public function index()
     {
-        //
-        return view('Appartements/AddAppartement',[
-            'immeubles'=>Immeuble::all(),
+
+        $derniermoispaye = DB::table('caisses')->where('id', '=', '6')->get(['mois_concerne']);
+        $derniermoispaye =  ((int)explode('-', $derniermoispaye)[1]);
+        $now = Carbon::now()->month;
+        dd($derniermoispaye-$now);
+
+        return view('Appartements/AddAppartement', [
+            'immeubles' => Immeuble::all(),
 
         ]);
 
@@ -39,27 +45,26 @@ class AppartementController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
 
 
+        $appartement = new Appartement();
+        $var1 = $request->input('type');
+        $var2 = $request->input('porte');
 
-        $appartement=new Appartement();
-        $var1=$request->input('type');
-        $var2=$request->input('porte');
-
-    $res=$var1.'N°'.$var2;
-        $appartement->nom=$res;
-        $appartement->id_Immeuble=$request->input('immeuble');
-        $appartement->Type_du_bien=$request->input('type');
-        $appartement->Num_Porte=$request->input('porte');
-        $appartement->Dernier_Mois_Pays=$request->input('last_cotisation');
-        $appartement->Nbr_Max_chambre=$request->input('nbr');
+        $res = $var1 . ' ' . 'N°' . $var2;
+        $appartement->nom = $res;
+        $appartement->id_Immeuble = $request->input('immeuble');
+        $appartement->Type_du_bien = $request->input('type');
+        $appartement->Num_Porte = $request->input('porte');
+        $appartement->Dernier_Mois_Pays = $request->input('last_cotisation');
+        $appartement->Nbr_Max_chambre = $request->input('nbr');
         $appartement->save();
-        $appartement->
+
         dd("ok");
 
 
@@ -68,7 +73,7 @@ class AppartementController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -79,7 +84,7 @@ class AppartementController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -90,8 +95,8 @@ class AppartementController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -102,7 +107,7 @@ class AppartementController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

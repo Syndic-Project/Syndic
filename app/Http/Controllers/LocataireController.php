@@ -106,7 +106,8 @@ class LocataireController extends Controller
      */
     public function edit($id)
     {
-        //
+
+
     }
 
     /**

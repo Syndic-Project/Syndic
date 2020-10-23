@@ -176,7 +176,7 @@
                 $(`#annee-${new Date(Caisse[i].mois_concerne).getFullYear()}`)
                 .append(`
                         <td class="text-center">
-                            <img src="https://img.icons8.com/color/48/000000/cancel--v1.png" style="width: 20px;cursor:pointer;" data-toggle="modal" data-target="#modalPaiement" 
+                            <img src="https://img.icons8.com/color/48/000000/cancel--v1.png" style="width: 20px;cursor:pointer;" data-toggle="modal" data-target="#modalPaiement"
                               data-mois="${new Date(Caisse[i].mois_concerne).getMonth() + 1}" data-annee="${new Date(Caisse[i].mois_concerne).getFullYear()}" data-caisse="${Caisse[i].id}"/>
                         </td>
                         `);

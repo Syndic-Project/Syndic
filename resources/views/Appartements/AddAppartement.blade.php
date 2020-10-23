@@ -10,7 +10,7 @@
 
 <div class="content-page">
 
-<h2 class="padb20"><span class="nomimmeuble">EL MEDIOUNI</span> : GESTION DES APPARTEMENTS</h2>
+<h2 class="padb20"><span class="nomimmeuble"></span> : GESTION DES APPARTEMENTS</h2>
     <form class="needs-validation" novalidate method="post" action="{{route('Appartements.store') }}" >
         @csrf
 <div class="row mybox mrgb20">

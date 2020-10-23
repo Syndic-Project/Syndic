@@ -82,5 +82,3 @@ Route::resource('/Facture', 'FactureController');
 Route::get('/qr-code-g', function () {
     return view('qrCode');
 });
-
-
