@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appartement;
+use App\Models\Caisse;
 use App\Models\Immeuble;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -17,24 +18,40 @@ class AppartementController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public static function credit($id)
+    public static function credit($idap,$idl)
     {
-        $derniermoispaye = DB::table('appartements')->where('id', '=', $id)->get(['Dernier_Mois_Pays']);
-        $derniermoispaye =  ((int)explode('-', $derniermoispaye)[1]);
-        $now = Carbon::now()->month;
-        return $res=$derniermoispaye-$now;
+        dd($idl);
+        $derniermoispaye = DB::table('caisses')->where('id_Appartement', '=', $idap)
+            ->where('id_Locataire', '=', $idl)
+            ->orderBy('mois_concerne', 'desc')->first()->mois_concerne;
+        $derniermoispaye = Carbon::parse($derniermoispaye)->floorMonth();
+
+        $now = Carbon::now();
+        $now = Carbon::parse($now)->floorMonth();
+
+        return $res = $derniermoispaye->diffInMonths($now);
+
 
     }
+
     public function index()
     {
 
+//        $appartementhaslocataire = DB::table('appartements')
+//            ->join('caisses', 'caisses.id_Appartement', '=', 'appartements.id')
+//            ->whereIn('id_Appartement',  'caisses')
+//            ->select('appartements.*')
+//            ->get();
+
+        $appartementaveclocataire=Caisse::has('appartement')->get();
+        dd($appartementaveclocataire);
+
+
+
 
         return view('Appartements/AddAppartement')
-           ->with('immeubles', Immeuble::all())
-            ->with('appartements',Appartement::all());
-
-
-
+            ->with('immeubles', Immeuble::all())
+            ->with('appartements', Appartement::all());
 
 
 
@@ -72,10 +89,6 @@ class AppartementController extends Controller
         $appartement->Dernier_Mois_Pays = $request->input('last_cotisation');
         $appartement->Nbr_Max_chambre = $request->input('nbr');
         $appartement->save();
-
-
-
-
 
 
     }

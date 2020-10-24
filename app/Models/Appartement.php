@@ -15,7 +15,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $created_at
  * @property string $updated_at
  * @property Immeuble $immeuble
- * @property Locataire[] $locataires
+ * @property Caiss[] $caisses
+ * @property ConfirmLogment[] $confirmLogments
  */
 class Appartement extends Model
 {
@@ -37,5 +38,21 @@ class Appartement extends Model
     public function immeuble()
     {
         return $this->belongsTo('App\Models\Immeuble', 'id_Immeuble');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function caisses()
+    {
+        return $this->hasMany('App\Models\Caiss', 'id_Appartement');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function confirmLogments()
+    {
+        return $this->hasMany('App\Models\ConfirmLogment', 'id_Appartement');
     }
 }

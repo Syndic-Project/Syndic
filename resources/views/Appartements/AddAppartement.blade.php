@@ -127,7 +127,7 @@
                                         <tr id="app1715">
                                             <td class="liblocal">{{$app->nom}}</td>
                                             <td class="situationlocal">
-                                                <span class="text-success">{{ \App\Http\Controllers\AppartementController::credit($app->id)}} mois</span>
+                                                <span class="text-success"> mois</span>
                                             </td>
 {{--                                            <span class="text-danger">-6 mois</span>--}}
                                             <td>

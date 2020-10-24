@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7127ffd3-2783-4e0a-b602-f3196766c79f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/FirstTry.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FirstTry.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AppartementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AppartementController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Appartement.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Appartement.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Locataire.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Locataire.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Appartements/AddAppartement.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Appartements/AddAppartement.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -145,7 +151,7 @@
       <path value="$PROJECT_DIR$/vendor/bacon/bacon-qr-code" />
       <path value="$PROJECT_DIR$/vendor/dasprid/enum" />
       <path value="$PROJECT_DIR$/vendor/milon/barcode" />
-      <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle" />
+      <path value="$PROJECT_DIR$/vendor/uxweb/sweet-alert" />
     </include_path>
   </component>
   <component name="ProjectId" id="1imww5O6GaSrGYDv3GPVcrltQKN" />
@@ -195,7 +201,7 @@
       <workItem from="1603246607480" duration="19253000" />
       <workItem from="1603364708234" duration="27927000" />
       <workItem from="1603464651900" duration="1231000" />
-      <workItem from="1603476798836" duration="770000" />
+      <workItem from="1603476798836" duration="9963000" />
     </task>
     <servers />
   </component>
