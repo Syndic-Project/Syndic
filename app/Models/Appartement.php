@@ -37,7 +37,7 @@ class Appartement extends Model
      */
     public function immeuble()
     {
-        return $this->belongsTo('App\Models\Immeuble', 'id_Immeuble');
+        return $this->belongsTo('App\Immeuble', 'id_Immeuble');
     }
 
     /**
@@ -45,7 +45,7 @@ class Appartement extends Model
      */
     public function caisses()
     {
-        return $this->hasMany('App\Models\Caiss', 'id_Appartement');
+        return $this->hasMany('App\Models\Caisse', 'id_Appartement');
     }
 
     /**
@@ -53,6 +53,6 @@ class Appartement extends Model
      */
     public function confirmLogments()
     {
-        return $this->hasMany('App\Models\ConfirmLogment', 'id_Appartement');
+        return $this->hasMany('App\ConfirmLogment', 'id_Appartement');
     }
 }

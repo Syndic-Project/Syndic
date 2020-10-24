@@ -37,17 +37,8 @@ class AppartementController extends Controller
     public function index()
     {
 
-//        $appartementhaslocataire = DB::table('appartements')
-//            ->join('caisses', 'caisses.id_Appartement', '=', 'appartements.id')
-//            ->whereIn('id_Appartement',  'caisses')
-//            ->select('appartements.*')
-//            ->get();
-
-        $appartementaveclocataire=Caisse::has('appartement')->get();
-        dd($appartementaveclocataire);
-
-
-
+$appartementhaslocataire=Appartement::has('caisses')->get();
+$appartementhasnotlocataire=Appartement::doesntHave('caisses')->get();
 
         return view('Appartements/AddAppartement')
             ->with('immeubles', Immeuble::all())
