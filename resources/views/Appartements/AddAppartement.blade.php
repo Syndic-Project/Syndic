@@ -123,15 +123,15 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($appartements as $app)
-                                        <tr id="app1715">
+                                        @foreach ($appartementhaslocataire as $app)
+                                        <tr id="app">
                                             <td class="liblocal">{{$app->nom}}</td>
                                             <td class="situationlocal">
-                                                <span class="text-success"> mois</span>
+                                                <span class="text-success">{{\App\Http\Controllers\AppartementController::credit($app->id)}} mois</span>
                                             </td>
 {{--                                            <span class="text-danger">-6 mois</span>--}}
                                             <td>
-                                                <a href="https://zonesyndic.com/syndic/utilisateurs/form"><i
+                                                <a href=""><i
                                                         class="fa fa-plus"></i> créer</a></td>
                                             <td class="text-right">
                                                 <div class="btn-group" role="group">
@@ -145,6 +145,30 @@
                                                         class="fa fa-times-circle"></i></a>
                                             </td>
                                         </tr>
+                                        @endforeach
+
+                                        @foreach ($appartementhasnotlocataire as $app)
+                                            <tr id="app1715">
+                                                <td class="liblocal">{{$app->nom}}</td>
+                                                <td class="situationlocal">
+                                                    <span class="text-warning">Pas Encore</span>
+                                                </td>
+                                                {{--                                            <span class="text-danger">-6 mois</span>--}}
+                                                <td>
+                                                    <a href="/syndic/Locataire"><i
+                                                            class="fa fa-plus"></i> créer</a></td>
+                                                <td class="text-right">
+                                                    <div class="btn-group" role="group">
+                                                        <a href="https://zonesyndic.com/syndic/appartements/details/1715"
+                                                           class="btn btn-info btn-xs"><i class="fa fa-eye"></i> détails</a>&nbsp;
+                                                        <a href="#" class="btn btn-success btn-xs editajax"
+                                                           data-toggle="modal" data-target="#modalupdate" id="1715"><i
+                                                                class="fa fa-pencil"></i> modifier</a>
+                                                    </div>
+                                                    &nbsp;<a href="#" id="1715" class="btn btn-danger btn-xs supprimer"><i
+                                                            class="fa fa-times-circle"></i></a>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                         </tbody>
                                     </table>

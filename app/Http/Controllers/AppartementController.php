@@ -18,11 +18,11 @@ class AppartementController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public static function credit($idap,$idl)
+    public static function credit($idap)
     {
-        dd($idl);
+
         $derniermoispaye = DB::table('caisses')->where('id_Appartement', '=', $idap)
-            ->where('id_Locataire', '=', $idl)
+//            ->where('id_Locataire', '=', $idl)
             ->orderBy('mois_concerne', 'desc')->first()->mois_concerne;
         $derniermoispaye = Carbon::parse($derniermoispaye)->floorMonth();
 
@@ -36,13 +36,16 @@ class AppartementController extends Controller
 
     public function index()
     {
-
-$appartementhaslocataire=Appartement::has('caisses')->get();
-$appartementhasnotlocataire=Appartement::doesntHave('caisses')->get();
+//
+//$appartementhaslocataire=
+//dd(Appartement::has('caisses')->get());
+//$appartementhasnotlocataire=Appartement::doesntHave('caisses')->get();
 
         return view('Appartements/AddAppartement')
             ->with('immeubles', Immeuble::all())
-            ->with('appartements', Appartement::all());
+            ->with('appartements', Appartement::all())
+            ->with('appartementhaslocataire',Appartement::has('caisses')->get())
+            ->with('appartementhasnotlocataire',Appartement::doesntHave('caisses')->get());
 
 
 
