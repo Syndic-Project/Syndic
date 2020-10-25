@@ -467,8 +467,8 @@
 
 <script src="{{ url('assets/libs/moment/moment.min.js') }}"></script>
 <script src="{{ url('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
-<script src="{{ url('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
 <script src="{{ url('assets/js/vendor.min.js') }}"></script>
+<script src="{{ url('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
 <script src="{{ url('assets/libs/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ url('assets/libs/datatables/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ url('assets/libs/datatables/dataTables.responsive.min.js') }}"></script>
