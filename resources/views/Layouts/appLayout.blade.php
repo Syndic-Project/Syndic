@@ -309,6 +309,13 @@
                         </a>
                     </li>
 
+                    <li>
+                        <a href="/syndic/Securite">
+                            <i data-feather="box"></i>
+                            <span> Ajouter des Securités </span>
+                            {{-- <span class="menu-arrow"></span> --}}
+                        </a>
+                    </li>
 
                     <li>
                         <a href="/syndic/Residence">

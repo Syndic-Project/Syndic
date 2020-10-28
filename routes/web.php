@@ -45,6 +45,13 @@ Route::get('Residence', [
 //
 
 
+Route::get('/syndic/Securite', function () {
+    return view('Securite/AddSecurite');
+});
+
+
+
+
 
 Route::get('/syndic/Immeuble', 'ImmeubleController@index');
 
@@ -54,7 +61,8 @@ Route::get('/syndic/Appartements', 'AppartementController@index');
 Route::get('/syndic/Locataire', 'LocataireController@index');
 Route::get('/syndic/Caisse', 'CaisseController@index');
 Route::get('/syndic/Locateur', 'LocateurController@index');
-//Route::get('/syndic/Facture','FactureController@index');
+Route::get('/syndic/Facture','FactureController@index');
+Route::get('/syndic/Securtie','SecuriteController@index');
 
 
 
@@ -79,6 +87,7 @@ Route::resource('/Locataire', 'LocataireController');
 Route::resource('/Caisse', 'CaisseController');
 Route::resource('/Locateur', 'LocateurController');
 Route::resource('/Facture', 'FactureController');
+Route::resource('/Securite', 'SecuriteController');
 
 
 
