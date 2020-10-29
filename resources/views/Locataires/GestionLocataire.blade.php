@@ -41,10 +41,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($locataires as $locataire) --}}
-                            @for ($i = 0; $i < 100; $i++) <tr>
+                            @foreach ($locataires as $locataire)
+                            <tr>
                                 <td class="text-center">
-                                    <a href="">
+                                    <a href="#modalModifLocataire{{$locataire->id}}" data-toggle="modal" data-target="#modalModifLocataire{{$locataire->id}}">
                                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24"
                                             data-toggle="tooltip" data-placement="top" title="Modifier"
                                             viewBox="0 0 172 172" style=" fill:#000000;">
@@ -63,7 +63,7 @@
                                         </svg>
                                     </a>
                                     |
-                                    <a href="">
+                                    <a href="#modalSupprLocataire{{$locataire->id}}" data-toggle="modal" data-target="#modalSupprLocataire{{$locataire->id}}">
                                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24"
                                             data-toggle="tooltip" data-placement="top" title="Supprimer"
                                             viewBox="0 0 172 172" style=" fill:#000000;">
@@ -82,19 +82,18 @@
                                         </svg>
                                     </a>
                                 </td>
-                                <td class="text-center">Hicham & Sohaib [F121212]</td>
-                                <td class="text-center">Sohaib.e.mdn@gmail.com</td>
+                                <td class="text-center">{{ $locataire->nom . ' ' . $locataire->prenom }}</td>
+                                <td class="text-center">{{ $locataire->email }}</td>
                                 <td class="text-center">
                                     <img src="https://img.icons8.com/color/48/000000/verified-account.png"
                                         style="width: 20px;cursor:pointer;" data-toggle="tooltip" data-placement="top"
                                         title="Validé le 22/10/2020" />
                                 </td>
-                                <td class="text-center">0 666 2017 40</td>
-                                <td class="text-center">15</td>
-                                <td class="text-center">Bloc-5</td>
-                                </tr>
-                                @endfor
-                                {{-- @endforeach --}}
+                                <td class="text-center">{{ $locataire->Tel }}</td>
+                                <td class="text-center">15 (static) </td>
+                                <td class="text-center">Bloc-5 (static)</td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -103,102 +102,9 @@
     </div>
 </div>
 
-<div id="modalAjoutLocataire" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalAjoutLocataireLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalAjoutLocataireLabel">Nouveau Locataire</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form class="needs-validation" action="{{route('Locataire.store') }}" method="post">
-            <div class="modal-body">
-                    @csrf
-                    <div class="container">
-                        <br />
-                        <div class="row justify-content-start">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="name">Nom</label>
-                                    <input type="text" class="form-control" id="name" name="nom" />
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="first_name">Prénom</label>
-                                    <input type="text" class="form-control" id="first_name" name="prenom" />
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="cin">CIN</label>
-                                    <input type="text" class="form-control" id="cin" name="cin">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="phone">Téléphone</label>
-                                    <input type="text" class="form-control" id="phone" name="tel" />
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="pass">Mot de Passe</label>
-                                    <input style="font-style: oblique;" type="text" class="form-control" id="pass" name="mdp" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="passConfirm">Confirmez le Mot de Passe</label>
-                                    <input style="font-style: oblique;" type="text" class="form-control" id="passConfirm" name="mdpConfirm" />
-                                </div>
-                            </div>
-
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <p class="mb-1 font-weight-bold text-muted">Les locaux affectés</p>
-                                        <div class="form-group">
-                                            <select id="liste1" class="form-control" name="non_affecter[]" multiple="">
-                                                @foreach($appartements as $app )
-                                                <option class="items" value="{{$app->id}}">{{$app->nom}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6" id="selected">
-                                        <div class="form-group">
-                                            <p class="mb-1 font-weight-bold text-muted mt-3 mt-md-0">Les locaux
-                                                affectés</p>
-                                            <div class="form-group">
-                                                <select id="liste2" class="form-control" name="Affecter[]" multiple="">
-                                                    <option class="items" value=""></option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
-                    <button type="submit" class="btn btn-primary">Confirmer</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+@include('Locataires._modalAjoutLocataire')
+@include('Locataires._modalSupprLocataire')
+@include('Locataires._modalModifLocataire')
 
 
 @endsection
