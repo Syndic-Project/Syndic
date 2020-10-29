@@ -86,3 +86,11 @@ input.form-control[type="range"] {
 input:focus {
     outline: none;
 }
+
+#video , #canvas
+{
+    transform: scaleX(-1);
+    filter: FlipH;
+}
+
+

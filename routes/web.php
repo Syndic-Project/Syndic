@@ -45,9 +45,14 @@ Route::get('Residence', [
 //
 
 
-Route::get('/syndic/Securite', function () {
-    return view('Securite/AddSecurite');
+//Route::get('/syndic/Securite', function () {
+//    return view('Securite/AddSecurite');
+//});
+
+Route::get('/Securite/Scanner', function () {
+    return view('Securite/scanner');
 });
+
 
 
 
