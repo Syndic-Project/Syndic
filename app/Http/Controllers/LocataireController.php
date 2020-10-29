@@ -57,7 +57,7 @@ class LocataireController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -76,6 +76,7 @@ class LocataireController extends Controller
         $locataire->password = $request->input('mdp');
         $locataire->Tel = $request->input('tel');
         $locataire->save();
+        
 
         foreach ($request->Affecter as $appartement_id) {
             $caisse = new Caisse();

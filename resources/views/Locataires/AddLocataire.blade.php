@@ -2,6 +2,11 @@
 
 @section('style')
 <link href="{{ asset('assets/css/addlocataire.css') }}" rel="stylesheet" type="text/css" />
+<style>
+    label{
+    font-size: 13px;
+    }
+</style>
 @endsection
 
 @section('content')
@@ -108,8 +113,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            <form class="needs-validation" action="{{route('Locataire.store') }}" method="post">
             <div class="modal-body">
-                <form class="needs-validation" action="{{route('Locataire.store') }}" method="post">
                     @csrf
                     <div class="container">
                         <br />
@@ -119,30 +124,42 @@
                                     <label for="name">Nom</label>
                                     <input type="text" class="form-control" id="name" name="nom" />
                                 </div>
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" />
-                                </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="first_name">Prénom</label>
                                     <input type="text" class="form-control" id="first_name" name="prenom" />
                                 </div>
-                                <div class="form-group">
-                                    <label for="pass">Mot de Passe</label>
-                                    <input type="password" class="form-control" id="pass" name="mdp" />
-                                </div>
                             </div>
-
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="cin">CIN</label>
                                     <input type="text" class="form-control" id="cin" name="cin">
                                 </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="phone">Téléphone</label>
                                     <input type="text" class="form-control" id="phone" name="tel" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="pass">Mot de Passe</label>
+                                    <input style="font-style: oblique;" type="text" class="form-control" id="pass" name="mdp" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="passConfirm">Confirmez le Mot de Passe</label>
+                                    <input style="font-style: oblique;" type="text" class="form-control" id="passConfirm" name="mdpConfirm" />
                                 </div>
                             </div>
 
@@ -173,12 +190,12 @@
                             </div>
                         </div>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
-                <button type="button" class="btn btn-primary">Ajouter</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Confirmer</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

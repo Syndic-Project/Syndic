@@ -12,6 +12,10 @@ class AuthentificationController extends Controller
     function loginView()
     {
         return view('login');
+        // $2y$10$SCH0dvGfNozoygkztxtjzucSF1rlrb8nWiXIYLjKCZ9CcLc44XahG
+        // test@Syndik.com
+        // mhm nom w prénom rak tma dir chi 7aja ...
+        // supprim m3ak had ktba ki tkml ..
     }
 
 
@@ -29,10 +33,13 @@ class AuthentificationController extends Controller
             return redirect("/Auth-Login");
     }
 
-    public static function registerSecurity($username, $mdp)
+    public static function registerLocataireSecurity($username, $mdp)
     {
+        
         echo "à realiser : ajout des locataires";
+        
         //hash make aprés confirmation du password dans l'interface d'ajout
+        // return true;
     }
 
     public static function getCurrentUser()
