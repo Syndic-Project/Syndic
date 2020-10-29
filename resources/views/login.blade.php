@@ -41,7 +41,8 @@
                                             Veuillez saisir vos identifiants pour vous authentifier.
                                         </p>
 
-                                        <form action="#" class="authentication-form">
+                                    <form action="{{ route('Auth-Login-Post') }}" class="authentication-form" method="post">
+                                        @csrf
                                             <div class="form-group">
                                                 <label class="form-control-label">Email/Username</label>
                                                 <div class="input-group input-group-merge">
@@ -50,7 +51,7 @@
                                                             <i class="icon-dual" data-feather="mail"></i>
                                                         </span>
                                                     </div>
-                                                    <input type="email" class="form-control" id="email" placeholder="hello@coderthemes.com">
+                                                    <input type="email" class="form-control" id="email" placeholder="email@domaine.com" name="emailInput" value="test@Syndik.com" required>
                                                 </div>
                                             </div>
 
@@ -63,8 +64,8 @@
                                                             <i class="icon-dual" data-feather="lock"></i>
                                                         </span>
                                                     </div>
-                                                    <input type="password" class="form-control" id="password"
-                                                        placeholder="Enter your password">
+                                                    <input type="password" class="form-control" id="password" name="passwordInput" value="123*123"
+                                                        placeholder="Mot_De_Passe" required>
                                                 </div>
                                             </div>
 
@@ -91,7 +92,6 @@
                                             <div class="auth-user-testimonial">
                                                 <p class="font-size-24 font-weight-bold text-white mb-1">un text overview</p>
                                                 <p class="lead">jolie image de représentaion ...</p>
-                                                {{-- <p>- Admin User</p> --}}
                                             </div>
                                         </div>
                                     </div>

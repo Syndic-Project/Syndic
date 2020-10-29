@@ -23,6 +23,12 @@
 </head>
 
 <body>
+    @if(!AuthentificationController::IsAuthentificated())
+        @php
+            header("Location: " . URL::to('/Auth-Logout'), true, 302);
+            exit();
+        @endphp
+    @endif
 <!-- Begin page -->
 <div id="wrapper">
 
@@ -257,8 +263,10 @@
                  alt="Shreyu"/>
 
             <div class="media-body">
-                <h6 class="pro-user-name mt-0 mb-0">Nik Patel</h6>
-                <span class="pro-user-desc">Administrator</span>
+                <h6 class="pro-user-name mt-0 mb-0">
+                    {{  AuthentificationController::getCurrentUser()->nom . ' '.  AuthentificationController::getCurrentUser()->prenom }}
+                </h6>
+                <span class="pro-user-desc">Syndik (static)</span>
             </div>
             <div class="dropdown align-self-center profile-dropdown-menu">
                 <a class="dropdown-toggle mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
@@ -268,29 +276,26 @@
                 <div class="dropdown-menu profile-dropdown">
                     <a href="pages-profile.html" class="dropdown-item notify-item">
                         <i data-feather="user" class="icon-dual icon-xs mr-2"></i>
-                        <span>My Account</span>
+                        <span>Mon Profil</span>
                     </a>
 
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i data-feather="settings" class="icon-dual icon-xs mr-2"></i>
-                        <span>Settings</span>
+                        <span>Paramétres</span>
                     </a>
 
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i data-feather="help-circle" class="icon-dual icon-xs mr-2"></i>
-                        <span>Support</span>
-                    </a>
-
-                    <a href="pages-lock-screen.html" class="dropdown-item notify-item">
-                        <i data-feather="lock" class="icon-dual icon-xs mr-2"></i>
-                        <span>Lock Screen</span>
+                        <span>Aide</span>
                     </a>
 
                     <div class="dropdown-divider"></div>
 
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <a href="javascript:void(0);" class="dropdown-item notify-item" onclick='window.location.href = "{{route("Auth-LogOut")}}"'>
                         <i data-feather="log-out" class="icon-dual icon-xs mr-2"></i>
-                        <span>Logout</span>
+                        <span>
+                            Se déconnecter
+                        </span>
                     </a>
                 </div>
             </div>

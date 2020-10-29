@@ -61,8 +61,8 @@ Route::get('/syndic/Appartements', 'AppartementController@index');
 Route::get('/syndic/Locataire', 'LocataireController@index');
 Route::get('/syndic/Caisse', 'CaisseController@index');
 Route::get('/syndic/Locateur', 'LocateurController@index');
-Route::get('/syndic/Facture','FactureController@index');
-Route::get('/syndic/Securtie','SecuriteController@index');
+Route::get('/syndic/Facture', 'FactureController@index');
+Route::get('/syndic/Securtie', 'SecuriteController@index');
 
 
 
@@ -72,9 +72,9 @@ Route::post('/getLocataireByCin', 'LocataireController@getLocataireByCin')->name
 Route::post('/getLocataireByNomPrenom', 'LocataireController@getLocataireByNomPrenom')->name('getLocataireByNomPrenom');
 Route::post('/getAppartementsDuLocataire', 'LocataireController@getAppartementsDuLocataire')->name('getAppartementsDuLocataire');
 Route::post('/getCaisseByAppartement', 'CaisseController@getCaisseByAppartement')->name('getCaisseByAppartement');
-Route::get('/Auth-Login', function () {
-    return view('login');
-});
+Route::get('/Auth-Login', 'AuthentificationController@loginView')->name('Auth-Login-Get');
+Route::post('/Auth-Login', 'AuthentificationController@loginSecurity')->name('Auth-Login-Post');
+Route::get('/Auth-Logout', 'AuthentificationController@LogOut')->name('Auth-LogOut');
 
 //les rousources des methodes generer
 // les routes des methode generer du controlleur create edit delete

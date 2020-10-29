@@ -2,48 +2,42 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Locataire;
 use App\Models\Syndic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class AuthentificationController extends Controller
 {
-    public function VerifyCredentials(Request $request)
+    function loginView()
     {
-        //uniquement pour syndic
+        return view('login');
+    }
+
+
+    public function loginSecurity(Request $request)
+    {
         $email = $request->emailInput;
         $password = $request->passwordInput;
-        $user = Syndic::where("email", $email)->first();
-        return isset($user) ? (Hash::check($password, $user->password) ? session()->put('userObject', $user)  :  'non auth') : 'non auth';
+        if (Hash::check($password, (Syndic::where("email", $email)->first() != null) ? Syndic::where("email", $email)->first()->password : '')) {
+            session()->put('userObject', Syndic::where("email", $email)->first());
+            return redirect("/");
+        } elseif (Hash::check($password, (Locataire::where("email", $email)->first() != null) ? Locataire::where("email", $email)->first()->password : '')) {
+            session()->put('userObject', Syndic::where("email", $email)->first());
+            return redirect("/");
+        } else
+            return redirect("/Auth-Login");
     }
 
-    public static function ManualVerifyCredentials($username, $mdp)
+    public static function registerSecurity($username, $mdp)
     {
-        $user = collect(DB::select("select * from personne where personne.username = '$username' and  personne.mot_de_passe = '$mdp'"))
-            ->first();
-        if (isset($user) == true) {
-            session()->put('userObject', $user);
-            return true;
-        }
-        return false;
+        echo "à realiser : ajout des locataires";
+        //hash make aprés confirmation du password dans l'interface d'ajout
     }
 
-    public function AuthentificatedGoingToPage(Request $request)
+    public static function getCurrentUser()
     {
-        $this->VerifyCredentials($request);
-        // if (AuthController::IsAuthentificated())
-        //     if ($page != " ")
-        //         return \redirect($page);
-        //     else
-        //         return \redirect("/");
-        // else
-        //     return \redirect("/");
-
-        // if ($page == "home")
-        //     return \redirect("/");
-        // else
-        //     return \redirect($page);
-        return redirect(url()->previous());
+        return session()->get('userObject');
     }
 
     public static function IsAuthentificated()
@@ -51,10 +45,10 @@ class AuthentificationController extends Controller
         return session()->has('userObject');
     }
 
-    public function LogOut()
+    public static function LogOut()
     {
         \Auth::logout();
         \Session::flush();
-        return \redirect("/");
+        return redirect("/Auth-Login");
     }
 }
