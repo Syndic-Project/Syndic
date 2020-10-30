@@ -3,9 +3,10 @@
 @section('style')
 <link href="{{ asset('assets/css/addlocataire.css') }}" rel="stylesheet" type="text/css" />
 <style>
-    label{
-    font-size: 13px;
+    label {
+        font-size: 13px;
     }
+
 </style>
 @endsection
 
@@ -29,14 +30,14 @@
                     </div>
                     <hr>
                     @if(Session::has('message'))
-                        <div class="alert {{ Session::get('alert-class') }}">
-                            @if (Session::get('alert-class') == 'alert-success')
-                                <i class="fas fa-check-double"></i>
-                            @else
-                                <i class="fas fa-exclamation-circle"></i>
-                            @endif
-                            {{ Session::get('message') }}
-                        </div>
+                    <div class="alert {{ Session::get('alert-class') }}">
+                        @if (Session::get('alert-class') == 'alert-success')
+                        <i class="fas fa-check-double"></i>
+                        @else
+                        <i class="fas fa-exclamation-circle"></i>
+                        @endif
+                        {{ Session::get('message') }}
+                    </div>
                     @endif
                     <table id="locataires-datatable" class="table table-striped table-hover nowrap">
                         <thead>
@@ -54,7 +55,8 @@
                             @foreach ($locataires as $locataire)
                             <tr>
                                 <td class="text-center">
-                                    <a href="#modalModifLocataire{{$locataire->id}}" data-toggle="modal" data-target="#modalModifLocataire{{$locataire->id}}">
+                                    <a href="#modalModifLocataire{{$locataire->id}}" data-toggle="modal"
+                                        data-target="#modalModifLocataire{{$locataire->id}}">
                                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24"
                                             data-toggle="tooltip" data-placement="top" title="Modifier"
                                             viewBox="0 0 172 172" style=" fill:#000000;">
@@ -73,7 +75,8 @@
                                         </svg>
                                     </a>
                                     |
-                                    <a href="#modalSupprLocataire{{$locataire->id}}" data-toggle="modal" data-target="#modalSupprLocataire{{$locataire->id}}">
+                                    <a href="#modalSupprLocataire{{$locataire->id}}" data-toggle="modal"
+                                        data-target="#modalSupprLocataire{{$locataire->id}}">
                                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24"
                                             data-toggle="tooltip" data-placement="top" title="Supprimer"
                                             viewBox="0 0 172 172" style=" fill:#000000;">
@@ -151,6 +154,9 @@
         }
     });
 
+</script>
+<script>
+    $('#autocomplete').selectize();
 </script>
 @endsection
 
