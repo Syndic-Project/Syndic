@@ -42,33 +42,38 @@
                                         </thead>
                                         <tbody>
                                         {{-- @foreach ($locataires as $locataire) --}}
-                                        @foreach($securite as $secu)
+
+                                        @foreach($securite_bloc as $sec)
 
                                             <tr>
 
-                                                <td class="text-center">{{$secu->id}}</td>
-                                                <td class="text-center">{{$secu->nometprenom}}</td>
-                                                <td class="text-center">{{$secu->email}}</td>
-                                                <td class="text-center">Bloc 1</td>
+                                                <td class="text-center">{{$sec->id}}</td>
+                                                <td class="text-center">{{$sec->nometprenom}}</td>
+                                                <td class="text-center">{{$sec->email}}</td>
+                                                <td class="text-center">{{$sec->nom_bloc}}</td>
                                                 <td class="text-center">
+                                                    <form class="needs-validation" novalidate method="POST"
+                                                          action="{{ route('Securite.destroy',['Securite'=>$sec->id])}}">
+                                                        @method('DELETE')
+                                                        @csrf
                                                     <div class="btn-group" role="group">
                                                         <a href=""
                                                            class="btn btn-info btn-xs"><i class="fa fa-eye"></i> détails</a>&nbsp;
-                                                        <a href="{{route('Securite.edit',['securite'=>$secu->id])}}"
-                                                           class="btn btn-success btn-xs editajax"
-                                                           data-toggle="modal"
-                                                           data-target="#modalEditSecurite">
-                                                            <i class="fas fa-user-edit"></i></i> modifier</a>
+                                                        <a href="{{route('Securite.edit',['Securite'=>$sec->id])}}"
+                                                           class="btn btn-success btn-xs editajax">
+{{--                                                           data-toggle="modal"--}}
+{{--                                                           data-target="#modalEditSecurite{{$sec->id}}">--}}
+                                                            <i class="fas fa-user-edit"></i>modifier</a>
                                                     </div>
-                                                    &nbsp;<a href="#" id="1715" class="btn btn-danger btn-xs supprimer"><i
-                                                            class="fa fa-times-circle"></i></a>
+
+                                                        <button class="delete btn btn-danger btn-sm" type="submit">  <i class="fa fa-times-circle"></i>Delete</button>
+
+                                                    </form>
                                                 </td>
 
                                             </tr>
-                                        @endforeach
 
-
-                                        {{-- @endforeach --}}
+                                         @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -142,76 +147,76 @@
                     </div>
                 </div>
 
-
                 {{--///////////////////////////////Model for edit /////////////////////////////////////:--}}
-                <div id="modalEditSecurite" class="modal fade" tabindex="-1" role="dialog"
-                     aria-labelledby="modalEditSecuriteLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalEditSecuriteLabel">Edit Securite</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form class="needs-validation" novalidate method="POST"
-                                      action="{{route('Securite.update',['securite'=>$securite->id])}}">
-                                    @method('PUT')
-                                    @csrf
-                                    <div class="container">
-                                        <br/>
-                                        <div class="row justify-content-start">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="name">Nom et Prenom</label>
-                                                    <input type="text" class="form-control" id="name" name="nom"
-                                                           value="{{$securite->nometprenom}}"/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="email">Email</label>
-                                                    <input type="email" class="form-control" id="email" name="email"
-                                                           value="{{$securite->email}}"/>
-                                                </div>
-                                            </div>
+{{--                <div id="modalEditSecurite{{$secur->id}}" class="modal fade" tabindex="-1" role="dialog"--}}
+{{--                     aria-labelledby="modalEditSecuriteLabel"--}}
+{{--                     aria-hidden="true">--}}
+{{--                    <div class="modal-dialog">--}}
+{{--                        <div class="modal-content">--}}
+{{--                            <div class="modal-header">--}}
+{{--                                <h5 class="modal-title" id="modalEditSecuriteLabel">Edit Securite</h5>--}}
+{{--                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+{{--                                    <span aria-hidden="true">&times;</span>--}}
+{{--                                </button>--}}
+{{--                            </div>--}}
+{{--                            <div class="modal-body">--}}
+{{--                                <form class="needs-validation" novalidate method="POST"--}}
+{{--                                      action="{{route('Securite.update',['Securite'=>$securite->id])}}">--}}
+{{--                                    @method('PUT')--}}
+{{--                                    @csrf--}}
+{{--                                    <div class="container">--}}
+{{--                                        <br/>--}}
+{{--                                        <div class="row justify-content-start">--}}
+{{--                                            <div class="col-md-6">--}}
+{{--                                                <div class="form-group">--}}
+{{--                                                    <label for="name">Nom et Prenom</label>--}}
+{{--                                                    <input type="text" class="form-control" id="name" name="nom"--}}
+{{--                                                           value="{{$securite->nometprenom}}"/>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="form-group">--}}
+{{--                                                    <label for="email">Email</label>--}}
+{{--                                                    <input type="email" class="form-control" id="email" name="email"--}}
+{{--                                                           value="{{$securite->email}}"/>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
 
-                                            <div class="col-md-6">
+{{--                                            <div class="col-md-6">--}}
 
-                                                <div class="form-group">
-                                                    <label for="bloc">Bloc</label>
-                                                    <select name="bloc" id="" class="form-control">
-                                                        @foreach($blocs as $bloc)
-                                                            <option value="">
-                                                                {{$bloc->nom_bloc}}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
+{{--                                                <div class="form-group">--}}
+{{--                                                    <label for="bloc">Bloc</label>--}}
+{{--                                                    <select name="bloc" id="" class="form-control">--}}
+{{--                                                        @foreach($blocs as $bloc)--}}
+{{--                                                            <option value="">--}}
+{{--                                                                {{$bloc->nom_bloc}}--}}
+{{--                                                            </option>--}}
+{{--                                                        @endforeach--}}
+{{--                                                    </select>--}}
 
-                                                <div class="form-group">
-                                                    <label for="pass">Mot de Passe</label>
-                                                    <input type="password" class="form-control" id="pass" name="mdp"
-                                                           value="{{$securite->password}}"/>
-                                                </div>
+{{--                                                    <div class="form-group">--}}
+{{--                                                        <label for="pass">Mot de Passe</label>--}}
+{{--                                                        <input type="password" class="form-control" id="pass" name="mdp"--}}
+{{--                                                               value="{{$securite->password}}"/>--}}
+{{--                                                    </div>--}}
 
-                                            </div>
-
-
-                                            </div>
+{{--                                                </div>--}}
 
 
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
-                                        <button type="submit" class="btn btn-primary">Enregistrer</button>
-                                    </div>
-                                </form>
-                            </div>
+{{--                                            </div>--}}
 
-                        </div>
-                    </div>
-                </div>
+
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="modal-footer">--}}
+{{--                                        <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>--}}
+{{--                                        <button type="submit" class="btn btn-primary">Enregistrer</button>--}}
+{{--                                    </div>--}}
+{{--                                </form>--}}
+{{--                            </div>--}}
+
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+
 
 
                 @endsection

@@ -8,6 +8,7 @@ use App\Models\Syndic;
 use App\Models\Ville;
 use Illuminate\Http\Request;
 use DataTables;
+use Illuminate\Support\Facades\DB;
 
 class ResidenceController extends Controller
 {
@@ -19,7 +20,10 @@ class ResidenceController extends Controller
     public function index(Request $request)
     {
 
-
+        $residence_bloc_ville = DB::table('residences')
+            ->join('blocs', 'blocs.id_residence', '=', 'residences.id')
+            ->join('villes', 'residences.id_ville', '=', 'villes.id')
+            ->get(['residences.*','villes.nom_ville','blocs.nom_bloc']);
 
 
 
@@ -27,6 +31,7 @@ class ResidenceController extends Controller
 
 
         return view('Residences/residence', [
+            'residence'=>$residence_bloc_ville,
             'villes' => Ville::all(),
             'syndics' => $syndics,
 
