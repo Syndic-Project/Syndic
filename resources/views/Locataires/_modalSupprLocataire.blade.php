@@ -14,14 +14,11 @@
                         <br />
                         <div class="row justify-content-start">
                             <span class="col-12">
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <div class="alert alert-danger fade show" role="alert">
                                     <i class="fas fa-exclamation-triangle"></i>
                                     Voulez vous vraiment supprimer ce locataire : <strong
                                         style="text-decoration: underline">{{ $locataire->nom . ' ' . $locataire->prenom }}</strong>
                                     (ses paiements de cotisations seront bel et bien contabilisée malgré sa supression...).
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
                                 </div>
                             </span>
                         </div>

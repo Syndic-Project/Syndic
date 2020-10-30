@@ -31,7 +31,7 @@
                                         <div class="input-group-text">CIN</div>
                                     </div>
                                     <input type="text" class="form-control" id="cinLocataire" name="cinLocataire"
-                                        value="F121212" placeholder="F0000">
+                                        placeholder="F0000">
                                 </div>
                             </div>
                             <div class="col-6">
