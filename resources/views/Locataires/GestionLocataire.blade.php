@@ -28,6 +28,16 @@
                         </div>
                     </div>
                     <hr>
+                    @if(Session::has('message'))
+                        <div class="alert {{ Session::get('alert-class') }}">
+                            @if (Session::get('alert-class') == 'alert-success')
+                                <i class="fas fa-check-double"></i>
+                            @else
+                                <i class="fas fa-exclamation-circle"></i>
+                            @endif
+                            {{ Session::get('message') }}
+                        </div>
+                    @endif
                     <table id="locataires-datatable" class="table table-striped table-hover nowrap">
                         <thead>
                             <tr>

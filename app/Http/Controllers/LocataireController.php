@@ -8,6 +8,7 @@ use App\Models\Locataire;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class LocataireController extends Controller
 {
@@ -99,16 +100,6 @@ class LocataireController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
@@ -117,7 +108,26 @@ class LocataireController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $locataire = Locataire::find($id)->first();
+
+        if ($locataire
+            ->update([
+                "nom" => $request->nomModif,
+                "prenom" => $request->prenomModif,
+                "CIN" => $request->cinModif,
+                "email" => $request->emailModif,
+                "Tel" => $request->telModif,
+                "password" => $request->mdpModif ?? Hash::make($locataire->password),
+            ])
+        ) {
+            Session::flash('message', "Les données de - Mr/Mme $locataire->nom $locataire->prenom -  ont été mise à jour avec succées");
+            Session::flash('alert-class', 'alert-success');
+        } else {
+            Session::flash('message', "Erreur lors de la mise à jour des données de - Mr/Mme $locataire->nom $locataire->prenom -");
+            Session::flash('alert-class', 'alert-danger');
+        }
+
+        return redirect(url()->previous());
     }
 
     /**

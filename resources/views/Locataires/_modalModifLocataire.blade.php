@@ -9,64 +9,66 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form class="needs-validation" action="{{route('Locataire.edit',[$locataire]) }}" method="post">
+                <form method="POST" action="{{route('Locataire.update',$locataire->id) }}" >
                     <div class="modal-body">
                         @csrf
+                        @method('PUT')
                         <div class="container">
                             <br />
                             <div class="row justify-content-start">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="name">Nom</label>
-                                        <input type="text" class="form-control" id="name" name="nom" value="{{$locataire->nom}}"/>
+                                        <label for="nomModif">Nom</label>
+                                        <input type="text" required class="form-control" id="nomModif" name="nomModif" value="{{$locataire->nom}}"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="first_name">Prénom</label>
-                                        <input type="text" class="form-control" id="first_name" name="prenom" value="{{$locataire->prenom}}" />
+                                        <label for="prenomModif">Prénom</label>
+                                        <input type="text" required class="form-control" id="prenomModif" name="prenomModif" value="{{$locataire->prenom}}" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="cin">CIN</label>
-                                        <input type="text" class="form-control" id="cin" name="cin" value="{{$locataire->CIN}}" >
+                                        <label for="cinModif">CIN</label>
+                                        <input type="text" required class="form-control" id="cinModif" name="cinModif" value="{{$locataire->CIN}}" >
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" class="form-control" id="email" name="email"  value="{{$locataire->email}}" />
+                                        <label for="emailModif">Email</label>
+                                        <input type="email" required class="form-control" id="emailModif" name="emailModif"  value="{{$locataire->email}}" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="phone">Téléphone</label>
-                                        <input type="text" class="form-control" id="phone" name="tel" value="{{$locataire->Tel}}"  />
+                                        <label for="telModif">Téléphone</label>
+                                        <input type="text" required class="form-control" id="telModif" name="telModif" value="{{$locataire->Tel}}"  />
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="pass">Mot de Passe</label>
-                                        <input style="font-style: oblique;" type="text" class="form-control" id="pass"
-                                            name="mdp" value="************" />
+                                        <label for="mdpModif">Mot de Passe</label>
+                                        <input style="font-style: oblique;" type="text" class="form-control" id="mdpModif"
+                                            name="mdpModif" value="************" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="passConfirm">Confirmez le Mot de Passe</label>
+                                        <label for="mdpConfirmModif">Confirmez le Mot de Passe</label>
                                         <input style="font-style: oblique;" type="text" class="form-control"
-                                            id="passConfirm" name="mdpConfirm"  value="************"/>
+                                            id="mdpConfirmModif" name="mdpConfirmModif"  value="************"/>
                                     </div>
                                 </div>
 
                                 <div class="container">
                                     <div class="row">
+
                                         <div class="col-md-6">
                                             <p class="mb-1 font-weight-bold text-muted">Les locaux affectés</p>
                                             <div class="form-group">
-                                                <select id="liste1" class="form-control" name="non_affecter[]" multiple="">
+                                                <select id="liste1Modif" class="form-control" name="non_affecter[]" multiple="">
                                                     @foreach($appartements as $app )
                                                     <option class="items" value="{{$app->id}}">{{$app->nom}}</option>
                                                     @endforeach
@@ -78,12 +80,13 @@
                                                 <p class="mb-1 font-weight-bold text-muted mt-3 mt-md-0">Les locaux
                                                     affectés</p>
                                                 <div class="form-group">
-                                                    <select id="liste2" class="form-control" name="Affecter[]" multiple="">
+                                                    <select id="liste2Modif" class="form-control" name="Affecter[]" multiple="">
                                                         <option class="items" value=""></option>
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
+                                        
                                     </div>
                                 </div>
                             </div>
