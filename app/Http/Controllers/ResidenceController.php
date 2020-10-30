@@ -19,6 +19,12 @@ class ResidenceController extends Controller
      */
     public function index(Request $request)
     {
+        $residence_id = DB::table('residences')
+            ->join('blocs', 'blocs.id_residence', '=', 'residences.id')
+            ->join('villes', 'residences.id_ville', '=', 'villes.id')
+            ->where('residences.id' ,'=' ,1)
+            ->get(['residences.*', 'villes.id', 'villes.nom_ville', 'blocs.nom_bloc']);
+
 
         $residence_bloc_ville = DB::table('residences')
             ->join('blocs', 'blocs.id_residence', '=', 'residences.id')
@@ -33,6 +39,12 @@ class ResidenceController extends Controller
             'residence' => $residence_bloc_ville,
             'villes' => Ville::all(),
             'syndics' => $syndics,
+
+        ]);
+
+        return view('Residences/_modalModifResidence', [
+            'residence' => $residence_id,
+
 
         ]);
 
@@ -125,6 +137,7 @@ class ResidenceController extends Controller
     public
     function update(Request $request, $id)
     {
+
         $residence = Residence::find($id)->first();
         $bloc = Bloc::find($id)->first();
 

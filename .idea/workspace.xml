@@ -2,13 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7127ffd3-2783-4e0a-b602-f3196766c79f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/Residences/_modalModifResidence.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LocateurController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LocateurController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ResidenceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ResidenceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Layouts/appLayout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Layouts/appLayout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Locataires/_modalModifLocataire.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Locataires/_modalModifLocataire.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Residences/getresidence.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Appartement.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Appartement.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/confirm_logment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Confirm_logment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Client/AddLocateur.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Client/AddLocateur.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Residences/_modalModifResidence.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Residences/_modalModifResidence.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Residences/residence.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Residences/residence.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/qrCode.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/qrCode.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -198,7 +200,7 @@
       <workItem from="1603246607480" duration="19253000" />
       <workItem from="1603364708234" duration="27927000" />
       <workItem from="1603464651900" duration="1231000" />
-      <workItem from="1603476798836" duration="61043000" />
+      <workItem from="1603476798836" duration="67815000" />
     </task>
     <servers />
   </component>
@@ -221,10 +223,10 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="371" y="100" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.689@0.0.1280.689" timestamp="1604072627850" />
-    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1602872978297">
+    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1604080380756">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1280.689@0.0.1280.689" timestamp="1602872978297" />
+    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1280.689@0.0.1280.689" timestamp="1604080380756" />
     <state width="845" height="166" key="GridCell.Tab.0.bottom" timestamp="1603304859079">
       <screen x="0" y="0" width="1280" height="689" />
     </state>

@@ -9,11 +9,11 @@
 @section('content')
     <div class="content-page">
         <div class="visible-print text-center">
-            <h1>Laravel 6 - QR Code Generator Example</h1>
+
 
             {!! QrCode::size(250)->generate('zebi'); !!}
 
-            <p>example by ItSolutionStuf.com.</p>
+
         </div>
     </div>
 
