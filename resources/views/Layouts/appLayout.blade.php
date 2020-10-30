@@ -343,7 +343,7 @@
 
                     <li>
                         <a href="/syndic/Appartements">
-                            <i class="fa fa-sitemap fa-lg fa-fw"></i>
+                            <i class="fa fa-sitemap"></i>
                             <span>Appartement </span>
                             {{-- <span class="menu-arrow"></span> --}}
                         </a>
@@ -351,7 +351,7 @@
 
                         <li>
                             <a href="/syndic/Locataire">
-                                <i data-feather="box"></i>
+                                <i class="fa fa-users fa-fw"></i>
                                 <span> Ajouter un Locataire </span>
                                 {{-- <span class="menu-arrow"></span> --}}
                             </a>
@@ -360,7 +360,8 @@
 
                         <li>
                             <a href="/syndic/Caisse">
-                                <i data-feather="layout"></i>
+                                <i data-feather="dollar-sign"></i>
+
                                 <span> Ajouter une Caisse </span>
 
                             </a>
@@ -369,7 +370,7 @@
 
                         <li>
                             <a href="/syndic/Facture">
-                                <i data-feather="layout"></i>
+                                <i class="fas fa-file-invoice-dollar"></i>
                                 <span> Ajouter une Facture </span>
                                 <span class="menu-arrow"></span>
                             </a>

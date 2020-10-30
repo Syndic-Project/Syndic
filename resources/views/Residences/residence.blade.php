@@ -30,16 +30,17 @@
                             <div class="col-md-12">
 
                                 <div class="mybox" id="box_appartliste">
-                                    <table id="residence-datatable" class="table table-hover table-condensed">
+                                    <table id="residence-datatable" class="table table-hover table-condensed ">
                                         <thead>
                                         <tr>
 
                                             <th class="text-center">ID</th>
                                             <th class="text-center">Nom de Residencce</th>
                                             <th class="text-center">Ville</th>
-                                            <th class="text-center">Adresse</th>
+
                                             <th class="text-center">Nom du bloc</th>
                                             <th class="text-center">Action</th>
+                                            <th class="text-center">Adresse</th>
 
                                         </tr>
                                         </thead>
@@ -53,7 +54,7 @@
                                                 <td class="text-center">{{$res->id}}</td>
                                                 <td class="text-center">{{$res->nom_residence}}</td>
                                                 <td class="text-center">{{$res->nom_ville}}</td>
-                                                <td class="text-center">{{$res->adresse}}</td>
+
                                                 <td class="text-center">{{$res->nom_bloc}}</td>
                                                 <td class="text-center">
                                                     <form class="needs-validation" novalidate method="POST">
@@ -61,19 +62,21 @@
                                                         @method('DELETE')
                                                         @csrf
                                                         <div class="btn-group" role="group">
-                                                            <a href=""
+                                                            <a href="#"
                                                                class="btn btn-info btn-xs"><i class="fa fa-eye"></i> détails</a>&nbsp;
 {{--                                                            {{route('residence.edit',['residence'=>$res->id])}}"--}}
-                                                            <a href=""   class="btn btn-success btn-xs editajax">
-                                                                {{--                                                           data-toggle="modal"--}}
-                                                                {{--                                                           data-target="#modalEditSecurite{{$sec->id}}">--}}
+                                                            <a href="#modalModifResidence{{$res->id}}" data-toggle="modal"
+                                                               data-target="#modalModifResidence{{$res->id}}"  class="btn btn-success btn-xs ">
+
                                                                 <i class="fas fa-user-edit"></i>modifier</a>
                                                         </div>
 
                                                         <button class="delete btn btn-danger btn-sm" type="submit">  <i class="fa fa-times-circle"></i>Delete</button>
-
                                                     </form>
+
                                                 </td>
+                                                <td class="text-center">{{$res->adresse}}</td>
+
 
                                             </tr>
 
@@ -113,7 +116,7 @@
                                                         <label for="ville">VILLE ou se trouve cet immeuble</label>
 
                                                         <select name="ville" id="ville" class="form-control input-lg">
-                                                            <option value="">la ville où se trouve l'immeuble</option>
+                                                            <option value="">la ville où se trouve La Résidence</option>
 
                                                             @foreach ($villes as $ville )
                                                                 <option value="{{$ville->id}}">{{$ville->nom_ville}}</option>
@@ -263,6 +266,7 @@
                     <script src="{{ url('assets/libs/parsleyjs/parsley.min.js') }}"></script>
                     <script>
                         $("#residence-datatable").DataTable({
+                            responsive: true,
                             lengthMenu: [
                                 [10, 25, 50, -1],
                                 ['10 lignes', '25 lignes', '50 lignes', 'afficher tous']
