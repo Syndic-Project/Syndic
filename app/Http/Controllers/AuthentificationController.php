@@ -27,19 +27,10 @@ class AuthentificationController extends Controller
             session()->put('userObject', Syndic::where("email", $email)->first());
             return redirect("/");
         } elseif (Hash::check($password, (Locataire::where("email", $email)->first() != null) ? Locataire::where("email", $email)->first()->password : '')) {
-            session()->put('userObject', Syndic::where("email", $email)->first());
+            session()->put('userObject', Locataire::where("email", $email)->first());
             return redirect("/");
         } else
             return redirect("/Auth-Login");
-    }
-
-    public static function registerLocataireSecurity($username, $mdp)
-    {
-        
-        echo "à realiser : ajout des locataires";
-        
-        //hash make aprés confirmation du password dans l'interface d'ajout
-        // return true;
     }
 
     public static function getCurrentUser()

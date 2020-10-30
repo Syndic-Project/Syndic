@@ -7,6 +7,8 @@ use App\Models\Caisse;
 use App\Models\Locataire;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class LocataireController extends Controller
 {
@@ -45,7 +47,7 @@ class LocataireController extends Controller
      */
     public function index()
     {
-        return view('Locataires/AddLocataire')
+        return view('Locataires/GestionLocataire')
             ->with("appartements", Appartement::all())
             ->with("locataires", Locataire::all());
     }
@@ -57,7 +59,6 @@ class LocataireController extends Controller
      */
     public function create()
     {
-        
     }
 
     /**
@@ -69,23 +70,22 @@ class LocataireController extends Controller
     public function store(Request $request)
     {
         $locataire = new Locataire();
-        $locataire->nom = $request->input('nom');
-        $locataire->prenom = $request->input('prenom');
-        $locataire->CIN = $request->input('cin');
-        $locataire->email = $request->input('email');
-        $locataire->password = $request->input('mdp');
-        $locataire->Tel = $request->input('tel');
+        $locataire->nom = $request->nom;
+        $locataire->prenom = $request->prenom;
+        $locataire->Tel = $request->tel;
+        $locataire->CIN = $request->cin;
+        $locataire->email = $request->email;
+        $locataire->password = Hash::make($request->mdp);
         $locataire->save();
-        
 
-        foreach ($request->Affecter as $appartement_id) {
-            $caisse = new Caisse();
-            $caisse->id_Appartement = $appartement_id;
-            $caisse->id_Locataire = $locataire->id;
-            $caisse->save();
-        }
-
-        dd("ok");
+        // todo : affectation des appartement ..
+        // foreach ($request->Affecter as $appartement_id) {
+        //     $caisse = new Caisse();
+        //     $caisse->id_Appartement = $appartement_id;
+        //     $caisse->id_Locataire = $locataire->id;
+        //     $caisse->save();
+        // }
+        return redirect(url()->previous());
     }
 
     /**
@@ -100,18 +100,6 @@ class LocataireController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-
-
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
@@ -120,17 +108,39 @@ class LocataireController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $locataire = Locataire::find($id)->first();
+
+        if ($locataire
+            ->update([
+                "nom" => $request->nomModif,
+                "prenom" => $request->prenomModif,
+                "CIN" => $request->cinModif,
+                "email" => $request->emailModif,
+                "Tel" => $request->telModif,
+                "password" => $request->mdpModif ?? Hash::make($locataire->password),
+            ])
+        ) {
+            Session::flash('message', "Les données de - Mr/Mme $locataire->nom $locataire->prenom -  ont été mise à jour avec succées");
+            Session::flash('alert-class', 'alert-success');
+        } else {
+            Session::flash('message', "Erreur lors de la mise à jour des données de - Mr/Mme $locataire->nom $locataire->prenom -");
+            Session::flash('alert-class', 'alert-danger');
+        }
+
+        return redirect(url()->previous());
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param int $locataire_id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($locataire_id)
     {
-        //
+        Caisse::where('id_Locataire', '=', $locataire_id)
+            ->update(['id_Locataire' => NULL]);
+        Locataire::find($locataire_id)->delete();
+        return redirect(url()->previous());
     }
 }
