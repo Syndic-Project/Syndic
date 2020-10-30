@@ -66,17 +66,25 @@
                                     <div class="row">
 
                                         <div class="col-md-6">
-                                            <p class="mb-1 font-weight-bold text-muted">Les locaux affectés</p>
+                                            <select name="" id="autocomplete" class="autocomplete form-control form-control-sm">
+                                                <option value="">test1</option>
+                                                <option value="">test2</option>
+                                                <option value="">test3</option>
+                                                <option value="">test4</option>
+                                                <option value="">test5</option>
+                                            </select>
+
+                                            {{-- <p class="mb-1 font-weight-bold text-muted">Les locaux affectés</p>
                                             <div class="form-group">
                                                 <select id="liste1Modif" class="form-control" name="non_affecter[]" multiple="">
                                                     @foreach($appartements as $app )
                                                     <option class="items" value="{{$app->id}}">{{$app->nom}}</option>
                                                     @endforeach
                                                 </select>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <div class="col-md-6" id="selected">
-                                            <div class="form-group">
+                                            {{-- <div class="form-group">
                                                 <p class="mb-1 font-weight-bold text-muted mt-3 mt-md-0">Les locaux
                                                     affectés</p>
                                                 <div class="form-group">
@@ -84,7 +92,7 @@
                                                         <option class="items" value=""></option>
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         
                                     </div>
