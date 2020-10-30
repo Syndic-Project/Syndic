@@ -2,6 +2,7 @@
 
 @section('style')
 <link href="{{ asset('assets/css/addlocataire.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/css/autocomplete.css') }}" rel="stylesheet" type="text/css" />
 <style>
     label {
         font-size: 13px;
@@ -118,14 +119,31 @@
 @include('Locataires._modalAjoutLocataire')
 @include('Locataires._modalSupprLocataire')
 @include('Locataires._modalModifLocataire')
-
+<span class="d-none" id="arrayAppartements">
+    {{-- @foreach($appartements as $appartement ) --}}
+    {{-- <i data-value="{{$app->id}}">{{$app->nom}}</i> --}}
+    {{-- @endforeach --}}
+    <i data-value="12">B05-i01-a18</i>
+    <i data-value="12">B05-i01-a19</i>
+    <i data-value="12">B05-i01-a20</i>
+    <i data-value="12">B05-i01-a21</i>
+    <i data-value="12">B05-i01-a22</i>
+    <i data-value="12">B05-i01-a23</i>
+    <i data-value="12">B05-i01-a24</i>
+    <i data-value="12">B05-i01-a25</i>
+</span>
 
 @endsection
 
 @section('script')
 <script src="{{ url('assets/js/addlocataire.js') }}"></script>
+<script src="{{ url('assets/js/pages/autocomplete.js') }}"></script>
 <script src="{{ url('assets/libs/parsleyjs/parsley.min.js') }}"></script>
 <script>
+    let appartements = [];
+    Array.from($("#arrayAppartements").children()).forEach(element => {
+        appartements.push(element.innerText);
+    });
     $("#locataires-datatable").DataTable({
         lengthMenu: [
             [10, 25, 50, -1],
@@ -155,9 +173,17 @@
     });
 
 </script>
+@foreach ($locataires as $locataire)
 <script>
-    $('#autocomplete').selectize();
+    autocomplete(
+        document.getElementById("badgeContainerModif{{$locataire->id}}"),
+        document.getElementById("appartementsAutocompleteModif{{$locataire->id}}"),
+        appartements
+    );
+
 </script>
+@endforeach
+
 @endsection
 
 @section('script-bottom')
