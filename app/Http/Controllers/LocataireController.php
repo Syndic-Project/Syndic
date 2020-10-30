@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Appartement;
 use App\Models\Caisse;
 use App\Models\Locataire;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -48,17 +49,8 @@ class LocataireController extends Controller
     public function index()
     {
         return view('Locataires/GestionLocataire')
-            ->with("appartements", Appartement::all())
+            ->with("appartements", Appartement::doesntHave('caisses')->get())
             ->with("locataires", Locataire::all());
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
     }
 
     /**
@@ -78,25 +70,17 @@ class LocataireController extends Controller
         $locataire->password = Hash::make($request->mdp);
         $locataire->save();
 
-        // todo : affectation des appartement ..
-        // foreach ($request->Affecter as $appartement_id) {
-        //     $caisse = new Caisse();
-        //     $caisse->id_Appartement = $appartement_id;
-        //     $caisse->id_Locataire = $locataire->id;
-        //     $caisse->save();
-        // }
-        return redirect(url()->previous());
-    }
+        foreach ($request->appartements as $appartement_nom) {
+            $appartement = Appartement::where("nom", $appartement_nom)->first();
+            $caisse = new Caisse();
+            $caisse->id_Appartement = $appartement->id;
+            $caisse->id_Locataire = $locataire->id;
+            $caisse->montant = $appartement->immeuble->Montant_Cotisation_Mensuelle;
+            $caisse->mois_concerne = Carbon::now()->addMonths(1);
+            $caisse->save();
+        }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return redirect(url()->previous());
     }
 
     /**
@@ -117,7 +101,7 @@ class LocataireController extends Controller
                 "CIN" => $request->cinModif,
                 "email" => $request->emailModif,
                 "Tel" => $request->telModif,
-                "password" => $request->mdpModif ?? Hash::make($locataire->password),
+                "password" => $request->mdpModif == "************" ? Hash::make($locataire->password) : Hash::make($locataire->mdpModif),
             ])
         ) {
             Session::flash('message', "Les données de - Mr/Mme $locataire->nom $locataire->prenom -  ont été mise à jour avec succées");

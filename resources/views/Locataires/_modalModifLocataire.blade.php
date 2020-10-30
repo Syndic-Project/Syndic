@@ -4,7 +4,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalModifLocataire{{$locataire->id}}">Nouveau Locataire</h5>
+                <h5 class="modal-title" id="modalModifLocataire{{$locataire->id}}">Modifier Locataire</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -67,27 +67,6 @@
                                 </div>
                             </div>
 
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="d-flex justify-content-center">
-                                            <div class="autocomplete">
-                                                <div class="form-group">
-                                                    <label for="appartementsAutocompleteModif{{$locataire->id}}">Appartement (s)</label>
-                                                    <input id="appartementsAutocompleteModif{{$locataire->id}}" type="text"
-                                                        placeholder="B05-i01-a18"
-                                                        class="form-control form-control-sm" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 mt-2" id="badgeContainerModif{{$locataire->id}}" >
-
-
-                                    </div>
-
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

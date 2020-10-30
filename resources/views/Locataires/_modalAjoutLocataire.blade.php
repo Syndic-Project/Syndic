@@ -8,7 +8,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="needs-validation" action="{{route('Locataire.store') }}" method="post">
+            <form action="{{route('Locataire.store') }}" method="post">
             <div class="modal-body">
                     @csrf
                     <div class="container">
@@ -17,69 +17,64 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="name">Nom</label>
-                                    <input type="text" class="form-control" id="name" name="nom" />
+                                    <input type="text" required class="form-control" id="name" name="nom" />
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="first_name">Prénom</label>
-                                    <input type="text" class="form-control" id="first_name" name="prenom" />
+                                    <input type="text" required class="form-control" id="first_name" name="prenom" />
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="cin">CIN</label>
-                                    <input type="text" class="form-control" id="cin" name="cin">
+                                    <input type="text" required class="form-control" id="cin" name="cin">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" />
+                                    <input type="email" class="form-control" id="email" name="email" required/>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="phone">Téléphone</label>
-                                    <input type="text" class="form-control" id="phone" name="tel" />
+                                    <input type="text" required class="form-control" id="phone" name="tel" />
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="pass">Mot de Passe</label>
-                                    <input style="font-style: oblique;" type="text" class="form-control" id="pass" name="mdp" />
+                                    <input style="font-style: oblique;" type="text" class="form-control" id="pass" name="mdp" required />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="passConfirm">Confirmez le Mot de Passe</label>
-                                    <input style="font-style: oblique;" type="text" class="form-control" id="passConfirm" name="mdpConfirm" />
+                                    <input style="font-style: oblique;" type="text" class="form-control" id="passConfirm" name="mdpConfirm" required />
                                 </div>
                             </div>
 
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <p class="mb-1 font-weight-bold text-muted">Les locaux affectés</p>
-                                        <div class="form-group">
-                                            <select id="liste1" class="form-control" name="non_affecter[]" multiple="">
-                                                @foreach($appartements as $app )
-                                                <option class="items" value="{{$app->id}}">{{$app->nom}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6" id="selected">
-                                        <div class="form-group">
-                                            <p class="mb-1 font-weight-bold text-muted mt-3 mt-md-0">Les locaux
-                                                affectés</p>
-                                            <div class="form-group">
-                                                <select id="liste2" class="form-control" name="Affecter[]" multiple="">
-                                                    <option class="items" value=""></option>
-                                                </select>
+                                    <div class="col-12">
+                                        <div class="d-flex justify-content-center">
+                                            <div class="autocomplete w-50">
+                                                <div class="form-group">
+                                                    <label for="appartementsAutocomplete">Appartement (s)</label>
+                                                    <input id="appartementsAutocomplete" type="text" autocomplete="off"
+                                                        placeholder="bloc01-Immeuble01-appart01"
+                                                        class="form-control form-control-sm" />
+                                                </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-md-12 mt-2" id="badgeContainer">
+
+
                                     </div>
                                 </div>
                             </div>

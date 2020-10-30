@@ -105,7 +105,7 @@
                                 </td>
                                 <td class="text-center">{{ $locataire->Tel }}</td>
                                 <td class="text-center">15 (static) </td>
-                                <td class="text-center">Bloc-5 (static)</td>
+                                <td class="text-center">{{$locataire->caisses->appartement->immeuble->bloc->nom_bloc}}</td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -120,17 +120,9 @@
 @include('Locataires._modalSupprLocataire')
 @include('Locataires._modalModifLocataire')
 <span class="d-none" id="arrayAppartements">
-    {{-- @foreach($appartements as $appartement ) --}}
-    {{-- <i data-value="{{$app->id}}">{{$app->nom}}</i> --}}
-    {{-- @endforeach --}}
-    <i data-value="12">B05-i01-a18</i>
-    <i data-value="12">B05-i01-a19</i>
-    <i data-value="12">B05-i01-a20</i>
-    <i data-value="12">B05-i01-a21</i>
-    <i data-value="12">B05-i01-a22</i>
-    <i data-value="12">B05-i01-a23</i>
-    <i data-value="12">B05-i01-a24</i>
-    <i data-value="12">B05-i01-a25</i>
+    @foreach($appartements as $appartement )
+    <i>{{$appartement->nom}}</i>
+    @endforeach
 </span>
 
 @endsection
@@ -173,16 +165,14 @@
     });
 
 </script>
-@foreach ($locataires as $locataire)
 <script>
     autocomplete(
-        document.getElementById("badgeContainerModif{{$locataire->id}}"),
-        document.getElementById("appartementsAutocompleteModif{{$locataire->id}}"),
+        document.getElementById("badgeContainer"),
+        document.getElementById("appartementsAutocomplete"),
         appartements
     );
 
 </script>
-@endforeach
 
 @endsection
 

@@ -31,8 +31,13 @@ function autocomplete(container, inp, arr) {
                 /*execute a function when someone clicks on the item value (DIV element):*/
                 b.addEventListener("click", function (e) {
                     /*insert the value for the autocomplete text field:*/
-                    inp.value = this.getElementsByTagName("input")[0].value;
-                    container.innerHTML += `<span class="badge badge-primary badge-pill" style="margin:5px;padding: 4px 25px;cursor: pointer;" onClick="this.remove()"><i class="fas fa-building"></i> ${this.getElementsByTagName("input")[0].value}</span>`;
+                    var selectedValue = this.getElementsByTagName("input")[0].value;
+                    inp.value = selectedValue;
+                    container.innerHTML += `
+                    <span class="badge badge-primary badge-pill" id="${selectedValue}" style="margin:5px;padding: 4px 25px;cursor: pointer;" onClick="document.getElementById('${selectedValue}').remove();document.getElementById('hidden${selectedValue}').remove()">
+                            <i class="fas fa-building"></i> ${selectedValue}</span>
+                    <input type="hidden" name="appartements[${selectedValue}]" id="hidden${selectedValue}" value="${selectedValue}">
+                    `;
                     /*close the list of autocompleted values,
                     (or any other open lists of autocompleted values:*/
                     closeAllLists();
