@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bloc;
 use App\Models\Securite;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class SecuriteController extends Controller
@@ -16,10 +17,14 @@ class SecuriteController extends Controller
      */
     public function index()
     {
+//        dd(Securite::has('bloc')->get());
+        $securite_bloc = DB::table('securites')
+            ->join('blocs', 'securites.id_bloc', '=', 'blocs.id')->get(['securites.*', 'blocs.nom_bloc']);
 
         return view('Securite/AddSecurite')
-            ->with('blocs', Bloc::all())
-        ->with('securite', Securite::all());
+            ->with('securite_bloc', $securite_bloc)
+            ->with('blocs', Bloc::all());
+
 
     }
 
@@ -49,8 +54,7 @@ class SecuriteController extends Controller
             $securite->email = $request->input('email');
             $securite->password = $request->input('mdp');
             $securite->save();
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             throw new \App\Exceptions\LogData($e);
         }
     }
@@ -75,11 +79,11 @@ class SecuriteController extends Controller
     public function edit($id)
     {
         $securite = Securite::findOrFail($id);
-        $bloc=Bloc::all();
+        $bloc = Bloc::all();
 
-        return view('Securite/AddSecurite', [
-            'securite'=> $securite,
-            "blocs"=>$bloc
+        return view('Securite/EditSecurite', [
+            'securite' => $securite,
+            "blocs" => $bloc
         ]);
     }
 
@@ -98,7 +102,7 @@ class SecuriteController extends Controller
         $securite->email = $request->input('email');
         $securite->password = $request->input('mdp');
         $securite->save();
-        return redirect('/syndic/Immeuble');
+        return redirect('/Securite/AddSecurite');
     }
 
     /**
@@ -109,6 +113,8 @@ class SecuriteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Securite::destroy($id);
+
+        return redirect('/Securite/AddSecurite');
     }
 }

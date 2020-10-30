@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7127ffd3-2783-4e0a-b602-f3196766c79f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Models/Securite.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Securite/scanner.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Securite/EditSecurite.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LocateurController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LocateurController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ResidenceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ResidenceController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SecuriteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SecuriteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_28_145404_create_securite_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_28_145404_create_securite_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/addlocataire.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/addlocataire.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Residences/getresidence.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Residences/getresidence.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Residences/residence.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Residences/residence.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Securite/AddSecurite.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Securite/AddSecurite.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Securite/scanner" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -199,7 +199,7 @@
       <workItem from="1603246607480" duration="19253000" />
       <workItem from="1603364708234" duration="27927000" />
       <workItem from="1603464651900" duration="1231000" />
-      <workItem from="1603476798836" duration="40429000" />
+      <workItem from="1603476798836" duration="53869000" />
     </task>
     <servers />
   </component>
@@ -218,10 +218,10 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="407" y="147" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.689@0.0.1280.689" timestamp="1603852731938" />
-    <state x="371" y="100" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603929814688">
+    <state x="371" y="100" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603993226033">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="371" y="100" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.689@0.0.1280.689" timestamp="1603929814688" />
+    <state x="371" y="100" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.689@0.0.1280.689" timestamp="1603993226033" />
     <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1602872978297">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
@@ -250,6 +250,10 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1602608666101" />
+    <state width="505" height="446" key="SwitcherDM" timestamp="1603937790551">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="505" height="446" key="SwitcherDM/0.0.1280.689@0.0.1280.689" timestamp="1603937790551" />
     <state x="233" y="78" key="Vcs.Push.Dialog.v2" timestamp="1602953112666">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
@@ -258,6 +262,10 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="459" y="204" width="785" height="676" key="dock-window-1/0.0.1280.689@0.0.1280.689" timestamp="1603297862797" />
+    <state x="282" y="72" width="700" height="530" key="recent.locations.popup" timestamp="1603935396000">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="282" y="72" width="700" height="530" key="recent.locations.popup/0.0.1280.689@0.0.1280.689" timestamp="1603935396000" />
     <state x="297" y="153" key="run.anything.popup" timestamp="1602638732084">
       <screen x="0" y="0" width="1280" height="689" />
     </state>

@@ -1,10 +1,8 @@
+
 @extends('Layouts/appLayout')
 
 @section('style')
     <link href="{{ asset('assets/css/addlocataire.css') }}" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
-    <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 @endsection
 
 @section('css')
@@ -14,52 +12,91 @@
 @section('content')
 
     <div class="content-page">
-        <div class="row mt-4">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
+        <form class="needs-validation" novalidate action="{{route('residences.store') }}" method="post" accept-charset="utf-8">
+            <div class="row mybox">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @csrf
+                        <label for="nom">NOM de Résidence</label>
+                        <input type="text" name="nom" id="nom" class="form-control input-lg" required=""
+                               placeholder="NOM DE Résidence">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="ville">VILLE ou se trouve cet immeuble</label>
 
-                        <h5 class="font-size-16 mb-1 mt-0">Ajouter un Locateur.</h5>
-                        <p class="sub-header">
+                                <select name="ville" id="ville" class="form-control input-lg">
+                                    <option value="">la ville où se trouve l'immeuble</option>
 
-                        </p>
-                        <div class="container mt-5">
+                                    @foreach ($villes as $ville )
+                                        <option value="{{$ville->id}}">{{$ville->nom_ville}}</option>
+                                    @endforeach
 
-                            <table class="table table-bordered yajra-datatable">
-                                <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Username</th>
-                                    <th>Phone</th>
-
-                                    <th>Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
+                                </select>
+                            </div>
                         </div>
+
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="syndic">Syndic</label>
+
+                                <select name="syndic" id="syndic" class="form-control input-lg">
+
+                                    @foreach ($syndics as $syndic )
+                                        <option value="{{$syndic->id}}">{{$syndic->nom}}</option>
+                                    @endforeach
+
+
+                                    <option value="8">new</option>
+
+
+                                </select>
+                            </div>
+                        </div>
+
+
                     </div>
 
+                    <div class="form-group">
+                        <label for="adresse">ADRESSE</label>
+                        <textarea name="adresse" id="adresse" class="form-control input-lg" rows="2"
+                                  placeholder="ADRESSE DE L'IMMEUBLE"></textarea>
+                    </div>
+
+
+                    <div class="row">
+
+
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="nom_bloc">Nom du Bloc</label>
+                                <input type="text" name="nom_bloc" id="nom_bloc" class="form-control input-lg"/>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
                 </div>
+
+
+                <p>&nbsp;</p>
+                <button type="submit" class="btn btn-block btn-purple btn-lg ">ENREGISTRER et Passer aux Immeubles <i
+                        class="fa fa-arrow-right"></i></button>
+
             </div>
-        </div>
+
+        </form>
     </div>
-
-
 
 @endsection
 
 @section('script')
     <script src="{{ URL::asset('assets/js/addlocataire.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/datatable.js') }}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 @endsection
 @section('script')
     <!-- Plugin js-->
@@ -70,3 +107,17 @@
     <!-- Validation init js-->
     <script src="{{ URL::asset('assets/js/pages/form-validation.init.js') }}"></script>
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
