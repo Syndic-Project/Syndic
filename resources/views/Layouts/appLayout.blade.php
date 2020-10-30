@@ -315,43 +315,43 @@
                             </a>
                         </li>
 
-                        <li>
-                            <a href="/syndic/Securite">
-                                <i data-feather="box"></i>
-                                <span> Ajouter des Securités </span>
-                                {{-- <span class="menu-arrow"></span> --}}
-                            </a>
-                        </li>
+                    <li>
+                        <a href="/syndic/Securite">
+                            <i data-feather="eye" class="icon-dual-primary"></i>
+                            <span>Securités </span>
+                            {{-- <span class="menu-arrow"></span> --}}
+                        </a>
+                    </li>
 
-                        <li>
-                            <a href="/syndic/Residence">
-                                <i data-feather="box"></i>
-                                <span> Ajouter une Residence </span>
-                                {{-- <span class="menu-arrow"></span> --}}
-                            </a>
-                        </li>
-
-
-                        <li>
-                            <a href="/syndic/Immeuble">
-                                <i data-feather="box"></i>
-                                <span> Ajouter une Immeuble </span>
-                                {{-- <span class="menu-arrow"></span> --}}
-                            </a>
-                        </li>
+                    <li>
+                        <a href="/syndic/Residence">
+                            <i class="fas fa-city"></i>
+                            <span> Residence </span>
+                            {{-- <span class="menu-arrow"></span> --}}
+                        </a>
+                    </li>
 
 
-                        <li>
-                            <a href="/syndic/Appartements">
-                                <i data-feather="box"></i>
-                                <span> Ajouter un Appartement </span>
-                                {{-- <span class="menu-arrow"></span> --}}
-                            </a>
-                        </li>
+                    <li>
+                        <a href="/syndic/Immeuble">
+                            <i class="far fa-building"></i>
+                            <span>Immeuble </span>
+                            {{-- <span class="menu-arrow"></span> --}}
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="/syndic/Appartements">
+                            <i class="fa fa-sitemap"></i>
+                            <span>Appartement </span>
+                            {{-- <span class="menu-arrow"></span> --}}
+                        </a>
+                    </li>
 
                         <li>
                             <a href="/syndic/Locataire">
-                                <i data-feather="box"></i>
+                                <i class="fa fa-users fa-fw"></i>
                                 <span> Ajouter un Locataire </span>
                                 {{-- <span class="menu-arrow"></span> --}}
                             </a>
@@ -360,7 +360,8 @@
 
                         <li>
                             <a href="/syndic/Caisse">
-                                <i data-feather="layout"></i>
+                                <i data-feather="dollar-sign"></i>
+
                                 <span> Ajouter une Caisse </span>
 
                             </a>
@@ -369,7 +370,7 @@
 
                         <li>
                             <a href="/syndic/Facture">
-                                <i data-feather="layout"></i>
+                                <i class="fas fa-file-invoice-dollar"></i>
                                 <span> Ajouter une Facture </span>
                                 <span class="menu-arrow"></span>
                             </a>

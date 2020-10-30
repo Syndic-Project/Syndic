@@ -67,7 +67,7 @@ Route::get('/syndic/Locataire', 'LocataireController@index');
 Route::get('/syndic/Caisse', 'CaisseController@index');
 Route::get('/syndic/Locateur', 'LocateurController@index');
 Route::get('/syndic/Facture', 'FactureController@index');
-//Route::get('/syndic/Securite', 'SecuriteController@index');
+Route::get('/syndic/Securite', 'SecuriteController@index');
 
 
 
