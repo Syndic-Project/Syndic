@@ -316,16 +316,16 @@
 
                     <li>
                         <a href="/syndic/Securite">
-                            <i data-feather="box"></i>
-                            <span> Ajouter des Securités </span>
+                            <i data-feather="eye" class="icon-dual-primary"></i>
+                            <span>Securités </span>
                             {{-- <span class="menu-arrow"></span> --}}
                         </a>
                     </li>
 
                     <li>
                         <a href="/syndic/Residence">
-                            <i data-feather="box"></i>
-                            <span> Ajouter une Residence </span>
+                            <i class="fas fa-city"></i>
+                            <span> Residence </span>
                             {{-- <span class="menu-arrow"></span> --}}
                         </a>
                     </li>
@@ -333,8 +333,8 @@
 
                     <li>
                         <a href="/syndic/Immeuble">
-                            <i data-feather="box"></i>
-                            <span> Ajouter une Immeuble </span>
+                            <i class="far fa-building"></i>
+                            <span>Immeuble </span>
                             {{-- <span class="menu-arrow"></span> --}}
                         </a>
                     </li>
@@ -342,8 +342,8 @@
 
                     <li>
                         <a href="/syndic/Appartements">
-                            <i data-feather="box"></i>
-                            <span> Ajouter un Appartement </span>
+                            <i class="fa fa-sitemap fa-lg fa-fw"></i>
+                            <span>Appartement </span>
                             {{-- <span class="menu-arrow"></span> --}}
                         </a>
                     </li>
