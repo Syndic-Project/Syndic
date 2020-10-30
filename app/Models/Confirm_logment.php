@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Appartement $appartement
  * @property Locateur $locateur
  */
-class confirm_logment extends Model
+class Confirm_logment extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.

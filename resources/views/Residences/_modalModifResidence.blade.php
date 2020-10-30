@@ -9,19 +9,19 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="POST" action="{{route('residence.update',$res->id) }}" >
+                <form method="POST" action="{{route('residences.update',$res->id) }}">
                     <div class="modal-body">
                         @csrf
                         @method('PUT')
                         <div class="container">
-                            <br />
-                            <div class="row mybox">
+                            <br/>
+                            <div class="row justify-content-start">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         @csrf
                                         <label for="nom">NOM de Résidence</label>
                                         <input type="text" name="nom" id="nom" class="form-control input-lg" required=""
-                                              value="{{$res->nom_residence}}">
+                                               value="{{$res->nom_residence}}">
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
@@ -32,7 +32,7 @@
                                                     <option value="">la ville où se trouve La Résidence</option>
 
 
-                                                        <option value="{{$res->id_ville}}">{{$res->nom_ville}}</option>
+                                                    <option value="{{$res->id_ville}}">{{$res->nom_ville}}</option>
 
 
                                                 </select>
@@ -64,19 +64,19 @@
                                     <div class="form-group">
                                         <label for="adresse">ADRESSE</label>
                                         <textarea name="adresse" id="adresse" class="form-control input-lg" rows="2"
-                                                value="{{$res->adresse}}"></textarea>
+                                                  value="{{$res->adresse}}"></textarea>
                                     </div>
 
 
                                     <div class="row">
 
 
-
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="nom_bloc">Nom du Bloc</label>
-                                                <input type="text" name="nom_bloc" id="nom_bloc" class="form-control input-lg"
-                                                value="{{$res->nom_bloc}}"/>
+                                                <input type="text" name="nom_bloc" id="nom_bloc"
+                                                       class="form-control input-lg"
+                                                       value="{{$res->nom_bloc}}"/>
                                             </div>
 
                                         </div>
@@ -85,7 +85,6 @@
 
 
                                 </div>
-
 
 
                             </div>

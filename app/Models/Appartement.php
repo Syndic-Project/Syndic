@@ -53,6 +53,6 @@ class Appartement extends Model
      */
     public function confirmLogments()
     {
-        return $this->hasMany('App\Models\ConfirmLogment', 'id_Appartement');
+        return $this->hasMany('App\Models\Confirm_logment', 'id_Appartement');
     }
 }

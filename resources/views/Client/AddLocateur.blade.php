@@ -34,8 +34,6 @@
                                     </div>
 
 
-
-
                                 </div>
 
                                 <div class="col-md-4">
@@ -73,8 +71,7 @@
                                 </div>
 
 
-
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="dated">Date Debut</label>
                                         <input type="date" required="" name="dated" id="dated"
@@ -84,7 +81,7 @@
 
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="datef">Date Fin</label>
                                         <input type="date" required="" name="datef" id="datef"
@@ -94,9 +91,25 @@
 
                                 </div>
 
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="id_app">Appartement</label>
+
+                                        <select name="id_appartement" id="id_app" class="form-control">
+                                            @foreach($appartements as $app)
+                                            <option value="{{$app->id}}">{{$app->nom}}</option>
+                                            @endforeach
+                                        </select>
+
+                                    </div>
 
 
-                                <button type="submit" id="ajouter" name="ajouter" class="btn btn-block btn-purple "><i class="fa fa-plus"></i> AJOUTER </button>
+                                </div>
+
+
+                                <button type="submit" id="ajouter" name="ajouter" class="btn btn-block btn-purple "><i
+                                        class="fa fa-plus"></i> AJOUTER
+                                </button>
                             </div>
 
 
@@ -110,8 +123,7 @@
         <div class="visible-print text-center">
 
 
-            {!! $data !!}
-
+            {!! $data ?? '' !!}
 
 
         </div>

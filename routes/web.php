@@ -95,7 +95,7 @@ Route::resource('/Facture', 'FactureController');
 Route::resource('/Securite', 'SecuriteController');
 
 
-
-Route::get('/qr-code-g', function () {
-    return view('qrCode');
-});
+//
+//Route::get('/qr-code-g', function () {
+//    return view('qrCode');
+//});

@@ -2,29 +2,43 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appartement;
 use App\Models\confirm_logment;
-use App\Models\Locataire;
 use App\Models\Locateur;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Generator;
 
 class LocateurController extends Controller
 {
+
+
+    public static function genrateQR($id)
+    {
+//        dd("Qr code");
+        $locateurQR = confirm_logment::findOrFail($id);
+        $QrCode = new Generator();
+
+        $data = $QrCode->size(250)->generate($locateurQR);
+
+        return view('Client/AddLocateur', [
+            'appartements' => Appartement::doesnthave('confirmLogments')->get(),
+            'data' => $data
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
-        $QrCode = new Generator();
+        return view('Client/AddLocateur', [
+            'appartements' => Appartement::doesnthave('confirmLogments')->get(),
 
-        $data = $QrCode->size(250)->generate(confirm_logment::all());
-
-//        compact($QrCode);
-//        dd( compact($QrCode));
-        return view('Client/AddLocateur', compact('data'));
-
+        ]);
     }
 
     /**
@@ -46,24 +60,22 @@ class LocateurController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-
-            $locateur = new Locateur();
-            $locateur->nom = $request->input('nom');
-            $locateur->prenom = $request->input('prenom');
-            $locateur->CIN = $request->input('cin');
-            $locateur->Tel = $request->input('Tel');
-            $locateur->Nbr_Invite = $request->input('nbr');
-            $locateur->email = $request->input('email');
-            $locateur->save();
-            $locateur = new Locateur();
-            $locateur->DateD = $request->input('dated');
-            $locateur->DateF = $request->input('datef');
-
-            $locateur->save();
-        } catch (\Exception $e) {
-            throw new \App\Exceptions\LogData($e);
-        }
+        $locateur = new Locateur();
+        $locateur->nom = $request->input('nom');
+        $locateur->prenom = $request->input('prenom');
+        $locateur->CIN = $request->input('cin');
+        $locateur->Tel = $request->input('Tel');
+        $locateur->Nbr_Invite = $request->input('nbr');
+        $locateur->email = $request->input('email');
+//        $locateur->save();
+        $confirm = new confirm_logment();
+        $confirm->Accorder = 1;
+        $confirm->id_Locateur = $locateur->id;
+        $confirm->id_Appartement = $request->input('id_appartement');
+        $confirm->DateD = $request->input('dated');
+        $confirm->DateF = $request->input('datef');
+//        $confirm->save();
+        LocateurController::genrateQR($confirm->id);
     }
 
     /**
