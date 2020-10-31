@@ -306,9 +306,9 @@
                 <div id="sidebar-menu" class="slimscroll-menu">
                     <ul class="metismenu" id="menu-bar">
                         {{-- @if (AuthentificationController::getCurrentUser()->)
-                            
+
                         @endif --}}
-                        {{ dd(AuthentificationController::getCurrentUser()->getTable() == "syndics" ? "SYNDICS !" : "LOCATAIRE !")}}
+{{--                        {{ dd(AuthentificationController::getCurrentUser()->getTable() == "syndics" ? "SYNDICS !" : "LOCATAIRE !")}}--}}
                         <li class="menu-title">Espace Syndic</li>
 
                         <li>
