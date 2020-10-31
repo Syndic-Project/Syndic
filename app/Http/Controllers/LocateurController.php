@@ -48,15 +48,16 @@ class LocateurController extends Controller
             ->join('confirm_logments', 'confirm_logments.id_Locateur', '=', 'locateurs.id')
             ->get();
 
-//        $locateurQR = confirm_logment::all();
-//        $QrCode = new Generator();
-//
-//        $data = $QrCode->size(50)->generate($locateurQR);
+        $locateurQR = confirm_logment::all();
+        $QrCode = new Generator();
+
+        $data = $QrCode->size(50)->generate($locateurQR);
 
         return view('Client/AddLocateur', [
             'appartements' => Appartement::doesnthave('confirmLogments')->get(),
             'locateurs' => $info_loc,
             'Confirmid'=>  Confirm_logment::all(),
+            'data'=>$data
 
 
         ]);
