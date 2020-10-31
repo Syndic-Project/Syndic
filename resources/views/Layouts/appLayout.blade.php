@@ -305,7 +305,11 @@
                 <!--- Sidemenu -->
                 <div id="sidebar-menu" class="slimscroll-menu">
                     <ul class="metismenu" id="menu-bar">
-                        <li class="menu-title">Syndic</li>
+                        {{-- @if (AuthentificationController::getCurrentUser()->)
+                            
+                        @endif --}}
+                        {{ dd(AuthentificationController::getCurrentUser()->getTable() == "syndics" ? "SYNDICS !" : "LOCATAIRE !")}}
+                        <li class="menu-title">Espace Syndic</li>
 
                         <li>
                             <a href="/">
@@ -315,39 +319,39 @@
                             </a>
                         </li>
 
-                    <li>
-                        <a href="/syndic/Securite">
-                            <i data-feather="eye" class="icon-dual-primary"></i>
-                            <span>Securités </span>
-                            {{-- <span class="menu-arrow"></span> --}}
-                        </a>
-                    </li>
+                        <li>
+                            <a href="/syndic/Securite">
+                                <i data-feather="eye" class="icon-dual-primary"></i>
+                                <span>Securités </span>
+                                {{-- <span class="menu-arrow"></span> --}}
+                            </a>
+                        </li>
 
-                    <li>
-                        <a href="/syndic/Residence">
-                            <i class="fas fa-city"></i>
-                            <span> Residence </span>
-                            {{-- <span class="menu-arrow"></span> --}}
-                        </a>
-                    </li>
-
-
-                    <li>
-                        <a href="/syndic/Immeuble">
-                            <i class="far fa-building"></i>
-                            <span>Immeuble </span>
-                            {{-- <span class="menu-arrow"></span> --}}
-                        </a>
-                    </li>
+                        <li>
+                            <a href="/syndic/Residence">
+                                <i class="fas fa-city"></i>
+                                <span> Residence </span>
+                                {{-- <span class="menu-arrow"></span> --}}
+                            </a>
+                        </li>
 
 
-                    <li>
-                        <a href="/syndic/Appartements">
-                            <i class="fa fa-sitemap"></i>
-                            <span>Appartement </span>
-                            {{-- <span class="menu-arrow"></span> --}}
-                        </a>
-                    </li>
+                        <li>
+                            <a href="/syndic/Immeuble">
+                                <i class="far fa-building"></i>
+                                <span>Immeuble </span>
+                                {{-- <span class="menu-arrow"></span> --}}
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="/syndic/Appartements">
+                                <i class="fa fa-sitemap"></i>
+                                <span>Appartement </span>
+                                {{-- <span class="menu-arrow"></span> --}}
+                            </a>
+                        </li>
 
                         <li>
                             <a href="/syndic/Locataire">
