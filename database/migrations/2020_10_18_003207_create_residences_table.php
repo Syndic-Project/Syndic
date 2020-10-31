@@ -16,9 +16,9 @@ class CreateResidencesTable extends Migration
         Schema::create('residences', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nom_residence');
-            $table->unsignedBigInteger('id_ville')->unique();
+            $table->unsignedBigInteger('id_ville');
             $table->string('adresse');
-            $table->unsignedBigInteger('id_syndic')->unique();
+            $table->unsignedBigInteger('id_syndic');
             $table->timestamps();
         });
     }
