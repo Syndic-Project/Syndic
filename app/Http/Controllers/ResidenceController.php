@@ -19,11 +19,6 @@ class ResidenceController extends Controller
      */
     public function index(Request $request)
     {
-        $residence_id = DB::table('residences')
-            ->join('blocs', 'blocs.id_residence', '=', 'residences.id')
-            ->join('villes', 'residences.id_ville', '=', 'villes.id')
-            ->where('residences.id' ,'=' ,1)
-            ->get(['residences.*', 'villes.id', 'villes.nom_ville', 'blocs.nom_bloc']);
 
 
         $residence_bloc_ville = DB::table('residences')
@@ -38,6 +33,7 @@ class ResidenceController extends Controller
         return view('Residences/residence', [
             'residence' => $residence_bloc_ville,
             'villes' => Ville::all(),
+            'blocs' => Bloc::all(),
             'syndics' => $syndics,
 
         ]);

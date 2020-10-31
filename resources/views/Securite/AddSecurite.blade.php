@@ -60,7 +60,7 @@
                                                         <a href=""
                                                            class="btn btn-info btn-xs"><i class="fa fa-eye"></i> détails</a>&nbsp;
                                                         <a href="{{route('Securite.edit',['Securite'=>$sec->id])}}"
-                                                           class="btn btn-success btn-xs editajax">
+                                                           class="btn btn-success btn-xs ">
 {{--                                                           data-toggle="modal"--}}
 {{--                                                           data-target="#modalEditSecurite{{$sec->id}}">--}}
                                                             <i class="fas fa-user-edit"></i>modifier</a>

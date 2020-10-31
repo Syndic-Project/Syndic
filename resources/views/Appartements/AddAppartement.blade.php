@@ -25,8 +25,10 @@
                                     <div class="row mrgb10">
                                         <div class="col-md-12">
                                             <select name="immeuble" id="immeuble" required="" class="form-control ">
-                                                <option value="">IMMEUBLE</option>
+
                                                 @foreach($immeubles as $imb)
+
+                                                    <option selected value="">IMMEUBLE</option>
                                                     <option value="{{$imb->id}}"
                                                             selected="">{{$imb->Nom_Immeuble}}</option>
                                                 @endforeach
@@ -83,7 +85,7 @@
 
                             </div> <!-- .row -->
                         </form>
-<p></p>
+                        <p></p>
                         <div class="row mrgb10">
                             <div class="col-md-12 text-right" id="rowfiltre">
                                 <form class="form-inline" id="frmfiltre" method="post" action="" accept-charset="UTF-8">
@@ -124,27 +126,27 @@
                                         </thead>
                                         <tbody>
                                         @foreach ($appartementhaslocataire as $app)
-                                        <tr id="app">
-                                            <td class="liblocal">{{$app->nom}}</td>
-                                            <td class="situationlocal">
-                                                <span class="text-success">{{\App\Http\Controllers\AppartementController::credit($app->id)}} mois</span>
-                                            </td>
-{{--                                            <span class="text-danger">-6 mois</span>--}}
-                                            <td>
-                                                <a href=""><i
-                                                        class="fa fa-plus"></i> créer</a></td>
-                                            <td class="text-right">
-                                                <div class="btn-group" role="group">
-                                                    <a href="https://zonesyndic.com/syndic/appartements/details/1715"
-                                                       class="btn btn-info btn-xs"><i class="fa fa-eye"></i> détails</a>&nbsp;
-                                                    <a href="#" class="btn btn-success btn-xs editajax"
-                                                       data-toggle="modal" data-target="#modalupdate" id="1715"><i
-                                                            class="fa fa-pencil"></i> modifier</a>
-                                                </div>
-                                                &nbsp;<a href="#" id="1715" class="btn btn-danger btn-xs supprimer"><i
-                                                        class="fa fa-times-circle"></i></a>
-                                            </td>
-                                        </tr>
+                                            <tr id="app">
+                                                <td class="liblocal">{{$app->nom}}</td>
+                                                <td class="situationlocal">
+                                                    <span class="text-success">{{\App\Http\Controllers\AppartementController::credit($app->id)}} mois</span>
+                                                </td>
+                                                {{--                                            <span class="text-danger">-6 mois</span>--}}
+                                                <td>
+                                                    <a href=""><i
+                                                            class="fa fa-plus"></i> créer</a></td>
+                                                <td class="text-right">
+                                                    <div class="btn-group" role="group">
+                                                        <a href="https://zonesyndic.com/syndic/appartements/details/1715"
+                                                           class="btn btn-info btn-xs"><i class="fa fa-eye"></i> détails</a>&nbsp;
+                                                        <a href="#" class="btn btn-success btn-xs editajax"
+                                                           data-toggle="modal" data-target="#modalupdate" id="1715"><i
+                                                                class="fa fa-pencil"></i> modifier</a>
+                                                    </div>
+                                                    &nbsp;<a href="#" id="1715" class="btn btn-danger btn-xs supprimer"><i
+                                                            class="fa fa-times-circle"></i></a>
+                                                </td>
+                                            </tr>
                                         @endforeach
 
                                         @foreach ($appartementhasnotlocataire as $app)
@@ -193,10 +195,11 @@
 @endsection
 
 @section('script')
+    <script src="{{ URL::asset('assets/js/AddAppartement.js') }}"></script>
     <script src="{{ url('assets/js/addlocataire.js') }}"></script>
     <script src="{{ url('assets/libs/parsleyjs/parsley.min.js') }}"></script>
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             $("span:contains(-)").attr('class', 'text-danger');
         });
         // $("#td_id").attr('class', 'newClass');
@@ -233,8 +236,7 @@
         });
 
     </script>
+
+
 @endsection
 
-@section('script')
-    <script src="{{ URL::asset('assets/js/AddAppartement.js') }}"></script>
-@endsection
