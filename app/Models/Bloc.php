@@ -40,6 +40,6 @@ class Bloc extends Model
      */
     public function immeuble()
     {
-        return $this->hasOne('App\Models\Immeuble', 'id_bloc');
+        return $this->hasMany('App\Models\Immeuble', 'id_bloc');
     }
 }
