@@ -16,7 +16,7 @@ class CreateBlocsTable extends Migration
         Schema::create('blocs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nom_bloc');
-            $table->unsignedBigInteger('id_residence')->unique();
+            $table->unsignedBigInteger('id_residence');
             $table->timestamps();
         });
     }
