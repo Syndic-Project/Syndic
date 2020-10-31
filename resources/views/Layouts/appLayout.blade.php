@@ -266,7 +266,11 @@
                     <h6 class="pro-user-name mt-0 mb-0">
                         {{ AuthentificationController::getCurrentUser()->nom . ' '.  AuthentificationController::getCurrentUser()->prenom }}
                     </h6>
-                    <span class="pro-user-desc">Syndik (static)</span>
+                    @if (AuthentificationController::getCurrentUser()->getTable()== "syndics")
+                    <span class="pro-user-desc">Syndik</span>
+                    @else
+                    <span class="pro-user-desc">Locataire</span>
+                     @endif
                 </div>
                 <div class="dropdown align-self-center profile-dropdown-menu">
                     <a class="dropdown-toggle mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
@@ -305,10 +309,7 @@
                 <!--- Sidemenu -->
                 <div id="sidebar-menu" class="slimscroll-menu">
                     <ul class="metismenu" id="menu-bar">
-                        {{-- @if (AuthentificationController::getCurrentUser()->)
-
-                        @endif --}}
-{{--                        {{ dd(AuthentificationController::getCurrentUser()->getTable() == "syndics" ? "SYNDICS !" : "LOCATAIRE !")}}--}}
+                        @if (AuthentificationController::getCurrentUser()->getTable()== "syndics")
                         <li class="menu-title">Espace Syndic</li>
 
                         <li>
@@ -380,8 +381,8 @@
                             </a>
                         </li>
 
-
-                        <li class="menu-title">Locataire</li>
+                        @else
+                        <li class="menu-title">Espace Locataire</li>
 
                         <li>
                             <a href="/syndic/Locateur">
@@ -389,29 +390,8 @@
                                 <span> Ajouter un Locateur </span>
                                 <span class="menu-arrow"></span>
                             </a>
-                            {{-- <ul class="nav-second-level" aria-expanded="false">--}}
-                            {{-- <li>--}}
-                            {{-- <a href="components-bootstrap.html">Bootstrap UI</a>--}}
-                            {{-- </li>--}}
-                            {{-- <li>--}}
-                            {{-- <a href="javascript: void(0);" aria-expanded="false">Icons--}}
-                            {{-- <span class="menu-arrow"></span>--}}
-                            {{-- </a>--}}
-                            {{-- <ul class="nav-third-level" aria-expanded="false">--}}
-                            {{-- <li>--}}
-                            {{-- <a href="icons-feather.html">Feather Icons</a>--}}
-                            {{-- </li>--}}
-                            {{-- <li>--}}
-                            {{-- <a href="icons-unicons.html">Unicons Icons</a>--}}
-                            {{-- </li>--}}
-                            {{-- </ul>--}}
-                            {{-- </li>--}}
-                            {{-- <li>--}}
-                            {{-- <a href="widgets.html">Widgets</a>--}}
-                            {{-- </li>--}}
-                            {{-- </ul>--}}
                         </li>
-
+                        @endif
                     </ul>
                 </div>
                 <!-- End Sidebar -->
