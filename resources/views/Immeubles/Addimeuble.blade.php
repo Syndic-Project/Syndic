@@ -37,7 +37,7 @@
                                             <tr>
                                                 <th class="text-center">Immeuble</th>
                                                 <th class="text-center">Bloc</th>
-                                                <th class="text-center">Caissa</th>
+                                                <th class="text-center">Caisse</th>
                                                 <th class="text-center">Cotisation</th>
                                                 <th class="text-center"></th>
                                             </tr>

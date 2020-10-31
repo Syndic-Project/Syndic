@@ -30,11 +30,11 @@
 
                                                 <select name="ville" id="ville" class="form-control input-lg">
                                                     <option value="">la ville où se trouve La Résidence</option>
+                                                    @foreach($villes as $ville)
 
+                                                        <option value="{{$ville->id}}">{{$ville->nom_ville}}</option>
 
-                                                    <option value="{{$res->id_ville}}">{{$res->nom_ville}}</option>
-
-
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -50,10 +50,6 @@
                                                         <option value="{{$syndic->id}}">{{$syndic->nom}}</option>
                                                     @endforeach
 
-
-                                                    <option value="8">new</option>
-
-
                                                 </select>
                                             </div>
                                         </div>
@@ -68,20 +64,29 @@
                                     </div>
 
 
-                                    <div class="row">
+
+                                            <div class="col-md-12">
 
 
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label for="nom_bloc">Nom du Bloc</label>
-                                                <input type="text" name="nom_bloc" id="nom_bloc"
-                                                       class="form-control input-lg"
-                                                       value="{{$res->nom_bloc}}"/>
+
+                                                        <div class="form-group">
+                                                            <label for="appartementsAutocomplete">Bloc (s)</label>
+
+                                                            {{--                                                            @foreach($blocs as $bloc)--}}
+                                                            <input
+                                                                {{ count($blocs) == 0 ? 'placeholder=Aucun-Bloc-disponible !' : 'placeholder=bloc' }} id="blocAutocomplete"
+                                                                type="text" autocomplete="off"
+                                                                class="form-control form-control-sm"/>
+                                                            {{--                                                            @endforeach--}}
+
+                                                        </div>
+
+
                                             </div>
+                                            <div class="col-md-12 mt-2" id="badgeContainer">
 
-                                        </div>
 
-                                    </div>
+                                            </div>
 
 
                                 </div>

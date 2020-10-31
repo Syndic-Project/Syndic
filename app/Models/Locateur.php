@@ -35,6 +35,6 @@ class Locateur extends Model
      */
     public function confirmLogments()
     {
-        return $this->hasMany('App\Models\ConfirmLogment', 'id_Locateur');
+        return $this->hasMany('App\Models\Confirm_logment', 'id_Locateur');
     }
 }

@@ -226,6 +226,16 @@
                         });
 
                     </script>
+
+                    <script>
+                        autocomplete(
+                            document.getElementById("badgeContainer"),
+                            document.getElementById("blocAutocomplete"),
+                            appartements
+                        );
+
+                    </script>
+
             @endsection
 
             @section('script-bottom')

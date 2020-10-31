@@ -6,6 +6,7 @@ use App\Models\Appartement;
 use App\Models\confirm_logment;
 use App\Models\Locateur;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use SimpleSoftwareIO\QrCode\Generator;
 
 class LocateurController extends Controller
@@ -14,16 +15,24 @@ class LocateurController extends Controller
 
     public static function genrateQR($id)
     {
-//        dd("Qr code");
+
         $locateurQR = confirm_logment::findOrFail($id);
         $QrCode = new Generator();
 
-        $data = $QrCode->size(250)->generate($locateurQR);
+        $data = $QrCode->size(500)->generate($locateurQR);
 
-        return view('Client/AddLocateur', [
-            'appartements' => Appartement::doesnthave('confirmLogments')->get(),
-            'data' => $data
-        ]);
+        $info_loc = DB::table('locateurs')
+            ->join('confirm_logments', 'confirm_logments.id_Locateur', '=', 'locateurs.id')
+            ->get();
+
+
+//        return view('Client/modalQrcode', [
+//            'locateurs' => $info_loc,
+//            'data'=>$data
+//        ]);
+
+
+
     }
 
     /**
@@ -35,8 +44,20 @@ class LocateurController extends Controller
 
     public function index()
     {
+        $info_loc = DB::table('locateurs')
+            ->join('confirm_logments', 'confirm_logments.id_Locateur', '=', 'locateurs.id')
+            ->get();
+
+//        $locateurQR = confirm_logment::all();
+//        $QrCode = new Generator();
+//
+//        $data = $QrCode->size(50)->generate($locateurQR);
+
         return view('Client/AddLocateur', [
             'appartements' => Appartement::doesnthave('confirmLogments')->get(),
+            'locateurs' => $info_loc,
+            'Confirmid'=>  Confirm_logment::all(),
+
 
         ]);
     }
