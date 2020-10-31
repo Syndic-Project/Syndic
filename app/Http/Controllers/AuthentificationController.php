@@ -12,12 +12,7 @@ class AuthentificationController extends Controller
     function loginView()
     {
         return view('login');
-        // $2y$10$SCH0dvGfNozoygkztxtjzucSF1rlrb8nWiXIYLjKCZ9CcLc44XahG
-        // test@Syndik.com
-        // mhm nom w prénom rak tma dir chi 7aja ...
-        // supprim m3ak had ktba ki tkml ..
     }
-
 
     public function loginSecurity(Request $request)
     {
