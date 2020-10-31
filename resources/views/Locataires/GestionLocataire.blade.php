@@ -45,11 +45,11 @@
                             <tr>
                                 <th class="text-center">Actions</th>
                                 <th class="text-center">Nom Complet</th>
+                                <th class="text-center">Cin</th>
                                 <th class="text-center">E-mail</th>
                                 <th class="text-center">Validité de l'email</th>
                                 <th class="text-center">Numéro de Tel</th>
                                 <th class="text-center">Paiements Effectués</th>
-                                <th class="text-center">Bloc</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -97,15 +97,22 @@
                                     </a>
                                 </td>
                                 <td class="text-center">{{ $locataire->nom . ' ' . $locataire->prenom }}</td>
+                                <td class="text-center">{{$locataire->CIN }}</td>
                                 <td class="text-center">{{ $locataire->email }}</td>
                                 <td class="text-center">
+                                    @if($locataire->email_verified_at != NULL)
                                     <img src="https://img.icons8.com/color/48/000000/verified-account.png"
                                         style="width: 20px;cursor:pointer;" data-toggle="tooltip" data-placement="top"
                                         title="Validé le 22/10/2020" />
+                                    @else
+                                    <img src="https://img.icons8.com/color/48/000000/cancel--v1.png"
+                                        style="width: 20px;cursor:pointer;" data-toggle="tooltip" data-placement="top"
+                                        title="non validé" />
+                                    @endif
                                 </td>
                                 <td class="text-center">{{ $locataire->Tel }}</td>
-                                <td class="text-center">15 (static) </td>
-                                <td class="text-center">{{$locataire->caisses->appartement->immeuble->bloc->nom_bloc}}</td>
+                                <td class="text-center">
+                                    {{ count($locataire->caisses->whereNotNull('Date_Paiment')->toArray()) }}</td>
                             </tr>
                             @endforeach
                         </tbody>

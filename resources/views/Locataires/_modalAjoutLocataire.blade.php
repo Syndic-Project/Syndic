@@ -65,8 +65,7 @@
                                             <div class="autocomplete w-50">
                                                 <div class="form-group">
                                                     <label for="appartementsAutocomplete">Appartement (s)</label>
-                                                    <input id="appartementsAutocomplete" type="text" autocomplete="off"
-                                                        placeholder="bloc01-Immeuble01-appart01"
+                                                    <input  {{ count($appartements) == 0 ? 'placeholder=Aucun-appart-disponible !' : 'placeholder=bloc01-Immeuble01-appart01' }} id="appartementsAutocomplete" type="text" autocomplete="off"
                                                         class="form-control form-control-sm" />
                                                 </div>
                                             </div>
