@@ -92,21 +92,11 @@
                                     <input type="hidden" name="imm_fltr" id="imm_fltr" value="279">
                                     <div class="form-group">
                                         <select name="s_filtre" id="s_filtre" class="form-control input-sm">
-                                            <option value="">tous les appartements</option>
+                                            <option disabled selected value="">tous les appartements</option>
                                             <option value="retard">en retard de paiement</option>
-                                            <option value="sscmpt">sans compte dans ZONESYNDIC.COM</option>
-                                            <option value="avcmpt">avec compte dans ZONESYNDIC.COM</option>
                                             <option value="avance">paiement en avance</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
-                                        <select name="s_ordre" id="s_ordre" class="form-control input-sm">
-                                            <option value="">ordre par defaut</option>
-                                            <option value="sit_asc">Par situation de - à +</option>
-                                            <option value="sit_des">Par situation de + à -</option>
-                                        </select>
-                                    </div>
-                                    <button type="submit" class="btn btn-default btn-sm">lancer</button>
                                 </form>
                             </div>
                         </div>
@@ -118,28 +108,28 @@
                                     <table id="appartement_datatable" class="table table-hover table-condensed">
                                         <thead>
                                         <tr>
-                                            <th>PROPRIETE</th>
-                                            <th>SITUATION</th>
-                                            <th>COMPTE</th>
-                                            <th>&nbsp;</th>
+                                            <th class="text-center">PROPRIETE</th>
+                                            <th class="text-center">SITUATION</th>
+                                            <th class="text-center">COMPTE</th>
+                                            <th class="text-center">Actions</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach ($appartementhaslocataire as $app)
                                             <tr id="app">
-                                                <td class="liblocal">{{$app->nom}}</td>
-                                                <td class="situationlocal">
+                                                <td class="text-center">{{$app->nom}}</td>
+                                                <td class="text-center">
                                                     <span class="text-success">{{\App\Http\Controllers\AppartementController::credit($app->id)}} mois</span>
                                                 </td>
                                                 {{--                                            <span class="text-danger">-6 mois</span>--}}
-                                                <td>
+                                                <td class="text-center">
                                                     <a href=""><i
                                                             class="fa fa-plus"></i> créer</a></td>
-                                                <td class="text-right">
+                                                <td class="text-center">
+                                                <td class="text-center">
                                                     <div class="btn-group" role="group">
-                                                        <a href="https://zonesyndic.com/syndic/appartements/details/1715"
-                                                           class="btn btn-info btn-xs"><i class="fa fa-eye"></i> détails</a>&nbsp;
-                                                        <a href="#" class="btn btn-success btn-xs editajax"
+
+                                                        <a href="#" class="btn btn-success btn-xs "
                                                            data-toggle="modal" data-target="#modalupdate" id="1715"><i
                                                                 class="fa fa-pencil"></i> modifier</a>
                                                     </div>
@@ -150,20 +140,19 @@
                                         @endforeach
 
                                         @foreach ($appartementhasnotlocataire as $app)
-                                            <tr id="app1715">
-                                                <td class="liblocal">{{$app->nom}}</td>
-                                                <td class="situationlocal">
+                                            <tr>
+                                                <td class="text-center">{{$app->nom}}</td>
+                                                <td class="text-center">
                                                     <span class="text-warning">Pas Encore</span>
                                                 </td>
                                                 {{--                                            <span class="text-danger">-6 mois</span>--}}
-                                                <td>
+                                                <td class="text-center">
                                                     <a href="/syndic/Locataire"><i
                                                             class="fa fa-plus"></i> créer</a></td>
-                                                <td class="text-right">
+                                                <td class="text-center">
                                                     <div class="btn-group" role="group">
-                                                        <a href="https://zonesyndic.com/syndic/appartements/details/1715"
-                                                           class="btn btn-info btn-xs"><i class="fa fa-eye"></i> détails</a>&nbsp;
-                                                        <a href="#" class="btn btn-success btn-xs editajax"
+
+                                                        <a href="#" class="btn btn-info btn-xs editajax"
                                                            data-toggle="modal" data-target="#modalupdate" id="1715"><i
                                                                 class="fa fa-pencil"></i> modifier</a>
                                                     </div>

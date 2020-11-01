@@ -22,7 +22,7 @@
             <label for="bloc">Nom du Bloc</label>
 
             <select name="bloc" id="bloc" class="form-control input-lg">
-                <option value="">Selectionnez le Bloc ou se Trouve l'immeuble</option>
+                <option disabled selected value="">Selectionnez le Bloc ou se Trouve l'immeuble</option>
                 @foreach ($blocs as $bloc)
                     <option value="{{ $bloc->id ?? null }}">{{ $bloc->nom_bloc }}</option>
                 @endforeach
@@ -38,7 +38,8 @@
                    value="{{$immeuble->Montant_Disponible_En_Caisse ?? null}}">
         </div>
     </div>
+
 </div>
 
 
-<p></p>
+
