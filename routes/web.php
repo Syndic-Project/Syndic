@@ -70,6 +70,7 @@ Route::post('/getCaisseByAppartement', 'CaisseController@getCaisseByAppartement'
 Route::get('/Auth-Login', 'AuthentificationController@loginView')->name('Auth-Login-Get');
 Route::post('/Auth-Login', 'AuthentificationController@loginSecurity')->name('Auth-Login-Post');
 Route::get('/Auth-Logout', 'AuthentificationController@LogOut')->name('Auth-LogOut');
+Route::post('/getQrCode/{id_locateur}', 'LocateurController@generateQR');
 
 //les rousources des methodes generer
 // les routes des methode generer du controlleur create edit delete
