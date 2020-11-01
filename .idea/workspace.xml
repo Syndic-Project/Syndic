@@ -2,19 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7127ffd3-2783-4e0a-b602-f3196766c79f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/Client/modalQrcode.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LocateurController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LocateurController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ResidenceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ResidenceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Locateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Locateur.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/AddAppartement.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/AddAppartement.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Appartements/AddAppartement.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Appartements/AddAppartement.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Client/AddLocateur.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Client/AddLocateur.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Immeubles/Addimeuble.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Immeubles/Addimeuble.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Residences/_modalModifResidence.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Residences/_modalModifResidence.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Residences/residence.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Residences/residence.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Securite/AddSecurite.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Securite/AddSecurite.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Immeubles/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Immeubles/edit.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,7 +195,8 @@
       <workItem from="1603246607480" duration="19253000" />
       <workItem from="1603364708234" duration="27927000" />
       <workItem from="1603464651900" duration="1231000" />
-      <workItem from="1603476798836" duration="96197000" />
+      <workItem from="1603476798836" duration="97555000" />
+      <workItem from="1604186735172" duration="609000" />
     </task>
     <servers />
   </component>

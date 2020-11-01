@@ -80,6 +80,7 @@
                 </div>
             </div>
 
+                <h1>{{$data}}</h1>
 
             <div id="modalAjoutLocateur" class="modal fade" tabindex="-1" role="dialog"
                 aria-labelledby="modalAjoutLocateurLabel" aria-hidden="true">
