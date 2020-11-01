@@ -62,10 +62,12 @@
                                                 </button>
                                             </td>
                                             <td class="text-center">
+
                                                 <button class="delete btn btn-danger btn-sm" type="submit">
                                                     <i class="fas fa-clipboard-check"></i>
                                                     Envoyer Le Qr code au Locateur
                                                 </button>
+
                                             </td>
                                         </tr>
                                         @endforeach

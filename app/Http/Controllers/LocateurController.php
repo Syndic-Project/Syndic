@@ -70,4 +70,70 @@ class LocateurController extends Controller
 
         echo (new Generator())->size(200)->generate("Le locateur $info_loc->nom $info_loc->prenom \n(accompagné de ses $info_loc->Nbr_Invite compagnons) \na effectivement loué l'appartement : $info_loc->nomAppartement \nentre le " . $datedebut . " et le " . utf8_encode($datefin));
     }
+
+    public static function EmailInfo(Request $request, $id)
+    {
+        $locateur = Securite::findOrFail($id);
+        $locateur = new Locateur();
+        $locateur->nom = $request->input('nom');
+        $locateur->prenom = $request->input('prenom');
+        $locateur->CIN = $request->input('cin');
+        $locateur->Tel = $request->input('Tel');
+        $locateur->Nbr_Invite = $request->input('nbr');
+        $locateur->email = $request->input('email');
+        $locateur->save();
+        $confirm = new confirm_logment();
+        $confirm->Accorder = 1;
+        $confirm->id_Locateur = $locateur->id;
+        $confirm->id_Appartement = $request->input('id_appartement');
+        $confirm->DateD = $request->input('dated');
+        $confirm->DateF = $request->input('datef');
+        $confirm->save();
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
 }
