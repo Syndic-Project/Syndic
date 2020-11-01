@@ -11,30 +11,6 @@ use SimpleSoftwareIO\QrCode\Generator;
 
 class LocateurController extends Controller
 {
-
-
-    public static function genrateQR($id)
-    {
-
-        $locateurQR = confirm_logment::findOrFail($id);
-        $QrCode = new Generator();
-
-        $data = $QrCode->size(500)->generate($locateurQR);
-
-        $info_loc = DB::table('locateurs')
-            ->join('confirm_logments', 'confirm_logments.id_Locateur', '=', 'locateurs.id')
-            ->get();
-
-
-//        return view('Client/modalQrcode', [
-//            'locateurs' => $info_loc,
-//            'data'=>$data
-//        ]);
-
-
-
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -47,30 +23,11 @@ class LocateurController extends Controller
         $info_loc = DB::table('locateurs')
             ->join('confirm_logments', 'confirm_logments.id_Locateur', '=', 'locateurs.id')
             ->get();
-
-//        $locateurQR = confirm_logment::all();
-//        $QrCode = new Generator();
-//
-//        $data = $QrCode->size(50)->generate($locateurQR);
-
         return view('Client/AddLocateur', [
             'appartements' => Appartement::doesnthave('confirmLogments')->get(),
             'locateurs' => $info_loc,
-            'Confirmid'=>  Confirm_logment::all(),
-
-
+            'Confirmid' =>  Confirm_logment::all(),
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-
-
     }
 
     /**
@@ -88,15 +45,27 @@ class LocateurController extends Controller
         $locateur->Tel = $request->input('Tel');
         $locateur->Nbr_Invite = $request->input('nbr');
         $locateur->email = $request->input('email');
-//        $locateur->save();
+        $locateur->save();
         $confirm = new confirm_logment();
         $confirm->Accorder = 1;
         $confirm->id_Locateur = $locateur->id;
         $confirm->id_Appartement = $request->input('id_appartement');
         $confirm->DateD = $request->input('dated');
         $confirm->DateF = $request->input('datef');
-//        $confirm->save();
-        LocateurController::genrateQR($confirm->id);
+        $confirm->save();
+
+        return redirect("/Locateur");
+    }
+
+    public static function genrateQR($id)
+    {
+        $locateurQR = confirm_logment::findOrFail($id);
+        $QrCode = new Generator();
+        $data = $QrCode->size(200)->generate($locateurQR);
+        $info_loc = DB::table('locateurs')
+            ->join('confirm_logments', 'confirm_logments.id_Locateur', '=', 'locateurs.id')
+            ->get();
+        return $data;
     }
 
     /**

@@ -71,8 +71,6 @@ Route::get('/Auth-Login', 'AuthentificationController@loginView')->name('Auth-Lo
 Route::post('/Auth-Login', 'AuthentificationController@loginSecurity')->name('Auth-Login-Post');
 Route::get('/Auth-Logout', 'AuthentificationController@LogOut')->name('Auth-LogOut');
 
-Route::get('/getQrcode', 'LocateurController@genrateQR/{id}')->name('genrateQR');
-
 //les rousources des methodes generer
 // les routes des methode generer du controlleur create edit delete
 Route::resource('/immeubles', 'ImmeubleController');
