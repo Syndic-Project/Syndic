@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bloc;
 use App\Models\Facture;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FactureController extends Controller
 {
@@ -16,8 +17,17 @@ class FactureController extends Controller
     public function index()
     {
 
+        $facture = DB::table('factures')
+            ->join('type_factures', 'type_factures.id', '=', 'factures.id_Type_facture')
+            ->join('recus', 'recus.id', '=', 'factures.id_Recu')
+            ->get();
+//dd($facture);
+
+
         return view('Factures/AddFacture')
-            ->with("blocs", Bloc::all());
+            ->with("blocs", Bloc::all())
+        ->with("factures",$facture);
+
     }
 
     /**

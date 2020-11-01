@@ -26,7 +26,7 @@ class ResidenceController extends Controller
             ->join('villes', 'residences.id_ville', '=', 'villes.id')
             ->get(['residences.*', 'villes.id', 'villes.nom_ville', 'blocs.nom_bloc']);
 
-     
+
 
 
         return view('Residences/residence', [
