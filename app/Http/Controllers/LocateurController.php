@@ -17,8 +17,6 @@ class LocateurController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-
     public function index()
     {
         $info_loc = DB::table('locateurs')
