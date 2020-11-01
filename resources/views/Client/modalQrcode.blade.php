@@ -1,4 +1,3 @@
-{{-- @foreach($locateurs as $loc) --}}
 <div id="modalAfficherQr" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalAfficherQrLabel"
     aria-hidden="true">
     <div class="modal-dialog">
@@ -15,12 +14,12 @@
                         <div class="col-12">
                             <div class="d-flex justify-content-center">
                                 <div id="divQrCode" style="width: 200px">
-                                    {{-- {{\App\Http\Controllers\LocateurController::genrateQR($loc->id)}} --}}
+
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary btn-md btn-block mt-4">
+                    <button id="printBtn" type="button" class="btn btn-primary btn-md btn-block mt-4">
                         Imprimer
                     </button>
                 </div>
@@ -28,4 +27,3 @@
         </div>
     </div>
 </div>
-{{-- @endforeach --}}
