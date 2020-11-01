@@ -1,6 +1,6 @@
 @extends('Layouts/appLayout')
 @section('content')
-    
+
 
 <div class="content-page">
     <div class="content">
@@ -15,7 +15,8 @@
                             <input type="text" class="form-control" id="dash-daterange" style="min-width: 190px;" />
                         </div>
                         <div class="btn-group">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
                                 <i class='uil uil-file-alt mr-1'></i>Download
                                 <i class="icon"><span data-feather="chevron-down"></span></i></button>
                             <div class="dropdown-menu dropdown-menu-right">
@@ -51,7 +52,8 @@
                                 </div>
                                 <div class="align-self-center">
                                     <div id="today-revenue-chart" class="apex-charts"></div>
-                                    <span class="text-success font-weight-bold font-size-13"><i class='uil uil-arrow-up'></i> 10.21%</span>
+                                    <span class="text-success font-weight-bold font-size-13"><i
+                                            class='uil uil-arrow-up'></i> 10.21%</span>
                                 </div>
                             </div>
                         </div>
@@ -69,7 +71,8 @@
                                 </div>
                                 <div class="align-self-center">
                                     <div id="today-product-sold-chart" class="apex-charts"></div>
-                                    <span class="text-danger font-weight-bold font-size-13"><i class='uil uil-arrow-down'></i> 5.05%</span>
+                                    <span class="text-danger font-weight-bold font-size-13"><i
+                                            class='uil uil-arrow-down'></i> 5.05%</span>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +90,8 @@
                                 </div>
                                 <div class="align-self-center">
                                     <div id="today-new-customer-chart" class="apex-charts"></div>
-                                    <span class="text-success font-weight-bold font-size-13"><i class='uil uil-arrow-up'></i> 25.16%</span>
+                                    <span class="text-success font-weight-bold font-size-13"><i
+                                            class='uil uil-arrow-up'></i> 25.16%</span>
                                 </div>
                             </div>
                         </div>
@@ -105,7 +109,8 @@
                                 </div>
                                 <div class="align-self-center">
                                     <div id="today-new-visitors-chart" class="apex-charts"></div>
-                                    <span class="text-danger font-weight-bold font-size-13"><i class='uil uil-arrow-down'></i> 5.05%</span>
+                                    <span class="text-danger font-weight-bold font-size-13"><i
+                                            class='uil uil-arrow-down'></i> 5.05%</span>
                                 </div>
                             </div>
                         </div>
@@ -118,7 +123,7 @@
                 <div class="col-xl-3">
                     <div class="card">
                         <div class="card-body p-0">
-                            <h5 class="card-title border-bottom p-3 mb-0">Overview</h5>
+                            <h5 class="card-title border-bottom p-3 mb-0">Général</h5>
                             <!-- stat 1 -->
                             <div class="media px-3 py-4 border-bottom">
                                 <div class="media-body">
@@ -272,109 +277,134 @@
                         <div class="card-body pt-2">
                             <h5 class="mb-4">Top Performers</h5>
                             <div class="media border-top pt-3">
-                                <img src="{{ asset('assets/images/users/avatar-7.jpg') }}" class="avatar rounded mr-3" alt="shreyu">
+                                <img src="{{ asset('assets/images/users/avatar-7.jpg') }}" class="avatar rounded mr-3"
+                                    alt="shreyu">
                                 <div class="media-body">
                                     <h6 class="mt-1 mb-0 font-size-15">Shreyu N</h6>
                                     <h6 class="text-muted font-weight-normal mt-1 mb-3">Senior Sales Guy</h6>
                                 </div>
                                 <div class="dropdown align-self-center float-right">
-                                    <a href="#" class="dropdown-toggle arrow-none text-muted" data-toggle="dropdown" aria-expanded="false">
+                                    <a href="#" class="dropdown-toggle arrow-none text-muted" data-toggle="dropdown"
+                                        aria-expanded="false">
                                         <i class="uil uil-ellipsis-v"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item"><i class="uil uil-edit-alt mr-2"></i>Edit</a>
+                                        <a href="javascript:void(0);" class="dropdown-item"><i
+                                                class="uil uil-edit-alt mr-2"></i>Edit</a>
                                         <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item"><i class="uil uil-exit mr-2"></i>Remove from Team</a>
+                                        <a href="javascript:void(0);" class="dropdown-item"><i
+                                                class="uil uil-exit mr-2"></i>Remove from Team</a>
                                         <div class="dropdown-divider"></div>
                                         <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item text-danger"><i class="uil uil-trash mr-2"></i>Delete</a>
+                                        <a href="javascript:void(0);" class="dropdown-item text-danger"><i
+                                                class="uil uil-trash mr-2"></i>Delete</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="media mt-1 border-top pt-3">
-                                <img src="{{ asset('assets/images/users/avatar-9.jpg') }}" class="avatar rounded mr-3" alt="shreyu">
+                                <img src="{{ asset('assets/images/users/avatar-9.jpg') }}" class="avatar rounded mr-3"
+                                    alt="shreyu">
                                 <div class="media-body">
                                     <h6 class="mt-1 mb-0 font-size-15">Greeva Y</h6>
                                     <h6 class="text-muted font-weight-normal mt-1 mb-3">Social Media Campaign
                                     </h6>
                                 </div>
                                 <div class="dropdown align-self-center float-right">
-                                    <a href="#" class="dropdown-toggle arrow-none text-muted" data-toggle="dropdown" aria-expanded="false">
+                                    <a href="#" class="dropdown-toggle arrow-none text-muted" data-toggle="dropdown"
+                                        aria-expanded="false">
                                         <i class="uil uil-ellipsis-v"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item"><i class="uil uil-edit-alt mr-2"></i>Edit</a>
+                                        <a href="javascript:void(0);" class="dropdown-item"><i
+                                                class="uil uil-edit-alt mr-2"></i>Edit</a>
                                         <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item"><i class="uil uil-exit mr-2"></i>Remove from Team</a>
+                                        <a href="javascript:void(0);" class="dropdown-item"><i
+                                                class="uil uil-exit mr-2"></i>Remove from Team</a>
                                         <div class="dropdown-divider"></div>
                                         <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item text-danger"><i class="uil uil-trash mr-2"></i>Delete</a>
+                                        <a href="javascript:void(0);" class="dropdown-item text-danger"><i
+                                                class="uil uil-trash mr-2"></i>Delete</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="media mt-1 border-top pt-3">
-                                <img src="{{ asset('assets/images/users/avatar-4.jpg') }}" class="avatar rounded mr-3" alt="shreyu">
+                                <img src="{{ asset('assets/images/users/avatar-4.jpg') }}" class="avatar rounded mr-3"
+                                    alt="shreyu">
                                 <div class="media-body">
                                     <h6 class="mt-1 mb-0 font-size-15">Nik G</h6>
                                     <h6 class="text-muted font-weight-normal mt-1 mb-3">Inventory Manager</h6>
                                 </div>
                                 <div class="dropdown align-self-center float-right">
-                                    <a href="#" class="dropdown-toggle arrow-none text-muted" data-toggle="dropdown" aria-expanded="false">
+                                    <a href="#" class="dropdown-toggle arrow-none text-muted" data-toggle="dropdown"
+                                        aria-expanded="false">
                                         <i class="uil uil-ellipsis-v"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item"><i class="uil uil-edit-alt mr-2"></i>Edit</a>
+                                        <a href="javascript:void(0);" class="dropdown-item"><i
+                                                class="uil uil-edit-alt mr-2"></i>Edit</a>
                                         <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item"><i class="uil uil-exit mr-2"></i>Remove from Team</a>
+                                        <a href="javascript:void(0);" class="dropdown-item"><i
+                                                class="uil uil-exit mr-2"></i>Remove from Team</a>
                                         <div class="dropdown-divider"></div>
                                         <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item text-danger"><i class="uil uil-trash mr-2"></i>Delete</a>
+                                        <a href="javascript:void(0);" class="dropdown-item text-danger"><i
+                                                class="uil uil-trash mr-2"></i>Delete</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="media mt-1 border-top pt-3">
-                                <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" class="avatar rounded mr-3" alt="shreyu">
+                                <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" class="avatar rounded mr-3"
+                                    alt="shreyu">
                                 <div class="media-body">
                                     <h6 class="mt-1 mb-0 font-size-15">Hardik G</h6>
                                     <h6 class="text-muted font-weight-normal mt-1 mb-3">Sales Person</h6>
                                 </div>
                                 <div class="dropdown align-self-center float-right">
-                                    <a href="#" class="dropdown-toggle arrow-none text-muted" data-toggle="dropdown" aria-expanded="false">
+                                    <a href="#" class="dropdown-toggle arrow-none text-muted" data-toggle="dropdown"
+                                        aria-expanded="false">
                                         <i class="uil uil-ellipsis-v"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item"><i class="uil uil-edit-alt mr-2"></i>Edit</a>
+                                        <a href="javascript:void(0);" class="dropdown-item"><i
+                                                class="uil uil-edit-alt mr-2"></i>Edit</a>
                                         <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item"><i class="uil uil-exit mr-2"></i>Remove from Team</a>
+                                        <a href="javascript:void(0);" class="dropdown-item"><i
+                                                class="uil uil-exit mr-2"></i>Remove from Team</a>
                                         <div class="dropdown-divider"></div>
                                         <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item text-danger"><i class="uil uil-trash mr-2"></i>Delete</a>
+                                        <a href="javascript:void(0);" class="dropdown-item text-danger"><i
+                                                class="uil uil-trash mr-2"></i>Delete</a>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="media mt-1 border-top pt-3">
-                                <img src="{{ asset('assets/images/users/avatar-5.jpg') }}" class="avatar rounded mr-3" alt="shreyu">
+                                <img src="{{ asset('assets/images/users/avatar-5.jpg') }}" class="avatar rounded mr-3"
+                                    alt="shreyu">
                                 <div class="media-body">
                                     <h6 class="mt-1 mb-0 font-size-15">Stive K</h6>
                                     <h6 class="text-muted font-weight-normal mt-1 mb-1">Sales Person</h6>
                                 </div>
                                 <div class="dropdown align-self-center float-right">
-                                    <a href="#" class="dropdown-toggle arrow-none text-muted" data-toggle="dropdown" aria-expanded="false">
+                                    <a href="#" class="dropdown-toggle arrow-none text-muted" data-toggle="dropdown"
+                                        aria-expanded="false">
                                         <i class="uil uil-ellipsis-v"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item"><i class="uil uil-edit-alt mr-2"></i>Edit</a>
+                                        <a href="javascript:void(0);" class="dropdown-item"><i
+                                                class="uil uil-edit-alt mr-2"></i>Edit</a>
                                         <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item"><i class="uil uil-exit mr-2"></i>Remove from Team</a>
+                                        <a href="javascript:void(0);" class="dropdown-item"><i
+                                                class="uil uil-exit mr-2"></i>Remove from Team</a>
                                         <div class="dropdown-divider"></div>
                                         <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item text-danger"><i class="uil uil-trash mr-2"></i>Delete</a>
+                                        <a href="javascript:void(0);" class="dropdown-item text-danger"><i
+                                                class="uil uil-trash mr-2"></i>Delete</a>
                                     </div>
                                 </div>
                             </div>
@@ -482,17 +512,21 @@
                     <div class="card">
                         <div class="card-body pt-2">
                             <div class="dropdown mt-2 float-right">
-                                <a href="#" class="dropdown-toggle arrow-none text-muted" data-toggle="dropdown" aria-expanded="false">
+                                <a href="#" class="dropdown-toggle arrow-none text-muted" data-toggle="dropdown"
+                                    aria-expanded="false">
                                     <i class="uil uil-ellipsis-v"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item"><i class="uil uil-refresh mr-2"></i>Refresh</a>
+                                    <a href="javascript:void(0);" class="dropdown-item"><i
+                                            class="uil uil-refresh mr-2"></i>Refresh</a>
                                     <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item"><i class="uil uil-user-plus mr-2"></i>Add Member</a>
+                                    <a href="javascript:void(0);" class="dropdown-item"><i
+                                            class="uil uil-user-plus mr-2"></i>Add Member</a>
                                     <div class="dropdown-divider"></div>
                                     <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item text-danger"><i class="uil uil-exit mr-2"></i>Exit</a>
+                                    <a href="javascript:void(0);" class="dropdown-item text-danger"><i
+                                            class="uil uil-exit mr-2"></i>Exit</a>
                                 </div>
                             </div>
                             <h5 class="mb-4">Recent Conversation</h5>
@@ -558,26 +592,27 @@
                                 <form class="needs-validation" novalidate name="chat-form" id="chat-form">
                                     <div class="row">
                                         <div class="col">
-                                            <input type="text" class="form-control chat-input" placeholder="Enter your text" required>
+                                            <input type="text" class="form-control chat-input"
+                                                placeholder="Enter your text" required>
                                             <div class="invalid-feedback">
                                                 Please enter your messsage
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                            <button type="submit" class="btn btn-danger chat-send btn-block waves-effect waves-light">Send</button>
+                                            <button type="submit"
+                                                class="btn btn-danger chat-send btn-block waves-effect waves-light">Send</button>
                                         </div>
                                     </div>
                                 </form>
 
-                            </div> <!-- end .chat-conversation-->
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- end row -->
 
         </div>
-    </div> <!-- content -->
+    </div>
 
 
 
@@ -586,7 +621,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    2019 &copy; Shreyu. All Rights Reserved. Crafted with <i class='uil uil-heart text-danger font-size-12'></i> by <a href="https://coderthemes.com/" target="_blank">Coderthemes</a>
+                    2019 &copy; Shreyu. All Rights Reserved. Crafted with <i
+                        class='uil uil-heart text-danger font-size-12'></i> by <a href="https://coderthemes.com/"
+                        target="_blank">Coderthemes</a>
                 </div>
             </div>
         </div>
@@ -597,5 +634,5 @@
 @endsection
 
 @section('script')
-    <script src="{{ url('assets/js/pages/dashboard.init.js') }}"></script>
+<script src="{{ url('assets/js/pages/dashboard.init.js') }}"></script>
 @endsection

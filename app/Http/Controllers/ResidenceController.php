@@ -27,39 +27,12 @@ class ResidenceController extends Controller
             ->get(['residences.*', 'villes.id', 'villes.nom_ville', 'blocs.nom_bloc']);
 
 
-        $syndics = Syndic::doesntHave('residence')->get();
-
-
         return view('Residences/residence', [
             'residence' => $residence_bloc_ville,
             'villes' => Ville::all(),
             'blocs' => Bloc::all(),
-            'syndics' => $syndics,
-
+            'syndics' =>  Syndic::all()
         ]);
-
-        return view('Residences/_modalModifResidence', [
-            'residence' => $residence_id,
-
-
-        ]);
-
-//
-//        if ($request->ajax())
-//        {
-//            $data = Residence::latest()->get();
-//            return Datatables::of($data)
-//                ->addIndexColumn()
-//                ->addColumn('action', function ($row) {
-//                    $btn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
-//                    return $btn;
-//                })
-//                ->rawColumns(['action'])
-//                ->make(true);
-//        }
-//        return view('Residences/getresidence');
-
-
     }
 
     /**

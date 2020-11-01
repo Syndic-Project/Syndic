@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/','DashboardController@index');
 
 Route::get('/Locataire', function () {
     return view('Locataires/AddLocataire');
