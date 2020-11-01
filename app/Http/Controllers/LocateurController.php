@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Appartement;
 use App\Models\confirm_logment;
 use App\Models\Locateur;
+use App\Models\Securite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use SimpleSoftwareIO\QrCode\Generator;
@@ -67,6 +68,27 @@ class LocateurController extends Controller
             ->get();
         return $data;
     }
+
+    public static function EmailInfo(Request $request, $id)
+    {
+        $locateur = Securite::findOrFail($id);
+        $locateur = new Locateur();
+        $locateur->nom = $request->input('nom');
+        $locateur->prenom = $request->input('prenom');
+        $locateur->CIN = $request->input('cin');
+        $locateur->Tel = $request->input('Tel');
+        $locateur->Nbr_Invite = $request->input('nbr');
+        $locateur->email = $request->input('email');
+        $locateur->save();
+        $confirm = new confirm_logment();
+        $confirm->Accorder = 1;
+        $confirm->id_Locateur = $locateur->id;
+        $confirm->id_Appartement = $request->input('id_appartement');
+        $confirm->DateD = $request->input('dated');
+        $confirm->DateF = $request->input('datef');
+        $confirm->save();
+    }
+
 
     /**
      * Display the specified resource.
