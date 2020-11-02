@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7127ffd3-2783-4e0a-b602-f3196766c79f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_11_02_154603_old_change_type_cotisation_to_caisses.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AppartementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AppartementController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -194,7 +194,7 @@
       <workItem from="1603364708234" duration="27927000" />
       <workItem from="1603464651900" duration="1231000" />
       <workItem from="1603476798836" duration="97555000" />
-      <workItem from="1604186735172" duration="32567000" />
+      <workItem from="1604186735172" duration="43757000" />
     </task>
     <servers />
   </component>

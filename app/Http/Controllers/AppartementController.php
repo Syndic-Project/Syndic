@@ -21,7 +21,7 @@ class AppartementController extends Controller
     public static function credit($idap)
     {
 
-        $derniermoispaye = DB::table('caisses')->where('id_Appartement', '=', $idap)
+        $derniermoispaye = DB::table('caisses')->where('id_Appartement', '=', 1)
 //            ->where('id_Locataire', '=', $idl)
             ->orderBy('mois_concerne', 'desc')->first()->mois_concerne;
         $derniermoispaye = Carbon::parse($derniermoispaye)->floorMonth();
