@@ -112,6 +112,7 @@
                 }
             }
         };
+        
         new ApexCharts(document.querySelector("#targets-chart"), r).render();
         r = {
             plotOptions: {pie: {donut: {size: "70%"}, expandOnClick: !1}},
