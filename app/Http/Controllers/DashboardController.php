@@ -11,6 +11,7 @@ use App\Models\Locataire;
 use App\Models\Securite;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use ArielMejiaDev\LarapexCharts\Facades\LarapexChart;
 
 
 class DashboardController extends Controller
@@ -73,7 +74,7 @@ class DashboardController extends Controller
             ->with("totalappar", Appartement::count('id'))
             ->with("totalLocataire", Locataire::count('id'))
             ->with("totalImmeuble", Immeuble::count('id'))
-            ->with("appartements", Appartement::all())
+            ->with("immeubles", Immeuble::all())
             ->with("nbrmoisretard", $nbr_de_mois_en_retard)
             ->with("montantpayeretard", $creadit)
             ->with("totalLocataireenRetard", $Totaldeslocataireretard)

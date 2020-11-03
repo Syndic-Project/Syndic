@@ -70,6 +70,8 @@ Route::post('/Auth-Login', 'AuthentificationController@loginSecurity')->name('Au
 Route::get('/Auth-Logout', 'AuthentificationController@LogOut')->name('Auth-LogOut');
 Route::post('/getQrCode/{id_locateur}', 'LocateurController@generateQR');
 
+Route::get('/test','DashboardController@pourcentage_appartement_non_paye');
+
 //les rousources des methodes generer
 // les routes des methode generer du controlleur create edit delete
 Route::resource('/immeubles', 'ImmeubleController');

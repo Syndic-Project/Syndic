@@ -112,13 +112,29 @@
                 }
             }
         };
-        
+
+
+
+
+
+
         new ApexCharts(document.querySelector("#targets-chart"), r).render();
+
+        function f () {
+            $.ajax({
+                url: "/test",
+                type: "GET",
+                success: function (responseData) {
+                    console.log(responseData);
+                }
+
+            });}
         r = {
+
             plotOptions: {pie: {donut: {size: "70%"}, expandOnClick: !1}},
-            chart: {height: 260  , type: "donut"}, colors: ["#a5113b", "#ffbe0b"],
+            chart: {height: 260  , type: "donut"}, colors: ["#a5113b"],
             legend: {show: !0, position: "bottom", horizontalAlign: "left", itemMargin: {horizontal: 6, vertical: 3}},
-            series: [44, 55],
+            series: [this.f],
             labels: [" NON PAYÉS 44dh", "MANQUE 55  dh"],
             responsive: [{breakpoint: 480, options: {legend: {position: "bottom"}}}],
             tooltip: {
@@ -140,8 +156,14 @@
         }), a.ChatApp.init(), this.initCharts()
     }, a.Dashboard = new t, a.Dashboard.Constructor = t
 }
+
+
 (window.jQuery), function (t)
 {
     "use strict";
     window.jQuery.Dashboard.init()
 }();
+
+
+
+
