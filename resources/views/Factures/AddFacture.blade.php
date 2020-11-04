@@ -135,9 +135,9 @@
                                                class="form-control "/>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="example-fileinput">Recu</label>
+                                        <label class="labelFile" for="example-fileinput">Recu</label>
 
-                                        <input type="file" class="form-control" name="preuve" id="example-fileinput"/>
+                                        <input class="inputFile" type="file" class="form-control" name="preuve" id="example-fileinput"/>
                                     </div>
                                 </div>
                                 <button type="submit" id="ajouter" name="ajouter" class="btn btn-block btn-purple "><i
