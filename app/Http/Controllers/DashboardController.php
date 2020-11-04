@@ -9,15 +9,64 @@ use App\Models\Facture;
 use App\Models\Immeuble;
 use App\Models\Locataire;
 use App\Models\Securite;
+use ArielMejiaDev\LarapexCharts\LarapexChart;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
-use ArielMejiaDev\LarapexCharts\Facades\LarapexChart;
 
 
 class DashboardController extends Controller
 {
     public function index()
     {
+        $now = Carbon::now();
+
+        $TotalAppartementretard = DB::table('locataires')
+            ->join('caisses', 'caisses.id_locataire', '=', 'locataires.id')
+            ->join('appartements', 'appartements.id', '=', 'caisses.id_Appartement')
+            ->where('mois_concerne', '<', $now)
+            ->orderBy('mois_concerne', 'desc')
+            ->groupBy('mois_concerne')
+            ->count('appartements.id');
+      
+        $totaldesAppartement = Appartement::count('id');
+
+        $PosurcentagedeAppartementNonPaye = $TotalAppartementretard / $totaldesAppartement * 100;
+        $chart = (new LarapexChart)
+            ->setType('pie')
+            ->setTitle('Appartement en retard')
+            ->setXAxis(['en retard'])
+            ->setLabels(['en retard','Payes'])
+            ->setColors(['#ff6384', '#B8B8B8'])
+            ->setDataset([$PosurcentagedeAppartementNonPaye,100-$PosurcentagedeAppartementNonPaye]);
+//        $chart = (new LarapexChart)->setTitle('Net Profit')
+//            ->setSubtitle('From January To March')
+//            ->setType('bar')
+//            ->setXAxis(['janvier', 'février', 'mars',
+//                'avril',
+//                'mai ',
+//                'juin',
+//                'juillet',
+//                'aout',
+//                'septembre ',
+//                'octobre',
+//                'novembre ',
+//                'décembre'])
+//            ->setGrid(true)
+//            ->setDataset([
+//                [
+//                    'name' => 'Company A',
+//                    'data' => [1000, 10, 1900, 1000, 10, 1900, 1000, 10, 1900, 1000, 10, 1900]
+//                ],
+//                [
+//                    'name' => 'Company B',
+//                    'data' => [300, 900, 1400, 1000, 10, 1900, 1000, 10, 1900, 1000, 10, 1900]
+//                ],
+//                [
+//                    'name' => 'Company C',
+//                    'data' => [430, 245, 500, 1000, 10, 1900, 1000, 10, 1900, 1000, 10, 1900]
+//                ]
+//            ])
+//            ->setStroke(1);
 
 
 //alkhir appartement 1 fo9ach khelset
@@ -38,7 +87,6 @@ class DashboardController extends Controller
         //credit a paye
 
         $creadit = $nbr_de_mois_en_retard * $cotisation_mensuelle;
-
 
 
         //total des locataire en retard
@@ -66,8 +114,6 @@ class DashboardController extends Controller
 //            ->get();
 
 
-
-
         return view('index')
             ->with("totalcaisse", Caisse::sum('montant'))
             ->with("totalbloc", Bloc::count('id'))
@@ -80,13 +126,14 @@ class DashboardController extends Controller
             ->with("totalLocataireenRetard", $Totaldeslocataireretard)
             ->with("totalLocataireenAvance", $Totaldeslocataire_en_Avance)
             ->with("totaldepence", Facture::count('id'))
+            ->with("chart", $chart)
             ->with("totalSecurite", Securite::count('id'));
     }
 
     public function pourcentage_appartement_non_paye()
     {
         $now = Carbon::now();
-        $Totaldeslocatairejretard = DB::table('locataires')
+        $TotalAppartementretard = DB::table('locataires')
             ->join('caisses', 'caisses.id_locataire', '=', 'locataires.id')
             ->join('appartements', 'appartements.id', '=', 'caisses.id_Appartement')
             ->where('mois_concerne', '<', $now)
@@ -95,7 +142,7 @@ class DashboardController extends Controller
             ->count('appartements.id');
         $totaldeslocataires = Locataire::count('id');
 
-        $PosurcentagedeAppartementNonPaye = $Totaldeslocatairejretard / $totaldeslocataires * 100;
+        $PosurcentagedeAppartementNonPaye = $TotalAppartementretard / $totaldeslocataires * 100;
         return json_encode($PosurcentagedeAppartementNonPaye);
 
     }

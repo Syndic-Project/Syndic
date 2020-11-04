@@ -47,7 +47,7 @@
                                 <div class="media p-3">
                                     <div class="media-body">
                                         <span class="text-muted text-uppercase font-size-12 font-weight-bold">Total  en Caisse</span>
-                                        <h2 class="mb-0">{{$totalcaisse}} DH</h2>
+                                        <h2 class="mb-0">{{$totalcaisse ?? ''}} DH</h2>
                                     </div>
                                     <div class="align-self-center">
                                         <div id="today-revenue-chart" class="apex-charts"></div>
@@ -65,7 +65,7 @@
                                 <div class="media p-3">
                                     <div class="media-body">
                                         <span class="text-muted text-uppercase font-size-12 font-weight-bold">Locataire en Retard</span>
-                                        <h2 class="mb-0">{{$totalLocataireenRetard}}/{{$totalLocataire}}</h2>
+                                        <h2 class="mb-0">{{$totalLocataireenRetard ?? ''}}/{{$totalLocataire}}</h2>
                                     </div>
                                     <div class="align-self-center">
                                         <div id="today-product-sold-chart" class="apex-charts"></div>
@@ -206,7 +206,7 @@
 
                 <!-- products -->
                 <div class="row">
-                    <div class="col-xl-5">
+                    <div class="col-xl-12">
                         <select name="" id="slct" class="form-control">
                             @foreach($immeubles as $imm)
                             <option value="{{$imm->id}}">{{$imm->Nom_Immeuble}}</option>
@@ -220,19 +220,18 @@
                                   </h4>
                                 <h5 class="card-title mt-0 mb-0 text-center">
                                     SITUATION DES NON PAYÉS</h5>
-                                <div id="sales-by-category-chart" class="apex-charts mb-0 mt-4" dir="ltr"></div>
+                                <div id="" class="apex-charts mb-0 mt-4" dir="ltr">
+                                    {!! $chart->container() !!}
+                                </div>
                             </div> <!-- end card-body-->
                         </div> <!-- end card-->
                     </div> <!-- end col-->
-                    <div class="col-xl-7">
-                        <div class="card">
-                            {!! $chart !!}
+{{--                    <div class="col-xl-7">--}}
+{{--                        <div class="card">--}}
 
+{{--                            {!! $chart->container() !!}--}}
 
-{{--                            <script src="{{ $chart->cdn() }}"></script>--}}
-{{--                            {!! $chart->script() !!}--}}
-
-                        </div> <!-- end col-->
+{{--                        </div> <!-- end col-->--}}
                 </div>
                 <!-- end row -->
 
@@ -499,5 +498,16 @@
         @endsection
 
         @section('script')
+                <script src="{{ $chart->cdn() }}"></script>
+
+                <!-- Or use the cdn directly -->
+
+                <!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> -->
+
+                <!-- Or use the local library as asset the package already provides a publication with this file *see below -->
+
+            <!-- <script src="{{ asset('vendor/larapex-charts/apexchart.js') }}"></script> -->
+
+                {{ $chart->script() }}
             <script src="{{ url('assets/js/pages/dashboard.init.js') }}"></script>
 @endsection

@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
 
+
         /*
          * Package Service Providers...
          */
@@ -177,6 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+
 
 
     ],

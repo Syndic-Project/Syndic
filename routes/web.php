@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use ArielMejiaDev\LarapexCharts\LarapexChart;
+
 
 /*-
 |--------------------------------------------------------------------------
@@ -71,6 +73,11 @@ Route::get('/Auth-Logout', 'AuthentificationController@LogOut')->name('Auth-LogO
 Route::post('/getQrCode/{id_locateur}', 'LocateurController@generateQR');
 
 Route::get('/test','DashboardController@pourcentage_appartement_non_paye');
+
+Route::get('/chart', function () {
+    $chart = (new LarapexChart)->setTitle('Users')->setXAxis(['Active', 'Guests'])->setDataset([50]);
+    return view('chart', compact('chart'));
+});
 
 //les rousources des methodes generer
 // les routes des methode generer du controlleur create edit delete
