@@ -20,11 +20,11 @@ class DashboardController extends Controller
     {
 
 
-//alkhir appartement 1 fo9ach khelset
+        //alkhir appartement 1 fo9ach khelset
         $derniermoispaye = DB::table('caisses')
             ->where('id_Appartement', '=', 1)
             ->orderBy('mois_concerne', 'desc')->first()->mois_concerne;
-//ch7al raha menchher retard
+        //ch7al raha menchher retard
         $derniermoispaye = Carbon::parse($derniermoispaye)->floorMonth();
         $now = Carbon::now();
         $nbr_de_mois_en_retard = $derniermoispaye->diffInMonths($now);
@@ -60,10 +60,10 @@ class DashboardController extends Controller
             ->count('locataires.id');
 
 
-//        $blocimapp = DB::table('blocs')
-//            ->join('immeubles', 'immeubles.id_bloc', '=', 'blocs.id')
-//            ->join('appartements', 'appartements.id_Immeuble', '=', 'immeubles.id')
-//            ->get();
+        //        $blocimapp = DB::table('blocs')
+        //            ->join('immeubles', 'immeubles.id_bloc', '=', 'blocs.id')
+        //            ->join('appartements', 'appartements.id_Immeuble', '=', 'immeubles.id')
+        //            ->get();
 
 
 
@@ -97,6 +97,5 @@ class DashboardController extends Controller
 
         $PosurcentagedeAppartementNonPaye = $Totaldeslocatairejretard / $totaldeslocataires * 100;
         return json_encode($PosurcentagedeAppartementNonPaye);
-
     }
 }

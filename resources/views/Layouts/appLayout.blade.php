@@ -270,7 +270,7 @@
                     <span class="pro-user-desc">Syndik</span>
                     @else
                     <span class="pro-user-desc">Locataire</span>
-                     @endif
+                    @endif
                 </div>
                 <div class="dropdown align-self-center profile-dropdown-menu">
                     <a class="dropdown-toggle mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
