@@ -39,16 +39,14 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-
-                                    <tr>
-
-                                        @foreach ($factures as $facture)
-
+                                    @foreach ($factures as $facture)
+                                        <tr>
                                             <td class="text-center">{{$facture->libelle}}</td>
                                             <td class="text-center">{{$facture->date_de_paiment_facture}}</td>
                                             <td class="text-center">{{$facture->designation}}</td>
                                             <td class="text-center">{{$facture->Montant}}</td>
-                                            <td class="text-center"><img src="{{ asset('img/' . $facture->img) }}"/>
+                                            <td class="text-center">
+                                                <img src="{{ url('assets/uploads/'.$facture->img ) }}" style="width: 50px" />
                                             </td>
                                             <td class="text-center">
 
@@ -56,8 +54,8 @@
 
                                                     <a href="#modalModiFacture{{$facture->id}}"
                                                        class="btn btn-success btn-xs "
-                                                        data-toggle="modal"
-                                                        data-target="#modalModiFacture{{$facture->id}}">
+                                                       data-toggle="modal"
+                                                       data-target="#modalModiFacture{{$facture->id}}">
                                                         <i class="fas fa-user-edit"></i>modifier</a>
 
 
@@ -68,10 +66,8 @@
 
 
                                             </td>
-                                        @endforeach
-
-                                    </tr>
-
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -94,7 +90,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="needs-validation" novalidate action="{{route('Facture.store') }}" method="POST">
+                        <form class="needs-validation" novalidate action="{{route('Facture.store') }}" method="POST"
+                              enctype="multipart/form-data">
                             @csrf
 
                             <div class="row">
@@ -135,9 +132,16 @@
                                                class="form-control "/>
                                     </div>
                                     <div class="form-group ">
-                                        <label class="labelFile" for="example-fileinput">Recu</label>
-
-                                        <input class="inputFile" type="file" class="form-control" name="preuve" id="example-fileinput"/>
+                                        <label for="designation" style="visibility: hidden"></label>
+                                        <label class="labelFile p-2 text-capitalize form-control" for="inputFileid"
+                                               id="labelFile"
+                                               data-toggle="tooltip" data-placement="top" title="Fichier/piéce jointe">
+                                            <i class="far fa-file-alt"></i>
+                                            Reçu
+                                        </label>
+                                        <input class="inputFile" onchange="AffectFichier('labelFile',this.value)"
+                                               type="file" class="form-control" name="preuve"
+                                               id="inputFileid"/>
                                     </div>
                                 </div>
                                 <button type="submit" id="ajouter" name="ajouter" class="btn btn-block btn-purple "><i
@@ -167,7 +171,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="needs-validation" novalidate action="{{route('Facture.update',['Facture'=>$facture->id])}}" method="POST">
+                        <form class="needs-validation" novalidate
+                              action="{{route('Facture.update',['Facture'=>$facture->id])}}" method="POST">
                             @method('PUT')
                             @csrf
 
@@ -201,7 +206,7 @@
                                         <label for="Montant">Montant</label>
                                         <input type="text" required="" name="Montant" id="Montant"
                                                class="form-control "
-                                        value="{{$facture->Montant}}"/>
+                                               value="{{$facture->Montant}}"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -209,7 +214,7 @@
                                         <label for="designation">Designation</label>
                                         <input type="text" required="" name="designation" id="designation"
                                                class="form-control "
-                                        value="{{$facture->designation}}"/>
+                                               value="{{$facture->designation}}"/>
                                     </div>
                                     <div class="form-group ">
                                         <label for="example-fileinput">Recu</label>
@@ -267,9 +272,16 @@
         });
 
     </script>
+    <script>
+        function AffectFichier(labelID, fileName) {
+            document.getElementById(labelID).innerHTML =
+                `<i class='fas fa-check'></i>${fileName.split(/(\\|\/)/g).pop()}`;
+        }
+    </script>
 @endsection
 
 @section('script-bottom')
+
     <!-- Validation init js-->
     <script src="{{ URL::asset('assets/js/pages/form-validation.init.js') }}"></script>
 @endsection

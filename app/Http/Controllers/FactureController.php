@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bloc;
 use App\Models\Facture;
+use App\Models\Recu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -26,7 +27,7 @@ class FactureController extends Controller
 
         return view('Factures/AddFacture')
             ->with("blocs", Bloc::all())
-        ->with("factures",$facture);
+            ->with("factures", $facture);
 
     }
 
@@ -48,20 +49,22 @@ class FactureController extends Controller
      */
     public function store(Request $request)
     {
+        $recu = new Recu();
+        $image = $request->file('preuve');
+        $image->move(public_path() . '/assets/uploads/', $image->getClientOriginalName());
+        $recu->img = $image->getClientOriginalName();
+        $recu->save();
+
         $factures = new Facture();
-        $factures->date_de_paiment_facture = $request->inpute('datep');
+        $factures->date_de_paiment_facture = $request->input('datep');
         $factures->designation = $request->input('designation');
         $factures->id_Type_facture = $request->input('type_facture');
         $factures->Montant = $request->input('Montant');
-        $factures->preuve = $request->input('preuve');
-        if($request->hasFile('preuve')){
-            $image = $request->file('preuve');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(300, 300)->save( storage_path('/uploads/' . $filename ) );
-            $factures->image = $filename;
-            $factures->save();
-        };
+        $factures->id_Recu = $recu->id;
+        $factures->id_bloc = $request->bloc;
+        $factures->save();
 
+        echo "marche";
     }
 
     /**

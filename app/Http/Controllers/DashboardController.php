@@ -27,17 +27,17 @@ class DashboardController extends Controller
             ->orderBy('mois_concerne', 'desc')
             ->groupBy('mois_concerne')
             ->count('appartements.id');
-
         $totaldesAppartement = Appartement::count('id');
+        dd($TotalAppartementretard);
 
         $PosurcentagedeAppartementNonPaye = $TotalAppartementretard / $totaldesAppartement * 100;
         $chart = (new LarapexChart)
             ->setType('pie')
             ->setTitle('Appartement en retard')
             ->setXAxis(['en retard'])
-            ->setLabels(['en retard','Payes'])
+            ->setLabels(['en retard', 'Payes'])
             ->setColors(['#ff6384', '#B8B8B8'])
-            ->setDataset([$PosurcentagedeAppartementNonPaye,100-$PosurcentagedeAppartementNonPaye]);
+            ->setDataset([$PosurcentagedeAppartementNonPaye, 100 - $PosurcentagedeAppartementNonPaye]);
 //        $chart = (new LarapexChart)->setTitle('Net Profit')
 //            ->setSubtitle('From January To March')
 //            ->setType('bar')
