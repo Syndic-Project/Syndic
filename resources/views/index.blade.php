@@ -211,7 +211,7 @@
 
                 <!-- products -->
                 <div class="row">
-                    <div class="col-xl-5">
+                    <div class="col-xl-12">
                         <select name="" id="slct" class="form-control">
                             @foreach ($immeubles as $imm)
                                 <option value="{{ $imm->id }}">{{ $imm->Nom_Immeuble }}</option>
@@ -227,21 +227,23 @@
                                 <h5 class="card-title mt-0 mb-0 text-center">
                                     SITUATION DES NON PAYÉS
                                 </h5>
-                                <div id="sales-by-category-chart" class="apex-charts mb-0 mt-4" dir="ltr"></div>
+                                <div id="" class="apex-charts mb-0 mt-4" dir="ltr">
+                                    {!! $chart->container() !!}
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-7">
-                        <div class="card">
-                            {{-- {!! $chart !!} --}}
+{{--                    <div class="col-xl-7">--}}
+{{--                        <div class="card">--}}
+{{--                            --}}{{-- {!! $chart !!} --}}
 
 
-                            {{-- <script src="{{ $chart->cdn() }}"></script>
-                            --}}
-                            {{-- {!! $chart->script() !!}--}}
+{{--                            --}}{{-- <script src="{{ $chart->cdn() }}"></script>--}}
+{{--                            --}}
+{{--                            --}}{{-- {!! $chart->script() !!}--}}
 
-                        </div> <!-- end col-->
-                    </div>
+{{--                        </div> <!-- end col-->--}}
+{{--                    </div>--}}
                 </div>
 
 
@@ -265,6 +267,16 @@
 @endsection
 
 @section('script')
+    <script src="{{ $chart->cdn() }}"></script>
+
+    <!-- Or use the cdn directly -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    <!-- Or use the local library as asset the package already provides a publication with this file *see below -->
+
+ <script src="{{ asset('vendor/larapex-charts/apexchart.js') }}"></script>
+
+    {{ $chart->script() }}
     <script src="{{ url('assets/js/pages/dashboard.init.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
         integrity="sha256-t9UJPrESBeG2ojKTIcFLPGF7nHi2vEc7f5A2KpH/UBU=" crossorigin="anonymous"></script>

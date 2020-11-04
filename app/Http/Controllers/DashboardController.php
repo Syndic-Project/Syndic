@@ -27,7 +27,7 @@ class DashboardController extends Controller
             ->orderBy('mois_concerne', 'desc')
             ->groupBy('mois_concerne')
             ->count('appartements.id');
-      
+
         $totaldesAppartement = Appartement::count('id');
 
         $PosurcentagedeAppartementNonPaye = $TotalAppartementretard / $totaldesAppartement * 100;
