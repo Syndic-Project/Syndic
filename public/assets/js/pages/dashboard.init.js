@@ -114,28 +114,17 @@
         };
 
 
+  var chart= new ApexCharts(document.querySelector("#targets-chart"), r).render();
 
 
 
-
-        new ApexCharts(document.querySelector("#targets-chart"), r).render();
-
-        function f () {
-            $.ajax({
-                url: "/test",
-                type: "GET",
-                success: function (responseData) {
-                    console.log(responseData);
-                }
-
-            });}
         r = {
 
             plotOptions: {pie: {donut: {size: "70%"}, expandOnClick: !1}},
-            chart: {height: 260  , type: "donut"}, colors: ["#a5113b"],
+            chart: {height: 260, type: "donut"}, colors: ["#5369f8", "#43d39e", "#f77e53", "#ffbe0b"],
             legend: {show: !0, position: "bottom", horizontalAlign: "left", itemMargin: {horizontal: 6, vertical: 3}},
-            series: [this.f],
-            labels: [" NON PAYÉS 44dh", "MANQUE 55  dh"],
+            series: [],
+            labels: ["MANQUE 55  dh"],
             responsive: [{breakpoint: 480, options: {legend: {position: "bottom"}}}],
             tooltip: {
                 y: {
@@ -145,6 +134,20 @@
                 }
             }
         };
+
+        function f() {
+            $.ajax({
+                url: "/test",
+                type: "GET",
+                success: function (responseData) {
+                    chart.updateSeries
+                  return responseData;
+
+                }
+
+            });
+        }
+        f();
         new ApexCharts(document.querySelector("#sales-by-category-chart"), r).render()
     }, t.prototype.init = function () {
         a("#dash-daterange").flatpickr({
@@ -158,8 +161,7 @@
 }
 
 
-(window.jQuery), function (t)
-{
+(window.jQuery), function (t) {
     "use strict";
     window.jQuery.Dashboard.init()
 }();
