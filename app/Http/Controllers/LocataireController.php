@@ -67,18 +67,20 @@ class LocataireController extends Controller
         $locataire->Tel = $request->tel;
         $locataire->CIN = $request->cin;
         $locataire->email = $request->email;
+        $locataire->isVisible = true;
         $locataire->password = Hash::make($request->mdp);
         $locataire->save();
 
-        foreach ($request->appartements as $appartement_nom) {
-            $appartement = Appartement::where("nom", $appartement_nom)->first();
-            $caisse = new Caisse();
-            $caisse->id_Appartement = $appartement->id;
-            $caisse->id_Locataire = $locataire->id;
-            $caisse->montant = $appartement->immeuble->Montant_Cotisation_Mensuelle;
-            $caisse->mois_concerne = Carbon::now()->addMonths(1);
-            $caisse->save();
-        }
+        if ($request->appartements)
+            foreach ($request->appartements as $appartement_nom) {
+                $appartement = Appartement::where("nom", $appartement_nom)->first();
+                $caisse = new Caisse();
+                $caisse->id_Appartement = $appartement->id;
+                $caisse->id_Locataire = $locataire->id;
+                $caisse->montant = $appartement->immeuble->Montant_Cotisation_Mensuelle;
+                $caisse->mois_concerne = Carbon::now()->addMonths(1);
+                $caisse->save();
+            }
 
         return redirect(url()->previous());
     }

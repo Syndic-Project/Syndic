@@ -1,6 +1,6 @@
 @extends('Layouts/appLayout')
-@section('content')
 
+@section('content')
 
 <div class="content-page">
     <div class="content">
@@ -256,26 +256,19 @@
 @endsection
 
 @section('script')
-
-<!-- Or use the cdn directly -->
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-
-<!-- Or use the local library as asset the package already provides a publication with this file *see below -->
-
-<!-- <script src="{{ asset('vendor/larapex-charts/apexchart.js') }}"></script> -->
-
+<script src="{{ url('assets/js/utilDate.js') }}"></script>
 <script src="{{ url('assets/js/pages/dashboard.init.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
     integrity="sha256-t9UJPrESBeG2ojKTIcFLPGF7nHi2vEc7f5A2KpH/UBU=" crossorigin="anonymous"></script>
 <script>
-    console.log("loading charts ...");
+    console.log(months.join(','));
     new Chart(document.getElementById("line-chart"), {
         type: 'line',
         data: {
-            labels: [1500, 1600, 1700, 1750, 1800, 1850, 1900, 1950, 1999, 2050],
+            labels: months,
             datasets: [{
-                data: [86, 114, 106, 106, 107, 111, 133, 221, 783, 2478],
-                label: "Africa",
+                data: [ @foreach ($revenueMois as $item) {{ $item->total_mois}}, @endforeach ],
+                label: "Montant",
                 borderColor: "#3e95cd",
                 fill: false
             }]

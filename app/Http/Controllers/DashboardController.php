@@ -28,7 +28,7 @@ class DashboardController extends Controller
             ->groupBy('mois_concerne')
             ->count('appartements.id');
         $totaldesAppartement = Appartement::count('id');
-//        dd($TotalAppartementretard);
+        //        dd($TotalAppartementretard);
 
         $PosurcentagedeAppartementNonPaye = $TotalAppartementretard / $totaldesAppartement * 100;
         // $chart = (new LarapexChart)
@@ -38,35 +38,35 @@ class DashboardController extends Controller
         //     ->setLabels(['en retard','Payes'])
         //     ->setColors(['#ff6384', '#B8B8B8'])
         //     ->setDataset([$PosurcentagedeAppartementNonPaye,100-$PosurcentagedeAppartementNonPaye]);
-//        $chart = (new LarapexChart)->setTitle('Net Profit')
-//            ->setSubtitle('From January To March')
-//            ->setType('bar')
-//            ->setXAxis(['janvier', 'février', 'mars',
-//                'avril',
-//                'mai ',
-//                'juin',
-//                'juillet',
-//                'aout',
-//                'septembre ',
-//                'octobre',
-//                'novembre ',
-//                'décembre'])
-//            ->setGrid(true)
-//            ->setDataset([
-//                [
-//                    'name' => 'Company A',
-//                    'data' => [1000, 10, 1900, 1000, 10, 1900, 1000, 10, 1900, 1000, 10, 1900]
-//                ],
-//                [
-//                    'name' => 'Company B',
-//                    'data' => [300, 900, 1400, 1000, 10, 1900, 1000, 10, 1900, 1000, 10, 1900]
-//                ],
-//                [
-//                    'name' => 'Company C',
-//                    'data' => [430, 245, 500, 1000, 10, 1900, 1000, 10, 1900, 1000, 10, 1900]
-//                ]
-//            ])
-//            ->setStroke(1);
+        //        $chart = (new LarapexChart)->setTitle('Net Profit')
+        //            ->setSubtitle('From January To March')
+        //            ->setType('bar')
+        //            ->setXAxis(['janvier', 'février', 'mars',
+        //                'avril',
+        //                'mai ',
+        //                'juin',
+        //                'juillet',
+        //                'aout',
+        //                'septembre ',
+        //                'octobre',
+        //                'novembre ',
+        //                'décembre'])
+        //            ->setGrid(true)
+        //            ->setDataset([
+        //                [
+        //                    'name' => 'Company A',
+        //                    'data' => [1000, 10, 1900, 1000, 10, 1900, 1000, 10, 1900, 1000, 10, 1900]
+        //                ],
+        //                [
+        //                    'name' => 'Company B',
+        //                    'data' => [300, 900, 1400, 1000, 10, 1900, 1000, 10, 1900, 1000, 10, 1900]
+        //                ],
+        //                [
+        //                    'name' => 'Company C',
+        //                    'data' => [430, 245, 500, 1000, 10, 1900, 1000, 10, 1900, 1000, 10, 1900]
+        //                ]
+        //            ])
+        //            ->setStroke(1);
 
 
         //alkhir appartement 1 fo9ach khelset
@@ -126,8 +126,22 @@ class DashboardController extends Controller
             ->with("totalLocataireenRetard", $Totaldeslocataireretard)
             ->with("totalLocataireenAvance", $Totaldeslocataire_en_Avance)
             ->with("totaldepence", Facture::count('id'))
-            // ->with("chart", $chart)
+            ->with("revenueMois", $this->revenue_mois(null))
             ->with("totalSecurite", Securite::count('id'));
+    }
+
+
+    public function revenue_mois($annee)
+    {
+        $annee = $annee ?? Carbon::now()->format('Y');
+        return DB::select("
+        select sum(c.montant) as total_mois , c.mois_concerne
+        from caisses c
+        where SUBSTRING_INDEX(c.mois_concerne,'-',1) = '2020'
+        group by c.mois_concerne
+        order by  DATE(STR_TO_DATE(CONCAT( SUBSTRING_INDEX(c.mois_concerne,'-',1) , '-' , SUBSTRING_INDEX(c.mois_concerne,'-',-1),'-','1' ),'%Y-%m-%d')) desc,
+                STR_TO_DATE(CONCAT( SUBSTRING_INDEX(c.mois_concerne,'-',1) , '-' , SUBSTRING_INDEX(c.mois_concerne,'-',-1),'-','1' ),'%Y-%m-%d') asc
+                  ");
     }
 
     public function pourcentage_appartement_non_paye()
