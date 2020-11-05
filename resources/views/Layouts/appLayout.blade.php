@@ -493,25 +493,3 @@
 </body>
 
 </html>
-<!-- <style>
-    .labelFile {
-        cursor: pointer;
-        border: 1px solid #ced4da;
-        border-radius: 8px;
-        text-align: center;
-        word-break: break-word;
-    }
-
-    .inputFile {
-        display: none;
-        pointer-events: none;
-        opacity: 0;
-        z-index: -1;
-    }
-</style>
-<script>
-    function AffectFichier(labelID, fileName) {
-        document.getElementById(labelID).innerHTML =
-            `<i class='fas fa-check'></i>${fileName.split(/(\\|\/)/g).pop()}`;
-    }
-</script> -->
