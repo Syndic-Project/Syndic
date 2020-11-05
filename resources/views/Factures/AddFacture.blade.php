@@ -39,6 +39,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+
                                     @foreach ($factures as $facture)
                                         <tr>
                                             <td class="text-center">{{$facture->libelle}}</td>
@@ -46,7 +47,28 @@
                                             <td class="text-center">{{$facture->designation}}</td>
                                             <td class="text-center">{{$facture->Montant}}</td>
                                             <td class="text-center">
-                                                <img src="{{ url('assets/uploads/'.$facture->img ) }}" style="width: 50px" />
+
+
+                                                @if (explode( '.',$facture->img)[1]=="png")
+
+                                                    <a href="#modalModiFactureImage"
+                                                       data-toggle="modal"
+                                                       data-target="#modalModiFactureImage{{$facture->id}}">
+
+                                                        <img src="{{ url('assets/uploads/'.$facture->img ) }}"
+
+                                                             style="width: 50px"/>
+                                                    </a>
+
+                                                @else
+                                                    <a href="#modalModiFacturePDF"  data-toggle="modal"
+                                                       data-target="#modalModiFacturePDF{{$facture->id}}">
+                                                        Voir PDF
+                                                    </a>
+
+
+                                                    @endif
+
                                             </td>
                                             <td class="text-center">
 
@@ -155,6 +177,51 @@
         </div>
     </div>
 
+    @foreach($factures as $facture)
+        <div id="modalModiFactureImage{{$facture->id}}" class="modal fade" tabindex="-1" role="dialog"
+             aria-labelledby="modalModiFactureImageLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalModiFactureImageLabel">Reçu</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img style="width:100%" src="{{ url('assets/uploads/'.$facture->img ) }}">
+
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+
+    @foreach($factures as $facture)
+        <div id="modalModiFacturePDF{{$facture->id}}" class="modal fade" tabindex="-1" role="dialog"
+             aria-labelledby="modalModiFacturePDFLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalModiFacturePDFLabel">Reçu</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <embed width="100%" height="300px"type="application/pdf" src="{{ url('assets/uploads/'.$facture->img )}}"
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
 
 
     @foreach($factures as $facture)
@@ -233,8 +300,6 @@
         </div>
         </div>
         @endforeach
-
-
         </div>
 
 
