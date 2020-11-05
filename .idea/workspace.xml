@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7127ffd3-2783-4e0a-b602-f3196766c79f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/assets/uploads/rl6.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Factures/AddFacture.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Factures/AddFacture.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Residences/residence.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Residences/residence.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,6 +169,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\pc\Documents\GitHub\FirstTry\public\assets" />
       <recent name="C:\Users\pc\Documents\GitHub\FirstTry\app\Models" />
     </key>
   </component>
@@ -195,7 +198,8 @@
       <workItem from="1603364708234" duration="27927000" />
       <workItem from="1603464651900" duration="1231000" />
       <workItem from="1603476798836" duration="97555000" />
-      <workItem from="1604186735172" duration="57304000" />
+      <workItem from="1604186735172" duration="57903000" />
+      <workItem from="1604500102083" duration="12392000" />
     </task>
     <servers />
   </component>
@@ -218,10 +222,10 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="371" y="100" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.689@0.0.1280.689" timestamp="1604249845672" />
-    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1604080380756">
+    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1604504974393">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1280.689@0.0.1280.689" timestamp="1604080380756" />
+    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1280.689@0.0.1280.689" timestamp="1604504974393" />
     <state width="845" height="166" key="GridCell.Tab.0.bottom" timestamp="1603304859079">
       <screen x="0" y="0" width="1280" height="689" />
     </state>

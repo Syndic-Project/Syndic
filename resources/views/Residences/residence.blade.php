@@ -32,26 +32,25 @@
                                             <th class="text-center">Action</th>
                                             <th class="text-center">Nom du bloc</th>
                                             <th class="text-center">Immeubles</th>
-                                            <th class="text-center">Appartements</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($blocs as $bloc)
                                         <tr>
                                             <td class="text-center">
-                                                {{-- <div class="btn-group" role="group">
-                                                    <a href="#" class="btn btn-info btn-xs"><i class="fa fa-eye"></i>
-                                                        détails</a>&nbsp;
-                                                    <a href="#modalModifResidence{{$res->id}}" data-toggle="modal"
-                                                        data-target="#modalModifResidence{{$res->id}}"
+                                                 <div class="btn-group" role="group">
+
+                                                    <a href="#modalModifResidenc" data-toggle="modal"
+                                                        data-target="#modalModifResidence"
                                                         class="btn btn-success btn-xs ">
                                                         <i class="fas fa-user-edit"></i>modifier
                                                     </a>
-                                                </div> --}}
+                                                </div>
                                             </td>
                                             <td class="text-center">{{$bloc->nom_bloc}}</td>
                                             <td class="text-center">{{ count($bloc->immeuble->get()->where("id_bloc",$bloc->id)->toArray()) }}</td>
-                                            <td class="text-center">45</td>
+
                                         </tr>
                                         @endforeach
                                     </tbody>

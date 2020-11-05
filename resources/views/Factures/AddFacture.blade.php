@@ -40,15 +40,35 @@
                                     </thead>
                                     <tbody>
 
-                                    <tr>
-
-                                        @foreach ($factures as $facture)
-
+                                    @foreach ($factures as $facture)
+                                        <tr>
                                             <td class="text-center">{{$facture->libelle}}</td>
                                             <td class="text-center">{{$facture->date_de_paiment_facture}}</td>
                                             <td class="text-center">{{$facture->designation}}</td>
                                             <td class="text-center">{{$facture->Montant}}</td>
-                                            <td class="text-center"><img src="{{ asset('img/' . $facture->img) }}"/>
+                                            <td class="text-center">
+
+
+                                                @if (explode( '.',$facture->img)[1]=="png")
+
+                                                    <a href="#modalModiFactureImage"
+                                                       data-toggle="modal"
+                                                       data-target="#modalModiFactureImage{{$facture->id}}">
+
+                                                        <img src="{{ url('assets/uploads/'.$facture->img ) }}"
+
+                                                             style="width: 50px"/>
+                                                    </a>
+
+                                                @else
+                                                    <a href="#modalModiFacturePDF"  data-toggle="modal"
+                                                       data-target="#modalModiFacturePDF{{$facture->id}}">
+                                                        Voir PDF
+                                                    </a>
+
+
+                                                    @endif
+
                                             </td>
                                             <td class="text-center">
 
@@ -56,8 +76,8 @@
 
                                                     <a href="#modalModiFacture{{$facture->id}}"
                                                        class="btn btn-success btn-xs "
-                                                        data-toggle="modal"
-                                                        data-target="#modalModiFacture{{$facture->id}}">
+                                                       data-toggle="modal"
+                                                       data-target="#modalModiFacture{{$facture->id}}">
                                                         <i class="fas fa-user-edit"></i>modifier</a>
 
 
@@ -68,10 +88,8 @@
 
 
                                             </td>
-                                        @endforeach
-
-                                    </tr>
-
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -94,7 +112,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="needs-validation" novalidate action="{{route('Facture.store') }}" method="POST">
+                        <form class="needs-validation" novalidate action="{{route('Facture.store') }}" method="POST"
+                              enctype="multipart/form-data">
                             @csrf
 
                             <div class="row">
@@ -135,9 +154,16 @@
                                                class="form-control "/>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="example-fileinput">Recu</label>
-
-                                        <input type="file" class="form-control" name="preuve" id="example-fileinput"/>
+                                        <label for="designation" style="visibility: hidden"></label>
+                                        <label class="labelFile p-2 text-capitalize form-control" for="inputFileid"
+                                               id="labelFile"
+                                               data-toggle="tooltip" data-placement="top" title="Fichier/piéce jointe">
+                                            <i class="far fa-file-alt"></i>
+                                            Reçu
+                                        </label>
+                                        <input class="inputFile" onchange="AffectFichier('labelFile',this.value)"
+                                               type="file" class="form-control" name="preuve"
+                                               id="inputFileid"/>
                                     </div>
                                 </div>
                                 <button type="submit" id="ajouter" name="ajouter" class="btn btn-block btn-purple "><i
@@ -150,6 +176,51 @@
             </div>
         </div>
     </div>
+
+    @foreach($factures as $facture)
+        <div id="modalModiFactureImage{{$facture->id}}" class="modal fade" tabindex="-1" role="dialog"
+             aria-labelledby="modalModiFactureImageLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalModiFactureImageLabel">Reçu</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img style="width:100%" src="{{ url('assets/uploads/'.$facture->img ) }}">
+
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+
+    @foreach($factures as $facture)
+        <div id="modalModiFacturePDF{{$facture->id}}" class="modal fade" tabindex="-1" role="dialog"
+             aria-labelledby="modalModiFacturePDFLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalModiFacturePDFLabel">Reçu</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <embed width="100%" height="300px"type="application/pdf" src="{{ url('assets/uploads/'.$facture->img )}}"
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
 
 
 
@@ -167,7 +238,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="needs-validation" novalidate action="{{route('Facture.update',['Facture'=>$facture->id])}}" method="POST">
+                        <form class="needs-validation" novalidate
+                              action="{{route('Facture.update',['Facture'=>$facture->id])}}" method="POST">
                             @method('PUT')
                             @csrf
 
@@ -201,7 +273,7 @@
                                         <label for="Montant">Montant</label>
                                         <input type="text" required="" name="Montant" id="Montant"
                                                class="form-control "
-                                        value="{{$facture->Montant}}"/>
+                                               value="{{$facture->Montant}}"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -209,7 +281,7 @@
                                         <label for="designation">Designation</label>
                                         <input type="text" required="" name="designation" id="designation"
                                                class="form-control "
-                                        value="{{$facture->designation}}"/>
+                                               value="{{$facture->designation}}"/>
                                     </div>
                                     <div class="form-group ">
                                         <label for="example-fileinput">Recu</label>
@@ -228,8 +300,6 @@
         </div>
         </div>
         @endforeach
-
-
         </div>
 
 
@@ -267,9 +337,16 @@
         });
 
     </script>
+    <script>
+        function AffectFichier(labelID, fileName) {
+            document.getElementById(labelID).innerHTML =
+                `<i class='fas fa-check'></i>${fileName.split(/(\\|\/)/g).pop()}`;
+        }
+    </script>
 @endsection
 
 @section('script-bottom')
+
     <!-- Validation init js-->
     <script src="{{ URL::asset('assets/js/pages/form-validation.init.js') }}"></script>
 @endsection

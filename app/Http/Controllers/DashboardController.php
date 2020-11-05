@@ -27,8 +27,8 @@ class DashboardController extends Controller
             ->orderBy('mois_concerne', 'desc')
             ->groupBy('mois_concerne')
             ->count('appartements.id');
-
         $totaldesAppartement = Appartement::count('id');
+//        dd($TotalAppartementretard);
 
         $PosurcentagedeAppartementNonPaye = $TotalAppartementretard / $totaldesAppartement * 100;
         // $chart = (new LarapexChart)
