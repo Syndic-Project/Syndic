@@ -98,7 +98,23 @@ class FactureController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $recu= Recu::findOrFail($id);
+
+        $image = $request->file('preuve');
+        $image->move(public_path() . 'assets/uploads/', $image->getClientOriginalName());
+        $recu->img = $image;
+        $recu->save();
+
+        $factures = Facture::findOrFail($id);
+        $factures->date_de_paiment_facture = $request->input('datep');
+        $factures->designation = $request->input('designation');
+        $factures->id_Type_facture = $request->input('type_facture');
+        $factures->Montant = $request->input('Montant');
+        $factures->id_Recu = $recu->id;
+        $factures->id_bloc = $request->bloc;
+        $factures->save();
+
+        echo "marche";
     }
 
     /**
@@ -109,6 +125,10 @@ class FactureController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Recu::destroy($id);
+
+        
+
+        return redirect('/syndic/Facture');
     }
 }

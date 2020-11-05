@@ -55,19 +55,19 @@
                                                        data-toggle="modal"
                                                        data-target="#modalModiFactureImage{{$facture->id}}">
 
-                                                        <img src="{{ url('assets/uploads/'.$facture->img ) }}"
+                                                        <img alt="img" src="{{ url('assets/uploads/'.$facture->img ) }}"
 
                                                              style="width: 50px"/>
                                                     </a>
 
                                                 @else
-                                                    <a href="#modalModiFacturePDF"  data-toggle="modal"
+                                                    <a href="#modalModiFacturePDF" data-toggle="modal"
                                                        data-target="#modalModiFacturePDF{{$facture->id}}">
                                                         Voir PDF
                                                     </a>
 
 
-                                                    @endif
+                                                @endif
 
                                             </td>
                                             <td class="text-center">
@@ -80,10 +80,14 @@
                                                        data-target="#modalModiFacture{{$facture->id}}">
                                                         <i class="fas fa-user-edit"></i>modifier</a>
 
-
+                                                    <form class="needs-validation" novalidate method="POST"
+                                                          action="{{ route('Facture.destroy',['Facture'=>$facture->id])}}">
+                                                        @method('DELETE')
+                                                        @csrf
                                                     <button class="delete btn btn-danger btn-sm" type="submit"><i
                                                             class="fa fa-times-circle"></i>Delete
                                                     </button>
+                                                    </form>
                                                 </div>
 
 
@@ -119,7 +123,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Blocs</label>
+                                        <label for="bloc">Blocs</label>
                                         <select name="bloc" id="bloc" class="form-control ">
                                             @foreach($blocs as $bloc)
                                                 <option value="{{$bloc->id}}" selected="">{{$bloc->nom_bloc}}</option>
@@ -127,7 +131,7 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label>Type de Depense</label>
+                                        <label for="type_facture">Type de Depense</label>
                                         <select name="type_facture" id="type_facture" class="form-control">
                                             <option value="1">Jardiange</option>
                                             <option value="2">Nettoyage</option>
@@ -154,15 +158,16 @@
                                                class="form-control "/>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="designation" style="visibility: hidden"></label>
+                                        <label for="designation" style="visibility: hidden ;margin-top: 14px"></label>
                                         <label class="labelFile p-2 text-capitalize form-control" for="inputFileid"
                                                id="labelFile"
                                                data-toggle="tooltip" data-placement="top" title="Fichier/piéce jointe">
                                             <i class="far fa-file-alt"></i>
                                             Reçu
                                         </label>
-                                        <input class="inputFile" onchange="AffectFichier('labelFile',this.value)"
-                                               type="file" class="form-control" name="preuve"
+                                        <input class="inputFile form-control"
+                                               onchange="AffectFichier('labelFile',this.value)"
+                                               type="file" name="preuve"
                                                id="inputFileid"/>
                                     </div>
                                 </div>
@@ -190,7 +195,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <img style="width:100%" src="{{ url('assets/uploads/'.$facture->img ) }}">
+                        <img alt="image" style="width:100%" src="{{ url('assets/uploads/'.$facture->img ) }}">
 
                         >
                     </div>
@@ -214,7 +219,8 @@
                     </div>
                     <div class="modal-body">
 
-                        <embed width="100%" height="300px"type="application/pdf" src="{{ url('assets/uploads/'.$facture->img )}}"
+                        <embed width="100%" height="300px" type="application/pdf"
+                               src="{{ url('assets/uploads/'.$facture->img )}}"
                         >
                     </div>
                 </div>
@@ -232,7 +238,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalAjoutFactureLabel">Nouvelle Facture</h5>
+                        <h5 class="modal-title" id="modalAjoutFactureLabel">Modifier une Facture</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -258,8 +264,9 @@
                                         <select name="type_facture" id="type_facture" class="form-control">
                                             <option value="1">Jardiange</option>
                                             <option value="2">Nettoyage</option>
-                                            <option value="3">Divers</option>
-                                            <option value="4">Securite</option>
+                                            <option value="3">Securite</option>
+                                            <option value="4">Divers</option>
+
                                         </select>
                                     </div>
                                 </div>
@@ -283,11 +290,21 @@
                                                class="form-control "
                                                value="{{$facture->designation}}"/>
                                     </div>
-                                    <div class="form-group ">
-                                        <label for="example-fileinput">Recu</label>
 
-                                        <input type="file" class="form-control" name="preuve" id="example-fileinput"/>
+                                    <div class="form-group ">
+                                        <label style="visibility: hidden ;margin-top: 14px"></label>
+                                        <label class="labelFile2 p-2 text-capitalize form-control" for="inputFileid2"
+                                               id="labelFile2"
+                                               data-toggle="tooltip" data-placement="top" title="Fichier/piéce jointe">
+                                            <i class="far fa-file-alt"></i>
+                                            Reçu
+                                        </label>
+                                        <input class="inputFile form-control"
+                                               onchange="AffectFichier('labelFile2',this.value)"
+                                               type="file" name="preuve"
+                                               id="inputFileid2"/>
                                     </div>
+
                                 </div>
                                 <button type="submit" id="ajouter" name="ajouter" class="btn btn-block btn-purple "><i
                                         class="fa fa-plus"></i> Enregistrer
@@ -298,9 +315,10 @@
                 </div>
             </div>
         </div>
-        </div>
-        @endforeach
-        </div>
+
+
+    @endforeach
+
 
 
 @endsection
@@ -337,6 +355,13 @@
         });
 
     </script>
+
+    <script>
+        function AffectFichier(labelFile2, fileName) {
+            document.getElementById(labelFile2).innerHTML =
+                `<i class='fas fa-check'></i>${fileName.split(/(\\|\/)/g).pop()}`;
+        }
+    </script>
     <script>
         function AffectFichier(labelID, fileName) {
             document.getElementById(labelID).innerHTML =
@@ -345,8 +370,4 @@
     </script>
 @endsection
 
-@section('script-bottom')
 
-    <!-- Validation init js-->
-    <script src="{{ URL::asset('assets/js/pages/form-validation.init.js') }}"></script>
-@endsection
