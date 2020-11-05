@@ -9,7 +9,7 @@ use App\Models\Facture;
 use App\Models\Immeuble;
 use App\Models\Locataire;
 use App\Models\Securite;
-use ArielMejiaDev\LarapexCharts\LarapexChart;
+// use ArielMejiaDev\LarapexCharts\LarapexChart;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -31,13 +31,13 @@ class DashboardController extends Controller
         $totaldesAppartement = Appartement::count('id');
 
         $PosurcentagedeAppartementNonPaye = $TotalAppartementretard / $totaldesAppartement * 100;
-        $chart = (new LarapexChart)
-            ->setType('pie')
-            ->setTitle('Appartement en retard')
-            ->setXAxis(['en retard'])
-            ->setLabels(['en retard','Payes'])
-            ->setColors(['#ff6384', '#B8B8B8'])
-            ->setDataset([$PosurcentagedeAppartementNonPaye,100-$PosurcentagedeAppartementNonPaye]);
+        // $chart = (new LarapexChart)
+        //     ->setType('pie')
+        //     ->setTitle('Appartement en retard')
+        //     ->setXAxis(['en retard'])
+        //     ->setLabels(['en retard','Payes'])
+        //     ->setColors(['#ff6384', '#B8B8B8'])
+        //     ->setDataset([$PosurcentagedeAppartementNonPaye,100-$PosurcentagedeAppartementNonPaye]);
 //        $chart = (new LarapexChart)->setTitle('Net Profit')
 //            ->setSubtitle('From January To March')
 //            ->setType('bar')
@@ -126,7 +126,7 @@ class DashboardController extends Controller
             ->with("totalLocataireenRetard", $Totaldeslocataireretard)
             ->with("totalLocataireenAvance", $Totaldeslocataire_en_Avance)
             ->with("totaldepence", Facture::count('id'))
-            ->with("chart", $chart)
+            // ->with("chart", $chart)
             ->with("totalSecurite", Securite::count('id'));
     }
 
