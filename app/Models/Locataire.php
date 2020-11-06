@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * @property integer $id
@@ -18,8 +21,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $updated_at
  * @property Caiss[] $caisses
  */
-class Locataire extends Model
+class Locataire extends Model implements MustVerifyEmail
 {
+use Notifiable;
     /**
      * The "type" of the auto-incrementing ID.
      *
@@ -38,5 +42,26 @@ class Locataire extends Model
     public function caisses()
     {
         return $this->hasMany('App\Models\Caisse', 'id_Locataire');
+    }
+
+
+    public function hasVerifiedEmail()
+    {
+        // TODO: Implement hasVerifiedEmail() method.
+    }
+
+    public function markEmailAsVerified()
+    {
+        // TODO: Implement markEmailAsVerified() method.
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        // TODO: Implement sendEmailVerificationNotification() method.
+    }
+
+    public function getEmailForVerification()
+    {
+        // TODO: Implement getEmailForVerification() method.
     }
 }

@@ -28,7 +28,7 @@
                         <div class="col-md-12">
 
                             <div class="mybox" id="box_locateur">
-                                <table id="Locateur-datatable" class="table table-hover table-condensed">
+                                <table id="Locateur-datatable" class="table table-hover table-condensed table-nowrap">
                                     <thead>
                                         <tr>
 
@@ -107,6 +107,7 @@
             [10, 25, 50, -1],
             ['10 lignes', '25 lignes', '50 lignes', 'afficher tous']
         ],
+        responsive:true,
         "language": {
             buttons: {
                 pageLength: {

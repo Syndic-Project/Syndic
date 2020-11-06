@@ -79,6 +79,10 @@ Route::get('/chart', function () {
     return view('chart', compact('chart'));
 });
 
+
+
+
+
 //les rousources des methodes generer
 // les routes des methode generer du controlleur create edit delete
 Route::resource('/immeubles', 'ImmeubleController');

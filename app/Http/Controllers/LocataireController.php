@@ -5,14 +5,26 @@ namespace App\Http\Controllers;
 use App\Models\Appartement;
 use App\Models\Caisse;
 use App\Models\Locataire;
+use App\Notifications\RegisterNotify;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class LocataireController extends Controller
 {
+
+//    /**
+//     * Create a new controller instance.
+//     *
+//     * @return void
+//     */
+//    public function __construct()
+//    {
+//        $this->middleware(['auth','verified']);
+//    }
 
     public static function getLocataireByCin(Request $request)
     {
@@ -82,7 +94,11 @@ class LocataireController extends Controller
                 $caisse->save();
             }
 
+       $locataire->notify(new RegisterNotify());
+
+
         return redirect(url()->previous());
+
     }
 
     /**

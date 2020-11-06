@@ -127,7 +127,7 @@ class FactureController extends Controller
     {
         Recu::destroy($id);
 
-        
+
 
         return redirect('/syndic/Facture');
     }
