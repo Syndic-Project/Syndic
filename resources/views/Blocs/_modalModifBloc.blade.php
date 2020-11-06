@@ -1,5 +1,5 @@
 @foreach ($blocs as $bloc)
-    <div class="modal fade" id="modalModifBloc-{{$bloc->id}}" tabindex="-1" role="dialog"
+    <div id="modalModifBloc-{{$bloc->id}}" class="modal fade" tabindex="-1" role="dialog"
         aria-labelledby="mySmallModalLabel-{{$bloc->id}}" style="display: none;" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">

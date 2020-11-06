@@ -15,7 +15,6 @@
             <div class="col-md-9">
 
 
-
                 <h2 class="padb20"><span class="nomimmeuble">EL MEDIOUNI</span> : GESTION DES APPARTEMENTS</h2>
 
                 <div class="row mybox mrgb20">

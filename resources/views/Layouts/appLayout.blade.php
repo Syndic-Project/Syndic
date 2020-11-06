@@ -377,7 +377,6 @@
                             <a href="/syndic/Facture">
                                 <i class="fas fa-file-invoice-dollar"></i>
                                 <span> Ajouter une Facture </span>
-                                <span class="menu-arrow"></span>
                             </a>
                         </li>
 

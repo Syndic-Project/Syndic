@@ -38,9 +38,6 @@ class Residence extends Model
         return $this->belongsTo('App\Models\Syndic', 'id_syndic');
     }
 
-
-
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

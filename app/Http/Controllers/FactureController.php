@@ -17,28 +17,15 @@ class FactureController extends Controller
      */
     public function index()
     {
-
         $facture = DB::table('factures')
             ->join('type_factures', 'type_factures.id', '=', 'factures.id_Type_facture')
             ->join('recus', 'recus.id', '=', 'factures.id_Recu')
             ->get();
-//dd($facture);
-
+        //dd($facture);
 
         return view('Factures/AddFacture')
             ->with("blocs", Bloc::all())
             ->with("factures", $facture);
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -68,28 +55,6 @@ class FactureController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
@@ -98,7 +63,7 @@ class FactureController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $recu= Recu::findOrFail($id);
+        $recu = Recu::findOrFail($id);
 
         $image = $request->file('preuve');
         $image->move(public_path() . 'assets/uploads/', $image->getClientOriginalName());

@@ -14,15 +14,10 @@ class ResidenceController extends Controller
 {
     public function index()
     {
-        $residence_bloc_ville = DB::table('residences')
-            ->join('blocs', 'blocs.id_residence', '=', 'residences.id')
-            ->join('villes', 'residences.id_ville', '=', 'villes.id')
-            ->get(['residences.*', 'villes.id', 'villes.nom_ville', 'blocs.nom_bloc']);
-
         return view('Residences/residence', [
-            'residence' => $residence_bloc_ville,
-            'villes' => Ville::all(),
-            'blocs' => Bloc::all(),
+            'residence' => Residence::first(),
+            'blocs' => Bloc::where('id_residence', Residence::first()->id)->get(),
+            'villes' => Ville::all()
         ]);
     }
 
@@ -35,15 +30,14 @@ class ResidenceController extends Controller
     public
     function store(Request $request)
     {
-
         $residence = new Residence();
         $residence->nom_residence = $request->input('nom');
         $residence->id_ville = $request->input('ville');
-        $residence->id_syndic = $request->input('syndic');
+        $residence->id_syndic = Syndic::first()->id;
         $residence->adresse = $request->input('adresse');
         $residence->save();
 
-        return redirect('/Appartements/AddAppartement');
+        return redirect(url()->previous());
     }
 
     /**
@@ -56,7 +50,7 @@ class ResidenceController extends Controller
     public
     function update(Request $request, $id)
     {
-        $residence = Residence::find($id)->first();
+        $residence = Residence::find($id);
         $residence->nom_residence = $request->input('nom');
         $residence->id_ville = $request->input('ville');
         $residence->id_syndic = $request->input('syndic');

@@ -11,13 +11,15 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $created_at
  * @property string $updated_at
  * @property Residence $residence
- * @property Immeuble $immeuble
+ * @property Facture[] $factures
+ * @property Immeuble[] $immeubles
+ * @property Securite[] $securites
  */
 class Bloc extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
-     *
+     * 
      * @var string
      */
     protected $keyType = 'integer';
@@ -36,10 +38,26 @@ class Bloc extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function immeuble()
+    public function factures()
     {
-        return $this->hasOne('App\Models\Immeuble', 'id_bloc');
+        return $this->hasMany('App\Models\Facture', 'id_bloc');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function immeubles()
+    {
+        return $this->hasMany('App\Models\Immeuble', 'id_bloc');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function securites()
+    {
+        return $this->hasMany('App\Models\Securite', 'id_bloc');
     }
 }
