@@ -11,13 +11,13 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row mt-0">
-                        <h5 class="col-8 font-size-16 mb-3">Liste des Securite.</h5>
+                        <h5 class="col-8 font-size-16 mb-3">Gérer la Résidence.</h5>
                         <div class="col-4">
                             <div class="d-flex justify-content-end">
-                                <button class="btn btn-outline-success btn-lg" style="font-weight: bolder;"
-                                    data-toggle="modal" data-target="#modalAjoutResidence">
+                                <button class="btn btn-outline-success" data-toggle="modal"
+                                    data-target="#modalAjoutResidence">
                                     <i class="fas fa-plus-square"></i>
-                                    Ajoute une Residence
+                                    Ajouter la Résidence
                                 </button>
                             </div>
                         </div>
@@ -26,12 +26,12 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="mybox" id="box_appartliste">
-                                    <table id="residence-datatable" class="table table-hover table-condensed nowrap">
-                                        <thead>
+                                <table id="residence-datatable" class="table table-hover table-condensed nowrap">
+                                    <thead>
                                         <tr>
                                             <th class="text-center">Action</th>
                                             <th class="text-center">Nom du bloc</th>
-                                            <th class="text-center">Immeubles</th>
+                                            <th class="text-center">Nombres d'immeubles</th>
 
                                         </tr>
                                     </thead>
@@ -39,18 +39,19 @@
                                         @foreach($blocs as $bloc)
                                         <tr>
                                             <td class="text-center">
-                                                 <div class="btn-group" role="group">
-
-                                                    <a href="#modalModifResidenc" data-toggle="modal"
-                                                        data-target="#modalModifResidence"
-                                                        class="btn btn-success btn-xs ">
-                                                        <i class="fas fa-user-edit"></i>modifier
-                                                    </a>
-                                                </div>
+                                                <a href="#modalModifBloc-{{$bloc->id}}" data-toggle="modal"
+                                                    data-target="#modalModifBloc-{{$bloc->id}}">
+                                                    <i class="fas fa-edit" data-toggle="tooltip" data-placement="top"
+                                                        title="Modifier"></i>
+                                                </a>
                                             </td>
                                             <td class="text-center">{{$bloc->nom_bloc}}</td>
-                                            <td class="text-center">{{ count($bloc->immeuble->get()->where("id_bloc",$bloc->id)->toArray()) }}</td>
+                                            <td class="text-center">
+                                                <i class="far fa-building"></i>
+                                                {{-- {{ count($bloc->immeuble->get()->where("id_bloc",$bloc->id)->toArray()) }} --}}
+                                                 {{ dd($bloc) }}
 
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -72,78 +73,56 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form class="needs-validation" novalidate action="{{route('residences.store') }}"
-                                method="post" accept-charset="utf-8">
+                            <form action="{{route('residences.store') }}" method="post" accept-charset="utf-8">
+                                @csrf
                                 <div class="row mybox">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            @csrf
-                                            <label for="nom">NOM de Résidence</label>
+                                            <label for="nom">Libellé de la Résidence :</label>
                                             <input type="text" name="nom" id="nom" class="form-control input-lg"
-                                                required="" placeholder="NOM DE Résidence">
+                                                required>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="ville">VILLE ou se trouve cet immeuble</label>
-
-                                                    <select name="ville" id="ville" class="form-control input-lg">
-                                                        <option value="">la ville où se trouve La Résidence</option>
-
+                                                    <label for="ville">Ville :</label>
+                                                    <select name="ville" id="ville" class="form-control input-lg"
+                                                        required>
+                                                        <option value="" disabled selected>-Sélectionner-</option>
                                                         @foreach ($villes as $ville )
                                                         <option value="{{$ville->id}}">{{$ville->nom_ville}}</option>
                                                         @endforeach
-
                                                     </select>
                                                 </div>
                                             </div>
-
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="syndic">Syndic</label>
-                                                    <select name="syndic" id="syndic" class="form-control input-lg">
-                                                        @foreach ($syndics as $syndic)
-                                                        <option value="{{$syndic->id}}">{{$syndic->nom}}</option>
-                                                        @endforeach
-                                                    </select>
+                                                    <label for="syndic">Syndic :</label>
+                                                    <input type="text" id="syndic" class="form-control input-lg"
+                                                        value="{{ AuthentificationController::getCurrentUser()->nom . ' '.  AuthentificationController::getCurrentUser()->prenom }}"
+                                                        disabled>
                                                 </div>
                                             </div>
-
 
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="adresse">ADRESSE</label>
+                                            <label for="adresse">Adresse :</label>
                                             <textarea name="adresse" id="adresse" class="form-control input-lg" rows="2"
-                                                placeholder="ADRESSE DE L'IMMEUBLE"></textarea>
+                                                required></textarea>
                                         </div>
-
-
-                                        <div class="row">
-
-
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label for="nom_bloc">Nom du Bloc</label>
-                                                    <input type="text" name="nom_bloc" id="nom_bloc"
-                                                        class="form-control input-lg" />
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-
                                     </div>
 
-
-                                    <p>&nbsp;</p>
-                                    <button type="submit" class="btn btn-block btn-purple btn-lg ">ENREGISTRER et
-                                        Passer aux Immeubles <i class="fa fa-arrow-right"></i></button>
-
+                                    <div class="col-12">
+                                        <span class="d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-soft-success pull-right">
+                                                Confirmer
+                                                <i class="fa fa-arrow-right"></i>
+                                            </button>
+                                        </span>
+                                    </div>
                                 </div>
-
                             </form>
 
                         </div>
@@ -154,46 +133,10 @@
         </div>
     </div>
 </div>
-@include('Residences._modalModifResidence')
+@include('Blocs._modelModifBloc')
 
 @endsection
 
 @section('script')
 <script src="{{ url('assets/js/addlocataire.js') }}"></script>
-<script>
-    $("#residence-datatable").DataTable({
-        responsive :true,
-        lengthMenu: [
-            [10, 25, 50, -1],
-            ['10 lignes', '25 lignes', '50 lignes', 'afficher tous']
-        ],
-        "language": {
-            buttons: {
-                pageLength: {
-                    _: "Afficher %d éléments",
-                    '-1': "Tout afficher"
-                }
-            },
-            paginate: {
-                previous: "<i class='uil uil-angle-left'>",
-                next: "<i class='uil uil-angle-right'>"
-            },
-            "lengthMenu": "Afficher _MENU_ par Pages",
-            "zeroRecords": "Aucune données disponibles ...",
-            "info": "Total : _TOTAL_ Locataires",
-            "infoEmpty": "Pas de données disponibles ...",
-            "infoFiltered": "(filtré depuis _MAX_ lignes)",
-            "sSearch": "Rechercher"
-        },
-        drawCallback: function () {
-            $(".dataTables_paginate > .pagination").addClass("pagination-rounded")
-        }
-    });
-
-</script>
-
-@endsection
-
-@section('script-bottom')
-<script src="{{ URL::asset('assets/js/pages/form-validation.init.js') }}"></script>
 @endsection

@@ -46,14 +46,13 @@
                         <div class="card-body p-0">
                             <div class="media p-3">
                                 <div class="media-body">
-                                    <span class="text-muted text-uppercase font-size-12 font-weight-bold">Total en
-                                        Caisse</span>
+                                    <span class="text-muted text-uppercase font-size-12 font-weight-bold">
+                                        Total en Caisse
+                                    </span>
                                     <h2 class="mb-0">{{ $totalcaisse }} DH</h2>
                                 </div>
                                 <div class="align-self-center">
                                     <div id="today-revenue-chart" class="apex-charts"></div>
-                                    <span class="text-success font-weight-bold font-size-13"><i
-                                            class='uil uil-arrow-up'></i> 10.21%</span>
                                 </div>
                             </div>
                         </div>
@@ -71,8 +70,6 @@
                                 </div>
                                 <div class="align-self-center">
                                     <div id="today-product-sold-chart" class="apex-charts"></div>
-                                    <span class="text-danger font-weight-bold font-size-13"><i
-                                            class='uil uil-arrow-down'></i> 5.05%</span>
                                 </div>
                             </div>
                         </div>
@@ -90,8 +87,6 @@
                                 </div>
                                 <div class="align-self-center">
                                     <div id="today-new-customer-chart" class="apex-charts"></div>
-                                    <span class="text-success font-weight-bold font-size-13"><i
-                                            class='uil uil-arrow-up'></i> 25.16%</span>
                                 </div>
                             </div>
                         </div>
@@ -109,8 +104,6 @@
                                 </div>
                                 <div class="align-self-center">
                                     <div id="today-new-visitors-chart" class="apex-charts"></div>
-                                    <span class="text-danger font-weight-bold font-size-13"><i
-                                            class='uil uil-arrow-down'></i> 5.05%</span>
                                 </div>
                             </div>
                         </div>
@@ -127,8 +120,8 @@
                             <!-- stat 1 -->
                             <div class="media px-3 py-4 border-bottom">
                                 <div class="media-body">
-                                    <h4 class="mt-0 mb-1 font-size-22 font-weight-normal">{{ $totalbloc }}</h4>
                                     <span class="text-muted">Total des Blocs</span>
+                                    <h4 class="mt-0 mb-1 font-size-22 font-weight-normal">{{ $totalbloc }}</h4>
                                 </div>
                                 <i data-feather="users" class="align-self-center icon-dual icon-lg"></i>
                             </div>
@@ -136,8 +129,8 @@
                             <!-- stat 2 -->
                             <div class="media px-3 py-4 border-bottom">
                                 <div class="media-body">
-                                    <h4 class="mt-0 mb-1 font-size-22 font-weight-normal">{{ $totalImmeuble }}</h4>
                                     <span class="text-muted">Total des Immeubles</span>
+                                    <h4 class="mt-0 mb-1 font-size-22 font-weight-normal">{{ $totalImmeuble }}</h4>
                                 </div>
 
                                 <i class="far fa-building fa-2x"></i>
@@ -147,8 +140,8 @@
                             <!-- stat 3 -->
                             <div class="media px-3 py-4">
                                 <div class="media-body">
-                                    <h4 class="mt-0 mb-1 font-size-22 font-weight-normal">{{ $totalappar }}</h4>
                                     <span class="text-muted">Total des Appartements</span>
+                                    <h4 class="mt-0 mb-1 font-size-22 font-weight-normal">{{ $totalappar }}</h4>
                                 </div>
                                 <i class="fa fa-sitemap fa-2x"></i>
                                 {{-- <i data-feather="shopping-bag"
@@ -158,8 +151,8 @@
 
                             <div class="media px-3 py-4 border-bottom">
                                 <div class="media-body">
-                                    <h4 class="mt-0 mb-1 font-size-22 font-weight-normal">{{ $totalLocataire }}</h4>
                                     <span class="text-muted">Total des Locataire</span>
+                                    <h4 class="mt-0 mb-1 font-size-22 font-weight-normal">{{ $totalLocataire }}</h4>
                                 </div>
                                 <i class="fa fa-users fa-fw    fa-2x"></i>
                             </div>
@@ -191,7 +184,7 @@
                                                     <a class="nav-link text-muted" href="#">1y</a>
                                                 </li>
                                             </ul> -->
-                            <h5 class="card-title mb-0">Revenue</h5>
+                            <h5 class="card-title mb-0">Revenue par Mois</h5>
                             <canvas id="line-chart" width="800" height="450"></canvas>
                             <!-- <div id="revenue-chart" class="apex-charts mt-3" dir="ltr"></div> -->
                         </div>
@@ -222,7 +215,7 @@
 
 
                             <h4 class="card-title mt-0 mb-0 text-center">
-                                HICAHM
+                                Hicham
                             </h4>
                             <h5 class="card-title mt-0 mb-0 text-center">
                                 SITUATION DES NON PAYÉS
@@ -255,7 +248,7 @@
 
 @section('script')
 <script src="{{ url('assets/js/utilDate.js') }}"></script>
-{{-- <script src="{{ url('assets/js/pages/dashboard.init.js') }}"></script> --}}
+<script src="{{ url('assets/js/pages/dashboard.init.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
     integrity="sha256-t9UJPrESBeG2ojKTIcFLPGF7nHi2vEc7f5A2KpH/UBU=" crossorigin="anonymous"></script>
 <script>
@@ -266,7 +259,7 @@
             datasets: [{
                 data: [ @foreach ($revenueMois as $item) {{ $item->total_mois }}, @endforeach ],
                 label: "Montant (Dhs) ",
-                borderColor: "#3e95cd",
+                borderColor: "#43D39E",
                 fill: true
             }]
         },

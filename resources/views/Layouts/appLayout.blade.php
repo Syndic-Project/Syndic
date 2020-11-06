@@ -315,8 +315,8 @@
                         <li>
                             <a href="/">
                                 <i data-feather="home"></i>
-                                <span class="badge badge-success float-right">1</span>
-                                <span> Dashboard </span>
+                                {{-- <span class="badge badge-success float-right">1</span> --}}
+                                <span> Accueil </span>
                             </a>
                         </li>
 

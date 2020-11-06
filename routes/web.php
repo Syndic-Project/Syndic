@@ -17,15 +17,15 @@ use ArielMejiaDev\LarapexCharts\LarapexChart;
 */
 
 
-Route::get('/','DashboardController@index');
+Route::get('/', 'DashboardController@index');
 
 Route::get('/Locataire', function () {
     return view('Locataires/AddLocataire');
 });
 
-Route::get('/Blocs', function () {
-    return view('BLOCS/Bloc');
-});
+// Route::get('/Blocs', function () { // Lah ymskhek 👌👈
+//     return view('Blocs/Bloc');
+// });
 
 
 //Route::get('/Residence', function () {
@@ -58,7 +58,6 @@ Route::get('/syndic/Immeuble', 'ImmeubleController@index');
 Route::get('/syndic/Residence', 'ResidenceController@index');
 Route::get('/syndic/Locateur', 'LocateurController@index');
 Route::get('/syndic/Securite', 'SecuriteController@index');
-
 Route::get('/syndic/Facture', 'FactureController@index');
 Route::get('/syndic/Appartements', 'AppartementController@index');
 Route::get('/syndic/Locataire', 'LocataireController@index');
@@ -72,16 +71,14 @@ Route::post('/Auth-Login', 'AuthentificationController@loginSecurity')->name('Au
 Route::get('/Auth-Logout', 'AuthentificationController@LogOut')->name('Auth-LogOut');
 Route::post('/getQrCode/{id_locateur}', 'LocateurController@generateQR');
 
-Route::get('/test','DashboardController@pourcentage_appartement_non_paye');
+Route::post('/syndic/Bloc/Modif/{idBloc}', 'BlocController@update')->name("Modif-Bloc");
+
+Route::get('/test', 'DashboardController@pourcentage_appartement_non_paye');
 
 Route::get('/chart', function () {
     $chart = (new LarapexChart)->setTitle('Users')->setXAxis(['Active', 'Guests'])->setDataset([50]);
     return view('chart', compact('chart'));
 });
-
-
-
-
 
 //les rousources des methodes generer
 // les routes des methode generer du controlleur create edit delete
