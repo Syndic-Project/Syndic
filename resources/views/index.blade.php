@@ -241,15 +241,13 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-                            2020 &copy; Beekom. All Rights Reserved. Crafted with <i
-                                class='uil uil-heart text-danger font-size-12'></i> by <a href="https://Beekom.ma/"
-                                target="_blank"></a>
+                            2020 &copy; Nom-Entreprise. 
+                            <i class='uil uil-heart text-danger font-size-12'></i>
+                                <a href="" target="_blank"></a>
                         </div>
                     </div>
                 </div>
             </footer>
-            <!-- end Footer -->
-
         </div>
     </div>
 </div>
@@ -257,26 +255,35 @@
 
 @section('script')
 <script src="{{ url('assets/js/utilDate.js') }}"></script>
-<script src="{{ url('assets/js/pages/dashboard.init.js') }}"></script>
+{{-- <script src="{{ url('assets/js/pages/dashboard.init.js') }}"></script> --}}
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
     integrity="sha256-t9UJPrESBeG2ojKTIcFLPGF7nHi2vEc7f5A2KpH/UBU=" crossorigin="anonymous"></script>
 <script>
-    console.log(months.join(','));
     new Chart(document.getElementById("line-chart"), {
         type: 'line',
         data: {
-            labels: months,
+            labels: [@foreach ($revenueMois as $item) getMoisById(parseInt(`{{Carbon\Carbon::parse($item->mois_concerne)->format('m')}}`)), @endforeach],
             datasets: [{
-                data: [ @foreach ($revenueMois as $item) {{ $item->total_mois}}, @endforeach ],
-                label: "Montant",
+                data: [ @foreach ($revenueMois as $item) {{ $item->total_mois }}, @endforeach ],
+                label: "Montant (Dhs) ",
                 borderColor: "#3e95cd",
-                fill: false
+                fill: true
             }]
         },
         options: {
+            legend: {
+                display: false
+            },
             title: {
                 display: true,
                 text: ''
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
             }
         }
     });
