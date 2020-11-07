@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bloc;
 use App\Models\Facture;
 use App\Models\Recu;
+use App\Models\Type_facture;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,6 +26,7 @@ class FactureController extends Controller
 
         return view('Factures/AddFacture')
             ->with("blocs", Bloc::all())
+            ->with("typeFactures", Type_facture::all())
             ->with("factures", $facture);
     }
 
@@ -51,7 +53,7 @@ class FactureController extends Controller
         $factures->id_bloc = $request->bloc;
         $factures->save();
 
-        echo "marche";
+        return redirect(url()->previous());
     }
 
     /**
@@ -63,23 +65,27 @@ class FactureController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $recu = Recu::findOrFail($id);
+        if (Facture::find($id)->exists()) {
+            $facture = Facture::find($id);
 
-        $image = $request->file('preuve');
-        $image->move(public_path() . 'assets/uploads/', $image->getClientOriginalName());
-        $recu->img = $image;
-        $recu->save();
+            if ($request->hasFile('preuve')) {
+                $recu = $facture->id_Recu != null ? Recu::find($facture->id_Recu) : (new Recu());
+                $image = $request->file('preuve');
+                $image->move(public_path() . '/assets/uploads/', $image->getClientOriginalName());
+                $recu->img = $image->getClientOriginalName();
+                $recu->save();
+                $facture->id_Recu = $recu->id;
+            }
 
-        $factures = Facture::findOrFail($id);
-        $factures->date_de_paiment_facture = $request->input('datep');
-        $factures->designation = $request->input('designation');
-        $factures->id_Type_facture = $request->input('type_facture');
-        $factures->Montant = $request->input('Montant');
-        $factures->id_Recu = $recu->id;
-        $factures->id_bloc = $request->bloc;
-        $factures->save();
+            $facture->date_de_paiment_facture = $request->input('datep');
+            $facture->designation = $request->input('designation');
+            $facture->id_Type_facture = $request->input('type_facture');
+            $facture->Montant = $request->input('Montant');
+            $facture->id_bloc = $request->bloc;
+            $facture->save();
+        }
 
-        echo "marche";
+        return redirect(url()->previous());
     }
 
     /**
@@ -88,12 +94,12 @@ class FactureController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id) // Erreur
     {
+        //supprimer la facture 3ad reçu
+        // sinon at3tik erreur
+        // ila supprimit le reçu ghadi ygolk : had reçu rah 5damin f wa7ed la facture dayra 3leh référence
         Recu::destroy($id);
-
-
-
         return redirect('/syndic/Facture');
     }
 }

@@ -47,22 +47,19 @@
                                         <td class="text-center">
 
 
-                                            @if (explode( '.',$facture->img)[1]=="png")
-
+                                            @if (explode( '.',$facture->img)[1]=="png" || explode(
+                                            '.',$facture->img)[1]=="jpg" || explode( '.',$facture->img)[1]=="jpeg")
                                             <a href="#modalModiFactureImage" data-toggle="modal"
                                                 data-target="#modalModiFactureImage{{$facture->id}}">
 
                                                 <img alt="img" src="{{ url('assets/uploads/'.$facture->img ) }}"
                                                     style="width: 50px" />
                                             </a>
-
                                             @else
                                             <a href="#modalModiFacturePDF" data-toggle="modal"
                                                 data-target="#modalModiFacturePDF{{$facture->id}}">
                                                 Voir PDF
                                             </a>
-
-
                                             @endif
 
                                         </td>
@@ -110,38 +107,38 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="needs-validation" novalidate action="{{route('Facture.store') }}" method="POST"
-                        enctype="multipart/form-data">
+                    <form action="{{route('Facture.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="bloc">Blocs</label>
-                                    <select name="bloc" id="bloc" class="form-control ">
+                                    <select name="bloc" id="blocSelect" class="form-control" required>
+                                        <option value disabled selected>-Sélectionner-</option>
                                         @foreach($blocs as $bloc)
-                                        <option value="{{$bloc->id}}" selected="">{{$bloc->nom_bloc}}</option>
+                                        <option value="{{$bloc->id}}">{{$bloc->nom_bloc}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="type_facture">Type de Depense</label>
-                                    <select name="type_facture" id="type_facture" class="form-control">
-                                        <option value="1">Jardiange</option>
-                                        <option value="2">Nettoyage</option>
-                                        <option value="3">Divers</option>
-                                        <option value="4">Securite</option>
+                                    <select name="type_facture" id="type_facture" class="form-control" required>
+                                        <option value disabled selected>-Sélectionner-</option>
+                                        @foreach ($typeFactures as $type)
+                                        <option value="{{$type->id}}">{{ $type->libelle }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="datep">Date de Paiment</label>
-                                    <input type="date" required="" name="datep" id="datep" class="form-control " />
+                                    <input type="date" name="datep" id="datep" class="form-control" required />
                                 </div>
                                 <div class="form-group">
                                     <label for="Montant">Montant</label>
-                                    <input type="text" required="" name="Montant" id="Montant" class="form-control " />
+                                    <input type="number" name="Montant" id="Montant" class="form-control" required />
                                 </div>
                             </div>
                         </div>
@@ -150,8 +147,8 @@
                                 <div class="form-group">
                                     <label for="designation">Désignation</label>
                                     <textarea type="text" name="designation" id="designation" class="form-control"
-                                        rows="2" required>
-                                        </textarea>
+                                        rows="2" required></textarea>
+
                                 </div>
                             </div>
                         </div>
@@ -177,7 +174,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="d-flex justify-content-end">
-                                    <button type="submit" id="ajouter" name="ajouter" class="btn btn-soft-success"><i
+                                    <button type="submit" id="ajouter" name="ajouter" class="btn btn-outline-success"><i
                                             class="fa fa-plus"></i>
                                         Ajouter
                                     </button>
@@ -226,7 +223,6 @@
                 </button>
             </div>
             <div class="modal-body">
-
                 <embed width="100%" height="300px" type="application/pdf"
                     src="{{ url('assets/uploads/'.$facture->img )}}">
             </div>
@@ -238,7 +234,6 @@
 
 
 @foreach($factures as $facture)
-
 <div id="modalModiFacture{{$facture->id}}" class="modal fade" tabindex="-1" role="dialog"
     aria-labelledby="modalModiFactureLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -250,36 +245,34 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="needs-validation" novalidate action="{{route('Facture.update',['Facture'=>$facture->id])}}"
-                    method="POST">
+                <form action="{{route('Facture.update', $facture->id)}}" method="POST" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
-
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Blocs</label>
-                                <select name="bloc" id="bloc" class="form-control ">
+                                <select name="bloc" id="bloc" class="form-control" required>
+                                    <option value disabled required>-Sélectionner-</option>
                                     @foreach($blocs as $bloc)
-                                    <option value="{{$bloc->id}}" selected="">{{$bloc->nom_bloc}}</option>
+                                    <option value="{{$bloc->id}}">{{$bloc->nom_bloc}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Type de Depense</label>
                                 <select name="type_facture" id="type_facture" class="form-control">
-                                    <option value="1">Jardiange</option>
-                                    <option value="2">Nettoyage</option>
-                                    <option value="3">Securite</option>
-                                    <option value="4">Divers</option>
-
+                                    <option value disabled required>-Sélectionner-</option>
+                                    @foreach ($typeFactures as $type)
+                                    <option value="{{$type->id}}">{{ $type->libelle }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="datep">Date de Paiment</label>
-                                <input type="date" required="" name="datep" id="datep" class="form-control" />
+                                <input type="date" name="datep" id="datep" class="form-control" required />
                             </div>
                             <div class="form-group">
                                 <label for="Montant">Montant</label>
@@ -296,8 +289,8 @@
 
                             <div class="form-group ">
                                 <label style="visibility: hidden ;margin-top: 14px"></label>
-                                <label class="labelFile2 p-2 text-capitalize form-control" for="inputFileid2"
-                                    id="labelFile2" data-toggle="tooltip" data-placement="top"
+                                <label class="labelFile2 p-2 text-capitalize form-control" style="height: fit-content;"
+                                    for="inputFileid2" id="labelFile2" data-toggle="tooltip" data-placement="top"
                                     title="Fichier/piéce jointe">
                                     <i class="far fa-file-alt"></i>
                                     Reçu
@@ -308,7 +301,8 @@
 
                         </div>
                         <button type="submit" id="ajouter" name="ajouter" class="btn btn-block btn-purple "><i
-                                class="fa fa-plus"></i> Enregistrer
+                                class="fa fa-plus"></i>
+                            Enregistrer
                         </button>
                     </div>
                 </form>
@@ -325,7 +319,6 @@
 @endsection
 @section('script')
 <script src="{{ url('assets/js/addlocataire.js') }}"></script>
-<script src="{{ url('assets/libs/parsleyjs/parsley.min.js') }}"></script>
 <script>
     $("#facture-datatable").DataTable({
         lengthMenu: [
@@ -357,13 +350,6 @@
 
 </script>
 
-<script>
-    function AffectFichier(labelFile2, fileName) {
-        document.getElementById(labelFile2).innerHTML =
-            `<i class='fas fa-check'></i>${fileName.split(/(\\|\/)/g).pop()}`;
-    }
-
-</script>
 <script>
     function AffectFichier(labelID, fileName) {
         document.getElementById(labelID).innerHTML =
