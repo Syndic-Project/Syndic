@@ -7,17 +7,22 @@
         <div class="container-fluid">
             <div class="row page-title align-items-center">
                 <div class="col-sm-4 col-xl-6">
-                    <h4 class="mb-1 mt-0">Dashboard</h4>
+                    <h4 class="mb-1 mt-0">
+                        <span style="text-decoration: underline">
+                            Dashboard de Statistiques
+                        </span>
+                    </h4>
                 </div>
                 <div class="col-sm-8 col-xl-6">
                     <form class="form-inline float-sm-right mt-3 mt-sm-0">
-                        <div class="form-group mb-sm-0 mr-2">
+                        {{-- <div class="form-group mb-sm-0 mr-2">
                             <input type="text" class="form-control" id="dash-daterange" style="min-width: 190px;" />
-                        </div>
+                        </div> --}}
                         <div class="btn-group">
                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                                <i class='uil uil-file-alt mr-1'></i>Download
+                                <i class='uil uil-file-alt mr-1'></i>
+                                Exporter
                                 <i class="icon"><span data-feather="chevron-down"></span></i></button>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a href="#" class="dropdown-item notify-item">
@@ -26,12 +31,7 @@
                                 </a>
                                 <a href="#" class="dropdown-item notify-item">
                                     <i data-feather="printer" class="icon-dual icon-xs mr-2"></i>
-                                    <span>Print</span>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a href="#" class="dropdown-item notify-item">
-                                    <i data-feather="file" class="icon-dual icon-xs mr-2"></i>
-                                    <span>Re-Generate</span>
+                                    <span>Imprimer</span>
                                 </a>
                             </div>
                         </div>
@@ -118,7 +118,7 @@
                         <div class="card-body p-0">
                             <h5 class="card-title border-bottom p-3 mb-0">Général</h5>
                             <!-- stat 1 -->
-                            <div class="media px-3 py-4 border-bottom">
+                            <div class="media px-3 py-2 border-bottom">
                                 <div class="media-body">
                                     <span class="text-muted">Total des Blocs</span>
                                     <h4 class="mt-0 mb-1 font-size-22 font-weight-normal">{{ $totalbloc }}</h4>
@@ -127,7 +127,7 @@
                             </div>
 
                             <!-- stat 2 -->
-                            <div class="media px-3 py-4 border-bottom">
+                            <div class="media px-3 py-2 border-bottom">
                                 <div class="media-body">
                                     <span class="text-muted">Total des Immeubles</span>
                                     <h4 class="mt-0 mb-1 font-size-22 font-weight-normal">{{ $totalImmeuble }}</h4>
@@ -138,7 +138,7 @@
                             </div>
 
                             <!-- stat 3 -->
-                            <div class="media px-3 py-4">
+                            <div class="media px-3 py-2">
                                 <div class="media-body">
                                     <span class="text-muted">Total des Appartements</span>
                                     <h4 class="mt-0 mb-1 font-size-22 font-weight-normal">{{ $totalappar }}</h4>
@@ -194,7 +194,7 @@
                                                 </li>
                                             </ul> -->
                             <h5 class="card-title mb-0">Revenue par Mois</h5>
-                            <canvas id="line-chart" width="800" height="800"></canvas>
+                            <canvas id="line-chart" width="800" height="1000"></canvas>
                         </div>
                     </div>
                     
@@ -233,9 +233,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-                            2020 &copy; Nom-Entreprise.
-                            <i class='uil uil-heart text-danger font-size-12'></i>
-                            <a href="" target="_blank"></a>
+                           Copyright Nom-Entreprise&copy;. 2019-2020
                         </div>
                     </div>
                 </div>
