@@ -167,6 +167,15 @@
                 <div class="col-xl-6">
                     <div class="card">
                         <div class="card-body pb-0">
+                            <h5 class="card-title mt-0 mb-0">Dépenses & Factures</h5>
+                            <div id="targets-chart" class="apex-charts pb-3" dir="ltr"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3">
+                    <div class="card">
+                        <div class="card-body pb-0">
                             <!-- <ul class="nav card-nav float-right">
                                                 <li class="nav-item">
                                                     <a class="nav-link text-muted" href="#">Today</a>
@@ -185,25 +194,15 @@
                                                 </li>
                                             </ul> -->
                             <h5 class="card-title mb-0">Revenue par Mois</h5>
-                            <canvas id="line-chart" width="800" height="450"></canvas>
-                            <!-- <div id="revenue-chart" class="apex-charts mt-3" dir="ltr"></div> -->
+                            <canvas id="line-chart" width="800" height="800"></canvas>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-xl-3">
-                    <div class="card">
-                        <div class="card-body pb-0">
-                            <h5 class="card-title mt-0 mb-0">Targets</h5>
-                            <div id="targets-chart" class="apex-charts pb-3" dir="ltr"></div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
-            <!-- row -->
 
             <!-- products -->
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-xl-12">
                     <select name="" id="slct" class="form-control">
                         @foreach ($immeubles as $imm)
@@ -226,7 +225,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
 
             <!-- Footer Start -->
@@ -234,9 +233,9 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-                            2020 &copy; Nom-Entreprise. 
+                            2020 &copy; Nom-Entreprise.
                             <i class='uil uil-heart text-danger font-size-12'></i>
-                                <a href="" target="_blank"></a>
+                            <a href="" target="_blank"></a>
                         </div>
                     </div>
                 </div>
@@ -251,7 +250,7 @@
 <script src="{{ url('assets/js/pages/dashboard.init.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
     integrity="sha256-t9UJPrESBeG2ojKTIcFLPGF7nHi2vEc7f5A2KpH/UBU=" crossorigin="anonymous"></script>
-<script>
+ <script>
     new Chart(document.getElementById("line-chart"), {
         type: 'line',
         data: {
@@ -280,6 +279,74 @@
             }
         }
     });
+
+</script>
+<script>
+    r = {
+        chart: {
+            height: 296,
+            type: "bar",
+            toolbar: {
+                show: !1
+            }
+        },
+        plotOptions: {
+            bar: {
+                horizontal: !1,
+                endingShape: "rounded",
+                columnWidth: "55%"
+            }
+        },
+        dataLabels: {
+            enabled: !1
+        },
+        stroke: {
+            show: !0,
+            width: 2,
+            colors: ["transparent"]
+        },
+        series: [{
+                name: "Jardinage",
+                data: [44, 55, 57, 56, 61]
+            }, {
+                name: "Nettoyage",
+                data: [76, 85, 101, 98, 87]
+            }, {
+                name: "Securite",
+                data: [35, 41, 36, 26, 45]
+            },
+            {
+                name: "Divers",
+                data: [44, 55, 57, 56, 61]
+            }
+        ],
+        xaxis: {
+            categories: ["Feb", "Mar", "Apr", "May", "Jun"]
+        },
+        legend: {
+            offsetY: -10
+        },
+        yaxis: {
+            title: {
+                text: "Motants : en (Dhs)"
+            }
+        },
+        grid: {
+            row: {
+                colors: ["transparent", "transparent"],
+                opacity: .2
+            },
+            borderColor: "#f1f3fa"
+        },
+        tooltip: {
+            y: {
+                formatter: function (t) {
+                    return t + " Dhs"
+                }
+            }
+        }
+    };
+    var chart = new ApexCharts(document.querySelector("#targets-chart"), r).render();
 
 </script>
 @endsection

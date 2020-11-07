@@ -18,11 +18,11 @@ class FactureController extends Controller
      */
     public function index()
     {
+        // $this->verifie_mois_dernier(11, 2);
         $facture = DB::table('factures')
             ->join('type_factures', 'type_factures.id', '=', 'factures.id_Type_facture')
             ->join('recus', 'recus.id', '=', 'factures.id_Recu')
             ->get();
-        //dd($facture);
 
         return view('Factures/AddFacture')
             ->with("blocs", Bloc::all())
@@ -55,6 +55,20 @@ class FactureController extends Controller
 
         return redirect(url()->previous());
     }
+
+    // public function verifie_mois_dernier($mois, $typeFacture)
+    // {
+    //     $count =  collect(DB::select("
+    //                     select count(*) as 'total'
+    //                     from factures f
+    //                     where f.id_Type_facture = $typeFacture
+    //                     and MONTH(date_de_paiment_facture) = $mois"))->first()->total;
+
+    //     if ($count == 0)
+    //         DB::statement("insert into factures(date_de_paiment_facture, designation,Montant, id_Type_facture, id_bloc) values('2020-09-01','Aucun Facture de Jardinage',0.00,1,1)");
+
+    //     dd($count);
+    // }
 
     /**
      * Update the specified resource in storage.

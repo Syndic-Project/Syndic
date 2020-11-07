@@ -31,44 +31,6 @@ class DashboardController extends Controller
         //        dd($TotalAppartementretard);
 
         $PosurcentagedeAppartementNonPaye = $TotalAppartementretard / $totaldesAppartement * 100;
-        // $chart = (new LarapexChart)
-        //     ->setType('pie')
-        //     ->setTitle('Appartement en retard')
-        //     ->setXAxis(['en retard'])
-        //     ->setLabels(['en retard','Payes'])
-        //     ->setColors(['#ff6384', '#B8B8B8'])
-        //     ->setDataset([$PosurcentagedeAppartementNonPaye,100-$PosurcentagedeAppartementNonPaye]);
-        //        $chart = (new LarapexChart)->setTitle('Net Profit')
-        //            ->setSubtitle('From January To March')
-        //            ->setType('bar')
-        //            ->setXAxis(['janvier', 'février', 'mars',
-        //                'avril',
-        //                'mai ',
-        //                'juin',
-        //                'juillet',
-        //                'aout',
-        //                'septembre ',
-        //                'octobre',
-        //                'novembre ',
-        //                'décembre'])
-        //            ->setGrid(true)
-        //            ->setDataset([
-        //                [
-        //                    'name' => 'Company A',
-        //                    'data' => [1000, 10, 1900, 1000, 10, 1900, 1000, 10, 1900, 1000, 10, 1900]
-        //                ],
-        //                [
-        //                    'name' => 'Company B',
-        //                    'data' => [300, 900, 1400, 1000, 10, 1900, 1000, 10, 1900, 1000, 10, 1900]
-        //                ],
-        //                [
-        //                    'name' => 'Company C',
-        //                    'data' => [430, 245, 500, 1000, 10, 1900, 1000, 10, 1900, 1000, 10, 1900]
-        //                ]
-        //            ])
-        //            ->setStroke(1);
-
-
         //alkhir appartement 1 fo9ach khelset
         $derniermoispaye = DB::table('caisses')
             ->where('id_Appartement', '=', 1)
@@ -113,7 +75,7 @@ class DashboardController extends Controller
         //            ->join('appartements', 'appartements.id_Immeuble', '=', 'immeubles.id')
         //            ->get();
 
-
+        // $this->depenses_secteur_mois();
         return view('index')
             ->with("totalcaisse", Caisse::sum('montant'))
             ->with("totalbloc", Bloc::count('id'))
@@ -126,13 +88,14 @@ class DashboardController extends Controller
             ->with("totalLocataireenRetard", $Totaldeslocataireretard)
             ->with("totalLocataireenAvance", $Totaldeslocataire_en_Avance)
             ->with("totaldepence", Facture::count('id'))
-            ->with("revenueMois", $this->revenue_mois(null))
+            ->with("revenueMois", $this->revenue_mois(null)) // opérationnelle
             ->with("totalSecurite", Securite::count('id'));
     }
 
 
     public function revenue_mois($annee)
     {
+        // possiblité de recevoir revenue_mois avec annéee personnalisé : todo
         $annee = $annee ?? Carbon::now()->format('Y');
         return DB::select("
         select sum(c.montant) as total_mois , c.mois_concerne
@@ -142,6 +105,13 @@ class DashboardController extends Controller
         order by  DATE(STR_TO_DATE(CONCAT( SUBSTRING_INDEX(c.mois_concerne,'-',1) , '-' , SUBSTRING_INDEX(c.mois_concerne,'-',-1),'-','1' ),'%Y-%m-%d')) asc,
                 STR_TO_DATE(CONCAT( SUBSTRING_INDEX(c.mois_concerne,'-',1) , '-' , SUBSTRING_INDEX(c.mois_concerne,'-',-1),'-','1' ),'%Y-%m-%d') asc
                   ");
+    }
+
+    public function depenses_secteur_mois()
+    {
+        dd(
+            Facture::where('id_Type_facture', 1)->get("Montant")->toArray()
+        );
     }
 
     public function pourcentage_appartement_non_paye()

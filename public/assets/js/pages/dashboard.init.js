@@ -54,7 +54,8 @@
             }
         };
         new ApexCharts(document.querySelector("#today-revenue-chart"), t).render(), new ApexCharts(document.querySelector("#today-product-sold-chart"), a.extend({}, t, {colors: ["#f77e53"]})).render(), new ApexCharts(document.querySelector("#today-new-customer-chart"), a.extend({}, t, {colors: ["#43d39e"]})).render(), new ApexCharts(document.querySelector("#today-new-visitors-chart"), a.extend({}, t, {colors: ["#ffbe0b"]})).render();
-        var e = new Date, r = {
+        var e = new Date, 
+        r = {
             chart: {height: 296, type: "area"},
             dataLabels: {enabled: !1},
             stroke: {curve: "smooth", width: 4},
@@ -90,65 +91,31 @@
                 }
             }
         };
-        new ApexCharts(document.querySelector("#revenue-chart"), r).render();
-        r = {
-            chart: {height: 296, type: "bar", toolbar: {show: !1}},
-            plotOptions: {bar: {horizontal: !1, endingShape: "rounded", columnWidth: "55%"}},
-            dataLabels: {enabled: !1},
-            stroke: {show: !0, width: 2, colors: ["transparent"]},
-            series: [{name: "Net Profit", data: [44, 55, 57, 56, 61]}, {
-                name: "Revenue",
-                data: [76, 85, 101, 98, 87]
-            }, {name: "Free Cash Flow", data: [35, 41, 36, 26, 45]}],
-            xaxis: {categories: ["Feb", "Mar", "Apr", "May", "Jun"]},
-            legend: {offsetY: -10},
-            yaxis: {title: {text: "$ (thousands)"}},
-            grid: {row: {colors: ["transparent", "transparent"], opacity: .2}, borderColor: "#f1f3fa"},
-            tooltip: {
-                y: {
-                    formatter: function (t) {
-                        return "$ " + t + " thousands"
-                    }
-                }
-            }
-        };
+        // new ApexCharts(document.querySelector("#revenue-chart"), r).render();
+        // r = {
+        //     chart: {height: 296, type: "bar", toolbar: {show: !1}},
+        //     plotOptions: {bar: {horizontal: !1, endingShape: "rounded", columnWidth: "55%"}},
+        //     dataLabels: {enabled: !1},
+        //     stroke: {show: !0, width: 2, colors: ["transparent"]},
+        //     series: [{name: "Net Profit", data: [44, 55, 57, 56, 61]}, {
+        //         name: "Revenue",
+        //         data: [76, 85, 101, 98, 87]
+        //     }, {name: "Free Cash Flow", data: [35, 41, 36, 26, 45]}],
+        //     xaxis: {categories: ["Feb", "Mar", "Apr", "May", "Jun"]},
+        //     legend: {offsetY: -10},
+        //     yaxis: {title: {text: "$ (thousands)"}},
+        //     grid: {row: {colors: ["transparent", "transparent"], opacity: .2}, borderColor: "#f1f3fa"},
+        //     tooltip: {
+        //         y: {
+        //             formatter: function (t) {
+        //                 return "$ " + t + " thousands"
+        //             }
+        //         }
+        //     }
+        // };
 
 
-  var chart= new ApexCharts(document.querySelector("#targets-chart"), r).render();
-
-
-
-        r = {
-
-            plotOptions: {pie: {donut: {size: "70%"}, expandOnClick: !1}},
-            chart: {height: 260, type: "donut"}, colors: ["#5369f8", "#43d39e", "#f77e53", "#ffbe0b"],
-            legend: {show: !0, position: "bottom", horizontalAlign: "left", itemMargin: {horizontal: 6, vertical: 3}},
-            series: [],
-            labels: ["MANQUE 55  dh"],
-            responsive: [{breakpoint: 480, options: {legend: {position: "bottom"}}}],
-            tooltip: {
-                y: {
-                    formatter: function (t) {
-                        return t + "k"
-                    }
-                }
-            }
-        };
-
-        function f() {
-            $.ajax({
-                url: "/test",
-                type: "GET",
-                success: function (responseData) {
-                    chart.updateSeries
-                  return responseData;
-
-                }
-
-            });
-        }
-        f();
-        new ApexCharts(document.querySelector("#sales-by-category-chart"), r).render()
+    // var chart= new ApexCharts(document.querySelector("#targets-chart"), r).render();
     }, t.prototype.init = function () {
         a("#dash-daterange").flatpickr({
             mode: "range",
