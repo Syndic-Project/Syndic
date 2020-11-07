@@ -307,21 +307,21 @@
         },
         series: [{
                 name: "Jardinage",
-                data: [44, 55, 57, 56, 61]
+                data: [ @foreach ($depensesJardinnage as $item) {{ $item->somme_jardinnage }}, @endforeach ]
             }, {
                 name: "Nettoyage",
-                data: [76, 85, 101, 98, 87]
+                data: [ @foreach ($depensesNettoyage as $item) {{ $item->somme_nettoyage }}, @endforeach ]
             }, {
                 name: "Securite",
-                data: [35, 41, 36, 26, 45]
+                data: [ @foreach ($depensesSecurite as $item) {{ $item->somme_securite }}, @endforeach ]
             },
             {
                 name: "Divers",
-                data: [44, 55, 57, 56, 61]
+                data: [ @foreach ($depensesDivers as $item) {{ $item->somme_divers }}, @endforeach ]
             }
         ],
         xaxis: {
-            categories: ["Feb", "Mar", "Apr", "May", "Jun"]
+            categories: [@foreach ($depensesJardinnage as $item) getMoisById(parseInt(`{{ $item->mois_concerne }}`)), @endforeach]
         },
         legend: {
             offsetY: -10

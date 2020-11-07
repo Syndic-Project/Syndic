@@ -75,7 +75,6 @@ class DashboardController extends Controller
         //            ->join('appartements', 'appartements.id_Immeuble', '=', 'immeubles.id')
         //            ->get();
 
-        // $this->depenses_secteur_mois();
         return view('index')
             ->with("totalcaisse", Caisse::sum('montant'))
             ->with("totalbloc", Bloc::count('id'))
@@ -88,7 +87,11 @@ class DashboardController extends Controller
             ->with("totalLocataireenRetard", $Totaldeslocataireretard)
             ->with("totalLocataireenAvance", $Totaldeslocataire_en_Avance)
             ->with("totaldepence", Facture::count('id'))
-            ->with("revenueMois", $this->revenue_mois(null)) // opérationnelle
+            ->with("revenueMois", $this->revenue_mois(null)) // opérationnelle mais pas 100%
+            ->with("depensesJardinnage",  $this->depenses_jardinnage(null)) // opérationnelle mais pas 100%
+            ->with("depensesNettoyage",  $this->depenses_nettoyage(null)) // opérationnelle mais pas 100%
+            ->with("depensesSecurite",  $this->depenses_securite(null)) // opérationnelle mais pas 100%
+            ->with("depensesDivers",  $this->depenses_divers(null)) // opérationnelle mais pas 100%
             ->with("totalSecurite", Securite::count('id'));
     }
 
@@ -100,18 +103,63 @@ class DashboardController extends Controller
         return DB::select("
         select sum(c.montant) as total_mois , c.mois_concerne
         from caisses c
-        where SUBSTRING_INDEX(c.mois_concerne,'-',1) = '2020'
+        where SUBSTRING_INDEX(c.mois_concerne,'-',1) = '$annee'
         group by c.mois_concerne
         order by  DATE(STR_TO_DATE(CONCAT( SUBSTRING_INDEX(c.mois_concerne,'-',1) , '-' , SUBSTRING_INDEX(c.mois_concerne,'-',-1),'-','1' ),'%Y-%m-%d')) asc,
                 STR_TO_DATE(CONCAT( SUBSTRING_INDEX(c.mois_concerne,'-',1) , '-' , SUBSTRING_INDEX(c.mois_concerne,'-',-1),'-','1' ),'%Y-%m-%d') asc
                   ");
     }
 
-    public function depenses_secteur_mois()
+    public function depenses_jardinnage($annee)
     {
-        dd(
-            Facture::where('id_Type_facture', 1)->get("Montant")->toArray()
-        );
+        $annee = $annee ?? Carbon::now()->format('Y');
+
+        return DB::select("
+        select sum(f.Montant) as 'somme_jardinnage' , MONTH(f.date_de_paiment_facture) as 'mois_concerne'
+        from factures f
+        where f.id_Type_facture = 1
+        and YEAR(f.date_de_paiment_facture) = $annee
+        group by MONTH(f.date_de_paiment_facture)
+        order by f.date_de_paiment_facture asc");
+    }
+
+    public function depenses_nettoyage($annee)
+    {
+        $annee = $annee ?? Carbon::now()->format('Y');
+
+        return DB::select("
+        select sum(f.Montant) as 'somme_nettoyage' , MONTH(f.date_de_paiment_facture) as 'mois_concerne'
+        from factures f
+        where f.id_Type_facture = 2
+        and YEAR(f.date_de_paiment_facture) = $annee
+        group by MONTH(f.date_de_paiment_facture)
+        order by f.date_de_paiment_facture asc");
+    }
+
+    public function depenses_securite($annee)
+    {
+        $annee = $annee ?? Carbon::now()->format('Y');
+
+        return DB::select("
+        select sum(f.Montant) as 'somme_securite' , MONTH(f.date_de_paiment_facture) as 'mois_concerne'
+        from factures f
+        where f.id_Type_facture = 3
+        and YEAR(f.date_de_paiment_facture) = $annee
+        group by MONTH(f.date_de_paiment_facture)
+        order by f.date_de_paiment_facture asc");
+    }
+
+    public function depenses_divers($annee)
+    {
+        $annee = $annee ?? Carbon::now()->format('Y');
+
+        return DB::select("
+        select sum(f.Montant) as 'somme_divers' , MONTH(f.date_de_paiment_facture) as 'mois_concerne'
+        from factures f
+        where f.id_Type_facture = 4
+        and YEAR(f.date_de_paiment_facture) = $annee
+        group by MONTH(f.date_de_paiment_facture)
+        order by f.date_de_paiment_facture asc");
     }
 
     public function pourcentage_appartement_non_paye()
