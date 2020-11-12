@@ -53,7 +53,7 @@ Route::get('/Securite/Scanner', function () {
     return view('Securite/scanner');
 });
 
-
+Route::get('/syndic/Profile', 'SyndicController@index');
 Route::get('/syndic/Immeuble', 'ImmeubleController@index');
 Route::get('/syndic/Residence', 'ResidenceController@index');
 Route::get('/syndic/Locateur', 'LocateurController@index');

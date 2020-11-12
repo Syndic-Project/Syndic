@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7127ffd3-2783-4e0a-b602-f3196766c79f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Mail/RegisterMail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Notifications/RegisterNotify.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/FirstTry.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FirstTry.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FactureController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FactureController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LocataireController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LocataireController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Locataire.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Locataire.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Client/AddLocateur.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Client/AddLocateur.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Locataires/GestionLocataire.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Locataires/GestionLocataire.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,6 +164,7 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Syndic" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -211,6 +205,7 @@
       <workItem from="1604500102083" duration="13276000" />
       <workItem from="1604574495195" duration="5223000" />
       <workItem from="1604585310916" duration="6285000" />
+      <workItem from="1604792359660" duration="2336000" />
     </task>
     <servers />
   </component>
@@ -241,6 +236,10 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="0" y="0" key="CommitChangelistDialog2/0.0.1280.689@0.0.1280.689" timestamp="1604504974393" />
+    <state x="421" y="100" key="FileChooserDialogImpl" timestamp="1604806112645">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="421" y="100" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1604806112645" />
     <state width="845" height="166" key="GridCell.Tab.0.bottom" timestamp="1603304859079">
       <screen x="0" y="0" width="1280" height="689" />
     </state>

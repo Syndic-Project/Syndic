@@ -22,7 +22,19 @@ class FactureController extends Controller
         $facture = DB::table('factures')
             ->join('type_factures', 'type_factures.id', '=', 'factures.id_Type_facture')
             ->join('recus', 'recus.id', '=', 'factures.id_Recu')
-            ->get();
+            ->get([
+                'factures.id',
+                'date_de_paiment_facture',
+                "designation",
+                "Montant",
+                "id_Recu",
+                "id_Type_facture",
+                "id_bloc",
+                "libelle",
+                "img", 'recus.id as idrecu',
+                'type_factures.id  as idtype'
+            ]);
+
 
         return view('Factures/AddFacture')
             ->with("blocs", Bloc::all())

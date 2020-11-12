@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Syndic;
 use Illuminate\Http\Request;
 
 class SyndicController extends Controller
@@ -13,7 +14,8 @@ class SyndicController extends Controller
      */
     public function index()
     {
-        //
+        return view('Profile_Syndic/ProfileS')
+            ->with('syndics', Syndic::all());
     }
 
     /**
