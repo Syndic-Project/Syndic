@@ -8,6 +8,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Notifications\Notification;
+use App\User;
+use Illuminate\Auth\Notifications\VerifyEmail;
+use Illuminate\Support\Facades\Lang;
 
 
 class RegisterNotify extends Notification
@@ -22,7 +25,6 @@ class RegisterNotify extends Notification
      */
     public function __construct()
     {
-
     }
 
     /**
@@ -46,12 +48,12 @@ class RegisterNotify extends Notification
     {
         return (new MailMessage)
             ->line("
-                 Bienvenue!
-Nous vous remercions d'avoir choisi {$notifiable->name}pour gérer votre/vos résidences.
-Veuillez trouver ci-dessous votre login et mot de passe que nous vous conseillons de garder en sécurité.
-N'oubliez pas de nous contacter via l'adresse suivante contact@syndic.com pour toute suggéstion ou amélioration à ajouter dans syndic.com. Nous vous répondrons c'est sûr ;)
+                         Bienvenue!
+        Nous vous remercions d'avoir choisi {$notifiable->name}pour gérer votre/vos résidences.
+        Veuillez trouver ci-dessous votre login et mot de passe que nous vous conseillons de garder en sécurité.
+        N'oubliez pas de nous contacter via l'adresse suivante contact@syndic.com pour toute suggéstion ou amélioration à ajouter dans syndic.com. Nous vous répondrons c'est sûr ;)
 
-                    ")
+                            ")
             ->action('Verifier Votre Email', config('http://localhost:8000/'))
             ->line('Merci!');
     }

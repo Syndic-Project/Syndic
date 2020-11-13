@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 
@@ -60,7 +61,16 @@ Route::get('/syndic/Locateur', 'LocateurController@index');
 Route::get('/syndic/Securite', 'SecuriteController@index');
 Route::get('/syndic/Facture', 'FactureController@index');
 Route::get('/syndic/Appartements', 'AppartementController@index');
+
+
+
+
 Route::get('/syndic/Locataire', 'LocataireController@index');
+
+Auth::routes(['verify' => true]);
+// Route::get('/syndic/Locataire', 'LocataireController@index')->name('home');
+
+
 Route::get('/syndic/Caisse', 'CaisseController@index');
 Route::post('/getLocataireByCin', 'LocataireController@getLocataireByCin')->name('getLocataireByCin');
 Route::post('/getLocataireByNomPrenom', 'LocataireController@getLocataireByNomPrenom')->name('getLocataireByNomPrenom');

@@ -23,7 +23,7 @@ use Illuminate\Notifications\Notifiable;
  */
 class Locataire extends Model implements MustVerifyEmail
 {
-use Notifiable;
+    use Notifiable;
     /**
      * The "type" of the auto-incrementing ID.
      *
@@ -45,23 +45,23 @@ use Notifiable;
     }
 
 
-    public function hasVerifiedEmail()
-    {
-        // TODO: Implement hasVerifiedEmail() method.
-    }
+    // public function hasVerifiedEmail()
+    // {
+    //     // TODO: Implement hasVerifiedEmail() method.
+    // }
 
-    public function markEmailAsVerified()
-    {
-        // TODO: Implement markEmailAsVerified() method.
-    }
+    // public function markEmailAsVerified()
+    // {
+    //     // TODO: Implement markEmailAsVerified() method.
+    // }
 
-    public function sendEmailVerificationNotification()
-    {
-        // TODO: Implement sendEmailVerificationNotification() method.
-    }
+    // public function sendEmailVerificationNotification()
+    // {
+    //     // TODO: Implement sendEmailVerificationNotification() method.
+    // }
 
-    public function getEmailForVerification()
-    {
-        // TODO: Implement getEmailForVerification() method.
-    }
+    // public function getEmailForVerification()
+    // {
+    //     // TODO: Implement getEmailForVerification() method.
+    // }
 }

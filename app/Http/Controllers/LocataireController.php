@@ -16,15 +16,15 @@ use Illuminate\Support\Facades\Session;
 class LocataireController extends Controller
 {
 
-//    /**
-//     * Create a new controller instance.
-//     *
-//     * @return void
-//     */
-//    public function __construct()
-//    {
-//        $this->middleware(['auth','verified']);
-//    }
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    // public function __construct()
+    // {
+    //     $this->middleware(['auth', 'verified']);
+    // }
 
     public static function getLocataireByCin(Request $request)
     {
@@ -94,11 +94,9 @@ class LocataireController extends Controller
                 $caisse->save();
             }
 
-       $locataire->notify(new RegisterNotify());
-
+        $locataire->notify(new RegisterNotify());
 
         return redirect(url()->previous());
-
     }
 
     /**
