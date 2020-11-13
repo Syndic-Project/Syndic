@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\WelcomeMail;
 use App\Models\Appartement;
 use App\Models\Caisse;
 use App\Models\Locataire;
@@ -82,6 +83,7 @@ class LocataireController extends Controller
         $locataire->isVisible = true;
         $locataire->password = Hash::make($request->mdp);
         $locataire->save();
+        $mdpvar = $request->mdp;
 
         if ($request->appartements)
             foreach ($request->appartements as $appartement_nom) {
@@ -94,7 +96,14 @@ class LocataireController extends Controller
                 $caisse->save();
             }
 
-        $locataire->notify(new RegisterNotify());
+
+        session::put('email', $locataire->email);
+        session::put('mdp', $mdpvar);
+
+        Mail::to($locataire->email)->send(new WelcomeMail());
+
+
+        // $locataire->notify(new RegisterNotify());
 
         return redirect(url()->previous());
     }

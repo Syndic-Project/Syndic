@@ -21,7 +21,7 @@ use Illuminate\Notifications\Notifiable;
  * @property string $updated_at
  * @property Caiss[] $caisses
  */
-class Locataire extends Model implements MustVerifyEmail
+class Locataire extends Model
 {
     use Notifiable;
     /**
@@ -43,25 +43,4 @@ class Locataire extends Model implements MustVerifyEmail
     {
         return $this->hasMany('App\Models\Caisse', 'id_Locataire');
     }
-
-
-    // public function hasVerifiedEmail()
-    // {
-    //     // TODO: Implement hasVerifiedEmail() method.
-    // }
-
-    // public function markEmailAsVerified()
-    // {
-    //     // TODO: Implement markEmailAsVerified() method.
-    // }
-
-    // public function sendEmailVerificationNotification()
-    // {
-    //     // TODO: Implement sendEmailVerificationNotification() method.
-    // }
-
-    // public function getEmailForVerification()
-    // {
-    //     // TODO: Implement getEmailForVerification() method.
-    // }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Mail\WelcomeMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -49,6 +50,10 @@ Route::get('Residence', [
 //Route::get('/syndic/Securite', function () {
 //    return view('Securite/AddSecurite');
 //});
+
+Route::get('/email', function () {
+    return new WelcomeMail();
+});
 
 Route::get('/Securite/Scanner', function () {
     return view('Securite/scanner');
