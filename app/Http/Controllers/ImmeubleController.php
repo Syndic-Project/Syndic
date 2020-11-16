@@ -7,6 +7,7 @@ use App\Models\Bloc;
 use App\Models\Immeuble;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 
 class ImmeubleController extends Controller
@@ -20,21 +21,19 @@ class ImmeubleController extends Controller
      */
     public function index()
     {
-//        Bloc::with('immeuble')->get()
+        //        Bloc::with('immeuble')->get()
 
-        DB::connection()->enableQueryLog();
+        // DB::connection()->enableQueryLog();
 
 
 
         $bloc_immeuble = DB::table('immeubles')
-            ->join('blocs', 'immeubles.id_bloc', '=', 'blocs.id')->get(['immeubles.*','blocs.nom_bloc']);
+            ->join('blocs', 'immeubles.id_bloc', '=', 'blocs.id')->get(['immeubles.*', 'blocs.nom_bloc']);
 
         return view('Immeubles/Addimeuble')
             ->with('bloc_immeuble', $bloc_immeuble)
             ->with("blocs", Bloc::all())
             ->with("immeubles", Immeuble::all());
-
-
     }
 
 
@@ -90,12 +89,12 @@ class ImmeubleController extends Controller
     public function edit($id)
     {
 
-     $immeuble = Immeuble::findOrFail($id);
-     $bloc=Bloc::all();
+        $immeuble = Immeuble::findOrFail($id);
+        $bloc = Bloc::all();
 
         return view('immeubles.edit', [
             'immeuble' => $immeuble,
-            "blocs"=>$bloc
+            "blocs" => $bloc
         ]);
     }
 
@@ -108,13 +107,20 @@ class ImmeubleController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $immeuble = Immeuble::findOrFail($id);
+
         $immeuble->id_bloc = $request->input('bloc');
         $immeuble->Nom_Immeuble = $request->input('nom');
         $immeuble->Montant_Cotisation_Mensuelle = $request->input('cotisation');
         $immeuble->Montant_Disponible_En_Caisse = $request->input('caisse');
         $immeuble->save();
-        return redirect('/syndic/Immeuble');
+
+        Session::flash('message', "Les données ont été mise à jour avec succées");
+        Session::flash('alert-class', 'alert-success');
+
+        // Session::flash('message', "Erreur lors de la mise à jour des données ");
+        // Session::flash('alert-class', 'alert-danger');
     }
 
     /**

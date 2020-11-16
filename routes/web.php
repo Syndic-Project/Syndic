@@ -1,10 +1,11 @@
 <?php
 
+use App\Mail\QR;
 use App\Mail\WelcomeMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use ArielMejiaDev\LarapexCharts\LarapexChart;
+
 
 
 /*-
@@ -23,6 +24,10 @@ Route::get('/', 'DashboardController@index');
 
 Route::get('/Locataire', function () {
     return view('Locataires/AddLocataire');
+});
+
+Route::get('/Locataire/Caisse', function () {
+    return view('Caisses/caisselocataire');
 });
 
 // Route::get('/Blocs', function () { // Lah ymskhek 👌👈
@@ -54,6 +59,9 @@ Route::get('Residence', [
 Route::get('/email', function () {
     return new WelcomeMail();
 });
+Route::get('/QR', function () {
+    return new QR();
+});
 
 Route::get('/Securite/Scanner', function () {
     return view('Securite/scanner');
@@ -70,9 +78,10 @@ Route::get('/syndic/Appartements', 'AppartementController@index');
 
 
 
+
 Route::get('/syndic/Locataire', 'LocataireController@index');
 
-Auth::routes(['verify' => true]);
+// Auth::routes(['verify' => true]);
 // Route::get('/syndic/Locataire', 'LocataireController@index')->name('home');
 
 

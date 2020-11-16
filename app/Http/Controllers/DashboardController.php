@@ -33,7 +33,7 @@ class DashboardController extends Controller
         $PosurcentagedeAppartementNonPaye = $TotalAppartementretard / $totaldesAppartement * 100;
         //alkhir appartement 1 fo9ach khelset
         $derniermoispaye = DB::table('caisses')
-            ->where('id_Appartement', '=', 1)
+
             ->orderBy('mois_concerne', 'desc')->first()->mois_concerne;
         //ch7al raha menchher retard
         $derniermoispaye = Carbon::parse($derniermoispaye)->floorMonth();

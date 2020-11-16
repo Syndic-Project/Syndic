@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Appartement;
+use Carbon\Carbon;
 use App\Models\Caisse;
 use App\Models\Immeuble;
-use Carbon\Carbon;
+use App\Models\Appartement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 
 class AppartementController extends Controller
@@ -22,7 +23,7 @@ class AppartementController extends Controller
     {
 
         $derniermoispaye = DB::table('caisses')->where('id_Appartement', '=', 1)
-//            ->where('id_Locataire', '=', $idl)
+            //            ->where('id_Locataire', '=', $idl)
             ->orderBy('mois_concerne', 'desc')->first()->mois_concerne;
         $derniermoispaye = Carbon::parse($derniermoispaye)->floorMonth();
 
@@ -30,25 +31,28 @@ class AppartementController extends Controller
         $now = Carbon::parse($now)->floorMonth();
 
         return $res = $derniermoispaye->diffInMonths($now);
-
-
     }
 
     public function index()
     {
-//
-//$appartementhaslocataire=
-//dd(Appartement::has('caisses')->get());
-//$appartementhasnotlocataire=Appartement::doesntHave('caisses')->get();
+
+        // Appartement::has('caisses')->get()
+        $appartementhaslocataire = DB::table('locataires')
+            ->join('caisses', 'caisses.id_Locataire', '=', 'locataires.id')
+            ->join('appartements', 'appartements.id', '=', 'caisses.id_Appartement')
+            ->get(['appartements.id', 'appartements.nom as appname', 'locataires.nom as nomloc']);
+
+
+        //
+        //$appartementhaslocataire=
+        //dd(Appartement::has('caisses')->get());
+        //$appartementhasnotlocataire=Appartement::doesntHave('caisses')->get();
 
         return view('Appartements/AddAppartement')
             ->with('immeubles', Immeuble::all())
             ->with('appartements', Appartement::all())
-            ->with('appartementhaslocataire',Appartement::has('caisses')->get())
-            ->with('appartementhasnotlocataire',Appartement::doesntHave('caisses')->get());
-
-
-
+            ->with('appartementhaslocataire', $appartementhaslocataire)
+            ->with('appartementhasnotlocataire', Appartement::doesntHave('caisses')->get());
     }
 
     /**
@@ -80,11 +84,9 @@ class AppartementController extends Controller
         $appartement->id_Immeuble = $request->input('immeuble');
         $appartement->Type_du_bien = $request->input('type');
         $appartement->Num_Porte = $request->input('porte');
-        $appartement->Dernier_Mois_Pays = $request->input('last_cotisation');
+
         $appartement->Nbr_Max_chambre = $request->input('nbr');
         $appartement->save();
-
-
     }
 
     /**
@@ -118,7 +120,25 @@ class AppartementController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $appartement = Appartement::find($id)->first();
+
+
+        $appartement = new Appartement();
+        $var1 = $request->input('type');
+        $var2 = $request->input('porte');
+
+        $res = $var1 . ' ' . 'N°' . $var2;
+        $appartement->nom = $res;
+        $appartement->id_Immeuble = $request->input('immeuble');
+        $appartement->Type_du_bien = $request->input('type');
+        $appartement->Num_Porte = $request->input('porte');
+
+        $appartement->Nbr_Max_chambre = $request->input('nbr');
+        $appartement->save();
+        return redirect(url()->previous());
+
+        Session::flash('message', "Les données ont été mise à jour avec succées");
+        Session::flash('alert-class', 'alert-success');
     }
 
     /**
@@ -129,6 +149,12 @@ class AppartementController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        Caisse::where('id_Appartement', '=', $id)
+            ->update(['id_Appartement' => NULL]);
+        Appartement::find($id)->delete();
+        return redirect(url()->previous());
+        Session::flash('message', "Appartements Suuprimer avec success ");
+        Session::flash('alert-class', 'alert-success');
     }
 }

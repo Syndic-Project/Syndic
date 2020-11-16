@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Syndic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class SyndicController extends Controller
 {
@@ -70,7 +72,24 @@ class SyndicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $syndic = Syndic::find($id)->first();
+
+        if ($syndic
+            ->update([
+                "nom" => $request->nom,
+                "prenom" => $request->prenom,
+                "email" => $request->email,
+                "password" => $request->mdpModif == "************" ? Hash::make($syndic->password) : Hash::make($syndic->mdpModif),
+            ])
+        ) {
+            Session::flash('message', "Les données ont été mise à jour avec succées");
+            Session::flash('alert-class', 'alert-success');
+        } else {
+            Session::flash('message', "Erreur lors de la mise à jour des données");
+            Session::flash('alert-class', 'alert-danger');
+        }
+
+        return redirect(url()->previous());
     }
 
     /**

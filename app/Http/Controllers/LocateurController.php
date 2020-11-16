@@ -19,6 +19,13 @@ class LocateurController extends Controller
      */
     public function index()
     {
+
+
+
+
+
+
+
         $info_loc = DB::table('locateurs')
             ->join('confirm_logments', 'confirm_logments.id_Locateur', '=', 'locateurs.id')
             ->get();

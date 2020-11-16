@@ -17,15 +17,13 @@ class SecuriteController extends Controller
      */
     public function index()
     {
-//        dd(Securite::has('bloc')->get());
+        //        dd(Securite::has('bloc')->get());
         $securite_bloc = DB::table('securites')
             ->join('blocs', 'securites.id_bloc', '=', 'blocs.id')->get(['securites.*', 'blocs.nom_bloc']);
 
         return view('Securite/AddSecurite')
             ->with('securite_bloc', $securite_bloc)
             ->with('blocs', Bloc::all());
-
-
     }
 
     /**
@@ -46,17 +44,14 @@ class SecuriteController extends Controller
      */
     public function store(Request $request)
     {
-        try {
 
-            $securite = new Securite();
-            $securite->nometprenom = $request->input('nom');
-            $securite->id_bloc = $request->input('bloc');
-            $securite->email = $request->input('email');
-            $securite->password = $request->input('mdp');
-            $securite->save();
-        } catch (\Exception $e) {
-            throw new \App\Exceptions\LogData($e);
-        }
+
+        $securite = new Securite();
+        $securite->nometprenom = $request->input('nom');
+        $securite->id_bloc = $request->input('bloc');
+        $securite->email = $request->input('email');
+        $securite->password = $request->input('mdp');
+        $securite->save();
     }
 
     /**
@@ -67,7 +62,6 @@ class SecuriteController extends Controller
      */
     public function show($id)
     {
-
     }
 
     /**

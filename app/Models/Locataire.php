@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 /**
  * @property integer $id
@@ -21,7 +22,7 @@ use Illuminate\Notifications\Notifiable;
  * @property string $updated_at
  * @property Caiss[] $caisses
  */
-class Locataire extends Model
+class Locataire extends Model implements MustVerifyEmail
 {
     use Notifiable;
     /**
@@ -43,4 +44,58 @@ class Locataire extends Model
     {
         return $this->hasMany('App\Models\Caisse', 'id_Locataire');
     }
+    public function hasVerifiedEmail()
+    {
+        // TODO: Implement hasVerifiedEmail() method.
+        return !is_null($this->email_verified_at);
+    }
+
+    public function markEmailAsVerified()
+    {
+        return $this->forceFill([
+            'email_verified_at' => $this->freshTimestamp(),
+        ])->save();
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        // TODO: Implement sendEmailVerificationNotification() method.
+    }
+
+    public function getEmailForVerification()
+    {
+        // TODO: Implement getEmailForVerification() method.
+    }
+
+    // /**
+    //  * Determine if the user has verified their email address.
+    //  *
+    //  * @return bool
+    //  */
+    // public function hasVerifiedEmail()
+    // {
+    //     return !is_null($this->email_verified_at);
+    // }
+
+    // /**
+    //  * Mark the given user's email as verified.
+    //  *
+    //  * @return bool
+    //  */
+    // public function markEmailAsVerified()
+    // {
+    //     return $this->forceFill([
+    //         'email_verified_at' => $this->freshTimestamp(),
+    //     ])->save();
+    // }
+
+    // /**
+    //  * Send the email verification notification.
+    //  *
+    //  * @return void
+    //  */
+    // public function sendEmailVerificationNotification()
+    // {
+    //     // $this->notify(new Notifications\VerifyEmail);
+    // }
 }

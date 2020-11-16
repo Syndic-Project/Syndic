@@ -6,8 +6,11 @@
     N'oubliez pas de nous contacter via l'adresse suivante contact@syndic.com pour toute suggéstion ou amélioration à
     ajouter dans syndik.ma Nous vous répondrons c'est sûr ;)
 
+
     login: {{ $value = Session::get('email') }};
     Mot de Passe: {{ $value = Session::get('mdp') }};
+    {{-- confirmer votre email : {{ $value = Session::get('verification') }}
+    --}}
 
 
     Merci,

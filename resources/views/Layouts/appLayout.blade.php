@@ -278,7 +278,7 @@
                         <span data-feather="chevron-down"></span>
                     </a>
                     <div class="dropdown-menu profile-dropdown">
-                        <a href="pages-profile.html" class="dropdown-item notify-item">
+                        <a href="syndic/Profile" class="dropdown-item notify-item">
                             <i data-feather="user" class="icon-dual icon-xs mr-2"></i>
                             <span>Mon Profil</span>
                         </a>
@@ -389,13 +389,32 @@
 
                         @else
                             <li class="menu-title">Espace Locataire</li>
+                            <li>
+                                <a href="/">
+                                    <i data-feather="home"></i>
+                                    {{-- <span
+                                        class="badge badge-success float-right">1</span>
+                                    --}}
+                                    <span> Accueil </span>
+                                </a>
+                            </li>
+
 
                             <li>
                                 <a href="/syndic/Locateur">
-                                    <i data-feather="package"></i>
+                                    <i data-feather="user"></i>
                                     <span> Ajouter un Locateur </span>
-                                    <span class="menu-arrow"></span>
+
                                 </a>
+                            </li>
+                            <li>
+                                <a href="/syndic/Caisse">
+                                    <i data-feather="dollar-sign"></i>
+
+                                    <span>Caisse </span>
+
+                                </a>
+
                             </li>
                         @endif
                     </ul>

@@ -99,6 +99,7 @@ class LocataireController extends Controller
 
         session::put('email', $locataire->email);
         session::put('mdp', $mdpvar);
+        // session::put('verification', $locataire->sendEmailVerificationNotification());
 
         Mail::to($locataire->email)->send(new WelcomeMail());
 
