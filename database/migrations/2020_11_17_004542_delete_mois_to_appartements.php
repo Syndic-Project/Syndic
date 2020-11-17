@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeTypeCotisationToCaisses extends Migration
+class DeleteMoisToAppartements extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class ChangeTypeCotisationToCaisses extends Migration
      */
     public function up()
     {
-        Schema::table('caisses', function (Blueprint $table) {
-            $table->date('mois_concerne')->change();
+        Schema::table('appartements', function (Blueprint $table) {
+            $table->dropColumn('Dernier_Mois_Pays');
         });
     }
 
@@ -25,7 +25,7 @@ class ChangeTypeCotisationToCaisses extends Migration
      */
     public function down()
     {
-        Schema::table('caisses', function (Blueprint $table) {
+        Schema::table('appartements', function (Blueprint $table) {
             //
         });
     }
