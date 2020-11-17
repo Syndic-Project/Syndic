@@ -59,9 +59,13 @@ Route::get('Residence', [
 Route::get('/email', function () {
     return new WelcomeMail();
 });
-Route::get('/QR', function () {
+
+Route::get('/QRCODE', function () {
     return new QR();
 });
+
+
+
 
 Route::get('/Securite/Scanner', function () {
     return view('Securite/scanner');
@@ -93,7 +97,10 @@ Route::post('/getCaisseByAppartement', 'CaisseController@getCaisseByAppartement'
 Route::get('/Auth-Login', 'AuthentificationController@loginView')->name('Auth-Login-Get');
 Route::post('/Auth-Login', 'AuthentificationController@loginSecurity')->name('Auth-Login-Post');
 Route::get('/Auth-Logout', 'AuthentificationController@LogOut')->name('Auth-LogOut');
+
 Route::post('/getQrCode/{id_locateur}', 'LocateurController@generateQR');
+// Route::get('/getQrcode', 'LocateurController@genrateQR/{id}')->name('genrateQR');
+Route::post('/QR/{id_locateur}', 'LocateurController@sendQrcode');
 
 Route::post('/syndic/Bloc/Modif/{idBloc}', 'BlocController@update')->name("Modif-Bloc");
 Route::post('/syndic/Bloc/Suppr/{idBloc}', 'BlocController@destroy')->name("Suppr-Bloc");

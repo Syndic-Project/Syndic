@@ -28,7 +28,7 @@
                             <div class="col-md-12">
 
                                 <div class="mybox" id="box_locateur">
-                                    <table id="Locateur-datatable" class="table table-hover table-condensed table-nowrap">
+                                    <table id="Locateur-datatable" class="table table-hover table-condensed display">
                                         <thead>
                                             <tr>
 
@@ -63,10 +63,12 @@
                                                     </td>
                                                     <td class="text-center">
 
-                                                        <button class="delete btn btn-danger btn-sm" type="submit">
+                                                        <a href="{{ \App\Http\Controllers\LocateurController::sendQrcode($loc->id) }}"
+                                                            id="Qrcodebtn{{ $loc->id }}"
+                                                            class="delete btn btn-danger btn-sm">
                                                             <i class="fas fa-clipboard-check"></i>
                                                             Envoyer Le Qr code au Locateur
-                                                        </button>
+                                                        </a>
 
                                                     </td>
                                                 </tr>
@@ -103,6 +105,7 @@
     </script>
     <script>
         $("#Locateur-datatable").DataTable({
+            responsive: true,
             lengthMenu: [
                 [10, 25, 50, -1],
                 ['10 lignes', '25 lignes', '50 lignes', 'afficher tous']
@@ -146,4 +149,6 @@
         })
 
     </script>
+
+
 @endsection

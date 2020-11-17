@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Locataire;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -30,4 +31,10 @@ class WelcomeMail extends Mailable
     {
         return $this->markdown('emails.welcome');
     }
+
+    // public function verification($id)
+    // {
+    //     $locataire = Locataire::findOrFail($id);
+    //     $locataire->sendEmailVerificationNotification();
+    // }
 }

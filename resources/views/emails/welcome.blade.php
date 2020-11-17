@@ -9,6 +9,7 @@
 
     login: {{ $value = Session::get('email') }};
     Mot de Passe: {{ $value = Session::get('mdp') }};
+
     {{-- confirmer votre email : {{ $value = Session::get('verification') }}
     --}}
 

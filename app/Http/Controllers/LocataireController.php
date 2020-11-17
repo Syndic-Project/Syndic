@@ -100,7 +100,7 @@ class LocataireController extends Controller
         session::put('email', $locataire->email);
         session::put('mdp', $mdpvar);
         // session::put('verification', $locataire->sendEmailVerificationNotification());
-
+        // $locataire->email_verified_at = Carbon::now();
         Mail::to($locataire->email)->send(new WelcomeMail());
 
 

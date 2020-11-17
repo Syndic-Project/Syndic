@@ -177,4 +177,16 @@ class DashboardController extends Controller
         $PosurcentagedeAppartementNonPaye = $TotalAppartementretard / $totaldeslocataires * 100;
         return json_encode($PosurcentagedeAppartementNonPaye);
     }
+    public function dernier_mois_paye($id)
+    {
+        $derniermoispaye = DB::table('caisses')
+            ->where('id_Locataire', $id)
+            ->orderBy('mois_concerne', 'desc')->first()->mois_concerne;
+        return $derniermoispaye;
+
+        //ch7al raha menchher retard
+        $derniermoispaye = Carbon::parse($derniermoispaye)->floorMonth();
+        $now = Carbon::now();
+        $nbr_de_mois_en_retard = $derniermoispaye->diffInMonths($now);
+    }
 }

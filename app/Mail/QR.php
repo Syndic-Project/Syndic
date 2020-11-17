@@ -2,10 +2,12 @@
 
 namespace App\Mail;
 
+use App\Models\Locateur;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class QR extends Mailable
 {
@@ -28,6 +30,7 @@ class QR extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.QR');
+
+        return $this->view('emails.QR');
     }
 }
