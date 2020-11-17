@@ -40,6 +40,7 @@ class AppartementController extends Controller
         $appartementhaslocataire = DB::table('locataires')
             ->join('caisses', 'caisses.id_Locataire', '=', 'locataires.id')
             ->join('appartements', 'appartements.id', '=', 'caisses.id_Appartement')
+            ->where('appartements.isVisible', true)
             ->get(['appartements.id', 'appartements.nom as appname', 'locataires.nom as nomloc', 'locataires.prenom as prenomloc']);
 
 
@@ -50,9 +51,9 @@ class AppartementController extends Controller
 
         return view('Appartements/AddAppartement')
             ->with('immeubles', Immeuble::all())
-            ->with('appartements', Appartement::all())
+            ->with('appartements', Appartement::where('appartements.isVisible', true)->get())
             ->with('appartementhaslocataire', $appartementhaslocataire)
-            ->with('appartementhasnotlocataire', Appartement::doesntHave('caisses')->get());
+            ->with('appartementhasnotlocataire', Appartement::doesntHave('caisses')->where('appartements.isVisible', true)->get());
     }
 
     /**
@@ -84,7 +85,7 @@ class AppartementController extends Controller
         $appartement->id_Immeuble = $request->input('immeuble');
         $appartement->Type_du_bien = $request->input('type');
         $appartement->Num_Porte = $request->input('porte');
-
+        $appartement->isVisible = true;
         $appartement->Nbr_Max_chambre = $request->input('nbr');
         $appartement->save();
 
@@ -136,7 +137,7 @@ class AppartementController extends Controller
         $appartement->id_Immeuble = $request->input('immeuble');
         $appartement->Type_du_bien = $request->input('type');
         $appartement->Num_Porte = $request->input('porte');
-
+        $appartement->isVisible = true;
         $appartement->Nbr_Max_chambre = $request->input('nbr');
         $appartement->save();
         return redirect(url()->previous());
