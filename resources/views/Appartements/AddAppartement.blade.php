@@ -27,7 +27,6 @@
 
                                                 @foreach ($immeubles as $imb)
 
-                                                    <option selected value="">IMMEUBLE</option>
                                                     <option value="{{ $imb->id }}" selected="">{{ $imb->Nom_Immeuble }}
                                                     </option>
                                                 @endforeach
@@ -128,7 +127,8 @@
                                                     {{-- <span class="text-danger">-6
                                                         mois</span>--}}
                                                     <td class="text-center">
-                                                        <a href=""><i class=""></i> {{ $app->nomloc }}</a>
+                                                        <a href=""><i class=""></i>
+                                                            {{ $app->nomloc . ' ' . $app->prenomloc }}</a>
                                                     </td>
 
                                                     <td class="text-center">
@@ -204,6 +204,7 @@
     <script src="{{ url('assets/libs/parsleyjs/parsley.min.js') }}"></script>
     <script>
         $(document).ready(function() {
+            $("#immeuble").change();
             $("span:contains(-)").attr('class', 'text-danger');
         });
         // $("#td_id").attr('class', 'newClass');

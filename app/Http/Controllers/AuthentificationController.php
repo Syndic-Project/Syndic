@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Locataire;
 use App\Models\Syndic;
+use App\Models\Locataire;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AuthentificationController extends Controller
 {
     function loginView()
     {
+        // dd(Hash::make('hicham1234'));
         return view('login');
     }
 

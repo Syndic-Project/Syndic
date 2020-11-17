@@ -15,7 +15,7 @@
                         @method('PUT')
                         <div class="row mrgb10">
                             <div class="col-md-12">
-                                <select name="immeuble" id="immeuble" required="" class="form-control ">
+                                <select name="immeuble" required="" class="form-control ">
 
                                     @foreach ($immeubles as $imb)
 
@@ -32,7 +32,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="type">Type du bien</label>
-                                    <select name="type" id="type" class="form-control" required="">
+                                    <select name="type" class="form-control" required="">
                                         <option value="Appartement">Appartement</option>
                                         <option value="Bureau">Bureau</option>
                                         <option value="Local commercial">Local commercial</option>
@@ -43,7 +43,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="porte">N° de porte</label>
-                                    <input type="text" required="" name="porte" id="porte" class="form-control "
+                                    <input type="text" required="" name="porte" class="form-control "
                                         placeholder="N° de porte" value="{{ $app->Num_Porte }}">
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="nbr">Chambre Max</label>
-                                    <input type="number" required="" name="nbr" min=0 id="nbr" class="form-control "
+                                    <input type="number" required="" name="nbr" min=0 class="form-control "
                                         placeholder="Nbr Max chambre" value="{{ $app->Nbr_Max_chambre }}">
                                 </div>
                             </div>

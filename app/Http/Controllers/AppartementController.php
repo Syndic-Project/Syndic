@@ -40,7 +40,7 @@ class AppartementController extends Controller
         $appartementhaslocataire = DB::table('locataires')
             ->join('caisses', 'caisses.id_Locataire', '=', 'locataires.id')
             ->join('appartements', 'appartements.id', '=', 'caisses.id_Appartement')
-            ->get(['appartements.id', 'appartements.nom as appname', 'locataires.nom as nomloc']);
+            ->get(['appartements.id', 'appartements.nom as appname', 'locataires.nom as nomloc', 'locataires.prenom as prenomloc']);
 
 
         //
@@ -87,6 +87,10 @@ class AppartementController extends Controller
 
         $appartement->Nbr_Max_chambre = $request->input('nbr');
         $appartement->save();
+
+        Session::flash('message', "Appartements ajouter avec success ");
+        Session::flash('alert-class', 'alert-success');
+        return redirect(url()->previous());
     }
 
     /**
