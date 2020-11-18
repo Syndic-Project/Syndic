@@ -29,14 +29,14 @@ function organisationTableau(Caisse) {
                 $(`#annee-${new Date(Caisse[i].mois_concerne).getFullYear()}`)
                 .append(`
                         <td class="text-center">
-                            <img src="https://img.icons8.com/color/48/000000/cancel--v1.png" style="width: 20px;cursor:pointer;" data-toggle="modal" data-target="#modalPaiement" data-montant="${Caisse[i].montant}"
+                            <img class="icnPaiement" src="https://img.icons8.com/color/48/000000/cancel--v1.png" style="width: 20px;cursor:pointer;" data-toggle="modal" data-target="#modalPaiement" data-montant="${Caisse[i].montant}"
                               data-mois="${new Date(Caisse[i].mois_concerne).getMonth() + 1}" data-annee="${new Date(Caisse[i].mois_concerne).getFullYear()}" data-caisse="${Caisse[i].id}"/>
                         </td>
                         `) :
                 $(`#annee-${new Date(Caisse[i].mois_concerne).getFullYear()}`)
                 .append(`
                         <td class="text-center">
-                            <span class="badge badge-info" style="cursor:pointer;" data-toggle="modal" data-target="#modalPaiement" data-montant="${Caisse[i].montant}"
+                            <span class="icnPaiement badge badge-info" style="cursor:pointer;" data-toggle="modal" data-target="#modalPaiement" data-montant="${Caisse[i].montant}"
                               data-mois="${new Date(Caisse[i].mois_concerne).getMonth() + 1}" data-annee="${new Date(Caisse[i].mois_concerne).getFullYear()}" data-caisse="${Caisse[i].id}">
                               Mois Actuel
                             </span>

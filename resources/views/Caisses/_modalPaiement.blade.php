@@ -18,7 +18,7 @@
                 <p>
                     Confirmez que Mr/Mme
                     <span id="identiteSpan" style="text-decoration: underline;">{Nom-Prénom}</span>
-                    a bel et bien payé la somme de cotisation :
+                    a bel et bien payé la somme de cotisation de
                     <span id="montantSpan" style="font-weight: bold;text-decoration: underline;">{prix}</span>
                     Dhs pour le mois de
                     <span id="moisConcerneSpan" style="text-decoration: underline;">{mois_concerné}</span>,
