@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $Dernier_Mois_Pays
  * @property string $created_at
  * @property string $updated_at
+ * @property boolean $isVisible
  * @property Immeuble $immeuble
  * @property Caiss[] $caisses
  * @property ConfirmLogment[] $confirmLogments
@@ -30,7 +31,7 @@ class Appartement extends Model
     /**
      * @var array
      */
-    protected $fillable = ['nom', 'id_Immeuble', 'Type_du_bien', 'Nbr_Max_chambre', 'Num_Porte', 'Dernier_Mois_Pays', 'created_at', 'updated_at'];
+    protected $fillable = ['nom', 'id_Immeuble', 'Type_du_bien', 'Nbr_Max_chambre', 'Num_Porte', 'created_at', 'updated_at', 'isVisible'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -17,6 +17,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
  * @property string $password
  * @property string $Tel
  * @property string $CIN
+ * @property boolean $isVisible
  * @property string $remember_token
  * @property string $created_at
  * @property string $updated_at
@@ -35,7 +36,7 @@ class Locataire extends Model implements MustVerifyEmail
     /**
      * @var array
      */
-    protected $fillable = ['nom', 'prenom', 'email', 'email_verified_at', 'password', 'Tel', 'CIN', 'remember_token', 'created_at', 'updated_at'];
+    protected $fillable = ['nom', 'prenom', 'email', 'email_verified_at', 'password', 'Tel', 'CIN', 'created_at', 'updated_at', 'isVisible'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
