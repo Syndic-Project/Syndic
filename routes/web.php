@@ -60,9 +60,8 @@ Route::get('/email', function () {
     return new WelcomeMail();
 });
 
-Route::get('/QRCODE', function () {
-    return new QR();
-});
+Route::get('/QRCODE', 'QrcodeController@index');
+
 
 
 
