@@ -16,42 +16,32 @@ use Illuminate\Support\Facades\Session;
 
 class LocataireController extends Controller
 {
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    // public function __construct()
-    // {
-    //     $this->middleware(['auth', 'verified']);
-    // }
-
     public static function getLocataireByCin(Request $request)
     {
-        return Locataire::where('cin', $request->cin)->first() ?
-            Locataire::where('cin', $request->cin)
-            ->first()->toJson(JSON_PRETTY_PRINT) :
+        $locataire = Locataire::where('cin', $request->cin)->where('isVisible', true)->first();
+        return  $locataire ?
+            $locataire->toJson(JSON_PRETTY_PRINT) :
             'not_found';
     }
 
     public static function getLocataireByNomPrenom(Request $request)
     {
-        return Locataire::where('nom', $request->nom)->where('prenom', $request->prenom)->first() ?
-            Locataire::where('nom', $request->nom)
-            ->where('prenom', $request->prenom)
-            ->first()->toJson(JSON_PRETTY_PRINT) :
+        $locataire = Locataire::where('nom', $request->nom)->where('prenom', $request->prenom)->where('isVisible', true)->first();
+        return $locataire ?
+            $locataire->toJson(JSON_PRETTY_PRINT) :
             'not_found';
     }
 
     public static function getAppartementsDuLocataire(Request $request)
     {
         $id_locataire = $request->id_locataire;
-        return json_encode(DB::select("select a.*, i.montant_cotisation_mensuelle
-                                       from appartements a inner join immeubles i on a.id_immeuble = i.id
-                                       where a.id in (select id_appartement
-                                                        from caisses
-                                                        where id_locataire = $id_locataire)"));
+        $appartements = DB::select("select a.*, i.montant_cotisation_mensuelle
+                                    from appartements a inner join immeubles i on a.id_immeuble = i.id
+                                    where a.isVisible = 1
+                                    and a.id in (select id_appartement
+                                                    from caisses
+                                                    where id_locataire = $id_locataire)");
+        return $appartements ? json_encode($appartements) : 'not_found';
     }
 
     /**
@@ -62,8 +52,8 @@ class LocataireController extends Controller
     public function index()
     {
         return view('Locataires/GestionLocataire')
-            ->with("appartements", Appartement::doesntHave('caisses')->get())
-            ->with("locataires", Locataire::all());
+            ->with("appartements", Appartement::doesntHave('caisses')->where('isVisible', true)->get())
+            ->with("locataires", Locataire::where('isVisible', true)->get());
     }
 
     /**
@@ -148,9 +138,7 @@ class LocataireController extends Controller
      */
     public function destroy($locataire_id)
     {
-        Caisse::where('id_Locataire', '=', $locataire_id)
-            ->update(['id_Locataire' => NULL]);
-        Locataire::find($locataire_id)->delete();
+        Locataire::where('id', '=', $locataire_id)->update(['isVisible' => false]);
         return redirect(url()->previous());
     }
 }
