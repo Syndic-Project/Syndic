@@ -88,11 +88,12 @@ Route::get('/syndic/Locataire', 'LocataireController@index');
 // Route::get('/syndic/Locataire', 'LocataireController@index')->name('home');
 
 
-Route::get('/syndic/Caisse', 'CaisseController@index');
+Route::get('/syndic/Caisse/locataire/{cin_locataire?}', 'CaisseController@index')->name("Caisse.index");
+Route::post('/syndic/Caisse/store', 'CaisseController@store')->name("Caisse.store");
+Route::post('/getCaisseByAppartement', 'CaisseController@getCaisseByAppartement')->name('getCaisseByAppartement');
 Route::post('/getLocataireByCin', 'LocataireController@getLocataireByCin')->name('getLocataireByCin');
 Route::post('/getLocataireByNomPrenom', 'LocataireController@getLocataireByNomPrenom')->name('getLocataireByNomPrenom');
 Route::post('/getAppartementsDuLocataire', 'LocataireController@getAppartementsDuLocataire')->name('getAppartementsDuLocataire');
-Route::post('/getCaisseByAppartement', 'CaisseController@getCaisseByAppartement')->name('getCaisseByAppartement');
 Route::get('/Auth-Login', 'AuthentificationController@loginView')->name('Auth-Login-Get');
 Route::post('/Auth-Login', 'AuthentificationController@loginSecurity')->name('Auth-Login-Post');
 Route::get('/Auth-Logout', 'AuthentificationController@LogOut')->name('Auth-LogOut');
@@ -120,7 +121,6 @@ Route::resource('/villes', 'VilleController');
 Route::resource('/Appartements', 'AppartementController');
 Route::resource('/Syndics', 'SyndicController');
 Route::resource('/Locataire', 'LocataireController');
-Route::resource('/Caisse', 'CaisseController');
 Route::resource('/Locateur', 'LocateurController');
 Route::resource('/Facture', 'FactureController');
 Route::resource('/Securite', 'SecuriteController');

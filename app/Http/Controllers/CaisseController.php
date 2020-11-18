@@ -6,6 +6,7 @@ use App\Models\Appartement;
 use App\Models\Immeuble;
 use Illuminate\Http\Request;
 use App\Models\Caisse;
+use App\Models\Locataire;
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Support\Facades\Date;
@@ -23,9 +24,10 @@ class CaisseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($cin_locataire = null)
     {
-        return view('Caisses/GestionCaisse');
+        return view('Caisses/GestionCaisse')
+            ->with('cin_locataire', $cin_locataire);
     }
 
     /**
@@ -48,6 +50,6 @@ class CaisseController extends Controller
             explode('-', $paiement->mois_concerne)[0] . '-' . ((int)explode('-', $paiement->mois_concerne)[1] + 1);
         $paiement_prochain->save();
 
-        return redirect("Caisse");
+        return redirect('/syndic/Caisse/locataire/' . Locataire::where('id', $paiement->id_Locataire)->first()->CIN);
     }
 }

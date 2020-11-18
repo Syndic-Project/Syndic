@@ -138,7 +138,13 @@ class LocataireController extends Controller
      */
     public function destroy($locataire_id)
     {
-        Locataire::where('id', '=', $locataire_id)->update(['isVisible' => false]);
+        $locataire = Locataire::where('id', '=', $locataire_id)->first();
+        $locataire->update(
+            [
+                'isVisible' => false,
+                'password' => 'deleted user !'
+            ]
+        );
         return redirect(url()->previous());
     }
 }

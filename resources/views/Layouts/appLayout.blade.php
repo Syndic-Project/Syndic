@@ -345,8 +345,6 @@
                             <a href="/syndic/Immeuble">
                                 <i class="far fa-building"></i>
                                 <span>Immeuble </span>
-                                {{-- <span class="menu-arrow"></span>
-                                    --}}
                             </a>
                         </li>
 
@@ -355,23 +353,19 @@
                             <a href="/syndic/Appartements">
                                 <i class="fa fa-sitemap"></i>
                                 <span>Appartement </span>
-                                {{-- <span class="menu-arrow"></span>
-                                    --}}
                             </a>
                         </li>
 
                         <li>
                             <a href="/syndic/Locataire">
                                 <i class="fa fa-users fa-fw"></i>
-                                <span> Ajouter un Locataire </span>
-                                {{-- <span class="menu-arrow"></span>
-                                    --}}
+                                <span>Gérer les Locataires </span>
                             </a>
                         </li>
 
 
                         <li>
-                            <a href="/syndic/Caisse">
+                            <a href="{{route('Caisse.index')}}">
                                 <i data-feather="dollar-sign"></i>
                                 <span>Gérer la Caisse</span>
 
@@ -405,7 +399,7 @@
                         </li>
 
                         <li>
-                            <a href="/syndic/Caisse">
+                            <a href="{{route('Caisse.index')}}">
                                 <i data-feather="dollar-sign"></i>
                                 <span>Caisse</span>
                             </a>

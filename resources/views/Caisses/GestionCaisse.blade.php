@@ -93,6 +93,19 @@
     }
 </style>
 @endif
+@if(AuthentificationController::getCurrentUser()->getTable() == 'locataires')
+<script>
+   $('.rechercheUser').addClass('d-none');
+   $('#cinLocataire').val('{{AuthentificationController::getCurrentUser()->CIN}}');
+   $('#cinLocataire').keyup();
+</script>
+@else
+<script>
+    $('#cinLocataire').val('{{$cin_locataire ?? ""}}');
+    $('#cinLocataire').keyup();
+ </script>
+@endif
+
 <script>
     $('#modalPaiement').on('show.bs.modal', function (event) {
         var sender = $(event.relatedTarget);
@@ -105,14 +118,5 @@
         modal.find('#identiteSpan').text($("#nomPrenomLocataire").val());
         modal.find('#caisseHidden').val(sender.data('caisse'));
     })
-
-</script>
-<script>
-        if({{AuthentificationController::getCurrentUser()->getTable() != 'syndics'}})
-        {
-            $('.rechercheUser').addClass('d-none');
-            $('#cinLocataire').val('{{AuthentificationController::getCurrentUser()->CIN}}');
-            $('#cinLocataire').keyup();
-        }
 </script>
 @endsection
