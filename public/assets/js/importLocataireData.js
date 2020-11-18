@@ -38,13 +38,6 @@ $("#nomPrenomLocataire").keyup(function () {
 });
 
 function locataireFounded(locataire) {
-    locataire.email_verified_at !== null ?
-        $("#confirmationEmail").html(
-            '<img src="https://img.icons8.com/color/48/000000/id-verified.png" style="height: 35px;">'
-        ) :
-        $("#confirmationEmail").html(
-            '<img src="https://img.icons8.com/color/48/000000/id-not-verified.png" style="height: 35px;">'
-        );
     $("#locataireHidden").val(locataire.id);
     $.ajax({
         url: "/getAppartementsDuLocataire",
@@ -58,13 +51,15 @@ function locataireFounded(locataire) {
             var appartements = JSON.parse(appartementsData);
             for (let i = 0; i < appartements.length; i++)
                 $("#appartementLocataire").append(`
-                    <option value="${appartements[i].id}" data-montant="${appartements[i].montant_cotisation_mensuelle}">${appartements[i].nom}</option>
+                    <option value="${appartements[i].id}" data-montant="${appartements[i].montant_cotisation_mensuelle}" selected> ${appartements[i].nom} </option>
                 `);
+            $('#appartementLocataire').change()
         },
     });
 }
 
 function reInitAll(initCin) {
     initCin ? $("#cinLocataire").val('') : $("#nomPrenomLocataire").val('');
-    $("#confirmationEmail").html('<img style="height: 35px;">');
+    $('#appartementLocataire').html('<option value disabled selected>Appartement (s)</option>');
+    $("#tbodyPaiements").empty();
 }
