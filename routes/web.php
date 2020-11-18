@@ -99,7 +99,7 @@ Route::get('/Auth-Logout', 'AuthentificationController@LogOut')->name('Auth-LogO
 
 Route::post('/getQrCode/{id_locateur}', 'LocateurController@generateQR');
 // Route::get('/getQrcode', 'LocateurController@genrateQR/{id}')->name('genrateQR');
-Route::post('/QR/{id_locateur}', 'LocateurController@sendQrcode');
+// Route::post('/QR/{id_locateur}', 'LocateurController@sendQrcode');
 
 Route::post('/syndic/Bloc/Modif/{idBloc}', 'BlocController@update')->name("Modif-Bloc");
 Route::post('/syndic/Bloc/Suppr/{idBloc}', 'BlocController@destroy')->name("Suppr-Bloc");

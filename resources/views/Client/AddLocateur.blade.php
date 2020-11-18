@@ -63,8 +63,7 @@
                                                     </td>
                                                     <td class="text-center">
 
-                                                        <a href="{{ \App\Http\Controllers\LocateurController::sendQrcode($loc->id) }}"
-                                                            id="Qrcodebtn{{ $loc->id }}"
+                                                        <a href="" id="Qrcodebtn{{ $loc->id }}"
                                                             class="delete btn btn-danger btn-sm">
                                                             <i class="fas fa-clipboard-check"></i>
                                                             Envoyer Le Qr code au Locateur
