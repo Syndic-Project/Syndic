@@ -79,11 +79,6 @@ class LocateurController extends Controller
     }
 
 
-
-
-
-
-
     public static function EmailInfo(Request $request, $id)
     {
         // $locateur = Securite::findOrFail($id);
