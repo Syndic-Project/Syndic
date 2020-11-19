@@ -60,7 +60,7 @@ Route::get('/email', function () {
     return new WelcomeMail();
 });
 
-Route::get('/QRCODE', 'QrcodeController@index');
+// Route::get('/QRCODE', 'QrcodeController@index');
 
 
 
@@ -100,7 +100,8 @@ Route::get('/Auth-Logout', 'AuthentificationController@LogOut')->name('Auth-LogO
 
 Route::post('/getQrCode/{id_locateur}', 'LocateurController@generateQR');
 // Route::get('/getQrcode', 'LocateurController@genrateQR/{id}')->name('genrateQR');
-// Route::post('/QR/{id_locateur}', 'LocateurController@sendQrcode');
+
+Route::get('/QR/{id_locateur}', 'QrcodeController@sendQrcode');
 
 Route::post('/syndic/Bloc/Modif/{idBloc}', 'BlocController@update')->name("Modif-Bloc");
 Route::post('/syndic/Bloc/Suppr/{idBloc}', 'BlocController@destroy')->name("Suppr-Bloc");

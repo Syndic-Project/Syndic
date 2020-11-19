@@ -1,6 +1,3 @@
- @foreach ($locateurs as $loc)
-     <div id='testdiv'>
-         <h1>{{ $loc->nom }}</h1>
-     </div>
-
- @endforeach
+<div id='testdiv'>
+    <h1>{{ $text }}</h1>
+</div>

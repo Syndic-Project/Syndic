@@ -50,8 +50,9 @@ class QrcodeController extends Controller
         $datedebut = Carbon::parse($info_loc->DateD)->formatLocalized('%d %B %Y');
         $datefin = Carbon::parse($info_loc->DateF)->formatLocalized('%d %B %Y');
 
-        $text = (new Generator())->size(200)->generate("Le locateur $info_loc->nom $info_loc->prenom \n(accompagné de ses $info_loc->Nbr_Invite compagnons) \na effectivement loué l'appartement : $info_loc->nomAppartement \nentre le " . $datedebut . " et le " . utf8_encode($datefin));
-        return view("emails/QR", compact($text));
-        Mail::to($locateur->email)->send(new QR());
+        $text = (new Generator())->size(200)->generate("Le locateur $info_loc->nom $info_loc->prenom \n(accompagné de ses $info_loc->Nbr_Invite compagnons) \na effectivement loué l'appartement : $info_loc->nomAppartement \nentre le " . utf8_encode($datedebut) . " et le " . utf8_encode($datefin));
+        Mail::to($locateur->email)->subject(new QR($text));
+        // return view("emails/QR")
+        //     ->with('text', $text);
     }
 }

@@ -12,15 +12,16 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class QR extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $text;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+
+    public function __construct($text)
     {
-        //
+        $this->text = $text;
     }
 
     /**
@@ -30,7 +31,7 @@ class QR extends Mailable
      */
     public function build()
     {
-
-        return $this->view('emails.QR');
+        return $this->view('emails.QR')
+            ->with('text',  $this->text);
     }
 }

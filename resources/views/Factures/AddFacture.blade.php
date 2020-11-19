@@ -203,7 +203,7 @@
                     <div class="modal-body">
                         <img alt="image" style="width:100%" src="{{ url('assets/uploads/' . $facture->img) }}">
 
-                        >
+
                     </div>
                 </div>
             </div>
