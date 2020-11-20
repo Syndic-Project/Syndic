@@ -10,7 +10,7 @@
             </div>
             <div class="modal-body">
 
-                <form action="{{route('Locateur.store') }}" method="POST">
+                <form action="{{route('Locateur.store') }}" method="POST" id="formAjoutLocateur">
                     @csrf
                     <div class="row mt-4">
                         <div class="col-12">
@@ -110,7 +110,7 @@
                                         </div>
 
 
-                                        <button type="submit" id="ajouter" name="ajouter"
+                                        <button type="button" id="ajouterBtn" name="ajouterBtn"
                                             class="btn btn-block btn-purple "><i class="fa fa-plus"></i>
                                             AJOUTER
                                         </button>
@@ -121,6 +121,9 @@
                             </div>
 
                         </div>
+                    </div>
+                    <div id="qrcode" class="d-none" name="qrcode">
+
                     </div>
                 </form>
 
