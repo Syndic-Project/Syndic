@@ -149,13 +149,23 @@
 </script>
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/130527/qrcode.js"></script>
 <script>
-    $('.qr-url').keyup(function () {
+    $('#ajouterBtn').click(function () {
         $('#qrcode').empty();
 
-        $('#qrcode').qrcode({
+        var nomComplet = $("#nom").val() + ' ' + $("#prenom").val();
+        var nbrCompagnon = $("#nbr").val();
+        var appartement = $("#id_app").text();
+        var dateDebut = $("#dated").val();
+        var dateFin = $("#datef").vale();
+        var cin = $("#cin").val();
+
+        var div = $('#qrcode').qrcode({
             width: 200,
             height: 200,
-            text: $('.qr-url').val()
+            text: `Le locateur ${nomComplet}, dont le cin est [${cin}]
+            (accompagné de ses ${nbrCompagnon} compagnons) 
+            a effectivement loué l'appartement : ${appartement} 
+            entre le ${dateDebut} et le ${dateFin}`,
         });
 
     });
