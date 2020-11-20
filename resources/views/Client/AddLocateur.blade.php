@@ -134,6 +134,7 @@
         });
 
     </script>
+
     <script>
         $('#modalAfficherQr').on('show.bs.modal', function(event) {
             var sender = $(event.relatedTarget);

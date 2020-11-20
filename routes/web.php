@@ -35,9 +35,6 @@ Route::get('/Locataire/Caisse', function () {
 // });
 
 
-//Route::get('/Residence', function () {
-//    return view('Residences/getresidence');
-//});
 
 
 Route::get('Residence', [
@@ -46,10 +43,7 @@ Route::get('Residence', [
 ]);
 
 
-//Route::get('/syndic/Locateur', function () {
-//    return view('Client/AddLocateur');
-//});
-//
+
 
 
 //Route::get('/syndic/Securite', function () {
@@ -60,7 +54,7 @@ Route::get('/email', function () {
     return new WelcomeMail();
 });
 
-// Route::get('/QRCODE', 'QrcodeController@index');
+
 
 
 
@@ -84,8 +78,7 @@ Route::get('/syndic/Appartements', 'AppartementController@index');
 
 Route::get('/syndic/Locataire', 'LocataireController@index');
 
-// Auth::routes(['verify' => true]);
-// Route::get('/syndic/Locataire', 'LocataireController@index')->name('home');
+
 
 
 Route::get('/syndic/Caisse/locataire/{cin_locataire?}', 'CaisseController@index')->name("Caisse.index");
@@ -109,10 +102,7 @@ Route::post('/syndic/Bloc/Nouveau', 'BlocController@store')->name("Ajout-Bloc");
 
 Route::get('/test', 'DashboardController@pourcentage_appartement_non_paye');
 
-// Route::get('/chart', function () {
-//     $chart = (new LarapexChart)->setTitle('Users')->setXAxis(['Active', 'Guests'])->setDataset([50]);
-//     return view('chart', compact('chart'));
-// });
+
 
 //les rousources des methodes generer
 // les routes des methode generer du controlleur create edit delete
