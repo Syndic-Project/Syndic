@@ -1,3 +1,12 @@
-<div id='testdiv'>
-    <h1>{{ $text }}</h1>
+<div class="card">
+    <div class="card-body">
+        <h1>hello</h1>
+
+
+
+        {!! html_entity_decode($text) !!}
+
+
+
+    </div>
 </div>

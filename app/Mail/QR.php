@@ -31,7 +31,7 @@ class QR extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.QR')
-            ->with('text',  $this->text);
+        // dd($this->text);
+        return $this->view('emails.QR');
     }
 }

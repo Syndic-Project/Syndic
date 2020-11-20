@@ -74,8 +74,7 @@ class LocateurController extends Controller
         setlocale(LC_TIME, 'French');
         $datedebut = Carbon::parse($info_loc->DateD)->formatLocalized('%d %B %Y');
         $datefin = Carbon::parse($info_loc->DateF)->formatLocalized('%d %B %Y');
-
-        echo (new Generator())->size(200)->email('sohaib.elmediouni23@gmail.com', 'Welcome to Coding driver!.')->generate("Le locateur $info_loc->nom $info_loc->prenom \n(accompagné de ses $info_loc->Nbr_Invite compagnons) \na effectivement loué l'appartement : $info_loc->nomAppartement \nentre le " . $datedebut . " et le " . utf8_encode($datefin));
+        echo (new Generator())->size(200)->generate("Le locateur $info_loc->nom $info_loc->prenom \n(accompagné de ses $info_loc->Nbr_Invite compagnons) \na effectivement loué l'appartement : $info_loc->nomAppartement \nentre le " . $datedebut . " et le " . utf8_encode($datefin));
     }
 
 
