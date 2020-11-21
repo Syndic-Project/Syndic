@@ -105,8 +105,21 @@ class LocateurController extends Controller
         $confirm->id_Appartement = $request->input('id_appartement');
         $confirm->DateD = $request->input('dated');
         $confirm->DateF = $request->input('datef');
+
+
+        // if ($request->hasFile('Q')) {
+        //     $image = $request->file('preuve');
+        //     $image->move(public_path() . '/assets/uploads/', $image->getClientOriginalName());
+        //     $recu->img = $image->getClientOriginalName();
+        // }
+
         $confirm->save();
     }
+
+
+
+
+
 
 
     /**
