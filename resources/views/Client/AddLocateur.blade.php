@@ -6,7 +6,6 @@
 
 
 @section('content')
-{{-- <img src="{{url('storage/QrCode.png')}}" alt=""> --}}
 <div class="content-page">
     <div class="row mt-4">
         <div class="col-12">
@@ -19,7 +18,7 @@
                                 <button class="btn btn-outline-success btn-lg" style="font-weight: bolder;"
                                     data-toggle="modal" data-target="#modalAjoutLocateur">
                                     <i class="fas fa-plus-square"></i>
-                                    Ajoute un Locateur
+                                    Nouveau Locateur
                                 </button>
                             </div>
                         </div>
@@ -33,7 +32,7 @@
                                     <thead>
                                         <tr>
 
-                                            <th class="text-center">ID</th>
+                                            {{-- <th class="text-center">ID</th> --}}
                                             <th class="text-center">Nom</th>
                                             <th class="text-center">Prenom</th>
                                             <th class="text-center">Email</th>
@@ -49,22 +48,22 @@
 
                                         @foreach ($locateurs as $loc)
                                         <tr>
-                                            <td class="text-center">{{ $loc->id }}</td>
+                                            {{-- <td class="text-center">{{ $loc->id }}</td> --}}
                                             <td class="text-center">{{ $loc->nom }}</td>
                                             <td class="text-center">{{ $loc->prenom }}</td>
                                             <td class="text-center">{{ $loc->email }}</td>
                                             <td class="text-center">APP1</td>
                                             <td class="text-center">
-                                                <button class="delete btn btn-success btn-sm" type="submit"
-                                                    data-toggle="modal" data-target="#modalAfficherQr"
-                                                    data-id-locateur="{{ $loc->id }}">
-                                                    <i class="fas fa-print"></i>
+                                                <button class="btn btn-primary btn-sm" data-toggle="modal"
+                                                    data-target="#modalAfficherQr" data-id-locateur="{{ $loc->locId }}">
+                                                    <i class="fas fa-qrcode"></i>
                                                     Afficher
                                                 </button>
                                             </td>
                                             <td class="text-center">
 
-                                                <a href="/QR/{{ $loc->id }}" id="" class="delete btn btn-danger btn-sm">
+                                                <a href="/QR/{{ $loc->locId }}" id=""
+                                                    class="delete btn btn-danger btn-sm">
                                                     <i class="fas fa-clipboard-check"></i>
                                                     Envoyer Le Qr code au Locateur
                                                 </a>
@@ -90,15 +89,20 @@
 @endsection
 
 @section('script')
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
 <script src="{{ url('assets/js/addlocataire.js') }}"></script>
-<script id="impression-ready" type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+<script src="{{ url('assets/js/notify.min.js') }}"></script>
+<script src="{{ url('assets/js/qrCode.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" type="text/javascript"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
 </script>
 <script src="{{ url('assets/js/printThis.js') }}"></script>
 <script>
     let j = jQuery.noConflict(true);
     $("#printBtn").click(function () {
-        j("#divQrCode").printThis();
+        j("#ContainerQrCode").printThis({
+            header: `<h3 style="font-family: 'Comic Sans MS', cursive, sans-serif;text-align: center;">Résidence -{{$residenceNom}}-</h3>`
+        });
     });
 
 </script>
@@ -141,19 +145,22 @@
         $.ajax({
             url: "/getQrCode/" + sender.data("id-locateur"),
             type: "POST",
-            success: function (responseData) {
-                modal.find("#divQrCode").html(responseData);
+            success: function (QrCode) {
+                var pathQrCode = "{{ url('storage/') }}/" + QrCode;
+                modal.find("#divQrCode").html(`<img src="${pathQrCode}" alt="erreur" />`);
             }
         });
     })
 
 </script>
-<script src="{{ url('assets/js/qrCode.js') }}"></script>
 <script>
-    $('#ajouterBtn').click(function () {
+    "use strict";
+    $.validator.messages.required = '<small>Champs Obligatoir !</small>';
+    $.validator.messages.email = '<small>Email invalid !</small>';
 
+    function submitForm() {
         var nom = $("#nom").val();
-        var prenom =$("#prenom").val();
+        var prenom = $("#prenom").val();
         var nbrCompagnon = $("#nbr").val();
         var id_appartement = $("#id_app").val();
         var appartement = $("#id_app").text();
@@ -164,29 +171,46 @@
         var email = $("#email").val();
 
         $.post("{{route('Locateur.store') }}", {
-            nom : nom,
-            prenom : prenom,
-            nbrCompagnon : nbrCompagnon,
-            id_appartement : id_appartement,
-            dateDebut : dateDebut,
-            dateFin : dateFin,
-            cin : cin,
-            telephone : telephone,
-            email : email,
+            nom: nom,
+            prenom: prenom,
+            nbrCompagnon: nbrCompagnon,
+            id_appartement: id_appartement,
+            dateDebut: dateDebut,
+            dateFin: dateFin,
+            cin: cin,
+            telephone: telephone,
+            email: email,
             codeQr: function () {
                 var nomComplet = nom + ' ' + prenom;
-                var div = $('#qrcode').empty().qrcode({
+                $('#qrcode').empty().qrcode({
                     width: 200,
                     height: 200,
-                    text: `Le locateur ${nomComplet}, dont le cin est [${cin}]
-                    (accompagné de ses ${nbrCompagnon} compagnons) 
-                    a effectivement loué l'appartement : ${appartement} 
-                    entre le ${dateDebut} et le ${dateFin}`,
+                    text: `Le locateur ${nomComplet}, dont le cin est [${cin}] (accompagné de ses ${nbrCompagnon} compagnons) a effectivement loué l'appartement : ${appartement} entre 
+                        le ${dateDebut} 
+                        jusqu'à
+                        le ${dateFin}`
                 });
-               return $('#qrcode').children().get(0).toDataURL();  
+                return $('#qrcode').children().get(0).toDataURL();
             },
+        }).done(function () {
+            $("#modalAjoutLocateurLabel").notify("Ajouté avec succées", "success");
         });
+    }
 
+    $('#ajouterBtn').click(function () {
+        var valid = $("#formAjoutLocateur").validate().form();
+        if (valid) {
+            $("#chargementDiv").html(`
+        <button class="btn btn-primary" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            En cours ...
+        </button>
+        `);
+            submitForm();
+            setTimeout(() => {
+                location.reload();
+            }, 3000);
+        }
     });
 
 </script>

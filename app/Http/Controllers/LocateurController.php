@@ -8,7 +8,9 @@ use App\Models\Locateur;
 use App\Models\Appartement;
 use Illuminate\Http\Request;
 use App\Models\confirm_logment;
+use App\Models\Residence;
 use GuzzleHttp\Psr7\Message;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
@@ -25,15 +27,14 @@ class LocateurController extends Controller
 
     public function index()
     {
-
-
         $info_loc = DB::table('locateurs')
             ->join('confirm_logments', 'confirm_logments.id_Locateur', '=', 'locateurs.id')
-            ->get();
+            ->get(['locateurs.id as locId', 'nom as nom', 'prenom as prenom', 'email  as email']);
         return view('Client/AddLocateur', [
             'appartements' => Appartement::doesnthave('confirmLogments')->get(),
             'locateurs' => $info_loc,
             'Confirmid' =>  Confirm_logment::all(),
+            'residenceNom' =>  Residence::first()->nom_residence,
         ]);
     }
 
@@ -46,14 +47,8 @@ class LocateurController extends Controller
     public function store(Request $request)
     {
         // dd(
-        //     $request->input('id_appartement')
+        //     $request->request
         // );
-        $base64_image = $request->codeQr;
-        if (preg_match('/^data:image\/(\w+);base64,/', $base64_image)) {
-            $data = substr($base64_image, strpos($base64_image, ',') + 1);
-            $data = base64_decode($data);
-            Storage::disk('local')->put("/public/QrCode.png", $data, 'public');
-        }
         $locateur = new Locateur();
         $locateur->nom = $request->input('nom');
         $locateur->prenom = $request->input('prenom');
@@ -62,12 +57,21 @@ class LocateurController extends Controller
         $locateur->Nbr_Invite = $request->input('nbrCompagnon');
         $locateur->email = $request->input('email');
         $locateur->save();
+
+        $base64_image = $request->codeQr;
+        if (preg_match('/^data:image\/(\w+);base64,/', $base64_image)) {
+            $data = substr($base64_image, strpos($base64_image, ',') + 1);
+            $data = base64_decode($data);
+            $nomFichier = "QrCode_" . $locateur->id . '_' . date('Y-m-d') . '.png';
+            Storage::disk('local')->put("public/" . $nomFichier, $data, 'public');
+        }
         $confirm = new confirm_logment();
         $confirm->Accorder = 1;
         $confirm->id_Locateur = $locateur->id;
-        $confirm->id_Appartement = $request->input('id_appartement') ?? 1;
+        $confirm->id_Appartement = $request->input('id_appartement');
         $confirm->DateD = $request->input('dateDebut');
         $confirm->DateF = $request->input('dateFin');
+        $confirm->Qrimage = $nomFichier;
         $confirm->save();
 
         return json_encode('enregistré avec succée');
@@ -75,18 +79,19 @@ class LocateurController extends Controller
 
     public static function generateQR($id_locateur)
     {
-        $info_loc = DB::table('locateurs')
-            ->join('confirm_logments', 'confirm_logments.id_Locateur', '=', 'locateurs.id')
-            ->join('appartements', 'appartements.id', '=', 'confirm_logments.id_Appartement')
-            ->where("locateurs.id", "=", $id_locateur)
-            ->get(["locateurs.nom", "locateurs.prenom", "locateurs.Nbr_Invite", "confirm_logments.DateD", "confirm_logments.DateF", "appartements.nom as nomAppartement"])
-            ->first();
-        setlocale(LC_TIME, 'French');
-        $datedebut = Carbon::parse($info_loc->DateD)->formatLocalized('%d %B %Y');
-        $datefin = Carbon::parse($info_loc->DateF)->formatLocalized('%d %B %Y');
-        echo (new Generator())->size(200)->generate("Le locateur $info_loc->nom $info_loc->prenom \n(accompagné de ses $info_loc->Nbr_Invite compagnons) \na effectivement loué l'appartement : $info_loc->nomAppartement \nentre le " . $datedebut . " et le " . utf8_encode($datefin));
-    }
+        // $info_loc = DB::table('locateurs')
+        //     ->join('confirm_logments', 'confirm_logments.id_Locateur', '=', 'locateurs.id')
+        //     ->join('appartements', 'appartements.id', '=', 'confirm_logments.id_Appartement')
+        //     ->where("locateurs.id", "=", $id_locateur)
+        //     ->get(["locateurs.nom", "locateurs.prenom", "locateurs.Nbr_Invite", "confirm_logments.DateD", "confirm_logments.DateF", "appartements.nom as nomAppartement"])
+        //     ->first();
+        // setlocale(LC_TIME, 'French');
+        // $datedebut = Carbon::parse($info_loc->DateD)->formatLocalized('%d %B %Y');
+        // $datefin = Carbon::parse($info_loc->DateF)->formatLocalized('%d %B %Y');
+        // return (new Generator())->size(200)->generate("Le locateur $info_loc->nom $info_loc->prenom \n(accompagné de ses $info_loc->Nbr_Invite compagnons) \na effectivement loué l'appartement : $info_loc->nomAppartement \nentre le " . $datedebut . " et le " . utf8_encode($datefin));
 
+        return Confirm_logment::where('id_Locateur', $id_locateur)->orderBy('created_at', 'desc')->first()->Qrimage;
+    }
 
     public static function EmailInfo(Request $request, $id)
     {

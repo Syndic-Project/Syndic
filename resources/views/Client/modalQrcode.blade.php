@@ -12,14 +12,17 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12">
-                            <div class="d-flex justify-content-center">
+                            <div id="ContainerQrCode" class="d-flex justify-content-center">
                                 <div id="divQrCode" style="width: 200px">
 
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <button id="printBtn" type="button" class="btn btn-primary btn-md btn-block mt-4">
+                </div>
+                <div class="modal-footer">
+                    <button id="printBtn" type="button" class="btn btn-success">
+                        <i class="fas fa-print"></i>
                         Imprimer
                     </button>
                 </div>
