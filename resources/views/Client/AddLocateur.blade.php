@@ -6,6 +6,7 @@
 
 
 @section('content')
+{{-- <img src="{{url('storage/QrCode.png')}}" alt=""> --}}
 <div class="content-page">
     <div class="row mt-4">
         <div class="col-12">
@@ -147,25 +148,43 @@
     })
 
 </script>
-<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/130527/qrcode.js"></script>
+<script src="{{ url('assets/js/qrCode.js') }}"></script>
 <script>
     $('#ajouterBtn').click(function () {
-        $('#qrcode').empty();
 
-        var nomComplet = $("#nom").val() + ' ' + $("#prenom").val();
+        var nom = $("#nom").val();
+        var prenom =$("#prenom").val();
         var nbrCompagnon = $("#nbr").val();
+        var id_appartement = $("#id_app").val();
         var appartement = $("#id_app").text();
         var dateDebut = $("#dated").val();
-        var dateFin = $("#datef").vale();
+        var dateFin = $("#datef").val();
         var cin = $("#cin").val();
+        var telephone = $("#Tel").val();
+        var email = $("#email").val();
 
-        var div = $('#qrcode').qrcode({
-            width: 200,
-            height: 200,
-            text: `Le locateur ${nomComplet}, dont le cin est [${cin}]
-            (accompagné de ses ${nbrCompagnon} compagnons) 
-            a effectivement loué l'appartement : ${appartement} 
-            entre le ${dateDebut} et le ${dateFin}`,
+        $.post("{{route('Locateur.store') }}", {
+            nom : nom,
+            prenom : prenom,
+            nbrCompagnon : nbrCompagnon,
+            id_appartement : id_appartement,
+            dateDebut : dateDebut,
+            dateFin : dateFin,
+            cin : cin,
+            telephone : telephone,
+            email : email,
+            codeQr: function () {
+                var nomComplet = nom + ' ' + prenom;
+                var div = $('#qrcode').empty().qrcode({
+                    width: 200,
+                    height: 200,
+                    text: `Le locateur ${nomComplet}, dont le cin est [${cin}]
+                    (accompagné de ses ${nbrCompagnon} compagnons) 
+                    a effectivement loué l'appartement : ${appartement} 
+                    entre le ${dateDebut} et le ${dateFin}`,
+                });
+               return $('#qrcode').children().get(0).toDataURL();  
+            },
         });
 
     });

@@ -11,6 +11,7 @@ use App\Models\confirm_logment;
 use GuzzleHttp\Psr7\Message;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use SimpleSoftwareIO\QrCode\Generator;
 
 class LocateurController extends Controller
@@ -44,23 +45,32 @@ class LocateurController extends Controller
      */
     public function store(Request $request)
     {
+        // dd(
+        //     $request->input('id_appartement')
+        // );
+        $base64_image = $request->codeQr;
+        if (preg_match('/^data:image\/(\w+);base64,/', $base64_image)) {
+            $data = substr($base64_image, strpos($base64_image, ',') + 1);
+            $data = base64_decode($data);
+            Storage::disk('local')->put("/public/QrCode.png", $data, 'public');
+        }
         $locateur = new Locateur();
         $locateur->nom = $request->input('nom');
         $locateur->prenom = $request->input('prenom');
         $locateur->CIN = $request->input('cin');
-        $locateur->Tel = $request->input('Tel');
-        $locateur->Nbr_Invite = $request->input('nbr');
+        $locateur->Tel = $request->input('telephone');
+        $locateur->Nbr_Invite = $request->input('nbrCompagnon');
         $locateur->email = $request->input('email');
         $locateur->save();
         $confirm = new confirm_logment();
         $confirm->Accorder = 1;
         $confirm->id_Locateur = $locateur->id;
-        $confirm->id_Appartement = $request->input('id_appartement');
-        $confirm->DateD = $request->input('dated');
-        $confirm->DateF = $request->input('datef');
+        $confirm->id_Appartement = $request->input('id_appartement') ?? 1;
+        $confirm->DateD = $request->input('dateDebut');
+        $confirm->DateF = $request->input('dateFin');
         $confirm->save();
 
-        return redirect("/Locateur");
+        return json_encode('enregistré avec succée');
     }
 
     public static function generateQR($id_locateur)
