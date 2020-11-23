@@ -30,6 +30,7 @@ Route::get('/Home/locataire', 'DashboardController@indexLocateur')->name("Accuei
 
 
 
+
 Route::get('/Locataire', function () {
     return view('Locataires/AddLocataire');
 });

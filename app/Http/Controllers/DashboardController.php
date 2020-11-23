@@ -216,6 +216,20 @@ class DashboardController extends Controller
         return $apploc;
     }
 
+    public function Afficher_Apppartement_Locataire($id, $idApp)
+    {
+        $Morederniermoispaye = DB::table('caisses')
+            ->where('id_Locataire', $id)
+            ->where('id_Appartement', $idApp)
+            ->orderBy('mois_concerne', 'desc')
+            ->first()->mois_concerne;
+
+
+        setlocale(LC_TIME, 'French');
+        $Morederniermoispaye = Carbon::parse($Morederniermoispaye)->formatLocalized('%d %B %Y');
+        return utf8_encode($Morederniermoispaye);
+    }
+
     public function indexLocateur()
     {
         return view('Dashboard_locataire/index2')
@@ -226,7 +240,7 @@ class DashboardController extends Controller
             ->with('depensesSecurite', $this->depenses_securite(null)) // opérationnelle mais pas 100%
             ->with('depensesDivers', $this->depenses_divers(null)) // opérationnelle mais pas 100%
             ->with('totalSecurite', Securite::count('id'))
-
+            ->with('Morederniersmois', $this->Afficher_Apppartement_Locataire(AuthentificationController::getCurrentUser()->id, 21))
             ->with('nbrapp', $this->nbrapploc(AuthentificationController::getCurrentUser()->id));
     }
 }
