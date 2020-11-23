@@ -33,16 +33,30 @@ class QrcodeController extends Controller
     {
 
         $locateur = Locateur::findOrFail($id_locateur);
-        $info_loc = DB::table('locateurs')
-            ->join('confirm_logments', 'confirm_logments.id_Locateur', '=', 'locateurs.id')
-            ->join('appartements', 'appartements.id', '=', 'confirm_logments.id_Appartement')
-            ->where("locateurs.id", "=", $id_locateur)
-            ->get(["locateurs.nom", "locateurs.prenom", "locateurs.Nbr_Invite", "confirm_logments.DateD", "confirm_logments.DateF", "appartements.nom as nomAppartement"])
-            ->first();
-        setlocale(LC_TIME, 'French');
-        $datedebut = Carbon::parse($info_loc->DateD)->formatLocalized('%d %B %Y');
-        $datefin = Carbon::parse($info_loc->DateF)->formatLocalized('%d %B %Y');
-        $text =  QrCode::format('png')->merge('https://www.w3adda.com/wp-content/uploads/2019/07/laravel.png', 0.3, true)->size(200)->generate("Le locateur $info_loc->nom $info_loc->prenom \n(accompagné de ses $info_loc->Nbr_Invite compagnons) \na effectivement loué l'appartement : $info_loc->nomAppartement \nentre le " . $datedebut . " et le " . utf8_encode($datefin));
+        $img = Confirm_logment::where('id_Locateur', $id_locateur)->orderBy('created_at', 'desc')->first()->Qrimage;
+        // $img = confirm_logment::where("id_Locateur", "=", $id_locateur)->get();
+
+        // $data = array('http://localhost:8000/storage/QrCode_4_2020-11-22.png');
+        // // $img = DB::table('confirm_logments')->where("id_Locateur", "=", $id_locateur)->get();
+        // Mail::send('email.attachment', $data, function ($message) {
+        //     $message->to('sohaib.elmediouni23@gmail.com')->subject('hello');
+        // });
+        Mail::to($locateur->email)->send(new QR($img));
+        return view("emails/QR")
+            ->with('text', $img);
+
+
+        // $locateur = Locateur::findOrFail($id_locateur);
+        // $info_loc = DB::table('locateurs')
+        //     ->join('confirm_logments', 'confirm_logments.id_Locateur', '=', 'locateurs.id')
+        //     ->join('appartements', 'appartements.id', '=', 'confirm_logments.id_Appartement')
+        //     ->where("locateurs.id", "=", $id_locateur)
+        //     ->get(["locateurs.nom", "locateurs.prenom", "locateurs.Nbr_Invite", "confirm_logments.DateD", "confirm_logments.DateF", "appartements.nom as nomAppartement"])
+        //     ->first();
+        // setlocale(LC_TIME, 'French');
+        // $datedebut = Carbon::parse($info_loc->DateD)->formatLocalized('%d %B %Y');
+        // $datefin = Carbon::parse($info_loc->DateF)->formatLocalized('%d %B %Y');
+        // $text =  QrCode::format('png')->merge('https://www.w3adda.com/wp-content/uploads/2019/07/laravel.png', 0.3, true)->size(200)->generate("Le locateur $info_loc->nom $info_loc->prenom \n(accompagné de ses $info_loc->Nbr_Invite compagnons) \na effectivement loué l'appartement : $info_loc->nomAppartement \nentre le " . $datedebut . " et le " . utf8_encode($datefin));
 
 
 
@@ -57,8 +71,8 @@ class QrcodeController extends Controller
 
 
 
-        Mail::to($locateur->email)->send(new QR($text));
-        return view("emails/QR")
-            ->with('text', $text);
+        // Mail::to($locateur->email)->send(new QR($text));
+        // return view("emails/QR")
+        //     ->with('text', $text);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\Authenticate;
 use App\Models\Appartement;
 use App\Models\Bloc;
 use App\Models\Caisse;
@@ -13,7 +14,6 @@ use App\Models\Securite;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
-
 class DashboardController extends Controller
 {
     public function index()
@@ -23,18 +23,18 @@ class DashboardController extends Controller
         $TotalAppartementretard = DB::table('locataires')
             ->join('caisses', 'caisses.id_locataire', '=', 'locataires.id')
             ->join('appartements', 'appartements.id', '=', 'caisses.id_Appartement')
-            ->where('mois_concerne', '<', $now)
-            ->orderBy('mois_concerne', 'desc')
+            ->where('mois_concerne', '<', $now)->orderBy('mois_concerne', 'desc')
             ->groupBy('mois_concerne')
             ->count('appartements.id');
         $totaldesAppartement = Appartement::count('id');
-        //        dd($TotalAppartementretard);
+        // dd($TotalAppartementretard);
 
-        $PosurcentagedeAppartementNonPaye = $TotalAppartementretard / $totaldesAppartement * 100;
+        $PosurcentagedeAppartementNonPaye = ($TotalAppartementretard / $totaldesAppartement) * 100;
         //alkhir appartement 1 fo9ach khelset
         $derniermoispaye = DB::table('caisses')
 
-            ->orderBy('mois_concerne', 'desc')->first()->mois_concerne;
+            ->orderBy('mois_concerne', 'desc')
+            ->first()->mois_concerne;
         //ch7al raha menchher retard
         $derniermoispaye = Carbon::parse($derniermoispaye)->floorMonth();
         $now = Carbon::now();
@@ -50,12 +50,10 @@ class DashboardController extends Controller
 
         $creadit = $nbr_de_mois_en_retard * $cotisation_mensuelle;
 
-
         //total des locataire en retard
         $Totaldeslocataireretard = DB::table('locataires')
             ->join('caisses', 'caisses.id_locataire', '=', 'locataires.id')
-            ->where('mois_concerne', '<', $now)
-            ->orderBy('mois_concerne', 'desc')
+            ->where('mois_concerne', '<', $now)->orderBy('mois_concerne', 'desc')
             ->groupBy('mois_concerne')
             ->distinct()
             ->count('locataires.id');
@@ -69,32 +67,30 @@ class DashboardController extends Controller
             ->distinct()
             ->count('locataires.id');
 
-
-        //        $blocimapp = DB::table('blocs')
-        //            ->join('immeubles', 'immeubles.id_bloc', '=', 'blocs.id')
-        //            ->join('appartements', 'appartements.id_Immeuble', '=', 'immeubles.id')
-        //            ->get();
+        // $blocimapp = DB::table('blocs')
+        // ->join('immeubles', 'immeubles.id_bloc', '=', 'blocs.id')
+        // ->join('appartements', 'appartements.id_Immeuble', '=', 'immeubles.id')
+        // ->get();
 
         return view('index')
-            ->with("totalcaisse", Caisse::sum('montant'))
-            ->with("totalbloc", Bloc::count('id'))
-            ->with("totalappar", Appartement::count('id'))
-            ->with("totalLocataire", Locataire::count('id'))
-            ->with("totalImmeuble", Immeuble::count('id'))
-            ->with("immeubles", Immeuble::all())
-            ->with("nbrmoisretard", $nbr_de_mois_en_retard)
-            ->with("montantpayeretard", $creadit)
-            ->with("totalLocataireenRetard", $Totaldeslocataireretard)
-            ->with("totalLocataireenAvance", $Totaldeslocataire_en_Avance)
-            ->with("totaldepence", Facture::count('id'))
-            ->with("revenueMois", $this->revenue_mois(null)) // opérationnelle mais pas 100%
-            ->with("depensesJardinnage",  $this->depenses_jardinnage(null)) // opérationnelle mais pas 100%
-            ->with("depensesNettoyage",  $this->depenses_nettoyage(null)) // opérationnelle mais pas 100%
-            ->with("depensesSecurite",  $this->depenses_securite(null)) // opérationnelle mais pas 100%
-            ->with("depensesDivers",  $this->depenses_divers(null)) // opérationnelle mais pas 100%
-            ->with("totalSecurite", Securite::count('id'));
+            ->with('totalcaisse', Caisse::sum('montant'))
+            ->with('totalbloc', Bloc::count('id'))
+            ->with('totalappar', Appartement::count('id'))
+            ->with('totalLocataire', Locataire::count('id'))
+            ->with('totalImmeuble', Immeuble::count('id'))
+            ->with('immeubles', Immeuble::all())
+            ->with('nbrmoisretard', $nbr_de_mois_en_retard)
+            ->with('montantpayeretard', $creadit)
+            ->with('totalLocataireenRetard', $Totaldeslocataireretard)
+            ->with('totalLocataireenAvance', $Totaldeslocataire_en_Avance)
+            ->with('totaldepence', Facture::count('id'))
+            ->with('revenueMois', $this->revenue_mois(null)) // opérationnelle mais pas 100%
+            ->with('depensesJardinnage', $this->depenses_jardinnage(null)) // opérationnelle mais pas 100%
+            ->with('depensesNettoyage', $this->depenses_nettoyage(null)) // opérationnelle mais pas 100%
+            ->with('depensesSecurite', $this->depenses_securite(null)) // opérationnelle mais pas 100%
+            ->with('depensesDivers', $this->depenses_divers(null)) // opérationnelle mais pas 100%
+            ->with('totalSecurite', Securite::count('id'));
     }
-
 
     public function revenue_mois($annee)
     {
@@ -105,9 +101,11 @@ class DashboardController extends Controller
         from caisses c
         where SUBSTRING_INDEX(c.mois_concerne,'-',1) = '$annee'
         group by c.mois_concerne
-        order by  DATE(STR_TO_DATE(CONCAT( SUBSTRING_INDEX(c.mois_concerne,'-',1) , '-' , SUBSTRING_INDEX(c.mois_concerne,'-',-1),'-','1' ),'%Y-%m-%d')) asc,
-                STR_TO_DATE(CONCAT( SUBSTRING_INDEX(c.mois_concerne,'-',1) , '-' , SUBSTRING_INDEX(c.mois_concerne,'-',-1),'-','1' ),'%Y-%m-%d') asc
-                  ");
+        order by DATE(STR_TO_DATE(CONCAT( SUBSTRING_INDEX(c.mois_concerne,'-',1) , '-' ,
+        SUBSTRING_INDEX(c.mois_concerne,'-',-1),'-','1' ),'%Y-%m-%d')) asc,
+        STR_TO_DATE(CONCAT( SUBSTRING_INDEX(c.mois_concerne,'-',1) , '-' ,
+        SUBSTRING_INDEX(c.mois_concerne,'-',-1),'-','1' ),'%Y-%m-%d') asc
+        ");
     }
 
     public function depenses_jardinnage($annee)
@@ -168,25 +166,67 @@ class DashboardController extends Controller
         $TotalAppartementretard = DB::table('locataires')
             ->join('caisses', 'caisses.id_locataire', '=', 'locataires.id')
             ->join('appartements', 'appartements.id', '=', 'caisses.id_Appartement')
-            ->where('mois_concerne', '<', $now)
-            ->orderBy('mois_concerne', 'desc')
+            ->where('mois_concerne', '<', $now)->orderBy('mois_concerne', 'desc')
             ->groupBy('mois_concerne')
             ->count('appartements.id');
         $totaldeslocataires = Locataire::count('id');
 
-        $PosurcentagedeAppartementNonPaye = $TotalAppartementretard / $totaldeslocataires * 100;
+        $PosurcentagedeAppartementNonPaye = ($TotalAppartementretard / $totaldeslocataires) * 100;
         return json_encode($PosurcentagedeAppartementNonPaye);
     }
     public function dernier_mois_paye($id)
     {
+        //todo
         $derniermoispaye = DB::table('caisses')
             ->where('id_Locataire', $id)
-            ->orderBy('mois_concerne', 'desc')->first()->mois_concerne;
-        return $derniermoispaye;
+            ->orderBy('mois_concerne', 'desc')
+            ->first()->mois_concerne;
+        setlocale(LC_TIME, 'French');
+        $derniermoispaye = Carbon::parse($derniermoispaye)->formatLocalized('%d %B %Y');
+        return utf8_encode($derniermoispaye);
 
         //ch7al raha menchher retard
-        $derniermoispaye = Carbon::parse($derniermoispaye)->floorMonth();
-        $now = Carbon::now();
-        $nbr_de_mois_en_retard = $derniermoispaye->diffInMonths($now);
+        // $derniermoispaye = Carbon::parse($derniermoispaye)->floorMonth();
+        // $now = Carbon::now();
+        // $nbr_de_mois_en_retard = $derniermoispaye->diffInMonths($now);
+    }
+
+    public function nbrapploc($id)
+    {
+        $nbr_app_du_loc = DB::table('locataires')
+            ->join('caisses', 'caisses.id_locataire', '=', 'locataires.id')
+            ->join('appartements', 'appartements.id', '=', 'caisses.id_Appartement')
+            ->where('caisses.id_locataire', '=', $id)
+            ->groupBy('caisses.id_locataire')
+            ->distinct()
+            ->count('caisses.id_Appartement');
+
+        return $nbr_app_du_loc;
+    }
+
+    public function apploc($id)
+    {
+        $apploc = DB::table('locataires')
+            ->join('caisses', 'caisses.id_locataire', '=', 'locataires.id')
+            ->join('appartements', 'appartements.id', '=', 'caisses.id_Appartement')
+            ->where('caisses.id_locataire', '=', $id)
+            ->distinct()
+            ->get(['appartements.id', 'appartements.nom']);
+
+        return $apploc;
+    }
+
+    public function indexLocateur()
+    {
+        return view('Dashboard_locataire/index2')
+            ->with('appartements', $this->apploc(AuthentificationController::getCurrentUser()->id))
+            ->with('derniermois', $this->dernier_mois_paye(AuthentificationController::getCurrentUser()->id))
+            ->with('depensesJardinnage', $this->depenses_jardinnage(null)) // opérationnelle mais pas 100%
+            ->with('depensesNettoyage', $this->depenses_nettoyage(null)) // opérationnelle mais pas 100%
+            ->with('depensesSecurite', $this->depenses_securite(null)) // opérationnelle mais pas 100%
+            ->with('depensesDivers', $this->depenses_divers(null)) // opérationnelle mais pas 100%
+            ->with('totalSecurite', Securite::count('id'))
+
+            ->with('nbrapp', $this->nbrapploc(AuthentificationController::getCurrentUser()->id));
     }
 }

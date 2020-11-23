@@ -22,6 +22,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'DashboardController@index');
 
+Route::get('/Home/locataire', 'DashboardController@indexLocateur')->name("AccueilLocataire");
+
+
+
+
+
+
+
 Route::get('/Locataire', function () {
     return view('Locataires/AddLocataire');
 });
@@ -92,6 +100,7 @@ Route::post('/Auth-Login', 'AuthentificationController@loginSecurity')->name('Au
 Route::get('/Auth-Logout', 'AuthentificationController@LogOut')->name('Auth-LogOut');
 
 Route::post('/getQrCode/{id_locateur}', 'LocateurController@generateQR');
+
 // Route::get('/getQrcode', 'LocateurController@genrateQR/{id}')->name('genrateQR');
 
 Route::get('/QR/{id_locateur}', 'QrcodeController@sendQrcode');

@@ -24,10 +24,10 @@
 
 <body>
     @if (!AuthentificationController::IsAuthentificated())
-    @php
-    header("Location: " . URL::to('/Auth-Logout'), true, 302);
-    exit();
-    @endphp
+        @php
+        header("Location: " . URL::to('/Auth-Logout'), true, 302);
+        exit();
+        @endphp
     @endif
     <!-- Begin page -->
     <div id="wrapper">
@@ -267,9 +267,9 @@
                         {{ AuthentificationController::getCurrentUser()->nom . ' ' . AuthentificationController::getCurrentUser()->prenom }}
                     </h6>
                     @if (AuthentificationController::getCurrentUser()->getTable() == 'syndics')
-                    <span class="pro-user-desc">Syndik</span>
+                        <span class="pro-user-desc">Syndik</span>
                     @else
-                    <span class="pro-user-desc">Locataire</span>
+                        <span class="pro-user-desc">Locataire</span>
                     @endif
                 </div>
                 <div class="dropdown align-self-center profile-dropdown-menu">
@@ -310,100 +310,100 @@
                 <div id="sidebar-menu" class="slimscroll-menu">
                     <ul class="metismenu" id="menu-bar">
                         @if (AuthentificationController::getCurrentUser()->getTable() == 'syndics')
-                        <li class="menu-title">Espace Syndic</li>
+                            <li class="menu-title">Espace Syndic</li>
 
-                        <li>
-                            <a href="/">
-                                <i data-feather="home"></i>
-                                {{-- <span
+                            <li>
+                                <a href="/">
+                                    <i data-feather="home"></i>
+                                    {{-- <span
                                         class="badge badge-success float-right">1</span>
                                     --}}
-                                <span> Accueil </span>
-                            </a>
-                        </li>
+                                    <span> Accueil </span>
+                                </a>
+                            </li>
 
-                        <li>
-                            <a href="/syndic/Securite">
-                                <i data-feather="eye" class="icon-dual-primary"></i>
-                                <span>Securités </span>
-                                {{-- <span class="menu-arrow"></span>
+                            <li>
+                                <a href="/syndic/Securite">
+                                    <i data-feather="eye" class="icon-dual-primary"></i>
+                                    <span>Securités </span>
+                                    {{-- <span class="menu-arrow"></span>
                                     --}}
-                            </a>
-                        </li>
+                                </a>
+                            </li>
 
-                        <li>
-                            <a href="/syndic/Residence">
-                                <i class="fas fa-city"></i>
-                                <span> Residence </span>
-                                {{-- <span class="menu-arrow"></span>
+                            <li>
+                                <a href="/syndic/Residence">
+                                    <i class="fas fa-city"></i>
+                                    <span> Residence </span>
+                                    {{-- <span class="menu-arrow"></span>
                                     --}}
-                            </a>
-                        </li>
+                                </a>
+                            </li>
 
 
-                        <li>
-                            <a href="/syndic/Immeuble">
-                                <i class="far fa-building"></i>
-                                <span>Immeuble </span>
-                            </a>
-                        </li>
+                            <li>
+                                <a href="/syndic/Immeuble">
+                                    <i class="far fa-building"></i>
+                                    <span>Immeuble </span>
+                                </a>
+                            </li>
 
 
-                        <li>
-                            <a href="/syndic/Appartements">
-                                <i class="fa fa-sitemap"></i>
-                                <span>Appartement </span>
-                            </a>
-                        </li>
+                            <li>
+                                <a href="/syndic/Appartements">
+                                    <i class="fa fa-sitemap"></i>
+                                    <span>Appartement </span>
+                                </a>
+                            </li>
 
-                        <li>
-                            <a href="/syndic/Locataire">
-                                <i class="fa fa-users fa-fw"></i>
-                                <span>Gérer les Locataires </span>
-                            </a>
-                        </li>
+                            <li>
+                                <a href="/syndic/Locataire">
+                                    <i class="fa fa-users fa-fw"></i>
+                                    <span>Gérer les Locataires </span>
+                                </a>
+                            </li>
 
 
-                        <li>
-                            <a href="{{route('Caisse.index')}}">
-                                <i data-feather="dollar-sign"></i>
-                                <span>Gérer la Caisse</span>
+                            <li>
+                                <a href="{{ route('Caisse.index') }}">
+                                    <i data-feather="dollar-sign"></i>
+                                    <span>Gérer la Caisse</span>
 
-                            </a>
+                                </a>
 
-                        </li>
+                            </li>
 
-                        <li>
-                            <a href="/syndic/Facture">
-                                <i class="fas fa-file-invoice-dollar"></i>
-                                <span> Ajouter une Facture </span>
-                            </a>
-                        </li>
+                            <li>
+                                <a href="/syndic/Facture">
+                                    <i class="fas fa-file-invoice-dollar"></i>
+                                    <span> Ajouter une Facture </span>
+                                </a>
+                            </li>
 
                         @else
-                        <li class="menu-title">Espace Locataire</li>
-                        <li>
-                            <a href="/">
-                                <i data-feather="home"></i>
-                                <span>Accueil</span>
-                            </a>
-                        </li>
+                            <li class="menu-title">Espace Locataire</li>
+                            <li>
+                                <a href="{{ route('AccueilLocataire') }}">
+                                    <i data-feather="home"></i>
+                                    <span>Accueil</span>
+                                </a>
+                            </li>
 
 
-                        <li>
-                            <a href="/syndic/Locateur">
-                                <i data-feather="user"></i>
-                                <span> Ajouter un Locateur </span>
+                            <li>
+                                <a href="/syndic/Locateur">
+                                    <i data-feather="user"></i>
+                                    <span> Ajouter un Locateur </span>
 
-                            </a>
-                        </li>
+                                </a>
+                            </li>
 
-                        <li>
-                            <a href="{{route('Caisse.index')}}">
-                                <i data-feather="dollar-sign"></i>
-                                <span>Caisse</span>
-                            </a>
-                        </li>
+                            <li>
+                                <a href="{{ route('Caisse.index') }}">
+                                    <i data-feather="dollar-sign"></i>
+                                    <span>Caisse</span>
+                                </a>
+                            </li>
                         @endif
                     </ul>
                 </div>
