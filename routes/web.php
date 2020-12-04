@@ -5,6 +5,7 @@ use App\Mail\WelcomeMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 
 
@@ -23,7 +24,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'DashboardController@index');
 
 Route::get('/Home/locataire', 'DashboardController@indexLocateur')->name("AccueilLocataire");
-
 
 
 

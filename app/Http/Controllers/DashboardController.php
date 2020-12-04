@@ -2,22 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Middleware\Authenticate;
-use App\Models\Appartement;
+use Carbon\Carbon;
 use App\Models\Bloc;
 use App\Models\Caisse;
 use App\Models\Facture;
 use App\Models\Immeuble;
-use App\Models\Locataire;
 use App\Models\Securite;
+use App\Models\Locataire;
+use App\Models\Appartement;
 // use ArielMejiaDev\LarapexCharts\LarapexChart;
-use Carbon\Carbon;
+use App\Models\Type_facture;
 use Illuminate\Support\Facades\DB;
+use App\Http\Middleware\Authenticate;
 
 class DashboardController extends Controller
 {
     public function index()
     {
+
+
         $now = Carbon::now();
 
         $TotalAppartementretard = DB::table('locataires')
@@ -232,7 +235,37 @@ class DashboardController extends Controller
 
     public function indexLocateur()
     {
+        //hnaya khasni nejbed lbloc litabe3lou locateur conecte
+
+        $bloc_facture = DB::table('blocs')
+            ->join('immeubles', 'immeubles.id_bloc', '=', 'blocs.id')
+            ->join('appartements', 'appartements.id_Immeuble', '=', 'immeubles.id')
+            ->join('caisses', 'caisses.id_Appartement', '=', 'appartements.id')
+            ->where('', '', '')
+            ->where('caisses.id_Locataire', '=', AuthentificationController::getCurrentUser()->id)
+            ->get(['blocs.id', 'blocs.nom_bloc']);
+        dd($bloc_facture);
+
+        // $id_bloc_loc
+        $facture = DB::table('factures')
+            ->join('type_factures', 'type_factures.id', '=', 'factures.id_Type_facture')
+            ->join('recus', 'recus.id', '=', 'factures.id_Recu')
+            ->get([
+                'factures.id',
+                'date_de_paiment_facture',
+                "designation",
+                "Montant",
+                "id_Recu",
+                "id_Type_facture",
+                "id_bloc",
+                "libelle",
+                "img", 'recus.id as idrecu',
+                'type_factures.id  as idtype'
+            ]);
         return view('Dashboard_locataire/index2')
+            ->with("blocs", Bloc::all())
+            ->with("typeFactures", Type_facture::all())
+            ->with("factures", $facture)
             ->with('appartements', $this->apploc(AuthentificationController::getCurrentUser()->id))
             ->with('derniermois', $this->dernier_mois_paye(AuthentificationController::getCurrentUser()->id))
             ->with('depensesJardinnage', $this->depenses_jardinnage(null)) // opérationnelle mais pas 100%
