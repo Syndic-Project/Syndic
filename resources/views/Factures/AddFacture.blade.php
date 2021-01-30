@@ -72,7 +72,7 @@
                                                             data-target="#modalModiFacture{{ $facture->id }}">
                                                             <i class="fas fa-user-edit"></i>modifier</a>
 
-                                                        <form class="needs-validation" novalidate method="POST"
+                                                        <form class="needs-validation" novalidate method="GET"
                                                             action="{{ route('Facture.destroy', ['Facture' => $facture->id]) }}">
                                                             @method('DELETE')
                                                             @csrf
